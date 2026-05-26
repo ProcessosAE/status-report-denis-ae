@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tecnologia · Status Report Semanal</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F7F8FA;--surface:#fff;--surface-2:#F0F2F5;--border:#E4E8EE;
+  --text:#0D1117;--muted:#5A6478;--faint:#9AA3B2;
+  --accent:#1B6EF3;--accent-lt:#EBF2FF;
+  --green:#16A34A;--green-lt:#DCFCE7;
+  --yellow:#CA8A04;--yellow-lt:#FEF9C3;
+  --orange:#EA580C;--orange-lt:#FFEDD5;
+  --red:#DC2626;--red-lt:#FEE2E2;
+  --purple:#7C3AED;--purple-lt:#EDE9FE;
+  --gray:#6B7280;--gray-lt:#F3F4F6;
+  --jira:#0052CC;--r:12px;--rs:8px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+
+/* HEADER */
+.hdr{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;padding:0 32px}
+.hdr-in{max-width:1300px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.hdr-l{display:flex;align-items:center;gap:14px}
+.logo{width:36px;height:36px;background:var(--accent);border-radius:10px;display:flex;align-items:center;justify-content:center}
+.logo svg{width:18px;height:18px;fill:none;stroke:#fff;stroke-width:2.5}
+.htitle{font-size:15px;font-weight:600}
+.hsub{font-size:12px;color:var(--faint);margin-top:1px}
+.hdr-r{display:flex;align-items:center;gap:10px}
+.bdate{background:var(--accent-lt);color:var(--accent);font-size:12px;font-weight:600;padding:4px 12px;border-radius:20px;font-family:'DM Mono',monospace}
+.jbadge{background:#E8F0FE;color:var(--jira);font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;text-decoration:none;display:flex;align-items:center;gap:5px}
+.jbadge svg{width:12px;height:12px}
+
+/* LAYOUT */
+.main{max-width:1300px;margin:0 auto;padding:32px}
+.panel{display:none;animation:fu .28s ease}
+.panel.active{display:block}
+@keyframes fu{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.sh{display:flex;align-items:center;gap:10px;margin-bottom:20px;justify-content:space-between}
+.sh h2{font-size:18px;font-weight:700}
+.sh-left{display:flex;align-items:center;gap:10px}
+.btn-back{padding:7px 14px;border-radius:var(--rs);font-size:12px;font-weight:600;cursor:pointer;border:1px solid var(--border);background:#fff;color:var(--muted);display:flex;align-items:center;gap:5px;transition:all .18s}
+.btn-back:hover{background:var(--accent-lt);color:var(--accent);border-color:var(--accent)}
+.cnt{background:var(--surface-2);border:1px solid var(--border);color:var(--muted);font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px}
+
+/* ── SUMMARY CARDS (#3 redesign + farol) ── */
+.sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin-bottom:32px}
+.scard{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:18px 18px 14px;cursor:pointer;transition:all .2s;position:relative;overflow:hidden;display:flex;flex-direction:column;gap:0}
+.scard::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--cc,var(--accent));opacity:.8}
+.scard:hover{transform:translateY(-2px);box-shadow:0 4px 24px rgba(0,0,0,.08)}
+/* card top row: farol + name + pct + badge */
+.card-top{display:flex;align-items:flex-start;gap:12px;margin-bottom:12px}
+.farol{display:flex;flex-direction:column;gap:4px;flex-shrink:0;margin-top:2px}
+.farol-dot{width:13px;height:13px;border-radius:50%;background:#E5E7EB}
+.farol-dot.on-red   {background:#EF4444;box-shadow:0 0 6px rgba(239,68,68,.6)}
+.farol-dot.on-yellow{background:#F59E0B;box-shadow:0 0 6px rgba(245,158,11,.6)}
+.farol-dot.on-green {background:#22C55E;box-shadow:0 0 6px rgba(34,197,94,.6)}
+.card-info{flex:1;min-width:0}
+.cname{font-size:13px;font-weight:700;margin-bottom:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cstats{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.cpct{font-size:26px;font-weight:700;font-family:'DM Mono',monospace;line-height:1}
+/* prazo com tachado (#2) */
+.cdl{font-size:11px;color:#000;margin-top:8px;font-family:'DM Mono',monospace;display:flex;align-items:center;gap:4px}
+.cdl-item{display:inline}
+.cdl-item.struck{text-decoration:line-through;opacity:.5;margin-right:4px}
+/* progress bar */
+.pbar{height:4px;background:var(--border);border-radius:2px;margin-top:10px;overflow:hidden}
+.pfill{height:100%;border-radius:2px;transition:width 1s cubic-bezier(.22,1,.36,1)}
+/* jira at bottom */
+.card-footer{margin-top:10px;padding-top:8px}
+
+/* TABLES (#7 fixed column widths) */
+.tw{background:#fff;border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:24px}
+table{width:100%;border-collapse:collapse}
+col.c-task{min-width:200px}
+col.c-dl  {width:90px;white-space:nowrap}
+col.c-resp{width:110px;white-space:nowrap}
+col.c-st  {width:150px;white-space:nowrap}
+col.c-pct {width:140px;white-space:nowrap}
+col.c-jira{width:120px;white-space:nowrap}
+thead th{padding:12px 16px;text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.6px;color:var(--faint);background:var(--surface-2);border-bottom:1px solid var(--border)}
+tbody tr{border-bottom:1px solid var(--border);transition:background .15s}
+tbody tr:last-child{border-bottom:none}
+tbody tr:hover{background:var(--surface-2)}
+td{padding:12px 16px;font-size:13px;vertical-align:middle}
+.tt{font-weight:500}
+.td{font-family:'DM Mono',monospace;font-size:12px;color:var(--muted);white-space:nowrap}
+.tp{font-family:'DM Mono',monospace;font-weight:600;font-size:13px;white-space:nowrap}
+.tr{font-size:12px;color:var(--muted)}
+.mb{width:60px;height:5px;background:var(--border);border-radius:3px;display:inline-block;vertical-align:middle;margin-right:6px;overflow:hidden;position:relative}
+.mf{height:100%;border-radius:3px;display:block}
+.obs-row td{background:#FFFBEB;font-size:12px;color:var(--yellow);padding:6px 16px 8px 32px;border-bottom:1px solid var(--border)}
+
+/* JIRA */
+.jl{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;color:var(--jira);background:#EBF3FF;padding:2px 7px;border-radius:4px;text-decoration:none;white-space:nowrap;transition:background .15s}
+.jl:hover{background:#C8DEFF}
+.jl svg{width:10px;height:10px;flex-shrink:0}
+
+/* BADGES */
+.bdg{display:inline-block;font-size:10px;font-weight:600;padding:3px 9px;border-radius:20px;text-transform:uppercase;letter-spacing:.4px;white-space:nowrap}
+.d    {background:var(--green-lt);color:var(--green)}
+.w    {background:var(--accent-lt);color:var(--accent)}
+.wait {background:var(--yellow-lt);color:var(--yellow)}
+.blk  {background:var(--orange-lt);color:var(--orange)}
+.ns   {background:var(--gray-lt);color:var(--gray)}
+.hml  {background:var(--purple-lt);color:var(--purple)}
+.rfn  {background:#FEF3C7;color:#92400E}
+.paused{background:var(--red-lt);color:var(--red)}
+.cancel{background:#F3F4F6;color:#374151;text-decoration:line-through}
+
+/* SUB-SECTION */
+.ss{font-size:14px;font-weight:700;margin:0 0 12px;color:var(--muted);display:flex;align-items:center;gap:8px}
+.ss::before{content:'';display:block;width:3px;height:16px;background:var(--accent);border-radius:2px}
+
+/* NOTE BOX */
+.note{font-size:12px;color:var(--yellow);margin-top:8px;margin-bottom:16px;padding:8px 12px;background:var(--yellow-lt);border-radius:var(--rs);border:1px solid #FCD34D}
+
+/* INITIATIVES */
+.igrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.ic{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:20px}
+.ic h3{font-size:14px;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;display:inline-block}
+.ii{display:flex;align-items:flex-start;gap:8px;padding:6px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--muted)}
+.ii:last-child{border-bottom:none}
+.ii::before{content:'›';color:var(--accent);font-weight:700;flex-shrink:0;margin-top:1px}
+
+/* DATE POPUP */
+.dp-overlay{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:600;display:flex;align-items:center;justify-content:center}
+.dp-modal{background:#fff;border-radius:var(--r);padding:0;width:300px;box-shadow:0 8px 32px rgba(0,0,0,.18);overflow:hidden}
+.dp-modal-top{padding:16px 20px 0;border-bottom:1px solid var(--border)}
+.dp-modal-top h4{font-size:13px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px}
+.dp-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.dp-nav span{font-size:14px;font-weight:700}
+.dp-nav button{background:none;border:none;cursor:pointer;font-size:18px;color:var(--muted);width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center}
+.dp-nav button:hover{background:var(--surface-2);color:var(--text)}
+.dp-grid{display:grid;grid-template-columns:repeat(7,1fr);padding:0 20px 4px}
+.dp-dow{font-size:10px;font-weight:700;color:var(--faint);text-align:center;padding:6px 0;text-transform:uppercase}
+.dp-day{font-size:13px;text-align:center;padding:7px 4px;border-radius:6px;cursor:pointer;color:var(--text);transition:all .12s}
+.dp-day:hover{background:var(--accent-lt);color:var(--accent)}
+.dp-day.dp-today{color:var(--accent);font-weight:700}
+.dp-day.dp-sel{background:var(--accent);color:#fff;font-weight:700}
+.dp-day.dp-sel:hover{background:#1255a0}
+.dp-day.dp-empty{cursor:default;pointer-events:none}
+.dp-modal-bot{padding:12px 20px;display:flex;gap:8px;justify-content:space-between;align-items:center;border-top:1px solid var(--border)}
+.dp-cur{font-size:13px;font-family:'DM Mono',monospace;color:var(--muted);flex:1}
+.dp-cur.filled{color:var(--text);font-weight:600}
+/* field button */
+.date-display-btn{display:inline-flex;align-items:center;gap:6px;padding:7px 10px;border:1px solid var(--border);border-radius:var(--rs);font-size:13px;font-family:'DM Mono',monospace;background:#fff;cursor:pointer;width:100%;transition:all .15s;color:#000}
+.date-display-btn:hover{border-color:var(--accent);background:var(--accent-lt)}
+.date-display-btn .cal-icon{color:var(--faint);font-size:13px}
+.date-display-btn.struck{text-decoration:line-through;opacity:.5}
+
+/* CONFIRM MODAL (#17) */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:500;display:flex;align-items:center;justify-content:center;animation:fu .2s ease}
+.modal-box{background:#fff;border-radius:var(--r);padding:28px;max-width:420px;width:90%;box-shadow:0 8px 40px rgba(0,0,0,.18)}
+.modal-box h4{font-size:15px;font-weight:700;margin-bottom:10px;color:var(--text)}
+.modal-box p{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:20px}
+.modal-actions{display:flex;gap:10px;justify-content:flex-end}
+/* #16 hide delete btn when collapsed */
+.proj-item.collapsed .proj-delete-btn{display:none}
+
+/* FLOATING EDITOR BUTTON (#9) */
+.fab{position:fixed;bottom:28px;right:28px;width:52px;height:52px;background:var(--accent);color:#fff;border:none;border-radius:50%;font-size:22px;cursor:pointer;box-shadow:0 4px 16px rgba(27,110,243,.4);z-index:200;transition:all .2s;display:flex;align-items:center;justify-content:center}
+.fab:hover{background:#1255a0;transform:scale(1.08);box-shadow:0 6px 24px rgba(27,110,243,.5)}
+
+/* ══════ EDITOR STYLES ══════ */
+.ed-wrap{display:flex;gap:24px;align-items:flex-start}
+.ed-sidebar{width:220px;flex-shrink:0;position:sticky;top:80px}
+.ed-nav{background:#fff;border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
+.ed-nav-item{padding:10px 16px;font-size:13px;font-weight:500;cursor:pointer;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;color:var(--muted);transition:all .15s}
+.ed-nav-item:last-child{border-bottom:none}
+.ed-nav-item:hover{background:var(--surface-2);color:var(--text)}
+.ed-nav-item.active{background:var(--accent-lt);color:var(--accent);font-weight:600}
+.ed-actions{margin-top:12px;display:flex;flex-direction:column;gap:8px}
+.btn{padding:9px 16px;border-radius:var(--rs);font-size:13px;font-weight:600;cursor:pointer;border:none;transition:all .18s;display:flex;align-items:center;gap:6px;justify-content:center}
+.btn-primary{background:var(--accent);color:#fff}.btn-primary:hover{background:#1255a0}
+.btn-success{background:var(--green);color:#fff}.btn-success:hover{background:#15803d}
+.btn-outline{background:#fff;color:var(--muted);border:1px solid var(--border)}.btn-outline:hover{background:var(--surface-2);color:var(--text)}
+.btn-danger{background:var(--red-lt);color:var(--red);border:1px solid #FECACA}.btn-danger:hover{background:#FEE2E2}
+.btn-sm{padding:5px 10px;font-size:11px;border-radius:6px}
+.ed-body{flex:1;min-width:0}
+.ed-section{display:none}.ed-section.active{display:block}
+.ed-card{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:20px;margin-bottom:16px}
+.ed-card h3{font-size:14px;font-weight:700;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.field-row.cols3{grid-template-columns:1fr 1fr 1fr}
+.field-row.cols4{grid-template-columns:2fr 1fr 1fr 1fr}
+.field-full{margin-bottom:12px}
+label{display:block;font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px}
+input[type=text],input[type=date],input[type=number],select,textarea{width:100%;padding:8px 10px;border:1px solid var(--border);border-radius:var(--rs);font-size:13px;font-family:inherit;color:var(--text);background:#fff;transition:border .15s;outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--accent)}
+input[type=number]{-moz-appearance:textfield}
+input[type=number]::-webkit-inner-spin-button{opacity:1}
+textarea{resize:vertical;min-height:60px}
+.task-list{display:flex;flex-direction:column;gap:8px}
+.task-item{background:var(--surface-2);border:1px solid var(--border);border-radius:var(--rs);padding:12px}
+.task-item-header{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.drag-handle{cursor:grab;color:var(--faint);font-size:18px;line-height:1;user-select:none}
+.drag-handle:active{cursor:grabbing}
+.task-item.dragging{opacity:.4;border:2px dashed var(--accent)}
+.task-item.drag-over{border-top:3px solid var(--accent)}
+.proj-list{display:flex;flex-direction:column;gap:10px}
+.proj-item{background:var(--surface-2);border:1px solid var(--border);border-radius:var(--rs);padding:14px}
+.proj-item-body{overflow:hidden;transition:all .2s}
+.proj-item.collapsed .proj-item-body{display:none}
+.expand-btn{background:none;border:none;cursor:pointer;color:var(--muted);font-size:16px;padding:0 4px;line-height:1;transition:transform .2s}
+.proj-item:not(.collapsed) .expand-btn{transform:rotate(0deg)}
+.proj-item.collapsed .expand-btn{transform:rotate(0deg)}
+.proj-item-hdr{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.proj-item-hdr .drag-handle{font-size:20px}
+.proj-item.dragging{opacity:.4;border:2px dashed var(--accent)}
+.proj-item.drag-over{border-top:3px solid var(--accent)}
+.color-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+.proj-item-hdr strong{font-size:13px;font-weight:600;flex:1}
+.ed-empty{text-align:center;padding:32px;color:var(--faint);font-size:13px}
+.color-swatch{width:20px;height:20px;border-radius:4px;cursor:pointer;border:2px solid transparent;transition:.15s;display:inline-block}
+.color-swatch.selected{border-color:var(--text);transform:scale(1.15)}
+.color-row{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px;margin-bottom:10px}
+.tab-bar-ed{display:flex;gap:4px;margin-bottom:16px;border-bottom:1px solid var(--border);padding-bottom:8px;flex-wrap:wrap}
+.tab-bar-ed .tbe{padding:6px 12px;border-radius:6px;font-size:12px;font-weight:500;cursor:pointer;color:var(--muted);border:none;background:none}
+.tab-bar-ed .tbe.active{background:var(--accent-lt);color:var(--accent)}
+.import-area{border:2px dashed var(--border);border-radius:var(--r);padding:32px;text-align:center;cursor:pointer;transition:.2s;color:var(--faint);font-size:13px}
+.import-area:hover{border-color:var(--accent);color:var(--accent)}
+/* farol selector in editor */
+.farol-sel{display:flex;gap:10px;margin-top:6px}
+.farol-opt{display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;padding:8px 12px;border:2px solid var(--border);border-radius:var(--rs);transition:.15s;font-size:10px;font-weight:600;color:var(--muted);text-align:center}
+.farol-opt:hover{border-color:var(--accent)}
+.farol-opt.selected{border-color:var(--accent);background:var(--accent-lt);color:var(--accent)}
+.farol-mini{display:flex;flex-direction:column;gap:3px}
+.farol-mini span{width:10px;height:10px;border-radius:50%;background:#E5E7EB;display:block}
+/* date picker css removed - using text inputs */
+@media(max-width:900px){.ed-wrap{flex-direction:column}.ed-sidebar{width:100%;position:static}.field-row{grid-template-columns:1fr}}
+@media(max-width:700px){.main,.hdr{padding:0 16px}.main{padding-top:20px}.sgrid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+<div class="hdr-in">
+  <div class="hdr-l">
+    <div class="logo"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+    <div><div class="htitle">Tecnologia</div><div class="hsub">Status Report Semanal</div></div>
+  </div>
+  <div class="hdr-r">
+    <a class="jbadge" href="https://jiracloudae.atlassian.net" target="_blank">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.571 11.513H0a5.218 5.218 0 0 0 5.232 5.215h2.13v2.057A5.215 5.215 0 0 0 12.575 24V12.518a1.005 1.005 0 0 0-1.004-1.005zm5.723-5.756H5.757a5.215 5.215 0 0 0 5.214 5.214h2.129v2.058a5.218 5.218 0 0 0 5.215 5.214V6.762a1.005 1.005 0 0 0-1.021-1.005zM23.013 0H11.455a5.215 5.215 0 0 0 5.215 5.215h2.129v2.058A5.218 5.218 0 0 0 24.017 12.49V1.005A1.005 1.005 0 0 0 23.013 0z"/></svg>
+      jiracloudae</a>
+    <div class="bdate" id="hdr-date">—</div>
+  </div>
+</div>
+</header>
+
+<main class="main">
+
+<!-- RESUMO -->
+<div class="panel active" id="panel-resumo">
+  <div class="sh"><h2>Visão Geral</h2><span class="cnt" id="proj-count">—</span></div>
+  <div class="sgrid" id="sgrid"></div>
+</div>
+
+<!-- PROJECT PANELS rendered by JS -->
+<div id="dynamic-panels"></div>
+
+<!-- INICIATIVAS -->
+<div class="panel" id="panel-init">
+  <div class="sh"><h2>Demais Iniciativas</h2></div>
+  <div class="igrid" id="igrid"></div>
+</div>
+
+<!-- EDITOR PANEL -->
+<div class="panel" id="panel-editor">
+  <div class="sh">
+    <h2>✏️ Editor de Dados</h2>
+    <span class="cnt">Edite → Exportar JSON → commit em <a href="https://github.com/ProcessosAE/status-report-denis-ae" target="_blank" style="color:var(--accent)">ProcessosAE/status-report-denis-ae</a></span>
+  </div>
+  <div class="ed-wrap">
+    <div class="ed-sidebar">
+      <div class="ed-nav">
+        <div class="ed-nav-item active" onclick="edNav('geral',this)">📅 Geral</div>
+        <div class="ed-nav-item" onclick="edNav('projetos',this)">📦 Projetos</div>
+        <div class="ed-nav-item" onclick="edNav('tarefas',this)">✅ Tarefas</div>
+        <div class="ed-nav-item" onclick="edNav('iniciativas',this)">🚀 Iniciativas</div>
+        <div class="ed-nav-item" onclick="edNav('importar',this)">📥 Importar JSON</div>
+      </div>
+      <div class="ed-actions">
+        <button class="btn btn-primary" onclick="applyData()">▶ Aplicar ao Dashboard</button>
+        <button class="btn btn-success" onclick="exportJSON()">⬇ Exportar JSON</button>
+        <button class="btn btn-outline" onclick="showPanel('resumo')">← Voltar ao Dashboard</button>
+      </div>
+    </div>
+    <div class="ed-body">
+      <div class="ed-section active" id="ed-geral">
+        <div class="ed-card">
+          <h3>Informações Gerais</h3>
+          <div class="field-row">
+            <div>
+              <label>Data do Report</label>
+              <button class="date-display-btn" style="width:100%" id="ed-date-btn" onclick="openDatePopup(editorData.date||'',v=>{setReportDate(v);document.getElementById('ed-date-btn').querySelector('span:last-child').textContent=v||'—'})">
+                <span class="cal-icon">📅</span><span>—</span>
+              </button>
+            </div>
+            <div>
+              <label>URL Jira (base)</label>
+              <input type="text" id="ed-jira-base" placeholder="https://jiracloudae.atlassian.net">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ed-section" id="ed-projetos">
+        <div class="ed-card">
+          <h3>Cards do Resumo <small style="font-size:11px;color:var(--faint);font-weight:400">— arraste ⠿ para reordenar</small>
+            <div style="display:flex;gap:6px">
+              <button class="btn btn-outline btn-sm" onclick="toggleAllProjects(false)">▼ Expandir todos</button>
+              <button class="btn btn-outline btn-sm" onclick="toggleAllProjects(true)">▲ Recolher todos</button>
+              <button class="btn btn-outline btn-sm" onclick="addProject()">+ Adicionar</button>
+            </div>
+          </h3>
+          <div class="proj-list" id="proj-list"></div>
+        </div>
+      </div>
+
+      <div class="ed-section" id="ed-tarefas">
+        <div class="ed-card">
+          <h3>Tarefas por Painel</h3>
+          <div class="tab-bar-ed" id="panel-tabs-ed"></div>
+          <div id="tasks-editor-body"></div>
+        </div>
+      </div>
+
+      <div class="ed-section" id="ed-iniciativas">
+        <div class="ed-card">
+          <h3>Demais Iniciativas
+            <button class="btn btn-outline btn-sm" onclick="addInitiativa()">+ Adicionar</button>
+          </h3>
+          <div class="proj-list" id="init-list"></div>
+        </div>
+      </div>
+
+      <div class="ed-section" id="ed-importar">
+        <div class="ed-card">
+          <h3>Importar JSON</h3>
+          <div class="import-area" id="import-drop" onclick="document.getElementById('import-file').click()">
+            📂 Clique ou arraste um arquivo <strong>data.json</strong>
+          </div>
+          <input type="file" id="import-file" accept=".json" style="display:none" onchange="importJSON(event)">
+          <div style="margin-top:16px">
+            <label>Ou cole o JSON diretamente:</label>
+            <textarea id="import-paste" rows="8" placeholder='{"date":"26/05/2026","projects":[]}'></textarea>
+            <div style="margin-top:8px;display:flex;gap:8px">
+              <button class="btn btn-primary" onclick="importFromPaste()">Carregar JSON</button>
+              <button class="btn btn-outline" onclick="document.getElementById('import-paste').value=''">Limpar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</main>
+<!-- CONFIRM MODAL -->
+<div id="confirm-modal" style="display:none"></div>
+
+<!-- FAB (#9) -->
+<button class="fab" title="Abrir Editor" onclick="showPanel('editor')">✏️</button>
+
+<script>
+const JIRA = 'https://jiracloudae.atlassian.net';
+const JIRA_SVG = `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.571 11.513H0a5.218 5.218 0 0 0 5.232 5.215h2.13v2.057A5.215 5.215 0 0 0 12.575 24V12.518a1.005 1.005 0 0 0-1.004-1.005zm5.723-5.756H5.757a5.215 5.215 0 0 0 5.214 5.214h2.129v2.058a5.218 5.218 0 0 0 5.215 5.214V6.762a1.005 1.005 0 0 0-1.021-1.005zM23.013 0H11.455a5.215 5.215 0 0 0 5.215 5.215h2.129v2.058A5.218 5.218 0 0 0 24.017 12.49V1.005A1.005 1.005 0 0 0 23.013 0z"/></svg>`;
+
+const STATUS_LIST = ['Concluído','Em andamento','Aguard. deploy','Em validação','Homologado','Não iniciado','Impedido','Pausado','Cancelado','Em definição','Refinamento','Prod. assistida','Desenvolvido'];
+
+function statusClass(s){
+  if(!s) return 'ns';
+  const v=s.toLowerCase();
+  if(v.includes('conclu')||v.includes('desenvolvido')) return 'd';
+  if(v.includes('andamento')||v.includes('defini')||v.includes('refinamento')) return 'w';
+  if(v.includes('deploy')||v.includes('prod.')) return 'wait';
+  if(v.includes('valid')||v.includes('hom')) return 'hml';
+  if(v.includes('imped')) return 'blk';
+  if(v.includes('pausado')) return 'paused';
+  if(v.includes('cancel')) return 'cancel';
+  return 'ns';
+}
+function barColor(s){
+  const map={d:'var(--green)',w:'var(--accent)',wait:'var(--yellow)',hml:'var(--purple)',blk:'var(--orange)',paused:'var(--red)',cancel:'var(--gray)',ns:'var(--faint)'};
+  return map[statusClass(s)]||'var(--accent)';
+}
+
+const PALETTE=['#1B6EF3','#16A34A','#0891B2','#7C3AED','#EA580C','#CA8A04','#BE185D','#059669','#2563EB','#6D28D9','#DC2626','#0284C7'];
+
+/* ══ FAROL helpers ══ */
+/* farol values: 'prazo' | 'atencao' | 'perigo' */
+function farolHTML(farol){
+  const r = farol==='perigo'  ? 'on-red'    : '';
+  const y = farol==='atencao'? 'on-yellow' : '';
+  const g = farol==='prazo' ? 'on-green'  : '';
+  return `<div class="farol"><div class="farol-dot ${r}"></div><div class="farol-dot ${y}"></div><div class="farol-dot ${g}"></div></div>`;
+}
+
+/* ══ PRAZO display (#2) ══ */
+function shortDate(v){
+  if(!v||v==='—') return '—';
+  const p=v.split('/');
+  return p.length>=2?p[0]+'/'+p[1]:v;
+}
+function prazosHTML(p){
+  const fields=[
+    {val:p.dl1,done:p.dl1_done},
+    {val:p.dl2,done:p.dl2_done},
+    {val:p.dl3,done:p.dl3_done},
+  ].filter(f=>f.val&&f.val.trim()&&f.val!=='—');
+  if(fields.length===0) return '<span>—</span>';
+  return fields.map((f,i)=>
+    `<span class="cdl-item${f.done?' struck':''}">${i===0?'📅 ':''}${shortDate(f.val)}</span>`
+  ).join(' ');
+}
+
+/* ══ DATA ══ */
+let DATA = {
+  date:'20/05/2026',
+  jiraBase:'https://jiracloudae.atlassian.net',
+  projects:[
+    {id:'otc',      name:'OTC',             pct:95, dl1:'23/04',dl2:'',dl3:'',dl1_done:true,dl2_done:false,dl3_done:false, st:'Em andamento', color:'#1B6EF3', farol:'perigo',   jira:'/projects/FD',     jl:'FD'},
+    {id:'itsm',     name:'Implantação ITSM',pct:90, dl1:'29/05',dl2:'',dl3:'',dl1_done:false,dl2_done:false,dl3_done:false, st:'Em andamento', color:'#16A34A', farol:'perigo',   jira:'/projects/II',     jl:'II'},
+    {id:'terminal', name:'Terminal LATAM',  pct:85, dl1:'31/05',dl2:'',dl3:'',dl1_done:false,dl2_done:false,dl3_done:false, st:'Em andamento', color:'#0891B2', farol:'atencao', jira:'/projects/PDTL',   jl:'PDTL'},
+    {id:'openmeter',name:'OpenMeter',       pct:20, dl1:'07/07',dl2:'',dl3:'',dl1_done:false,dl2_done:false,dl3_done:false, st:'Em andamento', color:'#7C3AED', farol:'perigo',   jira:'/browse/PDT-641',  jl:'PDT-641'},
+    {id:'fenics',   name:'Injetor Fenics',  pct:95, dl1:'—',    dl2:'',dl3:'',dl1_done:false,dl2_done:false,dl3_done:false, st:'Em validação', color:'#EA580C', farol:'atencao', jira:'/projects/FMD2',   jl:'FMD2'},
+    {id:'fundos',   name:'Novo Fundos',     pct:95, dl1:'17/04',dl2:'29/05',dl3:'', st:'Em andamento', color:'#CA8A04', farol:'perigo', jira:'/projects/FD', jl:'FD'},
+    {id:'chat',     name:'Chat Bradesco',   pct:90, dl1:'29/05',dl2:'',dl3:'',dl1_done:false,dl2_done:false,dl3_done:false, st:'Em andamento', color:'#BE185D', farol:'prazo',  jira:'/projects/CHBOTEV',jl:'CHBOTEV'},
+    {id:'faq',      name:'FAQ Bradesco',    pct:90, dl1:'29/05',dl2:'',dl3:'',dl1_done:false,dl2_done:false,dl3_done:false, st:'Em andamento', color:'#0891B2', farol:'perigo',   jira:'/projects/CHBOTEV',jl:'CHBOTEV'},
+    {id:'a5x',      name:'A5X',             pct:3,  dl1:'30/09',dl2:'',dl3:'',dl1_done:false,dl2_done:false,dl3_done:false, st:'Em andamento', color:'#059669', farol:'perigo',   jira:'',                 jl:''},
+    {id:'datalake', name:'Data Lake',       pct:20, dl1:'30/09',dl2:'',dl3:'',dl1_done:false,dl2_done:false,dl3_done:false, st:'Em andamento', color:'#2563EB', farol:'perigo',   jira:'',                 jl:''},
+    {id:'screener', name:'Screener',        pct:3,  dl1:'05/10',dl2:'',dl3:'',dl1_done:false,dl2_done:false,dl3_done:false, st:'Em andamento', color:'#6D28D9', farol:'perigo',   jira:'',                 jl:''},
+  ],
+  panels:{
+    otc:{title:'OTC — Clientes',subtitle:'4 instâncias · projeto FD',groups:[
+      {label:'Sofisa & Travelex',tasks:[
+        {task:'[Sofisa] Implantação do Google Analytics',       dl:'08/04',st:'Concluído',      pct:100,resp:'Natan',   jira:'/projects/FD',jl:'FD'},
+        {task:'[Sofisa] Alternar cálculo de Spread (%) e BPS', dl:'03/06',st:'Em andamento',   pct:90, resp:'Fregnani',jira:'',jl:''},
+        {task:'[Sofisa] BPs | Visualização no histórico',      dl:'03/06',st:'Em andamento',   pct:50, resp:'Fregnani',jira:'',jl:''},
+        {task:'[Travelex] Implantação do Google Analytics',    dl:'08/04',st:'Concluído',      pct:100,resp:'Natan',   jira:'/projects/FD',jl:'FD'},
+      ]},
+      {label:'Bradesco (EasyTrade)',tasks:[
+        {task:'[Bradesco] Implantação Google Analytics',       dl:'02/04',st:'Concluído',      pct:100,resp:'Natan',   jira:'/projects/FD',jl:'FD'},
+        {task:'[Bradesco] Sobreposição de anexos no PDF',      dl:'06/05',st:'Aguard. deploy', pct:100,resp:'',        jira:'',jl:''},
+        {task:'[Bradesco] Usabilidade no upload de arquivos',  dl:'06/05',st:'Aguard. deploy', pct:100,resp:'',        jira:'',jl:''},
+        {task:'[Bradesco] Falha no upload — erro 403',         dl:'06/05',st:'Aguard. deploy', pct:100,resp:'',        jira:'',jl:''},
+        {task:'[Bradesco] CNPJ e Agência/Conta no Perfil',     dl:'06/05',st:'Aguard. deploy', pct:100,resp:'',        jira:'',jl:''},
+      ]},
+      {label:'Banco BV & Fibra',tasks:[
+        {task:'[B.V] Implantação Google Analytics',            dl:'08/04',st:'Concluído',      pct:100,resp:'Natan',   jira:'/projects/FD',jl:'FD'},
+        {task:'[B.V] Gestão de Moedas | NDF Mesa',            dl:'17/06',st:'Em andamento',   pct:50, resp:'',        jira:'/browse/FD-5438',jl:'FD-5438'},
+        {task:'[B.V] Gestão de Moedas | SPOT Mesa',           dl:'17/06',st:'Em andamento',   pct:50, resp:'',        jira:'/browse/FD-5351',jl:'FD-5351'},
+        {task:'[B.V] Padronização Popup Cotação | Mesa',       dl:'17/06',st:'Em andamento',   pct:50, resp:'',        jira:'/projects/FD',jl:'FD'},
+        {task:'[Fibra] Implantação do Google Analytics',       dl:'08/04',st:'Aguard. deploy', pct:100,resp:'Natan',   jira:'/browse/PTO-2215',jl:'PTO-2215'},
+        {task:'[Fibra] Documentação API SPOT',                 dl:'30/04',st:'Em andamento',   pct:50, resp:'',        jira:'',jl:''},
+        {task:'[Fibra] Ajuste de Cores e Disclaimer',          dl:'06/05',st:'Aguard. deploy', pct:100,resp:'',        jira:'/browse/PTO-2215',jl:'PTO-2215'},
+      ]},
+      {label:'Broadcast',tasks:[
+        {task:'Segregação da Base de Dados OTC',               dl:'20/05',st:'Em andamento',   pct:50, resp:'',        jira:'',jl:''},
+        {task:'Boletas simultâneas | Novo menu de negociação', dl:'20/05',st:'Em andamento',   pct:75, resp:'',        jira:'/browse/FD-5552',jl:'FD-5552'},
+        {task:'Inconsistências de tracking GA',                dl:'06/05',st:'Prod. assistida',pct:100,resp:'',        jira:'',jl:''},
+      ]},
+    ]},
+    terminal:{title:'Terminal LATAM',subtitle:'Prazo: 31/05 · projetos FD / PDTL',groups:[{label:'',tasks:[
+      {task:'[LATAM] Curva de juros (PRECIA)',            dl:'24/04',st:'Em andamento', pct:90,resp:'',jira:'/browse/FD-4925',jl:'FD-4925'},
+      {task:'[LATAM] Curva forward (PRECIA)',             dl:'24/04',st:'Em andamento', pct:90,resp:'',jira:'/browse/FD-4700',jl:'FD-4700'},
+      {task:'[LATAM] Mapa de calor 2',                   dl:'—',    st:'Em andamento', pct:50,resp:'',jira:'',jl:''},
+      {task:'[LATAM] Conversor de Moedas',               dl:'—',    st:'Em validação', pct:95,resp:'',jira:'',jl:''},
+      {task:'[LATAM] Tradução automática Wire',           dl:'—',    st:'Em definição', pct:0, resp:'',jira:'',jl:''},
+      {task:'[LATAM] Eventos Corporativos — idiomas',    dl:'—',    st:'Refinamento',  pct:0, resp:'',jira:'',jl:''},
+    ]}]},
+    openmeter:{title:'OpenMeter',subtitle:'Prazo: 07/07 · epic PDT-639',groups:[{label:'',tasks:[
+      {task:'Kick-off e requisitos de infra',                    dl:'06/05',st:'Concluído',    pct:100,resp:'',jira:'',jl:''},
+      {task:'Instalação e configuração do ambiente (GKE)',       dl:'22/05',st:'Em andamento', pct:3,  resp:'',jira:'/browse/PDT-641',jl:'PDT-641'},
+      {task:'Parametrização e testes (POC e outras regras)',     dl:'12/06',st:'Não iniciado', pct:0,  resp:'',jira:'/browse/PDT-642',jl:'PDT-642'},
+      {task:'Testes HML, Pré-prod e GO-LIVE',                   dl:'07/07',st:'Não iniciado', pct:0,  resp:'',jira:'/browse/PDT-647',jl:'PDT-647'},
+    ]}]},
+    datalake:{title:'Data Lake',subtitle:'Prazo: 30/09',groups:[{label:'',tasks:[
+      {task:'Definição de arquitetura e precificação (Snowflake)',dl:'30/05',st:'Em andamento',pct:60,resp:'',jira:'',jl:''},
+      {task:'POC — Ingestão e estruturação dados de Fundos',     dl:'30/06',st:'Não iniciado',pct:0, resp:'',jira:'',jl:''},
+      {task:'Implementação — Pipeline, LLM e validação',         dl:'31/08',st:'Não iniciado',pct:0, resp:'',jira:'',jl:''},
+      {task:'Homologação e GO-LIVE Fase 1 (Fundos)',             dl:'30/09',st:'Não iniciado',pct:0, resp:'',jira:'',jl:''},
+    ]}]},
+    fenics:{title:'Injetor Fenics',subtitle:'Em validação · FMD1 / FMD2 / PDTL',groups:[{label:'',tasks:[
+      {task:'Conectividade com Fenics',        dl:'24/03',st:'Aguard. deploy',pct:100,resp:'',jira:'/projects/FMD1',jl:'FMD1'},
+      {task:'Regras de negócios Fenics',       dl:'30/04',st:'Aguard. deploy',pct:100,resp:'',jira:'',jl:''},
+      {task:'Regras de negócios NIG',          dl:'30/04',st:'Aguard. deploy',pct:100,resp:'',jira:'',jl:''},
+      {task:'Monitorações',                    dl:'30/04',st:'Aguard. deploy',pct:100,resp:'',jira:'',jl:''},
+      {task:'Serviço Windows',                 dl:'10/04',st:'Aguard. deploy',pct:100,resp:'',jira:'',jl:''},
+      {task:'Incluir serviço no instalador',   dl:'n/d',  st:'Aguard. deploy',pct:100,resp:'',jira:'',jl:''},
+      {task:'Infra estrutura produção',        dl:'n/d',  st:'Não iniciado',  pct:0,  resp:'',jira:'',jl:''},
+      {task:'POC - Kafka',                     dl:'24/03',st:'Aguard. deploy',pct:100,resp:'',jira:'',jl:''},
+    ]}]},
+    itsm:{title:'Implantação ITSM',subtitle:'Prazo: 29/05 · projeto II',groups:[{label:'',tasks:[
+      {task:'Sistemas Internos',dl:'16/10',st:'Concluído',   pct:100,resp:'',jira:'/projects/II',jl:'II'},
+      {task:'Serviços de TI',  dl:'28/10',st:'Concluído',   pct:100,resp:'',jira:'/projects/II',jl:'II'},
+      {task:'Incidentes',      dl:'30/12',st:'Concluído',   pct:100,resp:'',jira:'/projects/II',jl:'II'},
+      {task:'Problemas',       dl:'13/02',st:'Concluído',   pct:100,resp:'',jira:'/projects/II',jl:'II'},
+      {task:'Mudanças',        dl:'24/04',st:'Concluído',   pct:100,resp:'',jira:'/projects/II',jl:'II'},
+      {task:'Sugestões',       dl:'29/05',st:'Em andamento',pct:5,  resp:'',jira:'/projects/II',jl:'II'},
+    ]}]},
+    chat:{title:'Chat Bradesco',subtitle:'Prazo: 29/05 · projeto CHBOTEV',note:'⚠️ Impedido: aguardando API de Criação de Atendimento do Bradesco (RISCO ALTO)',groups:[{label:'',tasks:[
+      {task:'Permissionamento CHAT na BCAA',              dl:'29/05',st:'Homologado',  pct:95,resp:'',jira:'/projects/CHBOTEV',jl:'CHBOTEV'},
+      {task:'Parametrização de filas e usuários',         dl:'29/05',st:'Homologado',  pct:95,resp:'',jira:'/projects/CHBOTEV',jl:'CHBOTEV'},
+      {task:'Fila de atendimento',                        dl:'29/05',st:'Impedido',    pct:80,resp:'',jira:'/projects/CHBOTEV',jl:'CHBOTEV',obs:'Aguardando API de Criação de Atendimento — Bradesco'},
+      {task:'Comunicação via Chat',                       dl:'29/05',st:'Homologado',  pct:95,resp:'',jira:'/projects/CHBOTEV',jl:'CHBOTEV'},
+      {task:'Gestão do atendimento + Integração Easytrade',dl:'29/05',st:'Em andamento',pct:80,resp:'',jira:'/projects/CHBOTEV',jl:'CHBOTEV'},
+      {task:'Auditoria, Segurança e Conformidade',        dl:'29/05',st:'Em andamento',pct:50,resp:'',jira:'/projects/CHBOTEV',jl:'CHBOTEV'},
+      {task:'Mudança estrutural (Cliente → CNPJ)',        dl:'29/05',st:'Em andamento',pct:50,resp:'',jira:'/projects/CHBOTEV',jl:'CHBOTEV'},
+    ]}]},
+    faq:{title:'FAQ Bradesco',subtitle:'Prazo: 29/05 · projeto CHBOTEV',note:'⚠️ Entrega após finalização do Chat (prevista para 27/05)',groups:[{label:'',tasks:[
+      {task:'Permissionamento FAQ na BCAA', dl:'29/05',st:'Homologado',pct:95,resp:'',jira:'/projects/CHBOTEV',jl:'CHBOTEV'},
+      {task:'Cadastro do FAQ',             dl:'29/05',st:'Homologado',pct:95,resp:'',jira:'/projects/CHBOTEV',jl:'CHBOTEV'},
+      {task:'Widget de Pesquisa',          dl:'29/05',st:'Homologado',pct:95,resp:'',jira:'/projects/CHBOTEV',jl:'CHBOTEV'},
+      {task:'Histórico de Consultas',      dl:'29/05',st:'Homologado',pct:95,resp:'',jira:'/projects/CHBOTEV',jl:'CHBOTEV'},
+      {task:'Integração com Chat',         dl:'29/05',st:'Pausado',   pct:0, resp:'',jira:'/projects/CHBOTEV',jl:'CHBOTEV',obs:'Aguardando finalização do Chat'},
+    ]}]},
+    fundos:{title:'Novo Fundos',subtitle:'Prazo: 29/05 · projeto FD',groups:[{label:'',tasks:[
+      {task:'[Lâmina] Gráfico Underwater — dados nulos',dl:'29/05',st:'Desenvolvido',pct:90,resp:'',jira:'',jl:''},
+      {task:'[Screener] Seleção Histórica de data',     dl:'29/05',st:'Cancelado',   pct:90,resp:'',jira:'',jl:'',obs:'Cancelado devido a limitações de back-end'},
+    ]}]},
+  },
+  iniciativas:[
+    {title:'Datafeed',color:'#16A34A',jira:'/projects/FD',jl:'FD',items:['Phaseout do antigo datafeed','Reestruturação de processos (ambiente QA, processo deploy, relatório de incidentes)','Integração Bolsa Base Exchange','Revisão do processo de orquestração']},
+    {title:'Notícias',color:'#0891B2',jira:'',jl:'',items:['Tradução para inglês e Espanhol via IA (Huawei)','WhatsApp — Notícias para XP']},
+    {title:'Newsletter & Wallboard',color:'#1B6EF3',jira:'',jl:'',items:['Newsletter (nLake) — Entregue','Demandas Wallboard','Banco do Brasil — Entregue']},
+    {title:'Arquitetura OTC',color:'#7C3AED',jira:'/browse/FD-5450',jl:'FD-5450',items:['Deploy — 100%','Segregação de BD — Em andamento 50%','Monitoramento Funcional, Técnico e Infra','Redundância ativo multicloud','SDK / Barramento OTC / API — Não iniciado']},
+    {title:'Sydle Comercial',color:'#CA8A04',jira:'/projects/SIS',jl:'SIS',items:['Gestão de Oportunidades — Concluído','Gestão de Tickets — Concluído','Gestão de Contratos — Concluído','Remuneração Variável — Concluído','Agenda — Concluído']},
+    {title:'Screener & A5X',color:'#DC2626',jira:'',jl:'',items:['A5X — Em andamento (prazo 30/09, 3%)','Screener — Em andamento (prazo 05/10, 3%)']},
+  ]
+};
+
+/* ══ PANEL NAV (sem tabs) ══ */
+function showPanel(id){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  const el=document.getElementById('panel-'+id);
+  if(el) el.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ══ RENDER ENGINE ══ */
+function jiraLink(path,label){
+  if(!path||!label) return '';
+  const base=DATA.jiraBase||JIRA;
+  return `<a class="jl" href="${base}${path}" target="_blank">${JIRA_SVG}${label}</a>`;
+}
+
+function taskRow(t,hasResp){
+  const bc=barColor(t.st), sc=statusClass(t.st);
+  const pct=Math.min(100,Math.max(0,t.pct||0));
+  const jl=jiraLink(t.jira,t.jl);
+  const cols=hasResp?6:5;
+  let rows=`<tr>
+    <td class="tt">${t.task||''}</td>
+    <td class="td">${t.dl||'—'}</td>
+    ${hasResp?`<td class="tr">${t.resp||'—'}</td>`:''}
+    <td><span class="bdg ${sc}">${t.st||''}</span></td>
+    <td class="tp"><div style="display:flex;align-items:center;gap:6px"><span class="mb" style="flex-shrink:0"><span class="mf" style="width:${pct}%;background:${bc}"></span></span><span>${pct}%</span></div></td>
+    <td>${jl}</td>
+  </tr>`;
+  if(t.obs) rows+=`<tr class="obs-row"><td colspan="${cols}">⚠️ ${t.obs}</td></tr>`;
+  return rows;
+}
+
+function renderPanel(id,p){
+  const forceNoResp = id === 'otc';
+  const hasResp=!forceNoResp && p.groups.some(g=>g.tasks.some(t=>t.resp));
+  const thResp=hasResp?'<th>Responsável</th>':'';
+  let html=`<div class="panel" id="panel-${id}">
+    <div class="sh">
+      <div class="sh-left"><h2>${p.title}</h2><span class="cnt">${p.subtitle||''}</span></div>
+      <button class="btn-back" onclick="showPanel('resumo')">← Resumo</button>
+    </div>`;
+  if(p.note) html+=`<div class="note">${p.note}</div>`;
+  for(const g of p.groups){
+    if(g.label) html+=`<div class="ss">${g.label}</div>`;
+    html+=`<div class="tw"><table>
+      <colgroup><col class="c-task"><col class="c-dl">${hasResp?'<col class="c-resp">':''}<col class="c-st"><col class="c-pct"><col class="c-jira"></colgroup>
+      <thead><tr><th>Tarefa</th><th>Prazo</th>${thResp}<th>Status</th><th>%</th><th>Jira</th></tr></thead>
+      <tbody>`;
+    for(const t of g.tasks) html+=taskRow(t,hasResp);
+    html+=`</tbody></table></div>`;
+  }
+  html+=`</div>`;
+  return html;
+}
+
+function renderAll(){
+  document.getElementById('hdr-date').textContent=DATA.date||'—';
+
+  // dynamic panels
+  const dp=document.getElementById('dynamic-panels');
+  dp.innerHTML='';
+  DATA.projects.forEach(p=>{
+    if(DATA.panels[p.id]) dp.innerHTML+=renderPanel(p.id,DATA.panels[p.id]);
+  });
+  // always add init panel
+  renderInitiativas();
+
+  // summary cards
+  const g=document.getElementById('sgrid');
+  g.innerHTML='';
+  document.getElementById('proj-count').textContent=DATA.projects.length+' projetos ativos';
+  DATA.projects.forEach(p=>{
+    const sc=statusClass(p.st);
+    const pct=Math.min(100,Math.max(0,p.pct||0));
+    const jl=p.jira?`<a class="jl" href="${(DATA.jiraBase||JIRA)+p.jira}" target="_blank" onclick="event.stopPropagation()">${JIRA_SVG}${p.jl}</a>`:'';
+    const c=document.createElement('div');
+    c.className='scard';
+    c.style.setProperty('--cc',p.color);
+    c.innerHTML=`
+      <div class="card-top">
+        ${farolHTML(p.farol||'prazo')}
+        <div class="card-info">
+          <div class="cname">${p.name}</div>
+          <div class="cstats">
+            <span class="cpct" style="color:${p.color}">${pct}%</span>
+            <span class="bdg ${sc}">${p.st}</span>
+          </div>
+        </div>
+      </div>
+      <div class="cdl">${prazosHTML(p)}</div>
+      <div class="pbar"><div class="pfill" style="width:0%;background:${p.color}" data-w="${pct}"></div></div>
+      <div class="card-footer">${jl}</div>`;
+    c.onclick=()=>{ if(DATA.panels[p.id]) showPanel(p.id); };
+    g.appendChild(c);
+  });
+  setTimeout(()=>document.querySelectorAll('.pfill[data-w]').forEach(e=>e.style.width=e.dataset.w+'%'),100);
+}
+
+function renderInitiativas(){
+  const ig=document.getElementById('igrid');
+  ig.innerHTML='';
+  DATA.iniciativas.forEach(ini=>{
+    const jl=ini.jira?`<a class="jl" style="margin-left:auto" href="${(DATA.jiraBase||JIRA)+ini.jira}" target="_blank">${JIRA_SVG}${ini.jl}</a>`:'';
+    ig.innerHTML+=`<div class="ic"><h3><span class="dot" style="background:${ini.color}"></span>${ini.title}${jl}</h3>${ini.items.map(i=>`<div class="ii">${i}</div>`).join('')}</div>`;
+  });
+}
+
+/* ══ EDITOR ══ */
+let editorData=null, activePanel=null;
+
+function edNav(section,el){
+  document.querySelectorAll('.ed-nav-item').forEach(i=>i.classList.remove('active'));
+  document.querySelectorAll('.ed-section').forEach(s=>s.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('ed-'+section).classList.add('active');
+  if(section==='projetos') renderEdProjects();
+  if(section==='tarefas') renderEdTasks();
+  if(section==='iniciativas') renderEdInitiativas();
+  if(section==='geral') renderEdGeral();
+}
+
+function startEditor(){
+  editorData=JSON.parse(JSON.stringify(DATA));
+  renderEdGeral();
+}
+
+/* ── date picker helper (#6) ── */
+function isoToBR(iso){ if(!iso) return ''; const [y,m,d]=iso.split('-'); return d&&m&&y?`${d}/${m}/${y}`:''; }
+function brToISO(br){ if(!br||br==='—') return ''; const [d,m,y]=br.split('/'); return d&&m&&y?`${y}-${m}-${d}`:''; }
+
+function setReportDate(val){
+  editorData.date = val && val.trim() ? val.trim() : '';
+}
+
+/* ── Calendar Popup ── */
+let _dpCb = null, _dpSel = {d:null,m:null,y:null}, _dpView = {m:null,y:null};
+const _MONTHS = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+
+function openDatePopup(currentVal, cb){
+  _dpCb = cb;
+  const now = new Date();
+  const parts = (currentVal&&currentVal!=='—') ? currentVal.split('/') : [];
+  _dpSel  = { d: parts[0]?+parts[0]:null, m: parts[1]?+parts[1]:null, y: parts[2]?+parts[2]:null };
+  _dpView = { m: _dpSel.m ? _dpSel.m-1 : now.getMonth(), y: _dpSel.y || now.getFullYear() };
+
+  const ov = document.createElement('div');
+  ov.className = 'dp-overlay';
+  ov.id = 'dp-overlay';
+  ov.innerHTML = `<div class="dp-modal" onclick="event.stopPropagation()">
+    <div class="dp-modal-top">
+      <h4>Selecionar data</h4>
+      <div class="dp-nav">
+        <button onclick="_dpMove(-1)">&#8249;</button>
+        <span id="dp-month-label"></span>
+        <button onclick="_dpMove(1)">&#8250;</button>
+      </div>
+    </div>
+    <div class="dp-grid" id="dp-grid"></div>
+    <div class="dp-modal-bot">
+      <span class="dp-cur" id="dp-cur-val">Nenhuma data</span>
+      <div style="display:flex;gap:8px">
+        <button class="btn btn-outline btn-sm" onclick="_dpClear()">Limpar</button>
+        <button class="btn btn-outline btn-sm" onclick="_dpClose()">Cancelar</button>
+        <button class="btn btn-primary btn-sm" onclick="_dpConfirm()">OK</button>
+      </div>
+    </div>
+  </div>`;
+  ov.addEventListener('click', _dpClose);
+  document.body.appendChild(ov);
+  _dpRender();
+}
+
+function _dpRender(){
+  const {m,y} = _dpView;
+  document.getElementById('dp-month-label').textContent = _MONTHS[m] + ' ' + y;
+  const grid = document.getElementById('dp-grid');
+  const today = new Date();
+  const firstDay = new Date(y, m, 1).getDay();
+  const days = new Date(y, m+1, 0).getDate();
+  let html = ['D','S','T','Q','Q','S','S'].map(d=>`<div class="dp-dow">${d}</div>`).join('');
+  for(let i=0;i<firstDay;i++) html+=`<div class="dp-day dp-empty"></div>`;
+  for(let d=1;d<=days;d++){
+    const isToday = d===today.getDate()&&m===today.getMonth()&&y===today.getFullYear();
+    const isSel   = _dpSel.d===d&&_dpSel.m===m+1&&_dpSel.y===y;
+    html+=`<div class="dp-day${isToday?' dp-today':''}${isSel?' dp-sel':''}" onclick="_dpPick(${d})">${d}</div>`;
+  }
+  grid.innerHTML = html;
+  const cur = document.getElementById('dp-cur-val');
+  if(_dpSel.d){
+    const br=`${String(_dpSel.d).padStart(2,'0')}/${String(_dpSel.m).padStart(2,'0')}/${_dpSel.y}`;
+    cur.textContent=br; cur.className='dp-cur filled';
+  } else { cur.textContent='Nenhuma data'; cur.className='dp-cur'; }
+}
+
+function _dpMove(dir){
+  _dpView.m += dir;
+  if(_dpView.m>11){_dpView.m=0;_dpView.y++;}
+  if(_dpView.m<0){_dpView.m=11;_dpView.y--;}
+  _dpRender();
+}
+
+function _dpPick(d){
+  _dpSel = {d, m:_dpView.m+1, y:_dpView.y};
+  _dpRender();
+}
+
+function _dpConfirm(){
+  if(_dpSel.d && _dpCb){
+    const br=`${String(_dpSel.d).padStart(2,'0')}/${String(_dpSel.m).padStart(2,'0')}/${_dpSel.y}`;
+    _dpCb(br);
+  }
+  _dpClose();
+}
+
+function _dpClear(){
+  if(_dpCb) _dpCb('');
+  _dpClose();
+}
+
+function _dpClose(){
+  const ov=document.getElementById('dp-overlay');
+  if(ov) ov.remove();
+  _dpCb=null;
+}
+
+function makeDatePicker(label, value, callbackFn, uid){ return ''; } // legacy
+
+function renderEdGeral(){
+  const btn=document.getElementById('ed-date-btn');
+  if(btn){ const sp=btn.querySelectorAll('span'); if(sp[1]) sp[1].textContent=editorData.date||'—'; }
+  document.getElementById('ed-jira-base').value=editorData.jiraBase||'';
+}
+
+/* ── Projects editor with drag (#1) ── */
+function renderEdProjects(){
+  // save expanded state before re-render (#19)
+  const expanded = new Set();
+  document.querySelectorAll('#proj-list .proj-item').forEach((el,i)=>{
+    if(!el.classList.contains('collapsed')) expanded.add(i);
+  });
+  const list=document.getElementById('proj-list');
+  list.innerHTML='';
+  editorData.projects.forEach((p,idx)=>{
+    const div=document.createElement('div');
+    div.className='proj-item';
+    div.draggable=true;
+    div.dataset.idx=idx;
+    div.className='proj-item collapsed';
+    div.innerHTML=`
+      <div class="proj-item-hdr" onclick="toggleProject(this.parentElement)" style="cursor:pointer;user-select:none">
+        <span class="drag-handle" title="Arrastar" onclick="event.stopPropagation()">⠿</span>
+        <span class="color-dot" style="background:${p.color}"></span>
+        <strong style="flex:1">${p.name}</strong>
+        <button class="expand-btn" onclick="event.stopPropagation();toggleProject(this.closest('.proj-item'))">▼</button>
+      </div>
+      <div class="proj-item-body">
+      <div class="field-row cols4">
+        <div><label>Nome</label><input type="text" value="${p.name}" onchange="updProj(${idx},'name',this.value)"></div>
+        <div><label>% Evolução</label><input type="number" min="0" max="100" value="${p.pct}" onchange="updProj(${idx},'pct',+this.value)"></div>
+        <div><label>Status</label>
+          <select onchange="updProj(${idx},'st',this.value)">
+            ${STATUS_LIST.map(s=>`<option value="${s}" ${p.st===s?'selected':''}>${s}</option>`).join('')}
+          </select>
+        </div>
+        <div><label>ID do painel</label><input type="text" value="${p.id}" onchange="updProj(${idx},'id',this.value)"></div>
+      </div>
+      <div class="field-row cols3">
+        <div>
+          <label>Prazo 1</label>
+          <div style="display:flex;align-items:center;gap:6px">
+            <button class="date-display-btn${p.dl1_done?' struck':''}" onclick="openDatePopup('${p.dl1||''}',v=>{updProj(${idx},'dl1',v);renderEdProjects()})">
+              <span class="cal-icon">📅</span><span>${p.dl1||'—'}</span>
+            </button>
+            <label style="display:flex;align-items:center;gap:4px;text-transform:none;letter-spacing:0;font-size:12px;color:var(--muted);cursor:pointer;white-space:nowrap">
+              <input type="checkbox" ${p.dl1_done?'checked':''} onchange="updProj(${idx},'dl1_done',this.checked)" style="width:16px;height:16px;cursor:pointer"> superado
+            </label>
+          </div>
+        </div>
+        <div>
+          <label>Prazo 2</label>
+          <div style="display:flex;align-items:center;gap:6px">
+            <button class="date-display-btn${p.dl2_done?' struck':''}" onclick="openDatePopup('${p.dl2||''}',v=>{updProj(${idx},'dl2',v);renderEdProjects()})">
+              <span class="cal-icon">📅</span><span>${p.dl2||'—'}</span>
+            </button>
+            <label style="display:flex;align-items:center;gap:4px;text-transform:none;letter-spacing:0;font-size:12px;color:var(--muted);cursor:pointer;white-space:nowrap">
+              <input type="checkbox" ${p.dl2_done?'checked':''} onchange="updProj(${idx},'dl2_done',this.checked)" style="width:16px;height:16px;cursor:pointer"> superado
+            </label>
+          </div>
+        </div>
+        <div>
+          <label>Prazo 3</label>
+          <div style="display:flex;align-items:center;gap:6px">
+            <button class="date-display-btn${p.dl3_done?' struck':''}" onclick="openDatePopup('${p.dl3||''}',v=>{updProj(${idx},'dl3',v);renderEdProjects()})">
+              <span class="cal-icon">📅</span><span>${p.dl3||'—'}</span>
+            </button>
+            <label style="display:flex;align-items:center;gap:4px;text-transform:none;letter-spacing:0;font-size:12px;color:var(--muted);cursor:pointer;white-space:nowrap">
+              <input type="checkbox" ${p.dl3_done?'checked':''} onchange="updProj(${idx},'dl3_done',this.checked)" style="width:16px;height:16px;cursor:pointer"> superado
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="field-row">
+        <div><label>Caminho Jira</label><input type="text" value="${p.jira||''}" placeholder="/projects/FD" onchange="updProj(${idx},'jira',this.value)"></div>
+        <div><label>Label Jira</label><input type="text" value="${p.jl||''}" placeholder="FD" onchange="updProj(${idx},'jl',this.value)"></div>
+      </div>
+      <div>
+        <label>Cor</label>
+        <div class="color-row">${PALETTE.map(c=>`<span class="color-swatch ${c===p.color?'selected':''}" style="background:${c}" onclick="updProj(${idx},'color','${c}');renderEdProjects()"></span>`).join('')}</div>
+      </div>
+      <div>
+        <label>Farol</label>
+        <div class="farol-sel">
+          ${[['perigo','Perigo','on-red'],['atencao','Atenção','on-yellow'],['prazo','No prazo','on-green']].map(([val,lbl,cls])=>`
+          <div class="farol-opt ${(p.farol||'prazo')===val?'selected':''}" onclick="updProj(${idx},'farol','${val}');renderEdProjects()">
+            <div class="farol-mini">
+              <span style="${cls==='on-red'?'background:#EF4444':''}"></span>
+              <span style="${cls==='on-yellow'?'background:#F59E0B':''}"></span>
+              <span style="${cls==='on-green'?'background:#22C55E':''}"></span>
+            </div>
+            ${lbl}
+          </div>`).join('')}
+        </div>
+      <div style="margin-top:14px;padding-top:12px;border-top:1px solid var(--border);display:flex;justify-content:flex-end">
+        <button class="btn btn-danger btn-sm proj-delete-btn" onclick="event.stopPropagation();confirmRemoveProject(${idx})">🗑 Excluir projeto</button>
+      </div>
+      </div>
+      </div>`;
+    // drag events (#1)
+    div.addEventListener('dragstart',e=>{e.dataTransfer.setData('text/plain',idx);div.classList.add('dragging')});
+    div.addEventListener('dragend',()=>div.classList.remove('dragging'));
+    div.addEventListener('dragover',e=>{e.preventDefault();div.classList.add('drag-over')});
+    div.addEventListener('dragleave',()=>div.classList.remove('drag-over'));
+    div.addEventListener('drop',e=>{
+      e.preventDefault();div.classList.remove('drag-over');
+      const from=+e.dataTransfer.getData('text/plain');
+      const to=+div.dataset.idx;
+      if(from===to) return;
+      const arr=editorData.projects;
+      const item=arr.splice(from,1)[0];
+      arr.splice(to,0,item);
+      renderEdProjects();
+    });
+    // restore expanded state (#19)
+    if(expanded.has(idx)) div.classList.remove('collapsed');
+    list.appendChild(div);
+  });
+}
+
+function toggleProject(el){
+  el.classList.toggle('collapsed');
+  const btn=el.querySelector('.expand-btn');
+  if(btn) btn.textContent=el.classList.contains('collapsed')?'▼':'▲';
+}
+function toggleAllProjects(collapse){
+  document.querySelectorAll('#proj-list .proj-item').forEach(el=>{
+    el.classList.toggle('collapsed',collapse);
+    const btn=el.querySelector('.expand-btn');
+    if(btn) btn.textContent=collapse?'▼':'▲';
+  });
+}
+
+function updProj(idx,key,val){ editorData.projects[idx][key]=val; }
+function updProjDate(idx,field,br){ editorData.projects[idx][field]=br; }
+function confirmRemoveProject(idx){
+  const name = editorData.projects[idx].name;
+  const pid  = editorData.projects[idx].id;
+  const modal = document.getElementById('confirm-modal');
+  modal.style.display='flex';
+  modal.style.cssText='display:flex;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:500;align-items:center;justify-content:center;animation:fu .2s ease';
+  modal.innerHTML=`<div class="modal-box">
+    <h4>⚠️ Excluir projeto</h4>
+    <p>Você está prestes a excluir o projeto <strong>${name}</strong>.<br>
+    Todas as tarefas vinculadas a ele também serão removidas permanentemente.</p>
+    <div class="modal-actions">
+      <button class="btn btn-outline" onclick="closeModal()">Cancelar</button>
+      <button class="btn btn-danger" onclick="doRemoveProject(${idx},'${pid}')">Confirmar exclusão</button>
+    </div>
+  </div>`;
+}
+function closeModal(){
+  const m=document.getElementById('confirm-modal');
+  m.style.display='none';
+  m.innerHTML='';
+}
+function doRemoveProject(idx,pid){
+  editorData.projects.splice(idx,1);
+  if(editorData.panels[pid]) delete editorData.panels[pid];
+  closeModal();
+  renderEdProjects();
+}
+function addProject(){ editorData.projects.push({id:'novo',name:'Novo Projeto',pct:0,dl1:'',dl2:'',dl3:'',st:'Em andamento',color:'#1B6EF3',farol:'perigo',jira:'',jl:''}); renderEdProjects(); }
+
+/* ── Tasks editor ── */
+function renderEdTasks(){
+  const tabBar=document.getElementById('panel-tabs-ed');
+  tabBar.innerHTML='';
+  const ids=Object.keys(editorData.panels);
+  if(!ids.length){document.getElementById('tasks-editor-body').innerHTML='<div class="ed-empty">Nenhum painel.</div>';return;}
+  if(!activePanel||!editorData.panels[activePanel]) activePanel=ids[0];
+  ids.forEach(id=>{
+    const b=document.createElement('button');
+    b.className='tbe'+(id===activePanel?' active':'');
+    b.textContent=editorData.panels[id].title||id;
+    b.onclick=()=>{activePanel=id;renderEdTasks();};
+    tabBar.appendChild(b);
+  });
+  renderTasksForPanel(activePanel);
+}
+
+function renderTasksForPanel(pid){
+  const p=editorData.panels[pid];
+  const body=document.getElementById('tasks-editor-body');
+  let html=`<div style="display:flex;gap:8px;margin-bottom:12px">
+    <div style="flex:1"><label>Título</label><input type="text" value="${p.title||''}" onchange="editorData.panels['${pid}'].title=this.value"></div>
+    <div style="flex:1"><label>Subtítulo</label><input type="text" value="${p.subtitle||''}" onchange="editorData.panels['${pid}'].subtitle=this.value"></div>
+  </div>
+  <div class="field-full"><label>Nota de aviso</label><input type="text" value="${(p.note||'').replace(/"/g,'&quot;')}" placeholder="⚠️ mensagem..." onchange="editorData.panels['${pid}'].note=this.value"></div>`;
+
+  p.groups.forEach((grp,gi)=>{
+    html+=`<div style="margin-bottom:20px;background:var(--surface-2);border:1px solid var(--border);border-radius:var(--rs);padding:14px">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+        <input type="text" value="${grp.label||''}" placeholder="Sub-seção (ex: Sofisa & Travelex)" style="flex:1" onchange="editorData.panels['${pid}'].groups[${gi}].label=this.value">
+        <button class="btn btn-danger btn-sm" onclick="removeGroup('${pid}',${gi})">✕ Grupo</button>
+      </div>
+      <div class="task-list" id="tl-${pid}-${gi}">`;
+    grp.tasks.forEach((t,ti)=>{ html+=taskEdRow(pid,gi,ti,t); });
+    html+=`</div><button class="btn btn-outline btn-sm" style="margin-top:10px;width:100%" onclick="addTask('${pid}',${gi})">+ Adicionar tarefa</button></div>`;
+  });
+  html+=`<button class="btn btn-outline" style="width:100%" onclick="addGroup('${pid}')">+ Adicionar sub-seção</button>`;
+  body.innerHTML=html;
+}
+
+function taskEdRow(pid,gi,ti,t){
+  return `<div class="task-item">
+    <div class="task-item-header">
+      <span class="drag-handle">⠿</span>
+      <span>Tarefa ${ti+1}</span>
+      <button class="btn btn-danger btn-sm" onclick="removeTask('${pid}',${gi},${ti})">✕</button>
+    </div>
+    <div class="field-row">
+      <div><label>Descrição</label><input type="text" value="${(t.task||'').replace(/"/g,'&quot;')}" onchange="updTask('${pid}',${gi},${ti},'task',this.value)"></div>
+      <div><label>Responsável</label><input type="text" value="${t.resp||''}" onchange="updTask('${pid}',${gi},${ti},'resp',this.value)"></div>
+    </div>
+    <div class="field-row cols4">
+      <div><label>Prazo</label>
+        <button class="date-display-btn" onclick="openDatePopup('${t.dl||''}',v=>{updTask('${pid}',${gi},${ti},'dl',v);renderTasksForPanel('${pid}')})">
+          <span class="cal-icon">📅</span><span>${t.dl||'—'}</span>
+        </button>
+      </div>
+      <div><label>Status</label>
+        <select onchange="updTask('${pid}',${gi},${ti},'st',this.value)">
+          ${STATUS_LIST.map(s=>`<option value="${s}" ${t.st===s?'selected':''}>${s}</option>`).join('')}
+        </select>
+      </div>
+      <div><label>% Evolução</label><input type="number" min="0" max="100" value="${t.pct||0}" onchange="updTask('${pid}',${gi},${ti},'pct',+this.value)"></div>
+      <div><label>Jira (caminho)</label><input type="text" value="${t.jira||''}" placeholder="/browse/FD-123" onchange="updTask('${pid}',${gi},${ti},'jira',this.value);updTask('${pid}',${gi},${ti},'jl',this.value.split('/').pop())"></div>
+    </div>
+    <div class="field-full"><label>Observação</label>
+      <input type="text" value="${(t.obs||'').replace(/"/g,'&quot;')}" placeholder="ex: Aguardando API do Bradesco" onchange="updTask('${pid}',${gi},${ti},'obs',this.value)">
+    </div>
+  </div>`;
+}
+
+function updTask(pid,gi,ti,key,val){ editorData.panels[pid].groups[gi].tasks[ti][key]=val; }
+function updTaskDate(pid,gi,ti,br){ editorData.panels[pid].groups[gi].tasks[ti].dl=br; }
+function removeTask(pid,gi,ti){ editorData.panels[pid].groups[gi].tasks.splice(ti,1); renderTasksForPanel(pid); }
+function addTask(pid,gi){ editorData.panels[pid].groups[gi].tasks.push({task:'',dl:'',st:'Em andamento',pct:0,resp:'',jira:'',jl:'',obs:''}); renderTasksForPanel(pid); }
+function addGroup(pid){ editorData.panels[pid].groups.push({label:'',tasks:[]}); renderTasksForPanel(pid); }
+function removeGroup(pid,gi){ if(!confirm('Remover grupo?')) return; editorData.panels[pid].groups.splice(gi,1); renderTasksForPanel(pid); }
+
+/* ── Initiatives editor ── */
+function renderEdInitiativas(){
+  const list=document.getElementById('init-list');
+  list.innerHTML='';
+  editorData.iniciativas.forEach((ini,idx)=>{
+    const div=document.createElement('div');
+    div.className='proj-item';
+    div.innerHTML=`
+      <div class="proj-item-hdr">
+        <span class="color-dot" style="background:${ini.color}"></span>
+        <strong>${ini.title}</strong>
+        <button class="btn btn-danger btn-sm" style="margin-left:auto" onclick="removeIni(${idx})">✕</button>
+      </div>
+      <div class="field-row">
+        <div><label>Título</label><input type="text" value="${ini.title}" onchange="updIni(${idx},'title',this.value)"></div>
+        <div><label>Caminho Jira</label><input type="text" value="${ini.jira||''}" onchange="updIni(${idx},'jira',this.value)"></div>
+        <div><label>Label Jira</label><input type="text" value="${ini.jl||''}" onchange="updIni(${idx},'jl',this.value)"></div>
+      </div>
+      <div class="color-row">${PALETTE.map(c=>`<span class="color-swatch ${c===ini.color?'selected':''}" style="background:${c}" onclick="updIni(${idx},'color','${c}');renderEdInitiativas()"></span>`).join('')}</div>
+      <div><label>Itens (um por linha)</label>
+        <textarea rows="${Math.max(3,ini.items.length+1)}" onchange="updIni(${idx},'items',this.value.split('\\n').filter(l=>l.trim()))">${ini.items.join('\n')}</textarea>
+      </div>`;
+    list.appendChild(div);
+  });
+}
+function updIni(idx,key,val){ editorData.iniciativas[idx][key]=val; }
+function removeIni(idx){ if(!confirm('Remover?')) return; editorData.iniciativas.splice(idx,1); renderEdInitiativas(); }
+function addInitiativa(){ editorData.iniciativas.push({title:'Nova Iniciativa',color:'#1B6EF3',jira:'',jl:'',items:[]}); renderEdInitiativas(); }
+
+/* ── Apply & Export ── */
+function applyData(){
+  /* date already set via setReportDate callback */
+  if(editorData.date==='—') editorData.date='';
+  editorData.jiraBase=document.getElementById('ed-jira-base').value.trim()||editorData.jiraBase;
+  DATA=JSON.parse(JSON.stringify(editorData));
+  renderAll();
+  showPanel('resumo');
+  alert('✅ Dashboard atualizado!');
+}
+
+function exportJSON(){
+  /* date already set via setReportDate callback */
+  editorData.jiraBase=document.getElementById('ed-jira-base').value.trim()||editorData.jiraBase;
+  const json=JSON.stringify(editorData,null,2);
+  const blob=new Blob([json],{type:'application/json'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download=`status-report-${(editorData.date||'').replace(/\//g,'-')}.json`;
+  a.click();
+}
+
+function importJSON(e){ const f=e.target.files[0]; if(!f) return; const r=new FileReader(); r.onload=ev=>loadFromJSON(ev.target.result); r.readAsText(f); }
+function importFromPaste(){ const t=document.getElementById('import-paste').value.trim(); if(!t){alert('Cole um JSON válido primeiro.');return;} loadFromJSON(t); }
+function loadFromJSON(txt){ try{ editorData=JSON.parse(txt); renderEdGeral(); alert('✅ JSON carregado! Clique "Aplicar ao Dashboard" para ver as alterações.'); } catch(e){ alert('❌ JSON inválido: '+e.message); } }
+
+/* drag-drop import */
+const dropArea=document.getElementById('import-drop');
+dropArea.addEventListener('dragover',e=>{e.preventDefault();dropArea.style.borderColor='var(--accent)'});
+dropArea.addEventListener('dragleave',()=>dropArea.style.borderColor='');
+dropArea.addEventListener('drop',e=>{ e.preventDefault();dropArea.style.borderColor=''; const f=e.dataTransfer.files[0]; if(f){const r=new FileReader();r.onload=ev=>loadFromJSON(ev.target.result);r.readAsText(f);} });
+
+/* ══ INIT ══ */
+async function loadFromURL(){
+  try{
+    const res = await fetch('https://processosae.github.io/status-report-denis-ae/data.json?_=' + Date.now());
+    if(!res.ok) throw new Error('HTTP ' + res.status);
+    const json = await res.json();
+    DATA = json;
+    console.log('✅ data.json carregado do GitHub');
+  } catch(e){
+    console.warn('⚠️ Não foi possível carregar data.json — usando dados locais.', e.message);
+  }
+  renderAll();
+  startEditor();
+}
+loadFromURL();
+</script>
+</body>
+</html>
