@@ -1,0 +1,898 @@
+{
+  "date": "27/05/2026",
+  "jiraBase": "https://jiracloudae.atlassian.net",
+  "projects": [
+    {
+      "id": "novo",
+      "name": "Novo Terminal v7.6.2",
+      "pct": 0,
+      "dl1": "",
+      "dl2": "",
+      "dl3": "",
+      "st": "Em andamento",
+      "color": "#1B6EF3",
+      "farol": "prazo",
+      "jira": "",
+      "jl": ""
+    },
+    {
+      "id": "otc",
+      "name": "OTC",
+      "pct": 95,
+      "dl1": "23/04",
+      "dl2": "",
+      "dl3": "",
+      "dl1_done": true,
+      "dl2_done": false,
+      "dl3_done": false,
+      "st": "Em andamento",
+      "color": "#1B6EF3",
+      "farol": "prazo",
+      "jira": "/projects/FD",
+      "jl": "FD"
+    },
+    {
+      "id": "faq",
+      "name": "FAQ Bradesco",
+      "pct": 90,
+      "dl1": "29/05",
+      "dl2": "",
+      "dl3": "",
+      "dl1_done": false,
+      "dl2_done": false,
+      "dl3_done": false,
+      "st": "Em andamento",
+      "color": "#0891B2",
+      "farol": "prazo",
+      "jira": "/projects/CHBOTEV",
+      "jl": "CHBOTEV"
+    },
+    {
+      "id": "chat",
+      "name": "Chat Bradesco",
+      "pct": 90,
+      "dl1": "29/05",
+      "dl2": "",
+      "dl3": "",
+      "dl1_done": false,
+      "dl2_done": false,
+      "dl3_done": false,
+      "st": "Em andamento",
+      "color": "#BE185D",
+      "farol": "prazo",
+      "jira": "/projects/CHBOTEV",
+      "jl": "CHBOTEV"
+    },
+    {
+      "id": "fundos",
+      "name": "Novo Fundos",
+      "pct": 95,
+      "dl1": "",
+      "dl2": "",
+      "dl3": "",
+      "st": "Em andamento",
+      "color": "#CA8A04",
+      "farol": "atencao",
+      "jira": "/projects/FD",
+      "jl": "FD"
+    },
+    {
+      "id": "itsm",
+      "name": "Implantação ITSM",
+      "pct": 80,
+      "dl1": "26/06/2026",
+      "dl2": "",
+      "dl3": "",
+      "dl1_done": false,
+      "dl2_done": false,
+      "dl3_done": false,
+      "st": "Em andamento",
+      "color": "#16A34A",
+      "farol": "prazo",
+      "jira": "/projects/II",
+      "jl": "II"
+    },
+    {
+      "id": "terminal",
+      "name": "Terminal LATAM",
+      "pct": 85,
+      "dl1": "31/05",
+      "dl2": "",
+      "dl3": "",
+      "dl1_done": false,
+      "dl2_done": false,
+      "dl3_done": false,
+      "st": "Em andamento",
+      "color": "#0891B2",
+      "farol": "atencao",
+      "jira": "/projects/PDTL",
+      "jl": "PDTL"
+    },
+    {
+      "id": "openmeter",
+      "name": "OpenMeter",
+      "pct": 20,
+      "dl1": "07/07",
+      "dl2": "",
+      "dl3": "",
+      "dl1_done": false,
+      "dl2_done": false,
+      "dl3_done": false,
+      "st": "Em andamento",
+      "color": "#7C3AED",
+      "farol": "perigo",
+      "jira": "/browse/PDT-641",
+      "jl": "PDT-641"
+    },
+    {
+      "id": "fenics",
+      "name": "Injetor Fenics",
+      "pct": 95,
+      "dl1": "—",
+      "dl2": "",
+      "dl3": "",
+      "dl1_done": false,
+      "dl2_done": false,
+      "dl3_done": false,
+      "st": "Em validação",
+      "color": "#EA580C",
+      "farol": "atencao",
+      "jira": "/projects/FMD2",
+      "jl": "FMD2"
+    },
+    {
+      "id": "a5x",
+      "name": "A5X",
+      "pct": 3,
+      "dl1": "30/09",
+      "dl2": "",
+      "dl3": "",
+      "dl1_done": false,
+      "dl2_done": false,
+      "dl3_done": false,
+      "st": "Em andamento",
+      "color": "#059669",
+      "farol": "perigo",
+      "jira": "",
+      "jl": ""
+    },
+    {
+      "id": "datalake",
+      "name": "Data Lake",
+      "pct": 20,
+      "dl1": "30/09",
+      "dl2": "",
+      "dl3": "",
+      "dl1_done": false,
+      "dl2_done": false,
+      "dl3_done": false,
+      "st": "Em andamento",
+      "color": "#2563EB",
+      "farol": "perigo",
+      "jira": "",
+      "jl": ""
+    },
+    {
+      "id": "screener",
+      "name": "Screener",
+      "pct": 3,
+      "dl1": "05/10",
+      "dl2": "",
+      "dl3": "",
+      "dl1_done": false,
+      "dl2_done": false,
+      "dl3_done": false,
+      "st": "Em andamento",
+      "color": "#6D28D9",
+      "farol": "perigo",
+      "jira": "",
+      "jl": ""
+    }
+  ],
+  "panels": {
+    "otc": {
+      "title": "OTC — Clientes",
+      "subtitle": "",
+      "groups": [
+        {
+          "label": "OTC - Fibra",
+          "tasks": [
+            {
+              "task": "[Fibra] Disponibilizar API SPOT",
+              "dl": "03/06/2026",
+              "st": "Em andamento",
+              "pct": 75,
+              "resp": "",
+              "jira": "https://jiracloudae.atlassian.net/browse/FD-5512",
+              "jl": "FD-5512",
+              "obs": ""
+            },
+            {
+              "task": "[Fibra] Ajuste na regra ao habilitar o botão \"Próximo\" ao resetar senha",
+              "dl": "03/06/2026",
+              "st": "Em andamento",
+              "pct": 75,
+              "resp": "",
+              "jira": "/browse/FD-5686",
+              "jl": "FD-5686"
+            },
+            {
+              "task": "[Fibra] Ajuste na pop-up \"Sobre\"",
+              "dl": "03/06/2026",
+              "st": "Em andamento",
+              "pct": 75,
+              "resp": "",
+              "jira": "/browse/FD-5688",
+              "jl": "FD-5688"
+            },
+            {
+              "task": "[Fibra] Integração exChange",
+              "dl": "",
+              "st": "Em andamento",
+              "pct": 25,
+              "resp": "",
+              "jira": "/projects/FD-5080",
+              "jl": "FD-5080"
+            },
+            {
+              "task": "[Fibra] Ajuste Identidade Visual",
+              "dl": "",
+              "st": "Em andamento",
+              "pct": 25,
+              "resp": "",
+              "jira": "/browse/FD-5697",
+              "jl": "FD-5697"
+            }
+          ]
+        },
+        {
+          "label": "OTC - BV",
+          "tasks": [
+            {
+              "task": "[B.V] Permitir a gestão de Moedas por instrumento | NDF Mesa",
+              "dl": "17/06/2026",
+              "st": "Em andamento",
+              "pct": 50,
+              "resp": "",
+              "jira": "https://jiracloudae.atlassian.net/browse/FD-4160",
+              "jl": "FD-4160"
+            },
+            {
+              "task": "[B.V] Permitir a gestão de Moedas por instrumento | SPOT Mesa",
+              "dl": "17/06/2026",
+              "st": "Em andamento",
+              "pct": 50,
+              "resp": "",
+              "jira": "https://jiracloudae.atlassian.net/browse/FD-4923",
+              "jl": "FD-4923",
+              "obs": ""
+            },
+            {
+              "task": "[B.V] Padronização do Modelo de Pop-up e Mensagens da Cotação | Cotação via Mesa",
+              "dl": "",
+              "st": "Em andamento",
+              "pct": 50,
+              "resp": "",
+              "jira": "https://jiracloudae.atlassian.net/browse/FD-4742",
+              "jl": "FD-4742",
+              "obs": ""
+            }
+          ]
+        },
+        {
+          "label": "OTC Sofisa",
+          "tasks": [
+            {
+              "task": "[Sofisa] Alternar cálculo de Spread entre Percentual (%) e BPS no Painel de Tesouraria",
+              "dl": "03/06/2026",
+              "st": "Em andamento",
+              "pct": 95,
+              "resp": "",
+              "jira": "https://jiracloudae.atlassian.net/browse/FD-2864",
+              "jl": "FD-2864",
+              "obs": ""
+            },
+            {
+              "task": "[Sofisa] BPs | Incluir a visualização dos Bps no histórico e resumo da ordem",
+              "dl": "03/06/2026",
+              "st": "Em andamento",
+              "pct": 75,
+              "resp": "",
+              "jira": "https://jiracloudae.atlassian.net/browse/FD-5337",
+              "jl": "FD-5337",
+              "obs": ""
+            }
+          ]
+        },
+        {
+          "label": "OTC - Broadcast",
+          "tasks": [
+            {
+              "task": "Permitir a abertura de boletas simultâneas | Novo menu de negociação",
+              "dl": "20/05/2026",
+              "st": "Concluído",
+              "pct": 100,
+              "resp": "",
+              "jira": "https://jiracloudae.atlassian.net/browse/FD-4712",
+              "jl": "FD-4712",
+              "obs": ""
+            },
+            {
+              "task": "Leaks em uso do motor no Painel de Tesouraria",
+              "dl": "20/05/2026",
+              "st": "Concluído",
+              "pct": 100,
+              "resp": "",
+              "jira": "https://jiracloudae.atlassian.net/browse/FD-5525",
+              "jl": "FD-5525",
+              "obs": ""
+            },
+            {
+              "task": "Segregação da Base de Dados das Instâncias OTC (Back-end)",
+              "dl": "",
+              "st": "Pausado",
+              "pct": 50,
+              "resp": "",
+              "jira": "https://jiracloudae.atlassian.net/browse/FD-4543",
+              "jl": "FD-4543",
+              "obs": "Aguardando liberação do ambiente de teste"
+            },
+            {
+              "task": "Correção de redirecionamento de página | Google Analytics",
+              "dl": "03/06/2026",
+              "st": "Em andamento",
+              "pct": 75,
+              "resp": "",
+              "jira": "https://jiracloudae.atlassian.net/browse/FD-5724",
+              "jl": "FD-5724",
+              "obs": ""
+            },
+            {
+              "task": "Análise de intermitência no acionamento do som ao preencher a boleta.",
+              "dl": "03/06/2026",
+              "st": "Em andamento",
+              "pct": 75,
+              "resp": "",
+              "jira": "https://jiracloudae.atlassian.net/browse/FD-5650",
+              "jl": "FD-5650",
+              "obs": ""
+            }
+          ]
+        }
+      ]
+    },
+    "terminal": {
+      "title": "Terminal LATAM",
+      "subtitle": "Prazo: 31/05 · projetos FD / PDTL",
+      "groups": [
+        {
+          "label": "",
+          "tasks": [
+            {
+              "task": "[LATAM] Curva de juros (PRECIA)",
+              "dl": "24/04",
+              "st": "Em andamento",
+              "pct": 90,
+              "resp": "",
+              "jira": "/browse/FD-4925",
+              "jl": "FD-4925"
+            },
+            {
+              "task": "[LATAM] Curva forward (PRECIA)",
+              "dl": "24/04",
+              "st": "Em andamento",
+              "pct": 90,
+              "resp": "",
+              "jira": "/browse/FD-4700",
+              "jl": "FD-4700"
+            },
+            {
+              "task": "[LATAM] Mapa de calor 2",
+              "dl": "—",
+              "st": "Em andamento",
+              "pct": 50,
+              "resp": "",
+              "jira": "",
+              "jl": ""
+            },
+            {
+              "task": "[LATAM] Conversor de Moedas",
+              "dl": "—",
+              "st": "Em validação",
+              "pct": 95,
+              "resp": "",
+              "jira": "",
+              "jl": ""
+            },
+            {
+              "task": "[LATAM] Tradução automática Wire",
+              "dl": "—",
+              "st": "Em definição",
+              "pct": 0,
+              "resp": "",
+              "jira": "",
+              "jl": ""
+            },
+            {
+              "task": "[LATAM] Eventos Corporativos — idiomas",
+              "dl": "—",
+              "st": "Refinamento",
+              "pct": 0,
+              "resp": "",
+              "jira": "",
+              "jl": ""
+            }
+          ]
+        }
+      ]
+    },
+    "openmeter": {
+      "title": "OpenMeter",
+      "subtitle": "Prazo: 07/07 · epic PDT-639",
+      "groups": [
+        {
+          "label": "",
+          "tasks": [
+            {
+              "task": "Kick-off e requisitos de infra",
+              "dl": "06/05",
+              "st": "Concluído",
+              "pct": 100,
+              "resp": "",
+              "jira": "",
+              "jl": ""
+            },
+            {
+              "task": "Instalação e configuração do ambiente (GKE)",
+              "dl": "22/05",
+              "st": "Em andamento",
+              "pct": 3,
+              "resp": "",
+              "jira": "/browse/PDT-641",
+              "jl": "PDT-641"
+            },
+            {
+              "task": "Parametrização e testes (POC e outras regras)",
+              "dl": "12/06",
+              "st": "Não iniciado",
+              "pct": 0,
+              "resp": "",
+              "jira": "/browse/PDT-642",
+              "jl": "PDT-642"
+            },
+            {
+              "task": "Testes HML, Pré-prod e GO-LIVE",
+              "dl": "07/07",
+              "st": "Não iniciado",
+              "pct": 0,
+              "resp": "",
+              "jira": "/browse/PDT-647",
+              "jl": "PDT-647"
+            }
+          ]
+        }
+      ]
+    },
+    "datalake": {
+      "title": "Data Lake",
+      "subtitle": "Prazo: 30/09",
+      "groups": [
+        {
+          "label": "",
+          "tasks": [
+            {
+              "task": "Definição de arquitetura e precificação (Snowflake)",
+              "dl": "30/05",
+              "st": "Em andamento",
+              "pct": 60,
+              "resp": "",
+              "jira": "",
+              "jl": ""
+            },
+            {
+              "task": "POC — Ingestão e estruturação dados de Fundos",
+              "dl": "30/06",
+              "st": "Não iniciado",
+              "pct": 0,
+              "resp": "",
+              "jira": "",
+              "jl": ""
+            },
+            {
+              "task": "Implementação — Pipeline, LLM e validação",
+              "dl": "31/08",
+              "st": "Não iniciado",
+              "pct": 0,
+              "resp": "",
+              "jira": "",
+              "jl": ""
+            },
+            {
+              "task": "Homologação e GO-LIVE Fase 1 (Fundos)",
+              "dl": "30/09",
+              "st": "Não iniciado",
+              "pct": 0,
+              "resp": "",
+              "jira": "",
+              "jl": ""
+            }
+          ]
+        }
+      ]
+    },
+    "fenics": {
+      "title": "Injetor Fenics",
+      "subtitle": "Em validação · FMD1 / FMD2 / PDTL",
+      "groups": [
+        {
+          "label": "",
+          "tasks": [
+            {
+              "task": "Conectividade com Fenics",
+              "dl": "24/03",
+              "st": "Aguard. deploy",
+              "pct": 100,
+              "resp": "",
+              "jira": "/projects/FMD1",
+              "jl": "FMD1"
+            },
+            {
+              "task": "Regras de negócios Fenics",
+              "dl": "30/04",
+              "st": "Aguard. deploy",
+              "pct": 100,
+              "resp": "",
+              "jira": "",
+              "jl": ""
+            },
+            {
+              "task": "Regras de negócios NIG",
+              "dl": "30/04",
+              "st": "Aguard. deploy",
+              "pct": 100,
+              "resp": "",
+              "jira": "",
+              "jl": ""
+            },
+            {
+              "task": "Monitorações",
+              "dl": "30/04",
+              "st": "Aguard. deploy",
+              "pct": 100,
+              "resp": "",
+              "jira": "",
+              "jl": ""
+            },
+            {
+              "task": "Serviço Windows",
+              "dl": "10/04",
+              "st": "Aguard. deploy",
+              "pct": 100,
+              "resp": "",
+              "jira": "",
+              "jl": ""
+            },
+            {
+              "task": "Incluir serviço no instalador",
+              "dl": "n/d",
+              "st": "Aguard. deploy",
+              "pct": 100,
+              "resp": "",
+              "jira": "",
+              "jl": ""
+            },
+            {
+              "task": "Infra estrutura produção",
+              "dl": "n/d",
+              "st": "Não iniciado",
+              "pct": 0,
+              "resp": "",
+              "jira": "",
+              "jl": ""
+            },
+            {
+              "task": "POC - Kafka",
+              "dl": "24/03",
+              "st": "Aguard. deploy",
+              "pct": 100,
+              "resp": "",
+              "jira": "",
+              "jl": ""
+            }
+          ]
+        }
+      ]
+    },
+    "itsm": {
+      "title": "Implantação ITSM",
+      "subtitle": "Prazo: 29/05 · projeto II",
+      "groups": [
+        {
+          "label": "",
+          "tasks": [
+            {
+              "task": "Sistemas Internos",
+              "dl": "16/10",
+              "st": "Concluído",
+              "pct": 100,
+              "resp": "",
+              "jira": "/projects/II",
+              "jl": "II"
+            },
+            {
+              "task": "Serviços de TI",
+              "dl": "28/10",
+              "st": "Concluído",
+              "pct": 100,
+              "resp": "",
+              "jira": "/projects/II",
+              "jl": "II"
+            },
+            {
+              "task": "Incidentes",
+              "dl": "30/12",
+              "st": "Concluído",
+              "pct": 100,
+              "resp": "",
+              "jira": "/projects/II",
+              "jl": "II"
+            },
+            {
+              "task": "Problemas",
+              "dl": "13/02",
+              "st": "Concluído",
+              "pct": 100,
+              "resp": "",
+              "jira": "/projects/II",
+              "jl": "II"
+            },
+            {
+              "task": "Mudanças",
+              "dl": "24/04",
+              "st": "Concluído",
+              "pct": 100,
+              "resp": "",
+              "jira": "/projects/II",
+              "jl": "II"
+            },
+            {
+              "task": "Sugestões",
+              "dl": "29/05",
+              "st": "Em andamento",
+              "pct": 5,
+              "resp": "",
+              "jira": "/projects/II",
+              "jl": "II"
+            }
+          ]
+        }
+      ]
+    },
+    "chat": {
+      "title": "Chat Bradesco",
+      "subtitle": "Prazo: 29/05 · projeto CHBOTEV",
+      "note": "",
+      "groups": [
+        {
+          "label": "",
+          "tasks": [
+            {
+              "task": "[Bradesco] CHAT - Criação de permissionamento CHAT na BCAA",
+              "dl": "03/06/2026",
+              "st": "Em andamento",
+              "pct": 95,
+              "resp": "",
+              "jira": "/projects/CHBOTEV",
+              "jl": "CHBOTEV"
+            },
+            {
+              "task": "[Bradesco] CHAT - Parametrização de filas, atendentes e usuários",
+              "dl": "03/06/2026",
+              "st": "Desenvolvido",
+              "pct": 95,
+              "resp": "",
+              "jira": "/projects/CHBOTEV",
+              "jl": "CHBOTEV"
+            },
+            {
+              "task": "[Bradesco] CHAT - Fila de atendimento",
+              "dl": "03/06/2026",
+              "st": "Impedido",
+              "pct": 80,
+              "resp": "",
+              "jira": "/projects/CHBOTEV",
+              "jl": "CHBOTEV",
+              "obs": "Aguardando API de Criação de Atendimento — Bradesco"
+            },
+            {
+              "task": "[Bradesco] CHAT - Comunicação via Chat",
+              "dl": "03/06/2026",
+              "st": "Desenvolvido",
+              "pct": 95,
+              "resp": "",
+              "jira": "/projects/CHBOTEV",
+              "jl": "CHBOTEV"
+            },
+            {
+              "task": "[Bradesco] CHAT - Gestão do atendimento + Integração Easytrade",
+              "dl": "03/06/2026",
+              "st": "Em andamento",
+              "pct": 80,
+              "resp": "",
+              "jira": "/projects/CHBOTEV",
+              "jl": "CHBOTEV"
+            },
+            {
+              "task": "[Bradesco] CHAT - Auditoria, Segurança e Conformidade",
+              "dl": "03/06/2026",
+              "st": "Impedido",
+              "pct": 50,
+              "resp": "",
+              "jira": "/projects/CHBOTEV",
+              "jl": "CHBOTEV",
+              "obs": "Aguardando API de –atualização do back-up - Bradesco"
+            },
+            {
+              "task": "[Bradesco] Mudança estrutural no modelo de atendimento (de Cliente →CNPJ)",
+              "dl": "03/06/2026",
+              "st": "Em andamento",
+              "pct": 50,
+              "resp": "",
+              "jira": "/projects/CHBOTEV",
+              "jl": "CHBOTEV"
+            }
+          ]
+        }
+      ]
+    },
+    "faq": {
+      "title": "Bradesco - FAQ",
+      "subtitle": "Prazo: 29/05 · projeto CHBOTEV",
+      "note": "⚠️ Entrega após finalização do Chat (prevista para 27/05)",
+      "groups": [
+        {
+          "label": "",
+          "tasks": [
+            {
+              "task": "[Bradesco] FAQ - Criação de permissionamento FAQ na BCAA.)",
+              "dl": "03/06/2026",
+              "st": "Homologado",
+              "pct": 95,
+              "resp": "",
+              "jira": "https://jiracloudae.atlassian.net/browse/FD-3991",
+              "jl": "FD-3991"
+            },
+            {
+              "task": "[Bradesco] FAQ -Cadastro do FAQ",
+              "dl": "03/06/2026",
+              "st": "Homologado",
+              "pct": 95,
+              "resp": "",
+              "jira": "https://jiracloudae.atlassian.net/browse/FD-4366",
+              "jl": "FD-4366"
+            },
+            {
+              "task": "[Bradesco] FAQ -Widget de Pesquisa",
+              "dl": "03/06/2026",
+              "st": "Homologado",
+              "pct": 95,
+              "resp": "",
+              "jira": "https://jiracloudae.atlassian.net/browse/FD-4372",
+              "jl": "FD-4372"
+            },
+            {
+              "task": "[Bradesco] FAQ - Histórico de Consultas",
+              "dl": "03/06/2026",
+              "st": "Homologado",
+              "pct": 95,
+              "resp": "",
+              "jira": "https://jiracloudae.atlassian.net/browse/FD-4375",
+              "jl": "FD-4375"
+            },
+            {
+              "task": "[Bradesco] FAQ - Integração com Chat de Atendimento",
+              "dl": "03/06/2026",
+              "st": "Pausado",
+              "pct": 0,
+              "resp": "",
+              "jira": "https://jiracloudae.atlassian.net/browse/FD-4376",
+              "jl": "FD-4376",
+              "obs": "Entrega será realizada após finalização do projeto do Chat"
+            }
+          ]
+        }
+      ]
+    },
+    "fundos": {
+      "title": "Novo Fundos",
+      "subtitle": "Prazo: 29/05 · projeto FD",
+      "groups": [
+        {
+          "label": "",
+          "tasks": [
+            {
+              "task": "[Visão geral - Lamina] - Gráfico Underwater e recuperação confundem 0 com dados nulos",
+              "dl": "",
+              "st": "Desenvolvido",
+              "pct": 100,
+              "resp": "",
+              "jira": "https://jiracloudae.atlassian.net/browse/FD-5583",
+              "jl": "FD-5583"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "iniciativas": [
+    {
+      "title": "Datafeed",
+      "color": "#16A34A",
+      "jira": "/projects/FD",
+      "jl": "FD",
+      "items": [
+        "Phaseout do antigo datafeed",
+        "Reestruturação de processos (ambiente QA, processo deploy, relatório de incidentes)",
+        "Integração Bolsa Base Exchange",
+        "Revisão do processo de orquestração"
+      ]
+    },
+    {
+      "title": "Notícias",
+      "color": "#0891B2",
+      "jira": "",
+      "jl": "",
+      "items": [
+        "Tradução para inglês e Espanhol via IA (Huawei)",
+        "WhatsApp — Notícias para XP"
+      ]
+    },
+    {
+      "title": "Newsletter & Wallboard",
+      "color": "#1B6EF3",
+      "jira": "",
+      "jl": "",
+      "items": [
+        "Newsletter (nLake) — Entregue",
+        "Demandas Wallboard",
+        "Banco do Brasil — Entregue"
+      ]
+    },
+    {
+      "title": "Arquitetura OTC",
+      "color": "#7C3AED",
+      "jira": "/browse/FD-5450",
+      "jl": "FD-5450",
+      "items": [
+        "Deploy — 100%",
+        "Segregação de BD — Em andamento 50%",
+        "Monitoramento Funcional, Técnico e Infra",
+        "Redundância ativo multicloud",
+        "SDK / Barramento OTC / API — Não iniciado"
+      ]
+    },
+    {
+      "title": "Sydle Comercial",
+      "color": "#CA8A04",
+      "jira": "/projects/SIS",
+      "jl": "SIS",
+      "items": [
+        "Gestão de Oportunidades — Concluído",
+        "Gestão de Tickets — Concluído",
+        "Gestão de Contratos — Concluído",
+        "Remuneração Variável — Concluído",
+        "Agenda — Concluído"
+      ]
+    },
+    {
+      "title": "Screener & A5X",
+      "color": "#DC2626",
+      "jira": "",
+      "jl": "",
+      "items": [
+        "A5X — Em andamento (prazo 30/09, 3%)",
+        "Screener — Em andamento (prazo 05/10, 3%)"
+      ]
+    }
+  ]
+}
