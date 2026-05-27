@@ -153,6 +153,35 @@ td{padding:12px 16px;font-size:13px;vertical-align:middle}
 .date-display-btn .cal-icon{color:var(--faint);font-size:13px}
 .date-display-btn.struck{text-decoration:line-through;opacity:.5}
 
+/* ADD TASK ROW */
+.tw{overflow:visible!important}
+.add-task-row td{padding:0!important;border:none!important;height:0;position:relative}
+.add-task-btn{position:absolute;left:50%;transform:translateX(-50%) translateY(-14px);width:28px;height:28px;border-radius:50%;background:#fff;border:2px solid var(--accent);color:var(--accent);font-size:20px;line-height:1;cursor:pointer;display:none;align-items:center;justify-content:center;z-index:20;transition:all .15s;box-shadow:0 2px 8px rgba(27,110,243,.25)}
+.add-task-btn:hover{background:var(--accent);color:#fff;transform:translateX(-50%) translateY(-14px) scale(1.12)}
+tr.last-task-row:hover + tr.add-task-row .add-task-btn,
+.add-task-row:hover .add-task-btn{display:flex}
+
+/* INLINE EDIT */
+.td-drag{width:24px;cursor:grab;color:var(--faint);font-size:16px;text-align:center;padding:12px 4px!important;user-select:none}
+.td-drag:active{cursor:grabbing}
+tr.drag-over{border-top:3px solid var(--accent)}
+tr.dragging{opacity:.4}
+.cell-edit{outline:2px solid var(--accent);border-radius:4px;background:var(--accent-lt)}
+.cell-input{width:100%;border:none;outline:none;background:transparent;font-family:inherit;font-size:13px;font-weight:500;color:var(--text);padding:0}
+.cell-select{width:100%;border:none;outline:none;background:#fff;font-family:inherit;font-size:10px;font-weight:600;padding:3px 6px;border-radius:20px;cursor:pointer}
+.cell-num{width:60px;border:none;outline:none;background:transparent;font-family:'DM Mono',monospace;font-weight:600;font-size:13px;color:var(--text);padding:0}
+.unsaved-badge{position:fixed;top:72px;left:50%;transform:translateX(-50%);background:var(--yellow-lt);border:1px solid #FCD34D;color:var(--yellow);font-size:12px;font-weight:600;padding:6px 16px;border-radius:20px;z-index:150;display:none;align-items:center;gap:8px}
+.unsaved-badge.show{display:flex}
+
+/* EDIT CARD MODAL */
+.edit-fab{position:absolute;top:10px;right:10px;width:28px;height:28px;border-radius:6px;background:var(--surface-2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transition:opacity .18s;z-index:2;font-size:15px;line-height:1}
+.scard:hover .edit-fab{opacity:1}
+.edit-fab:hover{background:var(--accent-lt);border-color:var(--accent);color:var(--accent)}
+.eq-overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:700;display:flex;align-items:center;justify-content:center}
+.eq-modal{background:#fff;border-radius:var(--r);padding:28px 32px;width:700px;max-width:96vw;box-shadow:0 8px 40px rgba(0,0,0,.18)}
+.eq-modal h4{font-size:15px;font-weight:700;margin-bottom:20px;display:flex;align-items:center;gap:8px;color:var(--text)}
+.eq-footer{display:flex;gap:8px;justify-content:flex-end;margin-top:20px;padding-top:16px;border-top:1px solid var(--border)}
+
 /* CONFIRM MODAL (#17) */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:500;display:flex;align-items:center;justify-content:center;animation:fu .2s ease}
 .modal-box{background:#fff;border-radius:var(--r);padding:28px;max-width:420px;width:90%;box-shadow:0 8px 40px rgba(0,0,0,.18)}
@@ -364,6 +393,10 @@ textarea{resize:vertical;min-height:60px}
 </div>
 
 </main>
+<div class="unsaved-badge" id="unsaved-badge">
+  ⚠️ Alterações não salvas — exporte o JSON para salvar
+  <button onclick="document.getElementById('unsaved-badge').classList.remove('show')" style="background:none;border:none;cursor:pointer;font-size:14px;color:var(--yellow)">✕</button>
+</div>
 <!-- CONFIRM MODAL -->
 <div id="confirm-modal" style="display:none"></div>
 
@@ -555,20 +588,35 @@ function jiraLink(path,label){
   return `<a class="jl" href="${base}${path}" target="_blank">${JIRA_SVG}${label}</a>`;
 }
 
-function taskRow(t,hasResp){
+function taskRow(t,hasResp,pid,gi,ti){
   const bc=barColor(t.st), sc=statusClass(t.st);
   const pct=Math.min(100,Math.max(0,t.pct||0));
   const jl=jiraLink(t.jira,t.jl);
-  const cols=hasResp?6:5;
-  let rows=`<tr>
-    <td class="tt">${t.task||''}</td>
-    <td class="td">${t.dl||'—'}</td>
-    ${hasResp?`<td class="tr">${t.resp||'—'}</td>`:''}
-    <td><span class="bdg ${sc}">${t.st||''}</span></td>
-    <td class="tp"><div style="display:flex;align-items:center;gap:6px"><span class="mb" style="flex-shrink:0"><span class="mf" style="width:${pct}%;background:${bc}"></span></span><span>${pct}%</span></div></td>
-    <td>${jl}</td>
-  </tr>`;
-  if(t.obs) rows+=`<tr class="obs-row"><td colspan="${cols}">⚠️ ${t.obs}</td></tr>`;
+  const cols=hasResp?7:6;
+  function dbl(field){
+    if(!pid) return '';
+    return 'ondblclick="inlineEditTask(\'' + pid + '\',' + gi + ',' + ti + ',\'' + field + '\',this)"';
+  }
+  const drag = pid
+    ? '<td class="td-drag" draggable="true" title="Arrastar para reordenar" '
+      +'ondragstart="taskDragStart(event,\'' +pid+ '\',' +gi+ ',' +ti+ ')" '
+      +'ondragover="taskDragOver(event)" '
+      +'ondragleave="taskDragLeave(event)" '
+      +'ondrop="taskDrop(event,\'' +pid+ '\',' +gi+ ',' +ti+ ')"'
+      +'>⠿</td>'
+    : '<td></td>';
+  let rows='<tr title="Duplo clique para editar" '
+    +'ondragover="taskDragOver(event)" ondragleave="taskDragLeave(event)" '
+    +'ondrop="taskDrop(event,\'' +pid+ '\',' +gi+ ',' +ti+ ')">'
+    +drag
+    +'<td class="tt" style="cursor:text" '+dbl('task')+'>'+( t.task||'')+'</td>'
+    +'<td class="td" style="cursor:text" '+dbl('dl')+'>'+( t.dl||'—')+'</td>'
+    +(hasResp?'<td class="tr">'+(t.resp||'—')+'</td>':'')
+    +'<td style="cursor:pointer" '+dbl('st')+'><span class="bdg '+sc+'">'+(t.st||'')+'</span></td>'
+    +'<td class="tp" style="cursor:text" '+dbl('pct')+'><div style="display:flex;align-items:center;gap:6px"><span class="mb" style="flex-shrink:0"><span class="mf" style="width:'+pct+'%;background:'+bc+'"></span></span><span>'+pct+'%</span></div></td>'
+    +'<td style="cursor:text" '+dbl('jira')+'>'+jl+'</td>'
+    +'</tr>';
+  if(t.obs) rows+='<tr class="obs-row"><td colspan="'+cols+'">⚠️ '+t.obs+'</td></tr>';
   return rows;
 }
 
@@ -582,15 +630,22 @@ function renderPanel(id,p){
       <button class="btn-back" onclick="showPanel('resumo')">← Resumo</button>
     </div>`;
   if(p.note) html+=`<div class="note">${p.note}</div>`;
-  for(const g of p.groups){
+  p.groups.forEach((g,gi)=>{
     if(g.label) html+=`<div class="ss">${g.label}</div>`;
     html+=`<div class="tw"><table>
-      <colgroup><col class="c-task"><col class="c-dl">${hasResp?'<col class="c-resp">':''}<col class="c-st"><col class="c-pct"><col class="c-jira"></colgroup>
-      <thead><tr><th>Tarefa</th><th>Prazo</th>${thResp}<th>Status</th><th>%</th><th>Jira</th></tr></thead>
+      <colgroup><col style="width:28px"><col class="c-task"><col class="c-dl">${hasResp?'<col class="c-resp">':''}<col class="c-st"><col class="c-pct"><col class="c-jira"></colgroup>
+      <thead><tr><th style="width:28px"></th><th>Tarefa</th><th>Prazo</th>${thResp}<th>Status</th><th>%</th><th>Jira</th></tr></thead>
       <tbody>`;
-    for(const t of g.tasks) html+=taskRow(t,hasResp);
+    g.tasks.forEach((t,ti)=>{
+      const isLast = ti===g.tasks.length-1;
+      let row = taskRow(t,hasResp,id,gi,ti);
+      if(isLast) row = row.replace('<tr ','<tr class="last-task-row" ');
+      html+=row;
+    });
+    const lastGi=gi, lastLen=g.tasks.length;
+    html+=`<tr class="add-task-row"><td colspan="7"><button class="add-task-btn" onclick="quickAddTask('${id}',${gi})" title="Adicionar tarefa">+</button></td></tr>`;
     html+=`</tbody></table></div>`;
-  }
+  });
   html+=`</div>`;
   return html;
 }
@@ -623,6 +678,7 @@ function renderAll(){
     c.className='scard';
     c.style.setProperty('--cc',fc);
     c.innerHTML=`
+      <button class="edit-fab" title="Editar projeto" onclick="event.stopPropagation();openEditCard(${DATA.projects.indexOf(p)})">✏️</button>
       <div class="card-top">
         ${farolHTML(p.farol||'prazo')}
         <div class="card-info">
@@ -968,6 +1024,395 @@ function closeModal(){
   m.style.display='none';
   m.innerHTML='';
 }
+
+/* ── Edit Card Modal ── */
+function openEditCard(idx){
+  const p = DATA.projects[idx];
+  if(!p) return;
+  const ov = document.createElement('div');
+  ov.className='eq-overlay';
+  ov.id='eq-overlay';
+  ov.innerHTML=`<div class="eq-modal" onclick="event.stopPropagation()">
+    <h4>✏️ ${p.name}</h4>
+    <div class="field-row cols4">
+      <div style="grid-column:span 2"><label>Nome</label><input type="text" id="eq-name" value="${(p.name||'').replace(/"/g,'&quot;')}"></div>
+      <div><label>% Evolução</label><input type="number" id="eq-pct" min="0" max="100" value="${p.pct||0}"></div>
+      <div><label>Status</label>
+        <select id="eq-st">${STATUS_LIST.map(s=>`<option value="${s}"${p.st===s?' selected':''}>${s}</option>`).join('')}</select>
+      </div>
+    </div>
+    <div class="field-row">
+      <div><label>Responsável</label><input type="text" id="eq-owner" value="${p.owner||''}"></div>
+      <div><label>Farol</label>
+        <select id="eq-farol">
+          <option value="perigo"${p.farol==='perigo'?' selected':''}>🔴 Perigo</option>
+          <option value="atencao"${p.farol==='atencao'?' selected':''}>🟡 Atenção</option>
+          <option value="prazo"${(p.farol||'prazo')==='prazo'?' selected':''}>🟢 No prazo</option>
+        </select>
+      </div>
+    </div>
+    <div class="field-row cols3">
+      <div>
+        <label>Prazo 1</label>
+        <div style="display:flex;align-items:center;gap:6px">
+          <button class="date-display-btn" style="flex:1" onclick="openDatePopup('${p.dl1||''}',v=>{document.getElementById('eq-dl1').value=v;document.getElementById('eq-dl1-txt').textContent=v||'—'})">
+            📅 <span id="eq-dl1-txt">${p.dl1||'—'}</span>
+          </button>
+          <label style="display:flex;align-items:center;gap:4px;text-transform:none;letter-spacing:0;font-size:12px;color:var(--muted);cursor:pointer;white-space:nowrap">
+            <input type="checkbox" id="eq-dl1-done" ${p.dl1_done?'checked':''} style="width:16px;height:16px"> superado
+          </label>
+          <input type="hidden" id="eq-dl1" value="${p.dl1||''}">
+        </div>
+      </div>
+      <div>
+        <label>Prazo 2</label>
+        <div style="display:flex;align-items:center;gap:6px">
+          <button class="date-display-btn" style="flex:1" onclick="openDatePopup('${p.dl2||''}',v=>{document.getElementById('eq-dl2').value=v;document.getElementById('eq-dl2-txt').textContent=v||'—'})">
+            📅 <span id="eq-dl2-txt">${p.dl2||'—'}</span>
+          </button>
+          <label style="display:flex;align-items:center;gap:4px;text-transform:none;letter-spacing:0;font-size:12px;color:var(--muted);cursor:pointer;white-space:nowrap">
+            <input type="checkbox" id="eq-dl2-done" ${p.dl2_done?'checked':''} style="width:16px;height:16px"> superado
+          </label>
+          <input type="hidden" id="eq-dl2" value="${p.dl2||''}">
+        </div>
+      </div>
+      <div>
+        <label>Prazo 3</label>
+        <div style="display:flex;align-items:center;gap:6px">
+          <button class="date-display-btn" style="flex:1" onclick="openDatePopup('${p.dl3||''}',v=>{document.getElementById('eq-dl3').value=v;document.getElementById('eq-dl3-txt').textContent=v||'—'})">
+            📅 <span id="eq-dl3-txt">${p.dl3||'—'}</span>
+          </button>
+          <label style="display:flex;align-items:center;gap:4px;text-transform:none;letter-spacing:0;font-size:12px;color:var(--muted);cursor:pointer;white-space:nowrap">
+            <input type="checkbox" id="eq-dl3-done" ${p.dl3_done?'checked':''} style="width:16px;height:16px"> superado
+          </label>
+          <input type="hidden" id="eq-dl3" value="${p.dl3||''}">
+        </div>
+      </div>
+    </div>
+    <div class="eq-footer">
+      <button class="btn btn-outline" onclick="closeEditCard()">Cancelar</button>
+      <button class="btn btn-primary" onclick="saveEditCard(${idx})">Salvar</button>
+    </div>
+  </div>`;
+  ov.addEventListener('click', closeEditCard);
+  document.body.appendChild(ov);
+}
+
+function saveEditCard(idx){
+  const p = DATA.projects[idx];
+  p.name    = document.getElementById('eq-name').value.trim() || p.name;
+  p.pct     = Math.min(100,Math.max(0,+document.getElementById('eq-pct').value||0));
+  p.st      = document.getElementById('eq-st').value;
+  p.owner   = document.getElementById('eq-owner').value.trim();
+  p.farol   = document.getElementById('eq-farol').value;
+  p.dl1     = document.getElementById('eq-dl1').value;
+  p.dl2     = document.getElementById('eq-dl2').value;
+  p.dl3     = document.getElementById('eq-dl3').value;
+  p.dl1_done= document.getElementById('eq-dl1-done').checked;
+  p.dl2_done= document.getElementById('eq-dl2-done').checked;
+  p.dl3_done= document.getElementById('eq-dl3-done').checked;
+  closeEditCard();
+  // re-renderiza só o card afetado no resumo
+  const sgrid = document.getElementById('sgrid');
+  const cards = sgrid.querySelectorAll('.scard');
+  if(cards[idx]){
+    const fc = farolColor(p.farol||'prazo');
+    const sc = statusClass(p.st);
+    const pct = Math.min(100,Math.max(0,p.pct||0));
+    const jl = p.jira?`<a class="jl" href="${(DATA.jiraBase||JIRA)+p.jira}" target="_blank" onclick="event.stopPropagation()">${JIRA_SVG}${p.jl}</a>`:'';
+    const ownerHtml = p.owner
+      ? `<span style="font-size:12px;color:var(--muted);display:flex;align-items:center;gap:5px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>${p.owner}</span>`
+      : `<span style="font-size:12px;color:var(--faint);font-style:italic">sem responsável</span>`;
+    cards[idx].style.setProperty('--cc', fc);
+    cards[idx].innerHTML=`
+      <button class="edit-fab" title="Editar projeto" onclick="event.stopPropagation();openEditCard(${idx})">✏️</button>
+      <div class="card-top">
+        ${farolHTML(p.farol||'prazo')}
+        <div class="card-info">
+          <div class="cname">${p.name}</div>
+          <div class="cstats">
+            <span class="cpct" style="color:${fc}">${pct}%</span>
+            <span class="bdg ${sc}">${p.st}</span>
+          </div>
+        </div>
+      </div>
+      <div class="cdl">${prazosHTML(p)}</div>
+      <div class="pbar"><div class="pfill" style="width:${pct}%;background:${fc}" data-w="${pct}"></div></div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-top:10px;padding-top:8px;border-top:1px solid var(--border)">
+        ${ownerHtml}
+        ${jl}
+      </div>`;
+  }
+  markUnsaved();
+  startEditor();
+}
+
+function closeEditCard(){
+  const ov=document.getElementById('eq-overlay');
+  if(ov) ov.remove();
+}
+
+/* ── Task Drag & Drop ── */
+let _dragPid=null,_dragGi=null,_dragTi=null;
+function taskDragStart(e,pid,gi,ti){
+  _dragPid=pid; _dragGi=gi; _dragTi=ti;
+  e.dataTransfer.effectAllowed='move';
+  e.currentTarget.closest('tr').classList.add('dragging');
+}
+function taskDragOver(e){
+  e.preventDefault();
+  e.dataTransfer.dropEffect='move';
+  const tr=e.currentTarget.closest('tr');
+  if(tr&&!tr.classList.contains('dragging')&&!tr.classList.contains('add-task-row')&&!tr.classList.contains('obs-row'))
+    tr.classList.add('drag-over');
+}
+function taskDragLeave(e){
+  const tr=e.currentTarget.closest('tr');
+  if(tr) tr.classList.remove('drag-over');
+}
+function taskDrop(e,pid,gi,ti){
+  e.preventDefault();
+  const tr=e.currentTarget.closest('tr');
+  if(tr) tr.classList.remove('drag-over');
+  if(_dragPid!==pid||_dragGi!==gi||_dragTi===ti||_dragTi===null) return;
+  const tasks=DATA.panels[pid].groups[gi].tasks;
+  const item=tasks.splice(_dragTi,1)[0];
+  const newTi=_dragTi<ti?ti-1:ti;
+  tasks.splice(newTi,0,item);
+  _dragPid=_dragGi=_dragTi=null;
+  markUnsaved();
+  refreshPanel(pid);
+}
+
+/* ── Inline Edit ── */
+function quickAddTask(pid, gi){
+  if(!DATA.panels[pid]) return;
+  const ti = DATA.panels[pid].groups[gi].tasks.length;
+  DATA.panels[pid].groups[gi].tasks.push({
+    task:'',dl:'',st:'Não iniciado',pct:0,resp:'',jira:'',jl:'',obs:''
+  });
+  refreshPanel(pid);
+  setTimeout(()=>{ openNewTaskEdit(pid, gi, ti); }, 60);
+}
+
+function openNewTaskEdit(pid, gi, ti){
+  const panel = document.getElementById('panel-'+pid);
+  if(!panel) return;
+  const rows = panel.querySelectorAll('tbody tr:not(.obs-row):not(.add-task-row):not(.new-task-row)');
+  const row = rows[ti];
+  if(!row) return;
+  row.classList.add('new-task-row');
+
+  // fields: task, dl(text), st(select), pct
+  const fields = [
+    {td: row.cells[1], field:'task', type:'text',   cls:'cell-input', val:''},
+    {td: row.cells[2], field:'dl',   type:'date-popup', cls:'cell-input', val:''},
+    {td: row.cells[3], field:'st',   type:'select', cls:'cell-select',val:'Não iniciado'},
+    {td: row.cells[4], field:'pct',  type:'number', cls:'cell-num',   val:'0'},
+    {td: row.cells[5], field:'jira', type:'text',   cls:'cell-input', val:'', placeholder:'/browse/FD-123'},
+  ];
+
+  const inputs = [];
+  fields.forEach((f,idx)=>{
+    f.td.classList.add('cell-edit');
+    let inp;
+    if(f.type==='select'){
+      inp = document.createElement('select');
+      inp.className = f.cls;
+      inp.style.cssText='width:100%;border:1px solid var(--accent);border-radius:20px;padding:3px 8px;font-size:11px;font-weight:600;text-transform:uppercase;cursor:pointer;background:#fff;color:var(--text)';
+      STATUS_LIST.forEach(s=>{ const o=document.createElement('option'); o.value=s; o.textContent=s; if(s===f.val) o.selected=true; inp.appendChild(o); });
+    } else if(f.type==='date-popup'){
+      inp = document.createElement('button');
+      inp.className = 'date-display-btn';
+      inp.style.cssText="border:1px solid var(--accent);background:var(--accent-lt);font-size:12px;font-family:'DM Mono',monospace;cursor:pointer;padding:4px 8px;border-radius:var(--rs);color:#000;width:100%";
+      inp.textContent = '📅 —';
+      inp.dataset.dateVal = '';
+      inp.tabIndex = 0;
+      // abrir popup ao focar (tab) ou clicar
+      const openPop = ()=>{
+        openDatePopup(inp.dataset.dateVal||'', br=>{
+          inp.dataset.dateVal = br;
+          inp.textContent = br ? '📅 '+br : '📅 —';
+          // avançar para próximo campo após escolher data
+          const nextIdx = +inp.dataset.idx+1;
+          if(inputs[nextIdx]) inputs[nextIdx].inp.focus();
+        });
+      };
+      inp.addEventListener('focus', openPop);
+      inp.addEventListener('click', e=>{ e.preventDefault(); openPop(); });
+    } else {
+      inp = document.createElement('input');
+      inp.type = f.type;
+      inp.className = f.cls;
+      inp.value = f.val;
+      if(f.placeholder) inp.placeholder = f.placeholder;
+      if(f.type==='number'){ inp.min=0; inp.max=100; }
+    }
+    inp.dataset.field = f.field;
+    inp.dataset.idx = idx;
+    f.td.innerHTML='';
+    f.td.appendChild(inp);
+    inputs.push({inp, td:f.td, field:f.field});
+  });
+
+  // Tab between fields
+  inputs.forEach((item,idx)=>{
+    item.inp.addEventListener('keydown', e=>{
+      if(e.key==='Tab'){
+        e.preventDefault();
+        const next = inputs[(idx+1) % inputs.length];
+        next.inp.focus();
+        if(next.inp.select) next.inp.select();
+      }
+      if(e.key==='Enter'){ e.preventDefault(); commitNewTask(); }
+      if(e.key==='Escape'){ cancelNewTask(); }
+    });
+  });
+
+  // blur da linha — checar se foco saiu da linha toda
+  function onBlur(){
+    setTimeout(()=>{
+      const focused = document.activeElement;
+      if(!row.contains(focused)) commitNewTask();
+    }, 100);
+  }
+  inputs.forEach(item=> item.inp.addEventListener('blur', onBlur));
+
+  function commitNewTask(){
+    const taskVal = inputs.find(i=>i.field==='task')?.inp.value.trim();
+    if(!taskVal){
+      cancelNewTask();
+      return;
+    }
+    const task = DATA.panels[pid].groups[gi].tasks[ti];
+    inputs.forEach(item=>{
+      let v = item.field==='dl' && item.inp.dataset.dateVal !== undefined
+        ? item.inp.dataset.dateVal
+        : item.inp.value;
+      if(item.field==='pct') v=Math.min(100,Math.max(0,+v||0));
+      if(item.field==='jira'){ task.jira=v; task.jl=v.split('/').pop(); }
+      else task[item.field]=v;
+    });
+    row.classList.remove('new-task-row');
+    inputs.forEach(item=> item.td.classList.remove('cell-edit'));
+    markUnsaved();
+    refreshPanel(pid);
+  }
+
+  function cancelNewTask(){
+    DATA.panels[pid].groups[gi].tasks.splice(ti,1);
+    row.classList.remove('new-task-row');
+    refreshPanel(pid);
+  }
+
+  // focus first field
+  inputs[0].inp.focus();
+}
+
+function refreshPanel(pid){
+  const existing = document.getElementById('panel-'+pid);
+  if(!existing || !DATA.panels[pid]) return;
+  const wasActive = existing.classList.contains('active');
+  const tmp = document.createElement('div');
+  tmp.innerHTML = renderPanel(pid, DATA.panels[pid]);
+  const newPanel = tmp.firstElementChild;
+  if(wasActive) newPanel.classList.add('active');
+  existing.replaceWith(newPanel);
+}
+let _hasUnsaved = false;
+
+function markUnsaved(){
+  _hasUnsaved = true;
+  document.getElementById('unsaved-badge').classList.add('show');
+}
+
+function clearUnsaved(){
+  _hasUnsaved = false;
+  document.getElementById('unsaved-badge').classList.remove('show');
+}
+
+window.addEventListener('beforeunload', e => {
+  if(_hasUnsaved){
+    e.preventDefault();
+    e.returnValue = '';
+  }
+});
+
+function inlineEditTask(pid, gi, ti, field, el){
+  if(el.querySelector('input,select')) return; // already editing
+  const task = DATA.panels[pid].groups[gi].tasks[ti];
+  const val = task[field];
+  el.classList.add('cell-edit');
+
+  let input;
+  if(field==='st'){
+    input = document.createElement('select');
+    input.className='cell-select';
+    input.style.cssText='width:100%;border:1px solid var(--accent);border-radius:20px;padding:3px 8px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.4px;cursor:pointer;background:#fff;color:var(--text)';
+    STATUS_LIST.forEach(s=>{
+      const o=document.createElement('option');
+      o.value=s; o.textContent=s;
+      if(s===val) o.selected=true;
+      input.appendChild(o);
+    });
+    // abrir dropdown imediatamente
+    setTimeout(()=>{ try{ input.showPicker && input.showPicker(); } catch(e){} input.focus(); input.click(); },30);
+  } else if(field==='pct'){
+    input = document.createElement('input');
+    input.type='number'; input.min=0; input.max=100;
+    input.className='cell-num';
+    input.value=val||0;
+  } else if(field==='dl'){
+    el.classList.remove('cell-edit');
+    openDatePopup(val||'', br=>{
+      if(br !== (task.dl||'')){
+        task.dl = br;
+        markUnsaved();
+        refreshPanel(pid);
+      }
+    });
+    return;
+  } else if(field==='jira'){
+    input = document.createElement('input');
+    input.type='text';
+    input.className='cell-input';
+    input.value=val||'';
+    input.placeholder='/browse/FD-123';
+  } else {
+    input = document.createElement('input');
+    input.type='text';
+    input.className='cell-input';
+    input.value=val||'';
+  }
+
+  const prev = el.innerHTML;
+  el.innerHTML='';
+  el.appendChild(input);
+  input.focus();
+  if(input.select) input.select();
+
+  function save(){
+    let newVal = input.value;
+    if(field==='pct') newVal=Math.min(100,Math.max(0,+newVal||0));
+    const oldVal = field==='pct' ? Math.min(100,Math.max(0,+(task[field]||0))) : (task[field]||'');
+    const changed = String(newVal) !== String(oldVal);
+    if(field==='jira'){
+      task.jira=newVal;
+      task.jl=newVal.split('/').pop();
+    } else {
+      task[field]=newVal;
+    }
+    el.classList.remove('cell-edit');
+    if(changed){ markUnsaved(); refreshPanel(pid); }
+    else { el.innerHTML=prev; }
+  }
+
+  input.addEventListener('blur', save);
+  input.addEventListener('keydown', e=>{
+    if(e.key==='Enter'){ e.preventDefault(); input.blur(); }
+    if(e.key==='Escape'){ el.innerHTML=prev; el.classList.remove('cell-edit'); }
+  });
+}
 function doRemoveProject(idx,pid){
   editorData.projects.splice(idx,1);
   if(editorData.panels[pid]) delete editorData.panels[pid];
@@ -1091,10 +1536,12 @@ function applyData(){
   DATA=JSON.parse(JSON.stringify(editorData));
   renderAll();
   showPanel('resumo');
+  clearUnsaved();
   alert('✅ Dashboard atualizado!');
 }
 
 function exportJSON(){
+  clearUnsaved();
   /* date already set via setReportDate callback */
   editorData.jiraBase=document.getElementById('ed-jira-base').value.trim()||editorData.jiraBase;
   const json=JSON.stringify(editorData,null,2);
@@ -1107,7 +1554,20 @@ function exportJSON(){
 
 function importJSON(e){ const f=e.target.files[0]; if(!f) return; const r=new FileReader(); r.onload=ev=>loadFromJSON(ev.target.result); r.readAsText(f); }
 function importFromPaste(){ const t=document.getElementById('import-paste').value.trim(); if(!t){alert('Cole um JSON válido primeiro.');return;} loadFromJSON(t); }
-function loadFromJSON(txt){ try{ editorData=JSON.parse(txt); renderEdGeral(); alert('✅ JSON carregado! Clique "Aplicar ao Dashboard" para ver as alterações.'); } catch(e){ alert('❌ JSON inválido: '+e.message); } }
+function loadFromJSON(txt){
+  try{
+    const json = JSON.parse(txt);
+    if(!json || !Array.isArray(json.projects) || json.projects.length===0)
+      throw new Error('JSON sem projetos válidos');
+    if(!json.panels || Object.keys(json.panels).length===0)
+      throw new Error('JSON sem painéis válidos');
+    editorData = json;
+    renderEdGeral();
+    alert('✅ JSON carregado com ' + json.projects.length + ' projetos! Clique "Aplicar ao Dashboard".');
+  } catch(e){
+    alert('❌ JSON inválido ou vazio: ' + e.message);
+  }
+}
 
 /* drag-drop import */
 const dropArea=document.getElementById('import-drop');
@@ -1116,20 +1576,9 @@ dropArea.addEventListener('dragleave',()=>dropArea.style.borderColor='');
 dropArea.addEventListener('drop',e=>{ e.preventDefault();dropArea.style.borderColor=''; const f=e.dataTransfer.files[0]; if(f){const r=new FileReader();r.onload=ev=>loadFromJSON(ev.target.result);r.readAsText(f);} });
 
 /* ══ INIT ══ */
-async function loadFromURL(){
-  try{
-    const res = await fetch('https://processosae.github.io/status-report-denis-ae/data.json?_=' + Date.now());
-    if(!res.ok) throw new Error('HTTP ' + res.status);
-    const json = await res.json();
-    DATA = json;
-    console.log('✅ data.json carregado do GitHub');
-  } catch(e){
-    console.warn('⚠️ Não foi possível carregar data.json — usando dados locais.', e.message);
-  }
-  renderAll();
-  startEditor();
-}
-loadFromURL();
+/* Dados carregados do HTML local. Use ✏️ → Importar JSON para carregar do GitHub */
+renderAll();
+startEditor();
 </script>
 </body>
 </html>
