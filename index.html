@@ -863,7 +863,14 @@ function renderEdProjects(){
             ${lbl}
           </div>`).join('')}
         </div>
-      <div style="margin-top:14px;padding-top:12px;border-top:1px solid var(--border);display:flex;justify-content:flex-end">
+      <div style="margin-top:14px;padding-top:12px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center">
+        ${!editorData.panels[p.id] ? `
+        <button class="btn btn-success btn-sm" onclick="event.stopPropagation();createPanel('${p.id}','${p.name}')">
+          + Criar painel de tarefas
+        </button>` : `
+        <span style="font-size:12px;color:var(--green);display:flex;align-items:center;gap:4px">
+          ✅ Painel vinculado
+        </span>`}
         <button class="btn btn-danger btn-sm proj-delete-btn" onclick="event.stopPropagation();confirmRemoveProject(${idx})">🗑 Excluir projeto</button>
       </div>
       </div>
@@ -887,6 +894,35 @@ function renderEdProjects(){
     if(expanded.has(idx)) div.classList.remove('collapsed');
     list.appendChild(div);
   });
+}
+
+function createPanel(pid, pname){
+  if(editorData.panels[pid]){
+    alert('Este projeto já tem um painel de tarefas.');
+    return;
+  }
+  editorData.panels[pid] = {
+    title: pname,
+    subtitle: '',
+    note: '',
+    groups: [{ label: '', tasks: [] }]
+  };
+  // salvar estado expandido atual
+  const expanded = new Set();
+  document.querySelectorAll('#proj-list .proj-item').forEach((el,i)=>{
+    if(!el.classList.contains('collapsed')) expanded.add(i);
+  });
+  renderEdProjects();
+  // restaurar expandido
+  document.querySelectorAll('#proj-list .proj-item').forEach((el,i)=>{
+    if(expanded.has(i)) el.classList.remove('collapsed');
+  });
+  // feedback
+  const msg = document.createElement('div');
+  msg.style.cssText='position:fixed;bottom:90px;right:28px;background:var(--green);color:#fff;padding:10px 18px;border-radius:var(--rs);font-size:13px;font-weight:600;z-index:300;box-shadow:0 4px 12px rgba(0,0,0,.15)';
+  msg.textContent = '✅ Painel "'+pname+'" criado! Acesse a aba Tarefas para adicionar.';
+  document.body.appendChild(msg);
+  setTimeout(()=>msg.remove(), 3500);
 }
 
 function toggleProject(el){
