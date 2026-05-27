@@ -16,6 +16,22 @@
       "jl": ""
     },
     {
+      "id": "terminal",
+      "name": "Terminal LATAM",
+      "pct": 85,
+      "dl1": "31/05",
+      "dl2": "",
+      "dl3": "",
+      "dl1_done": false,
+      "dl2_done": false,
+      "dl3_done": false,
+      "st": "Em andamento",
+      "color": "#0891B2",
+      "farol": "atencao",
+      "jira": "/projects/PDTL",
+      "jl": "PDTL"
+    },
+    {
       "id": "otc",
       "name": "OTC",
       "pct": 95,
@@ -91,22 +107,6 @@
       "farol": "prazo",
       "jira": "/projects/II",
       "jl": "II"
-    },
-    {
-      "id": "terminal",
-      "name": "Terminal LATAM",
-      "pct": 85,
-      "dl1": "31/05",
-      "dl2": "",
-      "dl3": "",
-      "dl1_done": false,
-      "dl2_done": false,
-      "dl3_done": false,
-      "st": "Em andamento",
-      "color": "#0891B2",
-      "farol": "atencao",
-      "jira": "/projects/PDTL",
-      "jl": "PDTL"
     },
     {
       "id": "openmeter",
