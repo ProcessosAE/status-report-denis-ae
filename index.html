@@ -70,7 +70,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);-we
 .pbar{height:4px;background:var(--border);border-radius:2px;margin-top:10px;overflow:hidden}
 .pfill{height:100%;border-radius:2px;transition:width 1s cubic-bezier(.22,1,.36,1)}
 /* jira at bottom */
-.card-footer{margin-top:10px;padding-top:8px}
+/* card-footer replaced by owner+jira row */
 
 /* TABLES (#7 fixed column widths) */
 .tw{background:#fff;border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:24px}
@@ -397,10 +397,12 @@ const PALETTE=['#1B6EF3','#16A34A','#0891B2','#7C3AED','#EA580C','#CA8A04','#BE1
 
 /* ══ FAROL helpers ══ */
 /* farol values: 'prazo' | 'atencao' | 'perigo' */
+const FAROL_COLOR = {perigo:'#EF4444', atencao:'#F59E0B', prazo:'#22C55E'};
+function farolColor(farol){ return FAROL_COLOR[farol]||'#22C55E'; }
 function farolHTML(farol){
   const r = farol==='perigo'  ? 'on-red'    : '';
-  const y = farol==='atencao'? 'on-yellow' : '';
-  const g = farol==='prazo' ? 'on-green'  : '';
+  const y = farol==='atencao' ? 'on-yellow' : '';
+  const g = farol==='prazo'   ? 'on-green'  : '';
   return `<div class="farol"><div class="farol-dot ${r}"></div><div class="farol-dot ${y}"></div><div class="farol-dot ${g}"></div></div>`;
 }
 
@@ -612,24 +614,31 @@ function renderAll(){
   DATA.projects.forEach(p=>{
     const sc=statusClass(p.st);
     const pct=Math.min(100,Math.max(0,p.pct||0));
+    const fc=farolColor(p.farol||'prazo');
     const jl=p.jira?`<a class="jl" href="${(DATA.jiraBase||JIRA)+p.jira}" target="_blank" onclick="event.stopPropagation()">${JIRA_SVG}${p.jl}</a>`:'';
+    const ownerHtml = p.owner
+      ? `<span style="font-size:12px;color:var(--muted);display:flex;align-items:center;gap:5px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>${p.owner}</span>`
+      : `<span style="font-size:12px;color:var(--faint);font-style:italic">sem responsável</span>`;
     const c=document.createElement('div');
     c.className='scard';
-    c.style.setProperty('--cc',p.color);
+    c.style.setProperty('--cc',fc);
     c.innerHTML=`
       <div class="card-top">
         ${farolHTML(p.farol||'prazo')}
         <div class="card-info">
           <div class="cname">${p.name}</div>
           <div class="cstats">
-            <span class="cpct" style="color:${p.color}">${pct}%</span>
+            <span class="cpct" style="color:${fc}">${pct}%</span>
             <span class="bdg ${sc}">${p.st}</span>
           </div>
         </div>
       </div>
       <div class="cdl">${prazosHTML(p)}</div>
-      <div class="pbar"><div class="pfill" style="width:0%;background:${p.color}" data-w="${pct}"></div></div>
-      <div class="card-footer">${jl}</div>`;
+      <div class="pbar"><div class="pfill" style="width:0%;background:${fc}" data-w="${pct}"></div></div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-top:10px;padding-top:8px;border-top:1px solid var(--border)">
+        ${ownerHtml}
+        ${jl}
+      </div>`;
     c.onclick=()=>{ if(DATA.panels[p.id]) showPanel(p.id); };
     g.appendChild(c);
   });
@@ -842,14 +851,12 @@ function renderEdProjects(){
           </div>
         </div>
       </div>
-      <div class="field-row">
+      <div class="field-row cols3">
+        <div><label>Responsável</label><input type="text" value="${p.owner||''}" placeholder="Nome do responsável" onchange="updProj(${idx},'owner',this.value)"></div>
         <div><label>Caminho Jira</label><input type="text" value="${p.jira||''}" placeholder="/projects/FD" onchange="updProj(${idx},'jira',this.value)"></div>
         <div><label>Label Jira</label><input type="text" value="${p.jl||''}" placeholder="FD" onchange="updProj(${idx},'jl',this.value)"></div>
       </div>
-      <div>
-        <label>Cor</label>
-        <div class="color-row">${PALETTE.map(c=>`<span class="color-swatch ${c===p.color?'selected':''}" style="background:${c}" onclick="updProj(${idx},'color','${c}');renderEdProjects()"></span>`).join('')}</div>
-      </div>
+      <!-- cor removida: segue automaticamente o farol (#1) -->
       <div>
         <label>Farol</label>
         <div class="farol-sel">
