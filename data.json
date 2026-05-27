@@ -32,6 +32,86 @@
       "jl": "PDTL"
     },
     {
+      "id": "screener",
+      "name": "Screener",
+      "pct": 3,
+      "dl1": "05/10",
+      "dl2": "",
+      "dl3": "",
+      "dl1_done": false,
+      "dl2_done": false,
+      "dl3_done": false,
+      "st": "Em andamento",
+      "color": "#6D28D9",
+      "farol": "perigo",
+      "jira": "",
+      "jl": ""
+    },
+    {
+      "id": "openmeter",
+      "name": "OpenMeter",
+      "pct": 20,
+      "dl1": "07/07",
+      "dl2": "",
+      "dl3": "",
+      "dl1_done": false,
+      "dl2_done": false,
+      "dl3_done": false,
+      "st": "Em andamento",
+      "color": "#7C3AED",
+      "farol": "perigo",
+      "jira": "/browse/PDT-641",
+      "jl": "PDT-641"
+    },
+    {
+      "id": "fenics",
+      "name": "Injetor Fenics",
+      "pct": 95,
+      "dl1": "—",
+      "dl2": "",
+      "dl3": "",
+      "dl1_done": false,
+      "dl2_done": false,
+      "dl3_done": false,
+      "st": "Em validação",
+      "color": "#EA580C",
+      "farol": "atencao",
+      "jira": "/projects/FMD2",
+      "jl": "FMD2"
+    },
+    {
+      "id": "datalake",
+      "name": "Data Lake",
+      "pct": 20,
+      "dl1": "30/09",
+      "dl2": "",
+      "dl3": "",
+      "dl1_done": false,
+      "dl2_done": false,
+      "dl3_done": false,
+      "st": "Em andamento",
+      "color": "#2563EB",
+      "farol": "perigo",
+      "jira": "",
+      "jl": ""
+    },
+    {
+      "id": "a5x",
+      "name": "A5X",
+      "pct": 3,
+      "dl1": "30/09",
+      "dl2": "",
+      "dl3": "",
+      "dl1_done": false,
+      "dl2_done": false,
+      "dl3_done": false,
+      "st": "Em andamento",
+      "color": "#059669",
+      "farol": "perigo",
+      "jira": "",
+      "jl": ""
+    },
+    {
       "id": "otc",
       "name": "OTC",
       "pct": 95,
@@ -107,86 +187,6 @@
       "farol": "prazo",
       "jira": "/projects/II",
       "jl": "II"
-    },
-    {
-      "id": "openmeter",
-      "name": "OpenMeter",
-      "pct": 20,
-      "dl1": "07/07",
-      "dl2": "",
-      "dl3": "",
-      "dl1_done": false,
-      "dl2_done": false,
-      "dl3_done": false,
-      "st": "Em andamento",
-      "color": "#7C3AED",
-      "farol": "perigo",
-      "jira": "/browse/PDT-641",
-      "jl": "PDT-641"
-    },
-    {
-      "id": "fenics",
-      "name": "Injetor Fenics",
-      "pct": 95,
-      "dl1": "—",
-      "dl2": "",
-      "dl3": "",
-      "dl1_done": false,
-      "dl2_done": false,
-      "dl3_done": false,
-      "st": "Em validação",
-      "color": "#EA580C",
-      "farol": "atencao",
-      "jira": "/projects/FMD2",
-      "jl": "FMD2"
-    },
-    {
-      "id": "a5x",
-      "name": "A5X",
-      "pct": 3,
-      "dl1": "30/09",
-      "dl2": "",
-      "dl3": "",
-      "dl1_done": false,
-      "dl2_done": false,
-      "dl3_done": false,
-      "st": "Em andamento",
-      "color": "#059669",
-      "farol": "perigo",
-      "jira": "",
-      "jl": ""
-    },
-    {
-      "id": "datalake",
-      "name": "Data Lake",
-      "pct": 20,
-      "dl1": "30/09",
-      "dl2": "",
-      "dl3": "",
-      "dl1_done": false,
-      "dl2_done": false,
-      "dl3_done": false,
-      "st": "Em andamento",
-      "color": "#2563EB",
-      "farol": "perigo",
-      "jira": "",
-      "jl": ""
-    },
-    {
-      "id": "screener",
-      "name": "Screener",
-      "pct": 3,
-      "dl1": "05/10",
-      "dl2": "",
-      "dl3": "",
-      "dl1_done": false,
-      "dl2_done": false,
-      "dl3_done": false,
-      "st": "Em andamento",
-      "color": "#6D28D9",
-      "farol": "perigo",
-      "jira": "",
-      "jl": ""
     }
   ],
   "panels": {
@@ -818,6 +818,88 @@
               "resp": "",
               "jira": "https://jiracloudae.atlassian.net/browse/FD-5583",
               "jl": "FD-5583"
+            }
+          ]
+        }
+      ]
+    },
+    "screener": {
+      "title": "Screener",
+      "subtitle": "",
+      "note": "",
+      "groups": [
+        {
+          "label": "",
+          "tasks": [
+            {
+              "task": "[Broadcast Screener] - Carga de Dados",
+              "dl": "",
+              "st": "Em andamento",
+              "pct": 0,
+              "resp": "",
+              "jira": "",
+              "jl": "",
+              "obs": ""
+            },
+            {
+              "task": "[Broadcast Screener] - Colunas",
+              "dl": "",
+              "st": "Em andamento",
+              "pct": 0,
+              "resp": "",
+              "jira": "",
+              "jl": "",
+              "obs": ""
+            },
+            {
+              "task": "[Broadcast Screener] - Menu de Coluna",
+              "dl": "",
+              "st": "Em andamento",
+              "pct": 0,
+              "resp": "",
+              "jira": "",
+              "jl": "",
+              "obs": ""
+            },
+            {
+              "task": "  [Broadcast Screener] - Menu de Contexto da Célula",
+              "dl": "",
+              "st": "Em andamento",
+              "pct": 0,
+              "resp": "",
+              "jira": "",
+              "jl": "",
+              "obs": ""
+            },
+            {
+              "task": "  [Broadcast Screener] - Status Bar",
+              "dl": "",
+              "st": "Em andamento",
+              "pct": 0,
+              "resp": "",
+              "jira": "",
+              "jl": "",
+              "obs": ""
+            },
+            {
+              "task": "[Broadcast Screener] - Persistência",
+              "dl": "",
+              "st": "Em andamento",
+              "pct": 0,
+              "resp": "",
+              "jira": "",
+              "jl": "",
+              "obs": ""
+            },
+            {
+              "task": "[Broadcast Screener] - Feedback In-App",
+              "dl": "",
+              "st": "Em andamento",
+              "pct": 0,
+              "resp": "",
+              "jira": "",
+              "jl": "",
+              "obs": ""
             }
           ]
         }
