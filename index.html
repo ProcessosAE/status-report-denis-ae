@@ -259,6 +259,8 @@ textarea{resize:vertical;min-height:60px}
 <div class="panel active" id="panel-resumo">
   <div class="sh"><h2>Visão Geral</h2><span class="cnt" id="proj-count">—</span></div>
   <div class="sgrid" id="sgrid"></div>
+  <div class="sh" style="margin-top:32px"><h2>Demais Iniciativas</h2></div>
+  <div class="igrid" id="igrid-resumo"></div>
 </div>
 
 <!-- PROJECT PANELS rendered by JS -->
@@ -635,11 +637,14 @@ function renderAll(){
 }
 
 function renderInitiativas(){
-  const ig=document.getElementById('igrid');
-  ig.innerHTML='';
-  DATA.iniciativas.forEach(ini=>{
-    const jl=ini.jira?`<a class="jl" style="margin-left:auto" href="${(DATA.jiraBase||JIRA)+ini.jira}" target="_blank">${JIRA_SVG}${ini.jl}</a>`:'';
-    ig.innerHTML+=`<div class="ic"><h3><span class="dot" style="background:${ini.color}"></span>${ini.title}${jl}</h3>${ini.items.map(i=>`<div class="ii">${i}</div>`).join('')}</div>`;
+  ['igrid','igrid-resumo'].forEach(id=>{
+    const ig=document.getElementById(id);
+    if(!ig) return;
+    ig.innerHTML='';
+    DATA.iniciativas.forEach(ini=>{
+      const jl=ini.jira?`<a class="jl" style="margin-left:auto" href="${(DATA.jiraBase||JIRA)+ini.jira}" target="_blank">${JIRA_SVG}${ini.jl}</a>`:'';
+      ig.innerHTML+=`<div class="ic"><h3><span class="dot" style="background:${ini.color}"></span>${ini.title}${jl}</h3>${ini.items.map(i=>`<div class="ii">${i}</div>`).join('')}</div>`;
+    });
   });
 }
 
