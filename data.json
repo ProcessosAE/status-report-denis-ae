@@ -3,110 +3,14 @@
   "jiraBase": "https://jiracloudae.atlassian.net",
   "projects": [
     {
-      "id": "",
+      "id": "novo",
       "name": "Novo Terminal v7.6.2",
-      "pct": 80,
+      "pct": 0,
       "dl1": "",
       "dl2": "",
       "dl3": "",
       "st": "Em andamento",
-      "color": "#16A34A",
-      "farol": "prazo",
-      "jira": "https://jiracloudae.atlassian.net/jira/software/c/projects/FD/boards/1712",
-      "jl": "Board-1712"
-    },
-    {
-      "id": "terminal",
-      "name": "Terminal LATAM",
-      "pct": 85,
-      "dl1": "31/05",
-      "dl2": "",
-      "dl3": "",
-      "dl1_done": false,
-      "dl2_done": false,
-      "dl3_done": false,
-      "st": "Em andamento",
-      "color": "#16A34A",
-      "farol": "prazo",
-      "jira": "/projects/PDTL",
-      "jl": "PDTL"
-    },
-    {
-      "id": "screener",
-      "name": "Screener",
-      "pct": 3,
-      "dl1": "05/10",
-      "dl2": "",
-      "dl3": "",
-      "dl1_done": false,
-      "dl2_done": false,
-      "dl3_done": false,
-      "st": "Em andamento",
-      "color": "#16A34A",
-      "farol": "prazo",
-      "jira": "",
-      "jl": ""
-    },
-    {
-      "id": "openmeter",
-      "name": "OpenMeter",
-      "pct": 50,
-      "dl1": "07/07",
-      "dl2": "",
-      "dl3": "",
-      "dl1_done": false,
-      "dl2_done": false,
-      "dl3_done": false,
-      "st": "Em andamento",
-      "color": "#16A34A",
-      "farol": "prazo",
-      "jira": "/browse/PDT-641",
-      "jl": "PDT-641"
-    },
-    {
-      "id": "fenics",
-      "name": "Injetor Fenics",
-      "pct": 95,
-      "dl1": "—",
-      "dl2": "",
-      "dl3": "",
-      "dl1_done": false,
-      "dl2_done": false,
-      "dl3_done": false,
-      "st": "Em validação",
-      "color": "#16A34A",
-      "farol": "prazo",
-      "jira": "/projects/FMD2",
-      "jl": "FMD2"
-    },
-    {
-      "id": "datalake",
-      "name": "Data Lake",
-      "pct": 20,
-      "dl1": "30/09",
-      "dl2": "",
-      "dl3": "",
-      "dl1_done": false,
-      "dl2_done": false,
-      "dl3_done": false,
-      "st": "Em andamento",
-      "color": "#16A34A",
-      "farol": "prazo",
-      "jira": "",
-      "jl": ""
-    },
-    {
-      "id": "a5x",
-      "name": "A5X",
-      "pct": 3,
-      "dl1": "30/09",
-      "dl2": "",
-      "dl3": "",
-      "dl1_done": false,
-      "dl2_done": false,
-      "dl3_done": false,
-      "st": "Em andamento",
-      "color": "#16A34A",
+      "color": "#1B6EF3",
       "farol": "prazo",
       "jira": "",
       "jl": ""
@@ -114,15 +18,15 @@
     {
       "id": "otc",
       "name": "OTC",
-      "pct": 80,
-      "dl1": "17/06/2026",
+      "pct": 95,
+      "dl1": "23/04",
       "dl2": "",
       "dl3": "",
-      "dl1_done": false,
+      "dl1_done": true,
       "dl2_done": false,
       "dl3_done": false,
       "st": "Em andamento",
-      "color": "#16A34A",
+      "color": "#1B6EF3",
       "farol": "prazo",
       "jira": "/projects/FD",
       "jl": "FD"
@@ -138,7 +42,7 @@
       "dl2_done": false,
       "dl3_done": false,
       "st": "Em andamento",
-      "color": "#16A34A",
+      "color": "#0891B2",
       "farol": "prazo",
       "jira": "/projects/CHBOTEV",
       "jl": "CHBOTEV"
@@ -154,7 +58,7 @@
       "dl2_done": false,
       "dl3_done": false,
       "st": "Em andamento",
-      "color": "#16A34A",
+      "color": "#BE185D",
       "farol": "prazo",
       "jira": "/projects/CHBOTEV",
       "jl": "CHBOTEV"
@@ -167,8 +71,8 @@
       "dl2": "",
       "dl3": "",
       "st": "Em andamento",
-      "color": "#16A34A",
-      "farol": "prazo",
+      "color": "#CA8A04",
+      "farol": "atencao",
       "jira": "/projects/FD",
       "jl": "FD"
     },
@@ -189,15 +93,98 @@
       "jl": "II"
     },
     {
-      "id": "novo",
-      "name": "Processos AE",
-      "pct": 60,
-      "dl1": "",
+      "id": "terminal",
+      "name": "Terminal LATAM",
+      "pct": 85,
+      "dl1": "31/05",
       "dl2": "",
       "dl3": "",
+      "dl1_done": false,
+      "dl2_done": false,
+      "dl3_done": false,
       "st": "Em andamento",
-      "color": "#16A34A",
-      "farol": "prazo",
+      "color": "#0891B2",
+      "farol": "atencao",
+      "jira": "/projects/PDTL",
+      "jl": "PDTL"
+    },
+    {
+      "id": "openmeter",
+      "name": "OpenMeter",
+      "pct": 20,
+      "dl1": "07/07",
+      "dl2": "",
+      "dl3": "",
+      "dl1_done": false,
+      "dl2_done": false,
+      "dl3_done": false,
+      "st": "Em andamento",
+      "color": "#7C3AED",
+      "farol": "perigo",
+      "jira": "/browse/PDT-641",
+      "jl": "PDT-641"
+    },
+    {
+      "id": "fenics",
+      "name": "Injetor Fenics",
+      "pct": 95,
+      "dl1": "—",
+      "dl2": "",
+      "dl3": "",
+      "dl1_done": false,
+      "dl2_done": false,
+      "dl3_done": false,
+      "st": "Em validação",
+      "color": "#EA580C",
+      "farol": "atencao",
+      "jira": "/projects/FMD2",
+      "jl": "FMD2"
+    },
+    {
+      "id": "a5x",
+      "name": "A5X",
+      "pct": 3,
+      "dl1": "30/09",
+      "dl2": "",
+      "dl3": "",
+      "dl1_done": false,
+      "dl2_done": false,
+      "dl3_done": false,
+      "st": "Em andamento",
+      "color": "#059669",
+      "farol": "perigo",
+      "jira": "",
+      "jl": ""
+    },
+    {
+      "id": "datalake",
+      "name": "Data Lake",
+      "pct": 20,
+      "dl1": "30/09",
+      "dl2": "",
+      "dl3": "",
+      "dl1_done": false,
+      "dl2_done": false,
+      "dl3_done": false,
+      "st": "Em andamento",
+      "color": "#2563EB",
+      "farol": "perigo",
+      "jira": "",
+      "jl": ""
+    },
+    {
+      "id": "screener",
+      "name": "Screener",
+      "pct": 3,
+      "dl1": "05/10",
+      "dl2": "",
+      "dl3": "",
+      "dl1_done": false,
+      "dl2_done": false,
+      "dl3_done": false,
+      "st": "Em andamento",
+      "color": "#6D28D9",
+      "farol": "perigo",
       "jira": "",
       "jl": ""
     }
@@ -458,17 +445,17 @@
             {
               "task": "Instalação e configuração do ambiente (GKE)",
               "dl": "22/05",
-              "st": "Concluído",
-              "pct": 100,
+              "st": "Em andamento",
+              "pct": 3,
               "resp": "",
               "jira": "/browse/PDT-641",
               "jl": "PDT-641"
             },
             {
               "task": "Parametrização e testes (POC e outras regras)",
-              "dl": "12/06/2026",
-              "st": "Em andamento",
-              "pct": 50,
+              "dl": "12/06",
+              "st": "Não iniciado",
+              "pct": 0,
               "resp": "",
               "jira": "/browse/PDT-642",
               "jl": "PDT-642"
@@ -497,7 +484,7 @@
               "task": "Definição de arquitetura e precificação (Snowflake)",
               "dl": "30/05",
               "st": "Em andamento",
-              "pct": 90,
+              "pct": 60,
               "resp": "",
               "jira": "",
               "jl": ""
@@ -670,7 +657,7 @@
             },
             {
               "task": "Sugestões",
-              "dl": "26/06/2026",
+              "dl": "29/05",
               "st": "Em andamento",
               "pct": 5,
               "resp": "",
@@ -835,200 +822,6 @@
           ]
         }
       ]
-    },
-    "screener": {
-      "title": "Screener",
-      "subtitle": "",
-      "note": "",
-      "groups": [
-        {
-          "label": "",
-          "tasks": [
-            {
-              "task": "[Broadcast Screener] - Carga de Dados",
-              "dl": "",
-              "st": "Em andamento",
-              "pct": 0,
-              "resp": "",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "[Broadcast Screener] - Colunas",
-              "dl": "",
-              "st": "Em andamento",
-              "pct": 0,
-              "resp": "",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "[Broadcast Screener] - Menu de Coluna",
-              "dl": "",
-              "st": "Em andamento",
-              "pct": 0,
-              "resp": "",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "  [Broadcast Screener] - Menu de Contexto da Célula",
-              "dl": "",
-              "st": "Em andamento",
-              "pct": 0,
-              "resp": "",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "  [Broadcast Screener] - Status Bar",
-              "dl": "",
-              "st": "Em andamento",
-              "pct": 0,
-              "resp": "",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "[Broadcast Screener] - Persistência",
-              "dl": "",
-              "st": "Em andamento",
-              "pct": 0,
-              "resp": "",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "[Broadcast Screener] - Feedback In-App",
-              "dl": "",
-              "st": "Em andamento",
-              "pct": 0,
-              "resp": "",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            }
-          ]
-        }
-      ]
-    },
-    "novo": {
-      "title": "Processos AE",
-      "subtitle": "",
-      "note": "",
-      "groups": [
-        {
-          "label": "Portal de Processos",
-          "tasks": [
-            {
-              "task": "Portal de Processos - Lançamento v1",
-              "dl": "29/05/2026",
-              "st": "Em andamento",
-              "pct": 95,
-              "resp": "",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "Portal de Processos - Lançamento v2",
-              "dl": "26/06/2026",
-              "st": "Não iniciado",
-              "pct": 0,
-              "resp": "",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "Portal de Processos - Lançamento v3",
-              "dl": "31/07/2026",
-              "st": "Não iniciado",
-              "pct": 0,
-              "resp": "",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            }
-          ]
-        },
-        {
-          "label": "Reestruturação das Issues Jira",
-          "tasks": [
-            {
-              "task": "Tratamento dos Campos das Histórias",
-              "dl": "",
-              "st": "Em andamento",
-              "pct": 0,
-              "resp": "",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "Tratamento dos Campos dos Epics",
-              "dl": "",
-              "st": "Em andamento",
-              "pct": 0,
-              "resp": "",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "Tratamento dos Campos das Tarefas",
-              "dl": "",
-              "st": "Em andamento",
-              "pct": 0,
-              "resp": "",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "Tratamento dos Campos dos Bugs",
-              "dl": "",
-              "st": "Em andamento",
-              "pct": 0,
-              "resp": "",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "Mapeamento totais dos campos",
-              "dl": "12/06/2026",
-              "st": "Em andamento",
-              "pct": 10,
-              "resp": "",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            }
-          ]
-        },
-        {
-          "label": "Process News",
-          "tasks": [
-            {
-              "task": "Process News - Lançamento",
-              "dl": "21/05/2026",
-              "st": "Concluído",
-              "pct": 100,
-              "resp": "",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            }
-          ]
-        }
-      ]
     }
   },
   "iniciativas": [
@@ -1069,7 +862,7 @@
       "title": "Arquitetura OTC",
       "color": "#7C3AED",
       "jira": "/browse/FD-5450",
-      "jl": "",
+      "jl": "FD-5450",
       "items": [
         "Deploy — 100%",
         "Segregação de BD — Em andamento 50%",
@@ -1082,7 +875,7 @@
       "title": "Sydle Comercial",
       "color": "#CA8A04",
       "jira": "/projects/SIS",
-      "jl": "",
+      "jl": "SIS",
       "items": [
         "Gestão de Oportunidades — Concluído",
         "Gestão de Tickets — Concluído",
