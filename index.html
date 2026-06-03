@@ -24,15 +24,11 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);-we
 /* HEADER */
 .hdr{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;padding:0 32px}
 .hdr-in{max-width:1300px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
-.hdr-l{display:flex;align-items:center;gap:14px}
-.logo{width:36px;height:36px;background:var(--accent);border-radius:10px;display:flex;align-items:center;justify-content:center}
-.logo svg{width:18px;height:18px;fill:none;stroke:#fff;stroke-width:2.5}
-.htitle{font-size:15px;font-weight:600}
-.hsub{font-size:12px;color:var(--faint);margin-top:1px}
+.hdr-l{display:flex;align-items:center;gap:14px;flex:1;justify-content:center}
+.htitle{font-size:20px;font-weight:700;text-align:center}
+.hsub{font-size:13px;color:var(--faint);margin-top:2px;text-align:center}
 .hdr-r{display:flex;align-items:center;gap:10px}
-.bdate{background:var(--accent-lt);color:var(--accent);font-size:12px;font-weight:600;padding:4px 12px;border-radius:20px;font-family:'DM Mono',monospace}
-.jbadge{background:#E8F0FE;color:var(--jira);font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;text-decoration:none;display:flex;align-items:center;gap:5px}
-.jbadge svg{width:12px;height:12px}
+.bdate{background:var(--accent-lt);color:var(--accent);font-size:15px;font-weight:600;padding:5px 16px;border-radius:20px;font-family:'DM Mono',monospace}
 
 /* LAYOUT */
 .main{max-width:1300px;margin:0 auto;padding:32px}
@@ -275,9 +271,7 @@ textarea{resize:vertical;min-height:60px}
     <div><div class="htitle">Tecnologia</div><div class="hsub">Status Report Semanal</div></div>
   </div>
   <div class="hdr-r">
-    <a class="jbadge" href="https://jiracloudae.atlassian.net" target="_blank">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.571 11.513H0a5.218 5.218 0 0 0 5.232 5.215h2.13v2.057A5.215 5.215 0 0 0 12.575 24V12.518a1.005 1.005 0 0 0-1.004-1.005zm5.723-5.756H5.757a5.215 5.215 0 0 0 5.214 5.214h2.129v2.058a5.218 5.218 0 0 0 5.215 5.214V6.762a1.005 1.005 0 0 0-1.021-1.005zM23.013 0H11.455a5.215 5.215 0 0 0 5.215 5.215h2.129v2.058A5.218 5.218 0 0 0 24.017 12.49V1.005A1.005 1.005 0 0 0 23.013 0z"/></svg>
-      jiracloudae</a>
+
     <div class="bdate" id="hdr-date">—</div>
   </div>
 </div>
