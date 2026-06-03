@@ -1,25 +1,29 @@
 {
-  "date": "27/05/2026",
+  "date": "03/06/2026",
   "jiraBase": "https://jiracloudae.atlassian.net",
   "projects": [
     {
-      "id": "novo",
-      "name": "Novo Terminal v7.6.2",
-      "pct": 0,
-      "dl1": "",
+      "id": "NT",
+      "name": "Novo Terminal V7.6.2",
+      "pct": 90,
+      "dl1": "10/06/2026",
       "dl2": "",
       "dl3": "",
       "st": "Em andamento",
       "color": "#1B6EF3",
       "farol": "prazo",
-      "jira": "",
-      "jl": ""
+      "jira": "/projects/FD/boards/1712",
+      "jl": "FD-1712",
+      "owner": "Jara",
+      "dl1_done": false,
+      "dl2_done": false,
+      "dl3_done": false
     },
     {
       "id": "terminal",
       "name": "Terminal LATAM",
-      "pct": 85,
-      "dl1": "31/05",
+      "pct": 90,
+      "dl1": "10/06/2026",
       "dl2": "",
       "dl3": "",
       "dl1_done": false,
@@ -27,14 +31,15 @@
       "dl3_done": false,
       "st": "Em andamento",
       "color": "#0891B2",
-      "farol": "atencao",
-      "jira": "/projects/PDTL",
-      "jl": "PDTL"
+      "farol": "prazo",
+      "jira": "/projects/FD/boards/1611",
+      "jl": "FD-1611",
+      "owner": "Jara"
     },
     {
       "id": "screener",
       "name": "Screener",
-      "pct": 3,
+      "pct": 7,
       "dl1": "05/10",
       "dl2": "",
       "dl3": "",
@@ -43,14 +48,15 @@
       "dl3_done": false,
       "st": "Em andamento",
       "color": "#6D28D9",
-      "farol": "perigo",
-      "jira": "",
-      "jl": ""
+      "farol": "prazo",
+      "jira": "/projects/FD/boards/2223",
+      "jl": "FD-2223",
+      "owner": "Jara"
     },
     {
       "id": "openmeter",
       "name": "OpenMeter",
-      "pct": 20,
+      "pct": 37,
       "dl1": "07/07",
       "dl2": "",
       "dl3": "",
@@ -59,9 +65,10 @@
       "dl3_done": false,
       "st": "Em andamento",
       "color": "#7C3AED",
-      "farol": "perigo",
-      "jira": "/browse/PDT-641",
-      "jl": "PDT-641"
+      "farol": "prazo",
+      "jira": "/browse/PDT-639",
+      "jl": "PDT-639",
+      "owner": "Rey"
     },
     {
       "id": "fenics",
@@ -75,25 +82,10 @@
       "dl3_done": false,
       "st": "Em validação",
       "color": "#EA580C",
-      "farol": "atencao",
-      "jira": "/projects/FMD2",
-      "jl": "FMD2"
-    },
-    {
-      "id": "datalake",
-      "name": "Data Lake",
-      "pct": 20,
-      "dl1": "30/09",
-      "dl2": "",
-      "dl3": "",
-      "dl1_done": false,
-      "dl2_done": false,
-      "dl3_done": false,
-      "st": "Em andamento",
-      "color": "#2563EB",
-      "farol": "perigo",
+      "farol": "prazo",
       "jira": "",
-      "jl": ""
+      "jl": "",
+      "owner": "Jara"
     },
     {
       "id": "a5x",
@@ -107,9 +99,27 @@
       "dl3_done": false,
       "st": "Em andamento",
       "color": "#059669",
-      "farol": "perigo",
+      "farol": "prazo",
       "jira": "",
-      "jl": ""
+      "jl": "",
+      "owner": "Rey"
+    },
+    {
+      "id": "datalake",
+      "name": "Data Lake",
+      "pct": 20,
+      "dl1": "30/09",
+      "dl2": "",
+      "dl3": "",
+      "dl1_done": false,
+      "dl2_done": false,
+      "dl3_done": false,
+      "st": "Em andamento",
+      "color": "#2563EB",
+      "farol": "prazo",
+      "jira": "",
+      "jl": "",
+      "owner": "Rey"
     },
     {
       "id": "otc",
@@ -124,8 +134,9 @@
       "st": "Em andamento",
       "color": "#1B6EF3",
       "farol": "prazo",
-      "jira": "/projects/FD",
-      "jl": "FD"
+      "jira": "/projects/FD/boards/1181",
+      "jl": "FD-1181",
+      "owner": "Opus"
     },
     {
       "id": "faq",
@@ -140,8 +151,9 @@
       "st": "Em andamento",
       "color": "#0891B2",
       "farol": "prazo",
-      "jira": "/projects/CHBOTEV",
-      "jl": "CHBOTEV"
+      "jira": "/projects/FD/boards/1181",
+      "jl": "FD-1181",
+      "owner": "Opus"
     },
     {
       "id": "chat",
@@ -156,27 +168,66 @@
       "st": "Em andamento",
       "color": "#BE185D",
       "farol": "prazo",
-      "jira": "/projects/CHBOTEV",
-      "jl": "CHBOTEV"
+      "jira": "/projects/FD/boards/1181",
+      "jl": "FD-1181",
+      "owner": "Opus"
     },
     {
       "id": "fundos",
       "name": "Novo Fundos",
       "pct": 95,
-      "dl1": "",
-      "dl2": "",
+      "dl1": "17/04/2026",
+      "dl2": "03/06/2026",
       "dl3": "",
       "st": "Em andamento",
       "color": "#CA8A04",
-      "farol": "atencao",
-      "jira": "/projects/FD",
-      "jl": "FD"
+      "farol": "prazo",
+      "jira": "/projects/FD/boards/1181",
+      "jl": "FD-1181",
+      "owner": "Opus",
+      "dl1_done": true,
+      "dl2_done": false,
+      "dl3_done": false
+    },
+    {
+      "id": "novo",
+      "name": "Processos - Process News",
+      "pct": 100,
+      "dl1": "21/05/2026",
+      "dl2": "",
+      "dl3": "",
+      "st": "Concluído",
+      "color": "#1B6EF3",
+      "farol": "prazo",
+      "jira": "/projects/PRC/boards/982",
+      "jl": "PRC-982",
+      "owner": "Natan",
+      "dl1_done": false,
+      "dl2_done": false,
+      "dl3_done": false
+    },
+    {
+      "id": "novo",
+      "name": "Processos - Portal de Processos v1.0",
+      "pct": 95,
+      "dl1": "01/06/2026",
+      "dl2": "08/06/2026",
+      "dl3": "",
+      "st": "Em andamento",
+      "color": "#1B6EF3",
+      "farol": "prazo",
+      "jira": "/projects/PRC/boards/982",
+      "jl": "PRC-982",
+      "dl1_done": true,
+      "owner": "Natan",
+      "dl2_done": false,
+      "dl3_done": false
     },
     {
       "id": "itsm",
-      "name": "Implantação ITSM",
-      "pct": 80,
-      "dl1": "26/06/2026",
+      "name": "Processos - Implantação ITSM",
+      "pct": 90,
+      "dl1": "03/07/2026",
       "dl2": "",
       "dl3": "",
       "dl1_done": false,
@@ -184,77 +235,119 @@
       "dl3_done": false,
       "st": "Em andamento",
       "color": "#16A34A",
+      "farol": "atencao",
+      "jira": "/projects/PRC/boards/982",
+      "jl": "PRC-982",
+      "owner": "Natan"
+    },
+    {
+      "id": "novo",
+      "name": "Processos - Reestrut Issues Jira",
+      "pct": 5,
+      "dl1": "31/08/2026",
+      "dl2": "",
+      "dl3": "",
+      "st": "Em andamento",
+      "color": "#1B6EF3",
       "farol": "prazo",
-      "jira": "/projects/II",
-      "jl": "II"
+      "jira": "/projects/PRC/boards/982",
+      "jl": "PRC-982",
+      "owner": "Natan",
+      "dl1_done": false,
+      "dl2_done": false,
+      "dl3_done": false
     }
   ],
   "panels": {
     "otc": {
       "title": "OTC — Clientes",
-      "subtitle": "",
+      "subtitle": "4 instâncias · projeto FD",
       "groups": [
+        {
+          "label": "OTC - Bradesco",
+          "tasks": [
+            {
+              "task": "[Bradesco] Alteração na solicitação de Access Token para múltiplas contas",
+              "dl": "",
+              "st": "Em andamento",
+              "pct": 50,
+              "resp": "Opus",
+              "jira": "/browse/FD-5862",
+              "jl": "FD-5862"
+            }
+          ]
+        },
         {
           "label": "OTC - Fibra",
           "tasks": [
             {
               "task": "[Fibra] Disponibilizar API SPOT",
               "dl": "03/06/2026",
-              "st": "Em andamento",
-              "pct": 75,
-              "resp": "",
-              "jira": "https://jiracloudae.atlassian.net/browse/FD-5512",
-              "jl": "FD-5512",
-              "obs": ""
+              "st": "Aguard. deploy",
+              "pct": 100,
+              "resp": "Opus",
+              "jira": "/browse/FD-5512",
+              "jl": "FD-5512"
             },
             {
               "task": "[Fibra] Ajuste na regra ao habilitar o botão \"Próximo\" ao resetar senha",
               "dl": "03/06/2026",
-              "st": "Em andamento",
-              "pct": 75,
-              "resp": "",
+              "st": "Aguard. deploy",
+              "pct": 100,
+              "resp": "Opus",
               "jira": "/browse/FD-5686",
               "jl": "FD-5686"
             },
             {
-              "task": "[Fibra] Ajuste na pop-up \"Sobre\"",
+              "task": "[Fibra] Ajuste na pop-up \"Sobre\".",
               "dl": "03/06/2026",
-              "st": "Em andamento",
-              "pct": 75,
-              "resp": "",
+              "st": "Aguard. deploy",
+              "pct": 100,
+              "resp": "Opus",
               "jira": "/browse/FD-5688",
               "jl": "FD-5688"
             },
             {
               "task": "[Fibra] Integração exChange",
-              "dl": "",
+              "dl": "17/06/2026",
               "st": "Em andamento",
-              "pct": 25,
-              "resp": "",
-              "jira": "/projects/FD-5080",
+              "pct": 50,
+              "resp": "Opus",
+              "jira": "/browse/FD-5080",
               "jl": "FD-5080"
             },
             {
               "task": "[Fibra] Ajuste Identidade Visual",
               "dl": "",
+              "st": "Pausado",
+              "pct": 25,
+              "resp": "Opus",
+              "jira": "/browse/FD-5697",
+              "jl": "FD-5697",
+              "obs": "Despriorizada"
+            },
+            {
+              "task": "[Fibra] Liberação de outras moedas para negociação em D+0",
+              "dl": "",
               "st": "Em andamento",
               "pct": 25,
-              "resp": "",
-              "jira": "/browse/FD-5697",
-              "jl": "FD-5697"
+              "resp": "Opus",
+              "jira": "/browse/FD-5976",
+              "jl": "FD-5976",
+              "obs": ""
             }
           ]
         },
         {
-          "label": "OTC - BV",
+          "label": "OTC - Banco BV",
           "tasks": [
             {
               "task": "[B.V] Permitir a gestão de Moedas por instrumento | NDF Mesa",
               "dl": "17/06/2026",
               "st": "Em andamento",
               "pct": 50,
-              "resp": "",
-              "jira": "https://jiracloudae.atlassian.net/browse/FD-4160",
+              "resp": "Opus",
+              "jira": "/browse/FD-4160",
               "jl": "FD-4160"
             },
             {
@@ -262,45 +355,51 @@
               "dl": "17/06/2026",
               "st": "Em andamento",
               "pct": 50,
-              "resp": "",
-              "jira": "https://jiracloudae.atlassian.net/browse/FD-4923",
-              "jl": "FD-4923",
-              "obs": ""
+              "resp": "Opus",
+              "jira": "/browse/FD-4923",
+              "jl": "FD-4923"
             },
             {
               "task": "[B.V] Padronização do Modelo de Pop-up e Mensagens da Cotação | Cotação via Mesa",
               "dl": "",
+              "st": "Pausado",
+              "pct": 50,
+              "resp": "Opus",
+              "jira": "/browse/FD-4742",
+              "jl": "FD-4742",
+              "obs": "Aguardando atualização da planilha"
+            },
+            {
+              "task": "[B.V] Ordem com status incorreto quando sessão é encerrada",
+              "dl": "",
               "st": "Em andamento",
               "pct": 50,
-              "resp": "",
-              "jira": "https://jiracloudae.atlassian.net/browse/FD-4742",
-              "jl": "FD-4742",
-              "obs": ""
+              "resp": "Opus",
+              "jira": "/browse/FD-5857",
+              "jl": "FD-5857"
             }
           ]
         },
         {
-          "label": "OTC Sofisa",
+          "label": "OTC - Sofisa",
           "tasks": [
             {
               "task": "[Sofisa] Alternar cálculo de Spread entre Percentual (%) e BPS no Painel de Tesouraria",
               "dl": "03/06/2026",
-              "st": "Em andamento",
-              "pct": 95,
-              "resp": "",
-              "jira": "https://jiracloudae.atlassian.net/browse/FD-2864",
-              "jl": "FD-2864",
-              "obs": ""
+              "st": "Aguard. deploy",
+              "pct": 100,
+              "resp": "Opus",
+              "jira": "/browse/FD-2864",
+              "jl": "FD-2864"
             },
             {
-              "task": "[Sofisa] BPs | Incluir a visualização dos Bps no histórico e resumo da ordem",
+              "task": "[Sofisa] BPs| Incluir a visualização dos Bps no histórico e resumo da ordem",
               "dl": "03/06/2026",
               "st": "Em andamento",
-              "pct": 75,
-              "resp": "",
-              "jira": "https://jiracloudae.atlassian.net/browse/FD-5337",
-              "jl": "FD-5337",
-              "obs": ""
+              "pct": 100,
+              "resp": "Opus",
+              "jira": "/browse/FD-5337",
+              "jl": "FD-5337"
             }
           ]
         },
@@ -308,54 +407,44 @@
           "label": "OTC - Broadcast",
           "tasks": [
             {
-              "task": "Permitir a abertura de boletas simultâneas | Novo menu de negociação",
-              "dl": "20/05/2026",
-              "st": "Concluído",
-              "pct": 100,
-              "resp": "",
-              "jira": "https://jiracloudae.atlassian.net/browse/FD-4712",
-              "jl": "FD-4712",
-              "obs": ""
-            },
-            {
-              "task": "Leaks em uso do motor no Painel de Tesouraria",
-              "dl": "20/05/2026",
-              "st": "Concluído",
-              "pct": 100,
-              "resp": "",
-              "jira": "https://jiracloudae.atlassian.net/browse/FD-5525",
-              "jl": "FD-5525",
-              "obs": ""
-            },
-            {
               "task": "Segregação da Base de Dados das Instâncias OTC (Back-end)",
               "dl": "",
-              "st": "Pausado",
+              "st": "Em andamento",
               "pct": 50,
-              "resp": "",
-              "jira": "https://jiracloudae.atlassian.net/browse/FD-4543",
+              "resp": "Opus",
+              "jira": "/browse/FD-4543",
               "jl": "FD-4543",
               "obs": "Aguardando liberação do ambiente de teste"
             },
             {
               "task": "Correção de redirecionamento de página | Google Analytics",
               "dl": "03/06/2026",
-              "st": "Em andamento",
-              "pct": 75,
-              "resp": "",
-              "jira": "https://jiracloudae.atlassian.net/browse/FD-5724",
+              "st": "Aguard. deploy",
+              "pct": 100,
+              "resp": "Opus",
+              "jira": "/browse/FD-5724",
               "jl": "FD-5724",
               "obs": ""
             },
             {
-              "task": "Análise de intermitência no acionamento do som ao preencher a boleta.",
+              "task": "[Broadcast OTC] Análise de intermitência no acionamento do som ao preencher a boleta.",
               "dl": "03/06/2026",
-              "st": "Em andamento",
-              "pct": 75,
-              "resp": "",
-              "jira": "https://jiracloudae.atlassian.net/browse/FD-5650",
+              "st": "Aguard. deploy",
+              "pct": 100,
+              "resp": "Opus",
+              "jira": "/browse/FD-5650",
               "jl": "FD-5650",
               "obs": ""
+            },
+            {
+              "task": "[NDF] Data de vencimento errada na confirmação de ordem",
+              "dl": "",
+              "st": "Pausado",
+              "pct": 50,
+              "resp": "Opus",
+              "jira": "/browse/FD-5858",
+              "jl": "FD-5858",
+              "obs": "Aguardando liberação do ambiente de teste"
             }
           ]
         }
@@ -445,20 +534,20 @@
             {
               "task": "Instalação e configuração do ambiente (GKE)",
               "dl": "22/05",
-              "st": "Em andamento",
-              "pct": 3,
+              "st": "Concluído",
+              "pct": 100,
               "resp": "",
-              "jira": "/browse/PDT-641",
-              "jl": "PDT-641"
+              "jira": "/browse/PDT-655",
+              "jl": "PDT-655"
             },
             {
               "task": "Parametrização e testes (POC e outras regras)",
               "dl": "12/06",
-              "st": "Não iniciado",
-              "pct": 0,
+              "st": "Em andamento",
+              "pct": 50,
               "resp": "",
-              "jira": "/browse/PDT-642",
-              "jl": "PDT-642"
+              "jira": "/browse/PDT-644",
+              "jl": "PDT-644"
             },
             {
               "task": "Testes HML, Pré-prod e GO-LIVE",
@@ -670,6 +759,84 @@
     },
     "chat": {
       "title": "Chat Bradesco",
+      "subtitle": "",
+      "note": "",
+      "groups": [
+        {
+          "label": "",
+          "tasks": [
+            {
+              "task": "[Bradesco] CHAT -Criação de permissionamento CHAT na BCAA",
+              "dl": "17/06/2026",
+              "st": "Desenvolvido",
+              "pct": 95,
+              "resp": "Opus",
+              "jira": "/browse/FD-4015",
+              "jl": "FD-4015"
+            },
+            {
+              "task": "[Bradesco] CHAT -Parametrização de filas, atendentes e usuários",
+              "dl": "17/06/2026",
+              "st": "Desenvolvido",
+              "pct": 95,
+              "resp": "Opus",
+              "jira": "/browse/FD-4928",
+              "jl": "FD-4928"
+            },
+            {
+              "task": "[Bradesco] CHAT -Fila de atendimento",
+              "dl": "17/06/2026",
+              "st": "Impedido",
+              "pct": 80,
+              "resp": "Opus",
+              "jira": "/browse/FD-4929",
+              "jl": "FD-4929",
+              "obs": "Aguardando API de Criação de Atendimento — Bradesco"
+            },
+            {
+              "task": "[Bradesco] CHAT -Comunicação via Chat",
+              "dl": "17/06/2026",
+              "st": "Desenvolvido",
+              "pct": 95,
+              "resp": "Opus",
+              "jira": "/browse/FD-4930",
+              "jl": "FD-4930"
+            },
+            {
+              "task": "[Bradesco] CHAT -Gestão do atendimento + Integração Easytrade",
+              "dl": "17/06/2026",
+              "st": "Desenvolvido",
+              "pct": 95,
+              "resp": "Opus",
+              "jira": "/browse/FD-4931",
+              "jl": "FD-4931"
+            },
+            {
+              "task": "[Bradesco] CHAT -Auditoria, Segurança e Conformidade",
+              "dl": "17/06/2026",
+              "st": "Impedido",
+              "pct": 50,
+              "resp": "Opus",
+              "jira": "/browse/FD-4932",
+              "jl": "FD-4932",
+              "obs": "Aguardando API de –atualização do back-up - Bradesco"
+            },
+            {
+              "task": "[Bradesco] Mudança estrutural no modelo de atendimento (de Cliente →CNPJ)",
+              "dl": "17/06/2026",
+              "st": "Em andamento",
+              "pct": 75,
+              "resp": "Opus",
+              "jira": "/browse/FD-5396",
+              "jl": "FD-5396",
+              "obs": ""
+            }
+          ]
+        }
+      ]
+    },
+    "faq": {
+      "title": "FAQ Bradesco",
       "subtitle": "Prazo: 29/05 · projeto CHBOTEV",
       "note": "",
       "groups": [
@@ -677,127 +844,51 @@
           "label": "",
           "tasks": [
             {
-              "task": "[Bradesco] CHAT - Criação de permissionamento CHAT na BCAA",
+              "task": "[Bradesco] FAQ -Criação de permissionamento FAQ na BCAA.)",
               "dl": "03/06/2026",
-              "st": "Em andamento",
-              "pct": 95,
-              "resp": "",
-              "jira": "/projects/CHBOTEV",
-              "jl": "CHBOTEV"
-            },
-            {
-              "task": "[Bradesco] CHAT - Parametrização de filas, atendentes e usuários",
-              "dl": "03/06/2026",
-              "st": "Desenvolvido",
-              "pct": 95,
-              "resp": "",
-              "jira": "/projects/CHBOTEV",
-              "jl": "CHBOTEV"
-            },
-            {
-              "task": "[Bradesco] CHAT - Fila de atendimento",
-              "dl": "03/06/2026",
-              "st": "Impedido",
-              "pct": 80,
-              "resp": "",
-              "jira": "/projects/CHBOTEV",
-              "jl": "CHBOTEV",
-              "obs": "Aguardando API de Criação de Atendimento — Bradesco"
-            },
-            {
-              "task": "[Bradesco] CHAT - Comunicação via Chat",
-              "dl": "03/06/2026",
-              "st": "Desenvolvido",
-              "pct": 95,
-              "resp": "",
-              "jira": "/projects/CHBOTEV",
-              "jl": "CHBOTEV"
-            },
-            {
-              "task": "[Bradesco] CHAT - Gestão do atendimento + Integração Easytrade",
-              "dl": "03/06/2026",
-              "st": "Em andamento",
-              "pct": 80,
-              "resp": "",
-              "jira": "/projects/CHBOTEV",
-              "jl": "CHBOTEV"
-            },
-            {
-              "task": "[Bradesco] CHAT - Auditoria, Segurança e Conformidade",
-              "dl": "03/06/2026",
-              "st": "Impedido",
-              "pct": 50,
-              "resp": "",
-              "jira": "/projects/CHBOTEV",
-              "jl": "CHBOTEV",
-              "obs": "Aguardando API de –atualização do back-up - Bradesco"
-            },
-            {
-              "task": "[Bradesco] Mudança estrutural no modelo de atendimento (de Cliente →CNPJ)",
-              "dl": "03/06/2026",
-              "st": "Em andamento",
-              "pct": 50,
-              "resp": "",
-              "jira": "/projects/CHBOTEV",
-              "jl": "CHBOTEV"
-            }
-          ]
-        }
-      ]
-    },
-    "faq": {
-      "title": "Bradesco - FAQ",
-      "subtitle": "Prazo: 29/05 · projeto CHBOTEV",
-      "note": "⚠️ Entrega após finalização do Chat (prevista para 27/05)",
-      "groups": [
-        {
-          "label": "",
-          "tasks": [
-            {
-              "task": "[Bradesco] FAQ - Criação de permissionamento FAQ na BCAA.)",
-              "dl": "03/06/2026",
-              "st": "Homologado",
-              "pct": 95,
-              "resp": "",
-              "jira": "https://jiracloudae.atlassian.net/browse/FD-3991",
+              "st": "Aguard. deploy",
+              "pct": 100,
+              "resp": "Opus",
+              "jira": "/browse/FD-3991",
               "jl": "FD-3991"
             },
             {
               "task": "[Bradesco] FAQ -Cadastro do FAQ",
               "dl": "03/06/2026",
-              "st": "Homologado",
-              "pct": 95,
-              "resp": "",
-              "jira": "https://jiracloudae.atlassian.net/browse/FD-4366",
+              "st": "Aguard. deploy",
+              "pct": 100,
+              "resp": "Opus",
+              "jira": "/browse/FD-4366",
               "jl": "FD-4366"
             },
             {
               "task": "[Bradesco] FAQ -Widget de Pesquisa",
               "dl": "03/06/2026",
-              "st": "Homologado",
-              "pct": 95,
-              "resp": "",
-              "jira": "https://jiracloudae.atlassian.net/browse/FD-4372",
+              "st": "Aguard. deploy",
+              "pct": 100,
+              "resp": "Opus",
+              "jira": "/browse/FD-4372",
               "jl": "FD-4372"
             },
             {
-              "task": "[Bradesco] FAQ - Histórico de Consultas",
+              "task": "[Bradesco] FAQ -Histórico de Consultas",
               "dl": "03/06/2026",
-              "st": "Homologado",
-              "pct": 95,
-              "resp": "",
-              "jira": "https://jiracloudae.atlassian.net/browse/FD-4375",
-              "jl": "FD-4375"
+              "st": "Aguard. deploy",
+              "pct": 100,
+              "resp": "Opus",
+              "jira": "/browse/FD-4375",
+              "jl": "FD-4375",
+              "obs": ""
             },
             {
-              "task": "[Bradesco] FAQ - Integração com Chat de Atendimento",
-              "dl": "03/06/2026",
+              "task": "[Bradesco] FAQ -Integração com Chat de Atendimento",
+              "dl": "",
               "st": "Pausado",
               "pct": 0,
-              "resp": "",
-              "jira": "https://jiracloudae.atlassian.net/browse/FD-4376",
+              "resp": "Opus",
+              "jira": "/browse/FD-4376",
               "jl": "FD-4376",
-              "obs": "Entrega será realizada após finalização do projeto do Chat"
+              "obs": "Entrega será realizada após finalização do projeto do Chat (prevista para 17/06)"
             }
           ]
         }
@@ -811,13 +902,33 @@
           "label": "",
           "tasks": [
             {
-              "task": "[Visão geral - Lamina] - Gráfico Underwater e recuperação confundem 0 com dados nulos",
-              "dl": "",
-              "st": "Desenvolvido",
+              "task": "[Visão geral -Lamina] -Gráfico Underwatere recuperação confundem 0 com dados nulos",
+              "dl": "03/06/2026",
+              "st": "Aguard. deploy",
               "pct": 100,
-              "resp": "",
-              "jira": "https://jiracloudae.atlassian.net/browse/FD-5583",
+              "resp": "Opus",
+              "jira": "/browse/FD-5583",
               "jl": "FD-5583"
+            },
+            {
+              "task": "[Screnner] Ajuste de atraso de dia na visualização de data na tabela do screnner",
+              "dl": "03/06/2026",
+              "st": "Aguard. deploy",
+              "pct": 100,
+              "resp": "Opus",
+              "jira": "/browse/FD-5947",
+              "jl": "FD-5947",
+              "obs": "Cancelado devido a limitações de back-end"
+            },
+            {
+              "task": "[Visão geral -hierarquia] Ocultar dados ausentes na classe mãe",
+              "dl": "",
+              "st": "Em andamento",
+              "pct": 50,
+              "resp": "Opus",
+              "jira": "/browse/FD-6019",
+              "jl": "FD-6019",
+              "obs": ""
             }
           ]
         }
@@ -834,7 +945,7 @@
             {
               "task": "[Broadcast Screener] - Carga de Dados",
               "dl": "",
-              "st": "Em andamento",
+              "st": "Refinamento",
               "pct": 0,
               "resp": "",
               "jira": "",
@@ -854,7 +965,7 @@
             {
               "task": "[Broadcast Screener] - Menu de Coluna",
               "dl": "",
-              "st": "Em andamento",
+              "st": "Em definição",
               "pct": 0,
               "resp": "",
               "jira": "",
@@ -862,9 +973,9 @@
               "obs": ""
             },
             {
-              "task": "  [Broadcast Screener] - Menu de Contexto da Célula",
+              "task": "[Broadcast Screener] - Menu de Contexto da Célula",
               "dl": "",
-              "st": "Em andamento",
+              "st": "Em definição",
               "pct": 0,
               "resp": "",
               "jira": "",
@@ -874,7 +985,7 @@
             {
               "task": "  [Broadcast Screener] - Status Bar",
               "dl": "",
-              "st": "Em andamento",
+              "st": "Em definição",
               "pct": 0,
               "resp": "",
               "jira": "",
@@ -884,7 +995,7 @@
             {
               "task": "[Broadcast Screener] - Persistência",
               "dl": "",
-              "st": "Em andamento",
+              "st": "Em definição",
               "pct": 0,
               "resp": "",
               "jira": "",
@@ -894,9 +1005,243 @@
             {
               "task": "[Broadcast Screener] - Feedback In-App",
               "dl": "",
-              "st": "Em andamento",
+              "st": "Em definição",
               "pct": 0,
               "resp": "",
+              "jira": "",
+              "jl": "",
+              "obs": ""
+            }
+          ]
+        }
+      ]
+    },
+    "novo": {
+      "title": "Processos - Reestrut Issues Jira",
+      "subtitle": "",
+      "note": "",
+      "groups": [
+        {
+          "label": "Épicos",
+          "tasks": [
+            {
+              "task": "Levantamentos dos campos",
+              "dl": "",
+              "st": "Em andamento",
+              "pct": 0,
+              "resp": "Natan",
+              "jira": "",
+              "jl": "",
+              "obs": ""
+            }
+          ]
+        },
+        {
+          "label": "Histórias",
+          "tasks": [
+            {
+              "task": "Levantamentos dos campos",
+              "dl": "",
+              "st": "Em andamento",
+              "pct": 0,
+              "resp": "Natan",
+              "jira": "",
+              "jl": "",
+              "obs": ""
+            }
+          ]
+        },
+        {
+          "label": "Bugs",
+          "tasks": [
+            {
+              "task": "Levantamentos dos campos",
+              "dl": "",
+              "st": "Em andamento",
+              "pct": 0,
+              "resp": "Natan",
+              "jira": "",
+              "jl": "",
+              "obs": ""
+            }
+          ]
+        },
+        {
+          "label": "Tarefas",
+          "tasks": [
+            {
+              "task": "Levantamentos dos campos",
+              "dl": "",
+              "st": "Em andamento",
+              "pct": 0,
+              "resp": "Natan",
+              "jira": "",
+              "jl": "",
+              "obs": ""
+            }
+          ]
+        },
+        {
+          "label": "Worflows",
+          "tasks": [
+            {
+              "task": "Mapeamentos dos Workflows",
+              "dl": "",
+              "st": "Não iniciado",
+              "pct": 0,
+              "resp": "",
+              "jira": "",
+              "jl": "",
+              "obs": ""
+            }
+          ]
+        }
+      ]
+    },
+    "NT": {
+      "title": "Novo Terminal V7.6.2",
+      "subtitle": "",
+      "note": "",
+      "groups": [
+        {
+          "label": "AddIn",
+          "tasks": [
+            {
+              "task": "Trata lista de arquivos vencidos",
+              "dl": "10/06/2026",
+              "st": "Em andamento",
+              "pct": 90,
+              "resp": "Jara",
+              "jira": "",
+              "jl": "",
+              "obs": ""
+            },
+            {
+              "task": "Planilha trava e fecha no NT",
+              "dl": "10/06/2026",
+              "st": "Em andamento",
+              "pct": 90,
+              "resp": "Jara",
+              "jira": "",
+              "jl": "",
+              "obs": ""
+            },
+            {
+              "task": "Brago não loga - Permissão não encontrada",
+              "dl": "10/06/2026",
+              "st": "Em andamento",
+              "pct": 90,
+              "resp": "Jara",
+              "jira": "",
+              "jl": "",
+              "obs": ""
+            },
+            {
+              "task": "Altera porta do suplemento",
+              "dl": "10/06/2026",
+              "st": "Em andamento",
+              "pct": 90,
+              "resp": "Jara",
+              "jira": "",
+              "jl": "",
+              "obs": ""
+            },
+            {
+              "task": "Problemas com separado de decimal",
+              "dl": "10/06/2026",
+              "st": "Em andamento",
+              "pct": 90,
+              "resp": "Jara",
+              "jira": "",
+              "jl": "",
+              "obs": ""
+            }
+          ]
+        },
+        {
+          "label": "Trademate",
+          "tasks": [
+            {
+              "task": "Sincronismo da boleta",
+              "dl": "10/06/2026",
+              "st": "Em andamento",
+              "pct": 90,
+              "resp": "Jara",
+              "jira": "",
+              "jl": "",
+              "obs": ""
+            },
+            {
+              "task": "Persistir coluna",
+              "dl": "10/06/2026",
+              "st": "Em andamento",
+              "pct": 90,
+              "resp": "Jara",
+              "jira": "",
+              "jl": "",
+              "obs": ""
+            },
+            {
+              "task": "Campo PU monitor de ordem",
+              "dl": "10/06/2026",
+              "st": "Em andamento",
+              "pct": 90,
+              "resp": "Jara",
+              "jira": "",
+              "jl": "",
+              "obs": ""
+            },
+            {
+              "task": "Configuração de mesa padrão e exibição de confirmação de ordem",
+              "dl": "10/06/2026",
+              "st": "Em andamento",
+              "pct": 90,
+              "resp": "Jara",
+              "jira": "",
+              "jl": "",
+              "obs": ""
+            }
+          ]
+        },
+        {
+          "label": "Terminal",
+          "tasks": [
+            {
+              "task": "Contorno das Janelas",
+              "dl": "10/06/2026",
+              "st": "Em andamento",
+              "pct": 90,
+              "resp": "Jara",
+              "jira": "",
+              "jl": "",
+              "obs": ""
+            },
+            {
+              "task": "Duration Calculadora Renda Fixa",
+              "dl": "10/06/2026",
+              "st": "Em andamento",
+              "pct": 90,
+              "resp": "Jara",
+              "jira": "",
+              "jl": "",
+              "obs": ""
+            },
+            {
+              "task": "TradingView - Não muda estilo do grafico para dollar e moeda",
+              "dl": "10/06/2026",
+              "st": "Em andamento",
+              "pct": 90,
+              "resp": "Jara",
+              "jira": "",
+              "jl": "",
+              "obs": ""
+            },
+            {
+              "task": "Alteração da porta de conexão da ferramenta web",
+              "dl": "10/06/2026",
+              "st": "Em andamento",
+              "pct": 90,
+              "resp": "Jara",
               "jira": "",
               "jl": "",
               "obs": ""
@@ -910,8 +1255,8 @@
     {
       "title": "Datafeed",
       "color": "#16A34A",
-      "jira": "/projects/FD",
-      "jl": "FD",
+      "jira": "",
+      "jl": "",
       "items": [
         "Phaseout do antigo datafeed",
         "Reestruturação de processos (ambiente QA, processo deploy, relatório de incidentes)",
@@ -921,7 +1266,7 @@
     },
     {
       "title": "Notícias",
-      "color": "#0891B2",
+      "color": "#16A34A",
       "jira": "",
       "jl": "",
       "items": [
@@ -931,7 +1276,7 @@
     },
     {
       "title": "Newsletter & Wallboard",
-      "color": "#1B6EF3",
+      "color": "#16A34A",
       "jira": "",
       "jl": "",
       "items": [
@@ -942,38 +1287,28 @@
     },
     {
       "title": "Arquitetura OTC",
-      "color": "#7C3AED",
-      "jira": "/browse/FD-5450",
-      "jl": "FD-5450",
+      "color": "#16A34A",
+      "jira": "",
+      "jl": "",
       "items": [
         "Deploy — 100%",
         "Segregação de BD — Em andamento 50%",
-        "Monitoramento Funcional, Técnico e Infra",
-        "Redundância ativo multicloud",
+        "Monitoramento Funcional, Técnico e Infra - Em andamento",
+        "Redundância ativo multicloud - Em andamento",
         "SDK / Barramento OTC / API — Não iniciado"
       ]
     },
     {
       "title": "Sydle Comercial",
-      "color": "#CA8A04",
-      "jira": "/projects/SIS",
-      "jl": "SIS",
+      "color": "#16A34A",
+      "jira": "/jira/software/c/projects/FSI/boards/124",
+      "jl": "Board 124",
       "items": [
         "Gestão de Oportunidades — Concluído",
         "Gestão de Tickets — Concluído",
         "Gestão de Contratos — Concluído",
         "Remuneração Variável — Concluído",
         "Agenda — Concluído"
-      ]
-    },
-    {
-      "title": "Screener & A5X",
-      "color": "#DC2626",
-      "jira": "",
-      "jl": "",
-      "items": [
-        "A5X — Em andamento (prazo 30/09, 3%)",
-        "Screener — Em andamento (prazo 05/10, 3%)"
       ]
     }
   ]
