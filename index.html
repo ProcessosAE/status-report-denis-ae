@@ -1576,9 +1576,23 @@ dropArea.addEventListener('dragleave',()=>dropArea.style.borderColor='');
 dropArea.addEventListener('drop',e=>{ e.preventDefault();dropArea.style.borderColor=''; const f=e.dataTransfer.files[0]; if(f){const r=new FileReader();r.onload=ev=>loadFromJSON(ev.target.result);r.readAsText(f);} });
 
 /* ══ INIT ══ */
-/* Dados carregados do HTML local. Use ✏️ → Importar JSON para carregar do GitHub */
-renderAll();
-startEditor();
+/* Fetch automático do GitHub — só substitui DATA se JSON for completo e válido */
+(async function(){
+  try{
+    const res = await fetch('https://processosae.github.io/status-report-denis-ae/data.json?_='+Date.now());
+    if(!res.ok) throw new Error('HTTP '+res.status);
+    const txt = await res.text();
+    const json = JSON.parse(txt);
+    if(!json||!Array.isArray(json.projects)||json.projects.length===0) throw new Error('sem projetos');
+    if(!json.panels||Object.keys(json.panels).length===0) throw new Error('sem painéis');
+    DATA = json;
+    console.log('✅ GitHub: '+json.projects.length+' projetos carregados');
+  } catch(e){
+    console.warn('⚠️ Dados locais:', e.message);
+  }
+  renderAll();
+  startEditor();
+})();
 </script>
 </body>
 </html>
