@@ -187,19 +187,6 @@
       "farol": "prazo",
       "jira": "/projects/II",
       "jl": "II"
-    },
-    {
-      "id": "novo",
-      "name": "Processos AE",
-      "pct": 60,
-      "dl1": "",
-      "dl2": "",
-      "dl3": "",
-      "st": "Em andamento",
-      "color": "#1B6EF3",
-      "farol": "prazo",
-      "jira": "",
-      "jl": ""
     }
   ],
   "panels": {
@@ -917,118 +904,6 @@
           ]
         }
       ]
-    },
-    "novo": {
-      "title": "Processos AE",
-      "subtitle": "",
-      "note": "",
-      "groups": [
-        {
-          "label": "Portal de Processos",
-          "tasks": [
-            {
-              "task": "Portal de Processos - Lançamento v1",
-              "dl": "29/05/2026",
-              "st": "Em andamento",
-              "pct": 95,
-              "resp": "",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "Portal de Processos - Lançamento v2",
-              "dl": "26/06/2026",
-              "st": "Não iniciado",
-              "pct": 0,
-              "resp": "",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "Portal de Processos - Lançamento v3",
-              "dl": "31/07/2026",
-              "st": "Não iniciado",
-              "pct": 0,
-              "resp": "",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            }
-          ]
-        },
-        {
-          "label": "Reestruturação das Issues Jira",
-          "tasks": [
-            {
-              "task": "Tratamento dos Campos das Histórias",
-              "dl": "",
-              "st": "Em andamento",
-              "pct": 0,
-              "resp": "",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "Tratamento dos Campos dos Epics",
-              "dl": "",
-              "st": "Em andamento",
-              "pct": 0,
-              "resp": "",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "Tratamento dos Campos das Tarefas",
-              "dl": "",
-              "st": "Em andamento",
-              "pct": 0,
-              "resp": "",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "Tratamento dos Campos dos Bugs",
-              "dl": "",
-              "st": "Em andamento",
-              "pct": 0,
-              "resp": "",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "Mapeamento totais dos campos",
-              "dl": "12/06/2026",
-              "st": "Em andamento",
-              "pct": 10,
-              "resp": "",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            }
-          ]
-        },
-        {
-          "label": "Process News",
-          "tasks": [
-            {
-              "task": "Process News - Lançamento",
-              "dl": "21/05/2026",
-              "st": "Concluído",
-              "pct": 100,
-              "resp": "",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            }
-          ]
-        }
-      ]
     }
   },
   "iniciativas": [
@@ -1069,7 +944,7 @@
       "title": "Arquitetura OTC",
       "color": "#7C3AED",
       "jira": "/browse/FD-5450",
-      "jl": "",
+      "jl": "FD-5450",
       "items": [
         "Deploy — 100%",
         "Segregação de BD — Em andamento 50%",
@@ -1082,7 +957,7 @@
       "title": "Sydle Comercial",
       "color": "#CA8A04",
       "jira": "/projects/SIS",
-      "jl": "",
+      "jl": "SIS",
       "items": [
         "Gestão de Oportunidades — Concluído",
         "Gestão de Tickets — Concluído",
