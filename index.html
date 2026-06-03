@@ -23,10 +23,11 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);-we
 
 /* HEADER */
 .hdr{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;padding:0 32px}
-.hdr-in{max-width:1300px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
-.hdr-l{display:flex;align-items:center;gap:14px;flex:1;justify-content:center}
-.htitle{font-size:20px;font-weight:700;text-align:center}
-.hsub{font-size:13px;color:var(--faint);margin-top:2px;text-align:center}
+.hdr-in{max-width:1300px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;position:relative}
+.hdr-l{display:flex;align-items:center;gap:12px}
+.hdr-center{position:absolute;left:50%;transform:translateX(-50%);text-align:center}
+.htitle{font-size:20px;font-weight:700;line-height:1.2}
+.hsub{font-size:13px;color:var(--faint);margin-top:2px}
 .hdr-r{display:flex;align-items:center;gap:10px}
 .bdate{background:var(--accent-lt);color:var(--accent);font-size:15px;font-weight:600;padding:5px 16px;border-radius:20px;font-family:'DM Mono',monospace}
 
@@ -78,6 +79,7 @@ col.c-st  {width:150px;white-space:nowrap}
 col.c-pct {width:140px;white-space:nowrap}
 col.c-jira{width:120px;white-space:nowrap}
 thead th{padding:12px 16px;text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.6px;color:var(--faint);background:var(--surface-2);border-bottom:1px solid var(--border)}
+.th-avg{font-size:13px;font-weight:700;color:var(--accent);text-transform:none;letter-spacing:0;display:block;margin-top:2px}
 tbody tr{border-bottom:1px solid var(--border);transition:background .15s}
 tbody tr:last-child{border-bottom:none}
 tbody tr:hover{background:var(--surface-2)}
@@ -267,8 +269,10 @@ textarea{resize:vertical;min-height:60px}
 <div class="hdr-in">
   <div class="hdr-l">
     <img src="./Logo_Broadcast.png" alt="Broadcast AE" style="height:36px;object-fit:contain">
-    <div style="width:1px;height:24px;background:var(--border);margin:0 4px"></div>
-    <div><div class="htitle">Tecnologia</div><div class="hsub">Status Report Semanal</div></div>
+  </div>
+  <div class="hdr-center">
+    <div class="htitle">Tecnologia</div>
+    <div class="hsub">Status Report Semanal</div>
   </div>
   <div class="hdr-r">
 
@@ -627,9 +631,11 @@ function renderPanel(id,p){
   if(p.note) html+=`<div class="note">${p.note}</div>`;
   p.groups.forEach((g,gi)=>{
     if(g.label) html+=`<div class="ss">${g.label}</div>`;
+    const allPct=g.tasks.map(t=>Math.min(100,Math.max(0,t.pct||0)));
+    const avgPct=allPct.length?Math.round(allPct.reduce((a,b)=>a+b,0)/allPct.length):0;
     html+=`<div class="tw"><table>
       <colgroup><col style="width:28px"><col class="c-task"><col class="c-dl">${hasResp?'<col class="c-resp">':''}<col class="c-st"><col class="c-pct"><col class="c-jira"></colgroup>
-      <thead><tr><th style="width:28px"></th><th>Tarefa</th><th>Prazo</th>${thResp}<th>Status</th><th>%</th><th>Jira</th></tr></thead>
+      <thead><tr><th style="width:28px"></th><th>Tarefa</th><th>Prazo</th>${thResp}<th>Status</th><th>%<span class="th-avg">${avgPct}%</span></th><th>Jira</th></tr></thead>
       <tbody>`;
     g.tasks.forEach((t,ti)=>{
       const isLast = ti===g.tasks.length-1;
@@ -857,55 +863,62 @@ function renderEdProjects(){
         <button class="expand-btn" onclick="event.stopPropagation();toggleProject(this.closest('.proj-item'))">▼</button>
       </div>
       <div class="proj-item-body">
-      <div class="field-row cols4">
+      <div style="display:grid;grid-template-columns:2fr 70px 1fr 90px auto;gap:8px;margin-bottom:8px;align-items:end">
         <div><label>Nome</label><input type="text" value="${p.name}" onchange="updProj(${idx},'name',this.value)"></div>
-        <div><label>% Evolução</label><input type="number" min="0" max="100" value="${p.pct}" onchange="updProj(${idx},'pct',+this.value)"></div>
+        <div><label>%</label><input type="number" min="0" max="100" value="${p.pct}" onchange="updProj(${idx},'pct',+this.value)"></div>
         <div><label>Status</label>
           <select onchange="updProj(${idx},'st',this.value)">
             ${STATUS_LIST.map(s=>`<option value="${s}" ${p.st===s?'selected':''}>${s}</option>`).join('')}
           </select>
         </div>
         <div><label>ID do painel</label><input type="text" value="${p.id}" onchange="updProj(${idx},'id',this.value)"></div>
+        <div><label>Farol</label>
+          <div style="display:flex;gap:4px">
+            ${[['perigo','Perigo','#F85149'],['atencao','Atenção','#D29922'],['prazo','No prazo','#3FB950']].map(([val,lbl,cor])=>`
+            <div style="display:flex;align-items:center;gap:4px;padding:4px 8px;border:1px solid ${(p.farol||'prazo')===val?'var(--accent)':'var(--border)'};border-radius:var(--rs);cursor:pointer;font-size:11px;background:${(p.farol||'prazo')===val?'var(--accent-lt)':'#fff'};color:${(p.farol||'prazo')===val?'var(--accent)':'var(--muted)'}" onclick="updProj(${idx},'farol','${val}');renderEdProjects()">
+              <div style="display:flex;flex-direction:column;gap:2px">
+                <span style="width:7px;height:7px;border-radius:50%;background:${val==='perigo'?cor:'var(--border)'}"></span>
+                <span style="width:7px;height:7px;border-radius:50%;background:${val==='atencao'?cor:'var(--border)'}"></span>
+                <span style="width:7px;height:7px;border-radius:50%;background:${val==='prazo'?cor:'var(--border)'}"></span>
+              </div>${lbl}
+            </div>`).join('')}
+          </div>
+        </div>
       </div>
-      <div class="field-row cols3">
-        <div>
-          <label>Prazo 1</label>
-          <div style="display:flex;align-items:center;gap:6px">
-            <button class="date-display-btn${p.dl1_done?' struck':''}" onclick="openDatePopup('${p.dl1||''}',v=>{updProj(${idx},'dl1',v);renderEdProjects()})">
+      <div style="display:grid;grid-template-columns:repeat(3,1fr) 1fr 1.5fr 0.7fr;gap:8px;margin-bottom:8px;align-items:end">
+        <div><label>Prazo 1</label>
+          <div style="display:flex;align-items:center;gap:4px">
+            <button class="date-display-btn${p.dl1_done?' struck':''}" style="flex:1;font-size:11px;padding:5px 7px" onclick="openDatePopup('${p.dl1||''}',v=>{updProj(${idx},'dl1',v);renderEdProjects()})">
               <span class="cal-icon">📅</span><span>${p.dl1||'—'}</span>
             </button>
-            <label style="display:flex;align-items:center;gap:4px;text-transform:none;letter-spacing:0;font-size:12px;color:var(--muted);cursor:pointer;white-space:nowrap">
-              <input type="checkbox" ${p.dl1_done?'checked':''} onchange="updProj(${idx},'dl1_done',this.checked)" style="width:16px;height:16px;cursor:pointer"> superado
+            <label style="display:flex;align-items:center;gap:3px;text-transform:none;letter-spacing:0;font-size:10px;color:var(--muted);cursor:pointer;white-space:nowrap">
+              <input type="checkbox" ${p.dl1_done?'checked':''} onchange="updProj(${idx},'dl1_done',this.checked)" style="width:12px;height:12px;cursor:pointer"> sup.
             </label>
           </div>
         </div>
-        <div>
-          <label>Prazo 2</label>
-          <div style="display:flex;align-items:center;gap:6px">
-            <button class="date-display-btn${p.dl2_done?' struck':''}" onclick="openDatePopup('${p.dl2||''}',v=>{updProj(${idx},'dl2',v);renderEdProjects()})">
+        <div><label>Prazo 2</label>
+          <div style="display:flex;align-items:center;gap:4px">
+            <button class="date-display-btn${p.dl2_done?' struck':''}" style="flex:1;font-size:11px;padding:5px 7px" onclick="openDatePopup('${p.dl2||''}',v=>{updProj(${idx},'dl2',v);renderEdProjects()})">
               <span class="cal-icon">📅</span><span>${p.dl2||'—'}</span>
             </button>
-            <label style="display:flex;align-items:center;gap:4px;text-transform:none;letter-spacing:0;font-size:12px;color:var(--muted);cursor:pointer;white-space:nowrap">
-              <input type="checkbox" ${p.dl2_done?'checked':''} onchange="updProj(${idx},'dl2_done',this.checked)" style="width:16px;height:16px;cursor:pointer"> superado
+            <label style="display:flex;align-items:center;gap:3px;text-transform:none;letter-spacing:0;font-size:10px;color:var(--muted);cursor:pointer;white-space:nowrap">
+              <input type="checkbox" ${p.dl2_done?'checked':''} onchange="updProj(${idx},'dl2_done',this.checked)" style="width:12px;height:12px;cursor:pointer"> sup.
             </label>
           </div>
         </div>
-        <div>
-          <label>Prazo 3</label>
-          <div style="display:flex;align-items:center;gap:6px">
-            <button class="date-display-btn${p.dl3_done?' struck':''}" onclick="openDatePopup('${p.dl3||''}',v=>{updProj(${idx},'dl3',v);renderEdProjects()})">
+        <div><label>Prazo 3</label>
+          <div style="display:flex;align-items:center;gap:4px">
+            <button class="date-display-btn${p.dl3_done?' struck':''}" style="flex:1;font-size:11px;padding:5px 7px" onclick="openDatePopup('${p.dl3||''}',v=>{updProj(${idx},'dl3',v);renderEdProjects()})">
               <span class="cal-icon">📅</span><span>${p.dl3||'—'}</span>
             </button>
-            <label style="display:flex;align-items:center;gap:4px;text-transform:none;letter-spacing:0;font-size:12px;color:var(--muted);cursor:pointer;white-space:nowrap">
-              <input type="checkbox" ${p.dl3_done?'checked':''} onchange="updProj(${idx},'dl3_done',this.checked)" style="width:16px;height:16px;cursor:pointer"> superado
+            <label style="display:flex;align-items:center;gap:3px;text-transform:none;letter-spacing:0;font-size:10px;color:var(--muted);cursor:pointer;white-space:nowrap">
+              <input type="checkbox" ${p.dl3_done?'checked':''} onchange="updProj(${idx},'dl3_done',this.checked)" style="width:12px;height:12px;cursor:pointer"> sup.
             </label>
           </div>
         </div>
-      </div>
-      <div class="field-row cols3">
-        <div><label>Responsável</label><input type="text" value="${p.owner||''}" placeholder="Nome do responsável" onchange="updProj(${idx},'owner',this.value)"></div>
+        <div><label>Responsável</label><input type="text" value="${p.owner||''}" placeholder="Nome" onchange="updProj(${idx},'owner',this.value)"></div>
         <div><label>Caminho Jira</label><input type="text" value="${p.jira||''}" placeholder="/projects/FD" onchange="updProj(${idx},'jira',this.value)"></div>
-        <div><label>Label Jira</label><input type="text" value="${p.jl||''}" placeholder="FD" onchange="updProj(${idx},'jl',this.value)"></div>
+        <div><label>Label</label><input type="text" value="${p.jl||''}" placeholder="FD" onchange="updProj(${idx},'jl',this.value)"></div>
       </div>
       <!-- cor removida: segue automaticamente o farol (#1) -->
       <div>
