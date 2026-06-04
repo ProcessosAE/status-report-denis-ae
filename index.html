@@ -920,20 +920,7 @@ function renderEdProjects(){
         <div><label>Caminho Jira</label><input type="text" value="${p.jira||''}" placeholder="/projects/FD" onchange="updProj(${idx},'jira',this.value)"></div>
         <div><label>Label</label><input type="text" value="${p.jl||''}" placeholder="FD" onchange="updProj(${idx},'jl',this.value)"></div>
       </div>
-      <!-- cor removida: segue automaticamente o farol (#1) -->
-      <div>
-        <label>Farol</label>
-        <div class="farol-sel">
-          ${[['perigo','Perigo','on-red'],['atencao','Atenção','on-yellow'],['prazo','No prazo','on-green']].map(([val,lbl,cls])=>`
-          <div class="farol-opt ${(p.farol||'prazo')===val?'selected':''}" onclick="updProj(${idx},'farol','${val}');renderEdProjects()">
-            <div class="farol-mini">
-              <span style="${cls==='on-red'?'background:#EF4444':''}"></span>
-              <span style="${cls==='on-yellow'?'background:#F59E0B':''}"></span>
-              <span style="${cls==='on-green'?'background:#22C55E':''}"></span>
-            </div>
-            ${lbl}
-          </div>`).join('')}
-        </div>
+      <!-- farol movido para linha 1 -->
       <div style="margin-top:14px;padding-top:12px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center">
         ${!editorData.panels[p.id] ? `
         <button class="btn btn-success btn-sm" onclick="event.stopPropagation();createPanel('${p.id}','${p.name}')">
