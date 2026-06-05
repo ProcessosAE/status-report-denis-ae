@@ -896,30 +896,44 @@ function renderEdProjects(){
       </div>
       <div style="display:grid;grid-template-columns:repeat(3,1fr) 1fr 1.5fr 0.7fr;gap:8px;margin-bottom:8px;align-items:end">
         <div><label>Prazo 1</label>
-          <input type="text" id="dl1_${idx}" value="${p.dl1||''}" placeholder="DD/MM/AA" maxlength="8"
-            oninput="maskDate(this);updProj(${idx},'dl1',this.value);
-              const d2_${idx}=document.getElementById('dl2_${idx}');
-              if(d2_${idx}) d2_${idx}.disabled=!this.value;
-              if(!this.value){updProj(${idx},'dl2','');updProj(${idx},'dl3','');
-                const d3_${idx}=document.getElementById('dl3_${idx}');
-                if(d2_${idx}) d2_${idx}.value='';
-                if(d3_${idx}){d3_${idx}.value='';d3_${idx}.disabled=true;}
-              }">
+          <div style="display:flex;gap:4px;align-items:center">
+            <input type="text" id="dl1_${idx}" value="${p.dl1||''}" placeholder="DD/MM/AA" maxlength="8" style="flex:1"
+              oninput="maskDate(this);updProj(${idx},'dl1',this.value);
+                const d2a=document.getElementById('dl2_${idx}');
+                if(d2a) d2a.disabled=!this.value;
+                if(!this.value){updProj(${idx},'dl2','');updProj(${idx},'dl3','');
+                  const d3a=document.getElementById('dl3_${idx}');
+                  if(d2a) d2a.value='';
+                  if(d3a){d3a.value='';d3a.disabled=true;}
+                }">
+            <button class="date-display-btn" style="padding:5px 7px;width:auto;flex-shrink:0" title="Selecionar data"
+              onclick="openDatePopup('${p.dl1||''}',v=>{updProj(${idx},'dl1',v);const el=document.getElementById('dl1_${idx}');if(el)el.value=v;const d2=document.getElementById('dl2_${idx}');if(d2)d2.disabled=!v;renderEdProjects()})">📅</button>
+          </div>
         </div>
         <div><label>Prazo 2</label>
-          <input type="text" id="dl2_${idx}" value="${p.dl2||''}" placeholder="DD/MM/AA" maxlength="8"
-            ${!p.dl1?'disabled style="opacity:.4;cursor:not-allowed"':''}
-            oninput="maskDate(this);updProj(${idx},'dl2',this.value);
-              const d3b_${idx}=document.getElementById('dl3_${idx}');
-              if(d3b_${idx}) d3b_${idx}.disabled=!this.value;
-              if(!this.value){updProj(${idx},'dl3','');
-                if(d3b_${idx}){d3b_${idx}.value='';d3b_${idx}.disabled=true;}
-              }">
+          <div style="display:flex;gap:4px;align-items:center">
+            <input type="text" id="dl2_${idx}" value="${p.dl2||''}" placeholder="DD/MM/AA" maxlength="8" style="flex:1"
+              ${!p.dl1?'disabled style="opacity:.4;cursor:not-allowed;flex:1"':''}
+              oninput="maskDate(this);updProj(${idx},'dl2',this.value);
+                const d3b=document.getElementById('dl3_${idx}');
+                if(d3b) d3b.disabled=!this.value;
+                if(!this.value){updProj(${idx},'dl3','');
+                  if(d3b){d3b.value='';d3b.disabled=true;}
+                }">
+            <button class="date-display-btn" style="padding:5px 7px;width:auto;flex-shrink:0" title="Selecionar data"
+              ${!p.dl1?'disabled style="opacity:.4"':''}
+              onclick="openDatePopup('${p.dl2||''}',v=>{updProj(${idx},'dl2',v);const el=document.getElementById('dl2_${idx}');if(el)el.value=v;const d3=document.getElementById('dl3_${idx}');if(d3)d3.disabled=!v;renderEdProjects()})">📅</button>
+          </div>
         </div>
         <div><label>Prazo 3</label>
-          <input type="text" id="dl3_${idx}" value="${p.dl3||''}" placeholder="DD/MM/AA" maxlength="8"
-            ${!p.dl2?'disabled style="opacity:.4;cursor:not-allowed"':''}
-            oninput="maskDate(this);updProj(${idx},'dl3',this.value)">
+          <div style="display:flex;gap:4px;align-items:center">
+            <input type="text" id="dl3_${idx}" value="${p.dl3||''}" placeholder="DD/MM/AA" maxlength="8" style="flex:1"
+              ${!p.dl2?'disabled style="opacity:.4;cursor:not-allowed;flex:1"':''}
+              oninput="maskDate(this);updProj(${idx},'dl3',this.value)">
+            <button class="date-display-btn" style="padding:5px 7px;width:auto;flex-shrink:0" title="Selecionar data"
+              ${!p.dl2?'disabled style="opacity:.4"':''}
+              onclick="openDatePopup('${p.dl3||''}',v=>{updProj(${idx},'dl3',v);const el=document.getElementById('dl3_${idx}');if(el)el.value=v;renderEdProjects()})">📅</button>
+          </div>
         </div>
         <div><label>Responsável</label><input type="text" value="${p.owner||''}" placeholder="Nome" onchange="updProj(${idx},'owner',this.value)"></div>
         <div><label>Caminho Jira</label><input type="text" value="${p.jira||''}" placeholder="/projects/FD" onchange="updProj(${idx},'jira',this.value)"></div>
@@ -1053,18 +1067,27 @@ function openEditCard(idx){
     </div>
     <div class="field-row cols3">
       <div><label>Prazo 1</label>
-        <input type="text" id="eq-dl1" value="${p.dl1||''}" placeholder="DD/MM/AA" maxlength="8"
-          oninput="maskDate(this)" onchange="if(!this.value){document.getElementById('eq-dl2').value='';document.getElementById('eq-dl3').value=''}">
+        <div style="display:flex;gap:4px">
+          <input type="text" id="eq-dl1" value="${p.dl1||''}" placeholder="DD/MM/AA" maxlength="8" style="flex:1"
+            oninput="maskDate(this)" onchange="if(!this.value){document.getElementById('eq-dl2').value='';document.getElementById('eq-dl3').value='';document.getElementById('eq-dl2').disabled=true;document.getElementById('eq-dl3').disabled=true}else{document.getElementById('eq-dl2').disabled=false}">
+          <button class="date-display-btn" style="padding:5px 7px;width:auto" onclick="openDatePopup(document.getElementById('eq-dl1').value||'',v=>{document.getElementById('eq-dl1').value=v;document.getElementById('eq-dl2').disabled=!v})">📅</button>
+        </div>
       </div>
       <div><label>Prazo 2</label>
-        <input type="text" id="eq-dl2" value="${p.dl2||''}" placeholder="DD/MM/AA" maxlength="8"
-          ${!p.dl1?'disabled style="opacity:.4"':''}
-          oninput="maskDate(this)" onchange="if(!this.value) document.getElementById('eq-dl3').value=''">
+        <div style="display:flex;gap:4px">
+          <input type="text" id="eq-dl2" value="${p.dl2||''}" placeholder="DD/MM/AA" maxlength="8" style="flex:1"
+            ${!p.dl1?'disabled style="opacity:.4;flex:1"':''}
+            oninput="maskDate(this)" onchange="if(!this.value){document.getElementById('eq-dl3').value='';document.getElementById('eq-dl3').disabled=true}else{document.getElementById('eq-dl3').disabled=false}">
+          <button class="date-display-btn" style="padding:5px 7px;width:auto" ${!p.dl1?'disabled style="opacity:.4"':''} onclick="openDatePopup(document.getElementById('eq-dl2').value||'',v=>{document.getElementById('eq-dl2').value=v;document.getElementById('eq-dl3').disabled=!v})">📅</button>
+        </div>
       </div>
       <div><label>Prazo 3</label>
-        <input type="text" id="eq-dl3" value="${p.dl3||''}" placeholder="DD/MM/AA" maxlength="8"
-          ${!p.dl2?'disabled style="opacity:.4"':''}
-          oninput="maskDate(this)">
+        <div style="display:flex;gap:4px">
+          <input type="text" id="eq-dl3" value="${p.dl3||''}" placeholder="DD/MM/AA" maxlength="8" style="flex:1"
+            ${!p.dl2?'disabled style="opacity:.4;flex:1"':''}
+            oninput="maskDate(this)">
+          <button class="date-display-btn" style="padding:5px 7px;width:auto" ${!p.dl2?'disabled style="opacity:.4"':''} onclick="openDatePopup(document.getElementById('eq-dl3').value||'',v=>{document.getElementById('eq-dl3').value=v})">📅</button>
+        </div>
       </div>
     </div>
     <div class="eq-footer">
