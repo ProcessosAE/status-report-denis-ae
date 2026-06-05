@@ -832,6 +832,15 @@ function _dpClose(){
   _dpCb=null;
 }
 
+/* ── Máscara DD/MM/AA ── */
+function maskDate(inp){
+  const pos = inp.selectionStart;
+  let v = inp.value.replace(/[^0-9]/g,'');
+  if(v.length > 2) v = v.slice(0,2) + '/' + v.slice(2);
+  if(v.length > 5) v = v.slice(0,5) + '/' + v.slice(5,7);
+  inp.value = v;
+}
+
 function makeDatePicker(label, value, callbackFn, uid){ return ''; } // legacy
 
 function renderEdGeral(){
@@ -888,20 +897,29 @@ function renderEdProjects(){
       <div style="display:grid;grid-template-columns:repeat(3,1fr) 1fr 1.5fr 0.7fr;gap:8px;margin-bottom:8px;align-items:end">
         <div><label>Prazo 1</label>
           <input type="text" id="dl1_${idx}" value="${p.dl1||''}" placeholder="DD/MM/AA" maxlength="8"
-            oninput="maskDate(this);updProj(${idx},'dl1',this.value);if(!this.value){updProj(${idx},'dl2','');updProj(${idx},'dl3','');renderEdProjects()}"
-            onblur="renderEdProjects()">
+            oninput="maskDate(this);updProj(${idx},'dl1',this.value);
+              const d2_${idx}=document.getElementById('dl2_${idx}');
+              if(d2_${idx}) d2_${idx}.disabled=!this.value;
+              if(!this.value){updProj(${idx},'dl2','');updProj(${idx},'dl3','');
+                const d3_${idx}=document.getElementById('dl3_${idx}');
+                if(d2_${idx}) d2_${idx}.value='';
+                if(d3_${idx}){d3_${idx}.value='';d3_${idx}.disabled=true;}
+              }">
         </div>
         <div><label>Prazo 2</label>
           <input type="text" id="dl2_${idx}" value="${p.dl2||''}" placeholder="DD/MM/AA" maxlength="8"
             ${!p.dl1?'disabled style="opacity:.4;cursor:not-allowed"':''}
-            oninput="maskDate(this);updProj(${idx},'dl2',this.value);if(!this.value){updProj(${idx},'dl3','');renderEdProjects()}"
-            onblur="renderEdProjects()">
+            oninput="maskDate(this);updProj(${idx},'dl2',this.value);
+              const d3b_${idx}=document.getElementById('dl3_${idx}');
+              if(d3b_${idx}) d3b_${idx}.disabled=!this.value;
+              if(!this.value){updProj(${idx},'dl3','');
+                if(d3b_${idx}){d3b_${idx}.value='';d3b_${idx}.disabled=true;}
+              }">
         </div>
         <div><label>Prazo 3</label>
           <input type="text" id="dl3_${idx}" value="${p.dl3||''}" placeholder="DD/MM/AA" maxlength="8"
             ${!p.dl2?'disabled style="opacity:.4;cursor:not-allowed"':''}
-            oninput="maskDate(this);updProj(${idx},'dl3',this.value)"
-            onblur="renderEdProjects()">
+            oninput="maskDate(this);updProj(${idx},'dl3',this.value)">
         </div>
         <div><label>Responsável</label><input type="text" value="${p.owner||''}" placeholder="Nome" onchange="updProj(${idx},'owner',this.value)"></div>
         <div><label>Caminho Jira</label><input type="text" value="${p.jira||''}" placeholder="/projects/FD" onchange="updProj(${idx},'jira',this.value)"></div>
@@ -1475,18 +1493,24 @@ function renderEdInitiativas(){
         <div><label>Título</label><input type="text" value="${(ini.title||'').replace(/"/g,'&quot;')}" onchange="updIni(${idx},'title',this.value)"></div>
         <div><label>Caminho Jira</label><input type="text" value="${ini.jira||''}" onchange="updIni(${idx},'jira',this.value)"></div>
         <div><label>Label Jira</label><input type="text" value="${ini.jl||''}" onchange="updIni(${idx},'jl',this.value)"></div>
-        <div><label>Farol</label>
-          <div style="display:flex;gap:3px">
-            ${[['perigo','#F85149'],['atencao','#D29922'],['prazo','#22C55E']].map(([val,cor])=>`
-            <div title="${val==='perigo'?'Perigo':val==='atencao'?'Atenção':'No prazo'}"
-              style="width:28px;height:28px;border-radius:var(--rs);border:1px solid ${(ini.farol||'prazo')===val?'var(--accent)':'var(--border)'};background:${(ini.farol||'prazo')===val?'var(--accent-lt)':'#fff'};cursor:pointer;display:flex;align-items:center;justify-content:center"
-              onclick="updIni(${idx},'farol','${val}');renderEdInitiativas()">
-              <div style="display:flex;flex-direction:column;gap:2px;align-items:center">
-                <span style="width:7px;height:7px;border-radius:50%;background:${val==='perigo'?cor:'var(--border)'}"></span>
-                <span style="width:7px;height:7px;border-radius:50%;background:${val==='atencao'?cor:'var(--border)'}"></span>
-                <span style="width:7px;height:7px;border-radius:50%;background:${val==='prazo'?cor:'var(--border)'}"></span>
-              </div>
-            </div>`).join('')}
+        <div style="display:flex;flex-direction:column">
+          <label>Farol</label>
+          <div style="display:flex;gap:3px;margin-top:auto">
+            ${(()=>{
+              const cur=ini.farol||'prazo';
+              return [['perigo','#F85149','Perigo'],['atencao','#D29922','Atenção'],['prazo','#22C55E','No prazo']].map(([val,cor,lbl])=>{
+                const sel=cur===val;
+                return `<div title="${lbl}"
+                  style="width:28px;height:28px;border-radius:var(--rs);border:2px solid ${sel?'var(--accent)':'var(--border)'};background:${sel?'var(--accent-lt)':'#fff'};cursor:pointer;display:flex;align-items:center;justify-content:center"
+                  onclick="updIni(${idx},'farol','${val}');renderEdInitiativas()">
+                  <div style="display:flex;flex-direction:column;gap:2px;align-items:center">
+                    <span style="width:7px;height:7px;border-radius:50%;background:${val==='perigo'?cor:'var(--border)'}"></span>
+                    <span style="width:7px;height:7px;border-radius:50%;background:${val==='atencao'?cor:'var(--border)'}"></span>
+                    <span style="width:7px;height:7px;border-radius:50%;background:${val==='prazo'?cor:'var(--border)'}"></span>
+                  </div>
+                </div>`;
+              }).join('');
+            })()}
           </div>
         </div>
       </div>
