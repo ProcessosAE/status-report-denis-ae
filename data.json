@@ -1,5 +1,5 @@
 {
-  "date": "03/06/2026",
+  "date": "10/06/2026",
   "jiraBase": "https://jiracloudae.atlassian.net",
   "projects": [
     {
@@ -243,7 +243,7 @@
     {
       "id": "novo",
       "name": "Processos - Reestrut Issues Jira",
-      "pct": 5,
+      "pct": 7,
       "dl1": "31/08/2026",
       "dl2": "",
       "dl3": "",
@@ -268,9 +268,9 @@
           "tasks": [
             {
               "task": "[Bradesco] Alteração na solicitação de Access Token para múltiplas contas",
-              "dl": "",
+              "dl": "17/06/2026",
               "st": "Em andamento",
-              "pct": 50,
+              "pct": 95,
               "resp": "Opus",
               "jira": "/browse/FD-5862",
               "jl": "FD-5862"
@@ -283,7 +283,7 @@
             {
               "task": "[Fibra] Disponibilizar API SPOT",
               "dl": "03/06/2026",
-              "st": "Aguard. deploy",
+              "st": "Em validação",
               "pct": 100,
               "resp": "Opus",
               "jira": "/browse/FD-5512",
@@ -292,7 +292,7 @@
             {
               "task": "[Fibra] Ajuste na regra ao habilitar o botão \"Próximo\" ao resetar senha",
               "dl": "03/06/2026",
-              "st": "Aguard. deploy",
+              "st": "Em validação",
               "pct": 100,
               "resp": "Opus",
               "jira": "/browse/FD-5686",
@@ -301,7 +301,7 @@
             {
               "task": "[Fibra] Ajuste na pop-up \"Sobre\".",
               "dl": "03/06/2026",
-              "st": "Aguard. deploy",
+              "st": "Em validação",
               "pct": 100,
               "resp": "Opus",
               "jira": "/browse/FD-5688",
@@ -311,7 +311,7 @@
               "task": "[Fibra] Integração exChange",
               "dl": "17/06/2026",
               "st": "Em andamento",
-              "pct": 50,
+              "pct": 75,
               "resp": "Opus",
               "jira": "/browse/FD-5080",
               "jl": "FD-5080"
@@ -330,7 +330,7 @@
               "task": "[Fibra] Liberação de outras moedas para negociação em D+0",
               "dl": "",
               "st": "Em andamento",
-              "pct": 25,
+              "pct": 50,
               "resp": "Opus",
               "jira": "/browse/FD-5976",
               "jl": "FD-5976",
@@ -345,7 +345,7 @@
               "task": "[B.V] Permitir a gestão de Moedas por instrumento | NDF Mesa",
               "dl": "17/06/2026",
               "st": "Em andamento",
-              "pct": 50,
+              "pct": 75,
               "resp": "Opus",
               "jira": "/browse/FD-4160",
               "jl": "FD-4160"
@@ -354,7 +354,7 @@
               "task": "[B.V] Permitir a gestão de Moedas por instrumento | SPOT Mesa",
               "dl": "17/06/2026",
               "st": "Em andamento",
-              "pct": 50,
+              "pct": 75,
               "resp": "Opus",
               "jira": "/browse/FD-4923",
               "jl": "FD-4923"
@@ -376,7 +376,8 @@
               "pct": 50,
               "resp": "Opus",
               "jira": "/browse/FD-5857",
-              "jl": "FD-5857"
+              "jl": "FD-5857",
+              "obs": "Aguardando liberação do ambiente de teste"
             }
           ]
         },
@@ -386,7 +387,7 @@
             {
               "task": "[Sofisa] Alternar cálculo de Spread entre Percentual (%) e BPS no Painel de Tesouraria",
               "dl": "03/06/2026",
-              "st": "Aguard. deploy",
+              "st": "Em validação",
               "pct": 100,
               "resp": "Opus",
               "jira": "/browse/FD-2864",
@@ -395,7 +396,7 @@
             {
               "task": "[Sofisa] BPs| Incluir a visualização dos Bps no histórico e resumo da ordem",
               "dl": "03/06/2026",
-              "st": "Em andamento",
+              "st": "Em validação",
               "pct": 100,
               "resp": "Opus",
               "jira": "/browse/FD-5337",
@@ -419,7 +420,7 @@
             {
               "task": "Correção de redirecionamento de página | Google Analytics",
               "dl": "03/06/2026",
-              "st": "Aguard. deploy",
+              "st": "Concluído",
               "pct": 100,
               "resp": "Opus",
               "jira": "/browse/FD-5724",
@@ -429,7 +430,7 @@
             {
               "task": "[Broadcast OTC] Análise de intermitência no acionamento do som ao preencher a boleta.",
               "dl": "03/06/2026",
-              "st": "Aguard. deploy",
+              "st": "Em validação",
               "pct": 100,
               "resp": "Opus",
               "jira": "/browse/FD-5650",
@@ -794,7 +795,7 @@
               "obs": "Aguardando API de Criação de Atendimento — Bradesco"
             },
             {
-              "task": "[Bradesco] CHAT -Comunicação via Chat",
+              "task": "[Bradesco] CHAT - Comunicação via Chat",
               "dl": "17/06/2026",
               "st": "Desenvolvido",
               "pct": 95,
@@ -846,7 +847,7 @@
             {
               "task": "[Bradesco] FAQ -Criação de permissionamento FAQ na BCAA.)",
               "dl": "03/06/2026",
-              "st": "Aguard. deploy",
+              "st": "Concluído",
               "pct": 100,
               "resp": "Opus",
               "jira": "/browse/FD-3991",
@@ -855,7 +856,7 @@
             {
               "task": "[Bradesco] FAQ -Cadastro do FAQ",
               "dl": "03/06/2026",
-              "st": "Aguard. deploy",
+              "st": "Concluído",
               "pct": 100,
               "resp": "Opus",
               "jira": "/browse/FD-4366",
@@ -864,7 +865,7 @@
             {
               "task": "[Bradesco] FAQ -Widget de Pesquisa",
               "dl": "03/06/2026",
-              "st": "Aguard. deploy",
+              "st": "Concluído",
               "pct": 100,
               "resp": "Opus",
               "jira": "/browse/FD-4372",
@@ -873,7 +874,7 @@
             {
               "task": "[Bradesco] FAQ -Histórico de Consultas",
               "dl": "03/06/2026",
-              "st": "Aguard. deploy",
+              "st": "Concluído",
               "pct": 100,
               "resp": "Opus",
               "jira": "/browse/FD-4375",
@@ -883,8 +884,8 @@
             {
               "task": "[Bradesco] FAQ -Integração com Chat de Atendimento",
               "dl": "",
-              "st": "Pausado",
-              "pct": 0,
+              "st": "Em andamento",
+              "pct": 50,
               "resp": "Opus",
               "jira": "/browse/FD-4376",
               "jl": "FD-4376",
@@ -904,7 +905,7 @@
             {
               "task": "[Visão geral -Lamina] -Gráfico Underwatere recuperação confundem 0 com dados nulos",
               "dl": "03/06/2026",
-              "st": "Aguard. deploy",
+              "st": "Concluído",
               "pct": 100,
               "resp": "Opus",
               "jira": "/browse/FD-5583",
@@ -913,18 +914,18 @@
             {
               "task": "[Screnner] Ajuste de atraso de dia na visualização de data na tabela do screnner",
               "dl": "03/06/2026",
-              "st": "Aguard. deploy",
+              "st": "Concluído",
               "pct": 100,
               "resp": "Opus",
               "jira": "/browse/FD-5947",
               "jl": "FD-5947",
-              "obs": "Cancelado devido a limitações de back-end"
+              "obs": ""
             },
             {
               "task": "[Visão geral -hierarquia] Ocultar dados ausentes na classe mãe",
-              "dl": "",
-              "st": "Em andamento",
-              "pct": 50,
+              "dl": "03/06/2026",
+              "st": "Concluído",
+              "pct": 100,
               "resp": "Opus",
               "jira": "/browse/FD-6019",
               "jl": "FD-6019",
@@ -932,7 +933,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "Existem itens sendo desenvolvidos pelo Backend para a Opus desenvolver o Frontend"
     },
     "screener": {
       "title": "Screener",
@@ -1026,9 +1028,9 @@
           "tasks": [
             {
               "task": "Levantamentos dos campos",
-              "dl": "",
+              "dl": "12/06/2026",
               "st": "Em andamento",
-              "pct": 0,
+              "pct": 40,
               "resp": "Natan",
               "jira": "",
               "jl": "",
