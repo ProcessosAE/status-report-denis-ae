@@ -5,7 +5,7 @@
     {
       "id": "NT",
       "name": "Novo Terminal V7.6.2",
-      "pct": 90,
+      "pct": 100,
       "dl1": "10/06/2026",
       "dl2": "",
       "dl3": "",
@@ -14,27 +14,24 @@
       "farol": "prazo",
       "jira": "/projects/FD/boards/1712",
       "jl": "FD-1712",
-      "owner": "Jara",
+      "owner": "Wagner",
       "dl1_done": false,
       "dl2_done": false,
       "dl3_done": false
     },
     {
-      "id": "terminal",
-      "name": "Terminal LATAM",
-      "pct": 90,
-      "dl1": "10/06/2026",
+      "id": "novo",
+      "name": "Novo Addin",
+      "pct": 0,
+      "dl1": "",
       "dl2": "",
       "dl3": "",
-      "dl1_done": false,
-      "dl2_done": false,
-      "dl3_done": false,
       "st": "Em andamento",
-      "color": "#0891B2",
+      "color": "#1B6EF3",
       "farol": "prazo",
-      "jira": "/projects/FD/boards/1611",
-      "jl": "FD-1611",
-      "owner": "Jara"
+      "jira": "",
+      "jl": "",
+      "owner": "Wagner"
     },
     {
       "id": "screener",
@@ -125,7 +122,7 @@
       "id": "otc",
       "name": "OTC",
       "pct": 95,
-      "dl1": "23/04",
+      "dl1": "17/06/2026",
       "dl2": "",
       "dl3": "",
       "dl1_done": true,
@@ -191,27 +188,10 @@
     },
     {
       "id": "novo",
-      "name": "Processos - Process News",
-      "pct": 100,
-      "dl1": "21/05/2026",
-      "dl2": "",
-      "dl3": "",
-      "st": "Concluído",
-      "color": "#1B6EF3",
-      "farol": "prazo",
-      "jira": "/projects/PRC/boards/982",
-      "jl": "PRC-982",
-      "owner": "Natan",
-      "dl1_done": false,
-      "dl2_done": false,
-      "dl3_done": false
-    },
-    {
-      "id": "novo",
       "name": "Processos - Portal de Processos v1.0",
       "pct": 95,
       "dl1": "01/06/2026",
-      "dl2": "08/06/2026",
+      "dl2": "10/06/2026",
       "dl3": "",
       "st": "Em andamento",
       "color": "#1B6EF3",
@@ -235,7 +215,7 @@
       "dl3_done": false,
       "st": "Em andamento",
       "color": "#16A34A",
-      "farol": "atencao",
+      "farol": "prazo",
       "jira": "/projects/PRC/boards/982",
       "jl": "PRC-982",
       "owner": "Natan"
@@ -446,71 +426,6 @@
               "jira": "/browse/FD-5858",
               "jl": "FD-5858",
               "obs": "Aguardando liberação do ambiente de teste"
-            }
-          ]
-        }
-      ]
-    },
-    "terminal": {
-      "title": "Terminal LATAM",
-      "subtitle": "Prazo: 31/05 · projetos FD / PDTL",
-      "groups": [
-        {
-          "label": "",
-          "tasks": [
-            {
-              "task": "[LATAM] Curva de juros (PRECIA)",
-              "dl": "24/04",
-              "st": "Em andamento",
-              "pct": 90,
-              "resp": "",
-              "jira": "/browse/FD-4925",
-              "jl": "FD-4925"
-            },
-            {
-              "task": "[LATAM] Curva forward (PRECIA)",
-              "dl": "24/04",
-              "st": "Em andamento",
-              "pct": 90,
-              "resp": "",
-              "jira": "/browse/FD-4700",
-              "jl": "FD-4700"
-            },
-            {
-              "task": "[LATAM] Mapa de calor 2",
-              "dl": "—",
-              "st": "Em andamento",
-              "pct": 50,
-              "resp": "",
-              "jira": "",
-              "jl": ""
-            },
-            {
-              "task": "[LATAM] Conversor de Moedas",
-              "dl": "—",
-              "st": "Em validação",
-              "pct": 95,
-              "resp": "",
-              "jira": "",
-              "jl": ""
-            },
-            {
-              "task": "[LATAM] Tradução automática Wire",
-              "dl": "—",
-              "st": "Em definição",
-              "pct": 0,
-              "resp": "",
-              "jira": "",
-              "jl": ""
-            },
-            {
-              "task": "[LATAM] Eventos Corporativos — idiomas",
-              "dl": "—",
-              "st": "Refinamento",
-              "pct": 0,
-              "resp": "",
-              "jira": "",
-              "jl": ""
             }
           ]
         }
@@ -1018,88 +933,6 @@
         }
       ]
     },
-    "novo": {
-      "title": "Processos - Reestrut Issues Jira",
-      "subtitle": "",
-      "note": "",
-      "groups": [
-        {
-          "label": "Épicos",
-          "tasks": [
-            {
-              "task": "Levantamentos dos campos",
-              "dl": "12/06/2026",
-              "st": "Em andamento",
-              "pct": 40,
-              "resp": "Natan",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            }
-          ]
-        },
-        {
-          "label": "Histórias",
-          "tasks": [
-            {
-              "task": "Levantamentos dos campos",
-              "dl": "",
-              "st": "Em andamento",
-              "pct": 0,
-              "resp": "Natan",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            }
-          ]
-        },
-        {
-          "label": "Bugs",
-          "tasks": [
-            {
-              "task": "Levantamentos dos campos",
-              "dl": "",
-              "st": "Em andamento",
-              "pct": 0,
-              "resp": "Natan",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            }
-          ]
-        },
-        {
-          "label": "Tarefas",
-          "tasks": [
-            {
-              "task": "Levantamentos dos campos",
-              "dl": "",
-              "st": "Em andamento",
-              "pct": 0,
-              "resp": "Natan",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            }
-          ]
-        },
-        {
-          "label": "Worflows",
-          "tasks": [
-            {
-              "task": "Mapeamentos dos Workflows",
-              "dl": "",
-              "st": "Não iniciado",
-              "pct": 0,
-              "resp": "",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            }
-          ]
-        }
-      ]
-    },
     "NT": {
       "title": "Novo Terminal V7.6.2",
       "subtitle": "",
@@ -1112,8 +945,8 @@
               "task": "Trata lista de arquivos vencidos",
               "dl": "10/06/2026",
               "st": "Em andamento",
-              "pct": 90,
-              "resp": "Jara",
+              "pct": 100,
+              "resp": "Wagner",
               "jira": "",
               "jl": "",
               "obs": ""
@@ -1122,8 +955,8 @@
               "task": "Planilha trava e fecha no NT",
               "dl": "10/06/2026",
               "st": "Em andamento",
-              "pct": 90,
-              "resp": "Jara",
+              "pct": 100,
+              "resp": "Wagner",
               "jira": "",
               "jl": "",
               "obs": ""
@@ -1132,8 +965,8 @@
               "task": "Brago não loga - Permissão não encontrada",
               "dl": "10/06/2026",
               "st": "Em andamento",
-              "pct": 90,
-              "resp": "Jara",
+              "pct": 100,
+              "resp": "Wagner",
               "jira": "",
               "jl": "",
               "obs": ""
@@ -1142,8 +975,8 @@
               "task": "Altera porta do suplemento",
               "dl": "10/06/2026",
               "st": "Em andamento",
-              "pct": 90,
-              "resp": "Jara",
+              "pct": 100,
+              "resp": "Wagner",
               "jira": "",
               "jl": "",
               "obs": ""
@@ -1152,8 +985,8 @@
               "task": "Problemas com separado de decimal",
               "dl": "10/06/2026",
               "st": "Em andamento",
-              "pct": 90,
-              "resp": "Jara",
+              "pct": 100,
+              "resp": "Wagner",
               "jira": "",
               "jl": "",
               "obs": ""
@@ -1167,8 +1000,8 @@
               "task": "Sincronismo da boleta",
               "dl": "10/06/2026",
               "st": "Em andamento",
-              "pct": 90,
-              "resp": "Jara",
+              "pct": 100,
+              "resp": "Wagner",
               "jira": "",
               "jl": "",
               "obs": ""
@@ -1177,8 +1010,8 @@
               "task": "Persistir coluna",
               "dl": "10/06/2026",
               "st": "Em andamento",
-              "pct": 90,
-              "resp": "Jara",
+              "pct": 100,
+              "resp": "Wagner",
               "jira": "",
               "jl": "",
               "obs": ""
@@ -1187,8 +1020,8 @@
               "task": "Campo PU monitor de ordem",
               "dl": "10/06/2026",
               "st": "Em andamento",
-              "pct": 90,
-              "resp": "Jara",
+              "pct": 100,
+              "resp": "Wagner",
               "jira": "",
               "jl": "",
               "obs": ""
@@ -1197,8 +1030,8 @@
               "task": "Configuração de mesa padrão e exibição de confirmação de ordem",
               "dl": "10/06/2026",
               "st": "Em andamento",
-              "pct": 90,
-              "resp": "Jara",
+              "pct": 100,
+              "resp": "Wagner",
               "jira": "",
               "jl": "",
               "obs": ""
@@ -1209,41 +1042,41 @@
           "label": "Terminal",
           "tasks": [
             {
-              "task": "Contorno das Janelas",
+              "task": "[LATAM] Curva de juros (PRECIA)",
               "dl": "10/06/2026",
               "st": "Em andamento",
-              "pct": 90,
-              "resp": "Jara",
+              "pct": 100,
+              "resp": "Wagner",
               "jira": "",
               "jl": "",
               "obs": ""
             },
             {
-              "task": "Duration Calculadora Renda Fixa",
+              "task": "[LATAM] Curva forward (PRECIA)",
               "dl": "10/06/2026",
               "st": "Em andamento",
-              "pct": 90,
-              "resp": "Jara",
+              "pct": 100,
+              "resp": "Wagner",
               "jira": "",
               "jl": "",
               "obs": ""
             },
             {
-              "task": "TradingView - Não muda estilo do grafico para dollar e moeda",
+              "task": "[LATAM] Mapa de calor 2",
               "dl": "10/06/2026",
               "st": "Em andamento",
-              "pct": 90,
-              "resp": "Jara",
+              "pct": 100,
+              "resp": "Wagner",
               "jira": "",
               "jl": "",
               "obs": ""
             },
             {
-              "task": "Alteração da porta de conexão da ferramenta web",
+              "task": "[LATAM] Conversor de Moedas",
               "dl": "10/06/2026",
               "st": "Em andamento",
-              "pct": 90,
-              "resp": "Jara",
+              "pct": 100,
+              "resp": "Wagner",
               "jira": "",
               "jl": "",
               "obs": ""
@@ -1277,17 +1110,6 @@
       ]
     },
     {
-      "title": "Newsletter & Wallboard",
-      "color": "#16A34A",
-      "jira": "",
-      "jl": "",
-      "items": [
-        "Newsletter (nLake) — Entregue",
-        "Demandas Wallboard",
-        "Banco do Brasil — Entregue"
-      ]
-    },
-    {
       "title": "Arquitetura OTC",
       "color": "#16A34A",
       "jira": "",
@@ -1298,19 +1120,6 @@
         "Monitoramento Funcional, Técnico e Infra - Em andamento",
         "Redundância ativo multicloud - Em andamento",
         "SDK / Barramento OTC / API — Não iniciado"
-      ]
-    },
-    {
-      "title": "Sydle Comercial",
-      "color": "#16A34A",
-      "jira": "/jira/software/c/projects/FSI/boards/124",
-      "jl": "Board 124",
-      "items": [
-        "Gestão de Oportunidades — Concluído",
-        "Gestão de Tickets — Concluído",
-        "Gestão de Contratos — Concluído",
-        "Remuneração Variável — Concluído",
-        "Agenda — Concluído"
       ]
     }
   ]
