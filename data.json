@@ -22,8 +22,8 @@
     {
       "id": "novo",
       "name": "Novo Addin",
-      "pct": 0,
-      "dl1": "",
+      "pct": 1,
+      "dl1": "31/08/2026",
       "dl2": "",
       "dl3": "",
       "st": "Em andamento",
@@ -662,7 +662,7 @@
             },
             {
               "task": "Sugestões",
-              "dl": "29/05",
+              "dl": "03/07/2026",
               "st": "Em andamento",
               "pct": 5,
               "resp": "",
@@ -1079,6 +1079,78 @@
               "resp": "Wagner",
               "jira": "",
               "jl": "",
+              "obs": ""
+            }
+          ]
+        }
+      ]
+    },
+    "novo": {
+      "title": "Novo Addin",
+      "subtitle": "",
+      "note": "",
+      "groups": [
+        {
+          "label": "",
+          "tasks": [
+            {
+              "task": "[Addin] - BCH Inicial (mínimo funcional)",
+              "dl": "24/06/2026",
+              "st": "Em andamento",
+              "pct": 0,
+              "resp": "",
+              "jira": "/browse/FD-6125",
+              "jl": "FD-6125",
+              "obs": ""
+            },
+            {
+              "task": "[Addin] - BCH+ (completo)",
+              "dl": "07/07/2026",
+              "st": "Não iniciado",
+              "pct": 0,
+              "resp": "",
+              "jira": "/browse/FD-6133",
+              "jl": "FD-6133",
+              "obs": ""
+            },
+            {
+              "task": "[Addin] - BC Inicial (mínimo funcional)",
+              "dl": "",
+              "st": "Não iniciado",
+              "pct": 0,
+              "resp": "",
+              "jira": "/browse/FD-6139",
+              "jl": "FD-6139",
+              "obs": ""
+            },
+            {
+              "task": "[Addin] - BC+ (permissões, cache e autocomplete — BCTAB on-demand completo)",
+              "dl": "",
+              "st": "Não iniciado",
+              "pct": 0,
+              "resp": "",
+              "jira": "/browse/FD-6140",
+              "jl": "FD-6140",
+              "obs": ""
+            },
+            {
+              "task": "[Addin] - BCS",
+              "dl": "",
+              "st": "Não iniciado",
+              "pct": 0,
+              "resp": "",
+              "jira": "/browse/FD-6147",
+              "jl": "FD-6147",
+              "obs": ""
+            },
+            {
+              "task": "[Addin] - Instalador",
+              "dl": "31/08/2026",
+              "st": "Não iniciado",
+              "pct": 0,
+              "resp": "",
+              "jira": "/browse/FD-6151",
+              "jl": "FD-6151",
               "obs": ""
             }
           ]
