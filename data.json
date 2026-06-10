@@ -189,7 +189,7 @@
     {
       "id": "novo",
       "name": "Processos - Portal de Processos v1.0",
-      "pct": 95,
+      "pct": 100,
       "dl1": "01/06/2026",
       "dl2": "10/06/2026",
       "dl3": "",
@@ -1039,7 +1039,7 @@
           ]
         },
         {
-          "label": "Terminal",
+          "label": "Latam",
           "tasks": [
             {
               "task": "[LATAM] Curva de juros (PRECIA)",
@@ -1095,7 +1095,7 @@
           "tasks": [
             {
               "task": "[Addin] - BCH Inicial (mínimo funcional)",
-              "dl": "24/06/2026",
+              "dl": "26/06/2026",
               "st": "Em andamento",
               "pct": 0,
               "resp": "",
@@ -1115,7 +1115,7 @@
             },
             {
               "task": "[Addin] - BC Inicial (mínimo funcional)",
-              "dl": "",
+              "dl": "24/07/2026",
               "st": "Não iniciado",
               "pct": 0,
               "resp": "",
@@ -1125,7 +1125,7 @@
             },
             {
               "task": "[Addin] - BC+ (permissões, cache e autocomplete — BCTAB on-demand completo)",
-              "dl": "",
+              "dl": "14/08/2026",
               "st": "Não iniciado",
               "pct": 0,
               "resp": "",
@@ -1135,7 +1135,7 @@
             },
             {
               "task": "[Addin] - BCS",
-              "dl": "",
+              "dl": "24/08/2026",
               "st": "Não iniciado",
               "pct": 0,
               "resp": "",
