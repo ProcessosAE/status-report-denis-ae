@@ -21,7 +21,6 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
 
-/* HEADER */
 .hdr{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;padding:0 32px}
 .hdr-in{max-width:1300px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;position:relative}
 .hdr-l{display:flex;align-items:center;gap:12px}
@@ -31,7 +30,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);-we
 .hdr-r{display:flex;align-items:center;gap:10px}
 .bdate{background:var(--accent-lt);color:var(--accent);font-size:15px;font-weight:600;padding:5px 16px;border-radius:20px;font-family:'DM Mono',monospace}
 
-/* LAYOUT */
 .main{max-width:1300px;margin:0 auto;padding:32px}
 .panel{display:none;animation:fu .28s ease}
 .panel.active{display:block}
@@ -43,12 +41,10 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);-we
 .btn-back:hover{background:var(--accent-lt);color:var(--accent);border-color:var(--accent)}
 .cnt{background:var(--surface-2);border:1px solid var(--border);color:var(--muted);font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px}
 
-/* ── SUMMARY CARDS (#3 redesign + farol) ── */
 .sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin-bottom:32px}
 .scard{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:18px 18px 14px;cursor:pointer;transition:all .2s;position:relative;overflow:hidden;display:flex;flex-direction:column;gap:0}
 .scard::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--cc,var(--accent));opacity:.8}
 .scard:hover{transform:translateY(-2px);box-shadow:0 4px 24px rgba(0,0,0,.08)}
-/* card top row: farol + name + pct + badge */
 .card-top{display:flex;align-items:flex-start;gap:12px;margin-bottom:12px}
 .farol{display:flex;flex-direction:column;gap:4px;flex-shrink:0;margin-top:2px}
 .farol-dot{width:13px;height:13px;border-radius:50%;background:#E5E7EB}
@@ -59,17 +55,12 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);-we
 .cname{font-size:13px;font-weight:700;margin-bottom:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .cstats{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .cpct{font-size:26px;font-weight:700;font-family:'DM Mono',monospace;line-height:1}
-/* prazo com tachado (#2) */
 .cdl{font-size:11px;color:#000;margin-top:8px;font-family:'DM Mono',monospace;display:flex;align-items:center;gap:4px}
 .cdl-item{display:inline}
 .cdl-item.struck{text-decoration:line-through;opacity:.5;margin-right:4px}
-/* progress bar */
 .pbar{height:4px;background:var(--border);border-radius:2px;margin-top:10px;overflow:hidden}
 .pfill{height:100%;border-radius:2px;transition:width 1s cubic-bezier(.22,1,.36,1)}
-/* jira at bottom */
-/* card-footer replaced by owner+jira row */
 
-/* TABLES (#7 fixed column widths) */
 .tw{background:#fff;border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:24px}
 table{width:100%;border-collapse:collapse}
 col.c-task{min-width:200px}
@@ -92,12 +83,10 @@ td{padding:12px 16px;font-size:13px;vertical-align:middle}
 .mf{height:100%;border-radius:3px;display:block}
 .obs-row td{background:#FFFBEB;font-size:12px;color:var(--yellow);padding:6px 16px 8px 32px;border-bottom:1px solid var(--border)}
 
-/* JIRA */
 .jl{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;color:var(--jira);background:#EBF3FF;padding:2px 7px;border-radius:4px;text-decoration:none;white-space:nowrap;transition:background .15s}
 .jl:hover{background:#C8DEFF}
 .jl svg{width:10px;height:10px;flex-shrink:0}
 
-/* BADGES */
 .bdg{display:inline-block;font-size:10px;font-weight:600;padding:3px 9px;border-radius:20px;text-transform:uppercase;letter-spacing:.4px;white-space:nowrap}
 .d    {background:var(--green-lt);color:var(--green)}
 .w    {background:var(--accent-lt);color:var(--accent)}
@@ -109,14 +98,11 @@ td{padding:12px 16px;font-size:13px;vertical-align:middle}
 .paused{background:var(--red-lt);color:var(--red)}
 .cancel{background:#F3F4F6;color:#374151;text-decoration:line-through}
 
-/* SUB-SECTION */
 .ss{font-size:14px;font-weight:700;margin:0 0 12px;color:var(--muted);display:flex;align-items:center;gap:8px}
 .ss::before{content:'';display:block;width:3px;height:16px;background:var(--accent);border-radius:2px}
 
-/* NOTE BOX */
 .note{font-size:12px;color:var(--yellow);margin-top:8px;margin-bottom:16px;padding:8px 12px;background:var(--yellow-lt);border-radius:var(--rs);border:1px solid #FCD34D}
 
-/* INITIATIVES */
 .igrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
 .ic{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:20px}
 .ic h3{font-size:14px;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px;flex-wrap:nowrap}
@@ -125,7 +111,6 @@ td{padding:12px 16px;font-size:13px;vertical-align:middle}
 .ii:last-child{border-bottom:none}
 .ii::before{content:'›';color:var(--accent);font-weight:700;flex-shrink:0;margin-top:1px}
 
-/* DATE POPUP */
 .dp-overlay{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:600;display:flex;align-items:center;justify-content:center}
 .dp-modal{background:#fff;border-radius:var(--r);padding:0;width:300px;box-shadow:0 8px 32px rgba(0,0,0,.18);overflow:hidden}
 .dp-modal-top{padding:16px 20px 0;border-bottom:1px solid var(--border)}
@@ -145,13 +130,11 @@ td{padding:12px 16px;font-size:13px;vertical-align:middle}
 .dp-modal-bot{padding:12px 20px;display:flex;gap:8px;justify-content:space-between;align-items:center;border-top:1px solid var(--border)}
 .dp-cur{font-size:13px;font-family:'DM Mono',monospace;color:var(--muted);flex:1}
 .dp-cur.filled{color:var(--text);font-weight:600}
-/* field button */
 .date-display-btn{display:inline-flex;align-items:center;gap:6px;padding:7px 10px;border:1px solid var(--border);border-radius:var(--rs);font-size:13px;font-family:'DM Mono',monospace;background:#fff;cursor:pointer;width:100%;transition:all .15s;color:#000}
 .date-display-btn:hover{border-color:var(--accent);background:var(--accent-lt)}
 .date-display-btn .cal-icon{color:var(--faint);font-size:13px}
 .date-display-btn.struck{text-decoration:line-through;opacity:.5}
 
-/* ADD TASK ROW */
 .tw{overflow:visible!important}
 .add-task-row td{padding:0!important;border:none!important;height:0;position:relative}
 .add-task-btn{position:absolute;left:50%;transform:translateX(-50%) translateY(-14px);width:28px;height:28px;border-radius:50%;background:#fff;border:2px solid var(--accent);color:var(--accent);font-size:20px;line-height:1;cursor:pointer;display:none;align-items:center;justify-content:center;z-index:20;transition:all .15s;box-shadow:0 2px 8px rgba(27,110,243,.25)}
@@ -159,7 +142,6 @@ td{padding:12px 16px;font-size:13px;vertical-align:middle}
 tr.last-task-row:hover + tr.add-task-row .add-task-btn,
 .add-task-row:hover .add-task-btn{display:flex}
 
-/* INLINE EDIT */
 .td-drag{width:24px;cursor:grab;color:var(--faint);font-size:16px;text-align:center;padding:12px 4px!important;user-select:none}
 .td-drag:active{cursor:grabbing}
 tr.drag-over{border-top:3px solid var(--accent)}
@@ -171,7 +153,6 @@ tr.dragging{opacity:.4}
 .unsaved-badge{position:fixed;top:72px;left:50%;transform:translateX(-50%);background:var(--yellow-lt);border:1px solid #FCD34D;color:var(--yellow);font-size:12px;font-weight:600;padding:6px 16px;border-radius:20px;z-index:150;display:none;align-items:center;gap:8px}
 .unsaved-badge.show{display:flex}
 
-/* EDIT CARD MODAL */
 .edit-fab{position:absolute;top:10px;right:10px;width:28px;height:28px;border-radius:6px;background:var(--surface-2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transition:opacity .18s;z-index:2;font-size:15px;line-height:1}
 .scard:hover .edit-fab{opacity:1}
 .edit-fab:hover{background:var(--accent-lt);border-color:var(--accent);color:var(--accent)}
@@ -180,20 +161,16 @@ tr.dragging{opacity:.4}
 .eq-modal h4{font-size:15px;font-weight:700;margin-bottom:20px;display:flex;align-items:center;gap:8px;color:var(--text)}
 .eq-footer{display:flex;gap:8px;justify-content:flex-end;margin-top:20px;padding-top:16px;border-top:1px solid var(--border)}
 
-/* CONFIRM MODAL (#17) */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:500;display:flex;align-items:center;justify-content:center;animation:fu .2s ease}
 .modal-box{background:#fff;border-radius:var(--r);padding:28px;max-width:420px;width:90%;box-shadow:0 8px 40px rgba(0,0,0,.18)}
 .modal-box h4{font-size:15px;font-weight:700;margin-bottom:10px;color:var(--text)}
 .modal-box p{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:20px}
 .modal-actions{display:flex;gap:10px;justify-content:flex-end}
-/* #16 hide delete btn when collapsed */
 .proj-item.collapsed .proj-delete-btn{display:none}
 
-/* FLOATING EDITOR BUTTON (#9) */
 .fab{position:fixed;bottom:28px;right:28px;width:52px;height:52px;background:var(--accent);color:#fff;border:none;border-radius:50%;font-size:22px;cursor:pointer;box-shadow:0 4px 16px rgba(27,110,243,.4);z-index:200;transition:all .2s;display:flex;align-items:center;justify-content:center}
 .fab:hover{background:#1255a0;transform:scale(1.08);box-shadow:0 6px 24px rgba(27,110,243,.5)}
 
-/* ══════ EDITOR STYLES ══════ */
 .ed-wrap{display:flex;gap:24px;align-items:flex-start}
 .ed-sidebar{width:220px;flex-shrink:0;position:sticky;top:80px}
 .ed-nav{background:#fff;border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
@@ -234,8 +211,6 @@ textarea{resize:vertical;min-height:60px}
 .proj-item-body{overflow:hidden;transition:all .2s}
 .proj-item.collapsed .proj-item-body{display:none}
 .expand-btn{background:none;border:none;cursor:pointer;color:var(--muted);font-size:16px;padding:0 4px;line-height:1;transition:transform .2s}
-.proj-item:not(.collapsed) .expand-btn{transform:rotate(0deg)}
-.proj-item.collapsed .expand-btn{transform:rotate(0deg)}
 .proj-item-hdr{display:flex;align-items:center;gap:10px;margin-bottom:10px}
 .proj-item-hdr .drag-handle{font-size:20px}
 .proj-item.dragging{opacity:.4;border:2px dashed var(--accent)}
@@ -251,14 +226,12 @@ textarea{resize:vertical;min-height:60px}
 .tab-bar-ed .tbe.active{background:var(--accent-lt);color:var(--accent)}
 .import-area{border:2px dashed var(--border);border-radius:var(--r);padding:32px;text-align:center;cursor:pointer;transition:.2s;color:var(--faint);font-size:13px}
 .import-area:hover{border-color:var(--accent);color:var(--accent)}
-/* farol selector in editor */
 .farol-sel{display:flex;gap:10px;margin-top:6px}
 .farol-opt{display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;padding:8px 12px;border:2px solid var(--border);border-radius:var(--rs);transition:.15s;font-size:10px;font-weight:600;color:var(--muted);text-align:center}
 .farol-opt:hover{border-color:var(--accent)}
 .farol-opt.selected{border-color:var(--accent);background:var(--accent-lt);color:var(--accent)}
 .farol-mini{display:flex;flex-direction:column;gap:3px}
 .farol-mini span{width:10px;height:10px;border-radius:50%;background:#E5E7EB;display:block}
-/* date picker css removed - using text inputs */
 @media(max-width:900px){.ed-wrap{flex-direction:column}.ed-sidebar{width:100%;position:static}.field-row{grid-template-columns:1fr}}
 @media(max-width:700px){.main,.hdr{padding:0 16px}.main{padding-top:20px}.sgrid{grid-template-columns:1fr 1fr}}
 </style>
@@ -275,7 +248,6 @@ textarea{resize:vertical;min-height:60px}
     <div class="hsub">Status Report Semanal</div>
   </div>
   <div class="hdr-r">
-
     <div class="bdate" id="hdr-date">—</div>
   </div>
 </div>
@@ -283,7 +255,6 @@ textarea{resize:vertical;min-height:60px}
 
 <main class="main">
 
-<!-- RESUMO -->
 <div class="panel active" id="panel-resumo">
   <div class="sh"><h2>Visão Geral</h2><span class="cnt" id="proj-count">—</span></div>
   <div class="sgrid" id="sgrid"></div>
@@ -291,16 +262,13 @@ textarea{resize:vertical;min-height:60px}
   <div class="igrid" id="igrid-resumo"></div>
 </div>
 
-<!-- PROJECT PANELS rendered by JS -->
 <div id="dynamic-panels"></div>
 
-<!-- INICIATIVAS -->
 <div class="panel" id="panel-init">
   <div class="sh"><h2>Demais Iniciativas</h2></div>
   <div class="igrid" id="igrid"></div>
 </div>
 
-<!-- EDITOR PANEL -->
 <div class="panel" id="panel-editor">
   <div class="sh">
     <h2>✏️ Editor de Dados</h2>
@@ -392,14 +360,12 @@ textarea{resize:vertical;min-height:60px}
 </div>
 
 </main>
+
 <div class="unsaved-badge" id="unsaved-badge">
   ⚠️ Alterações não salvas — exporte o JSON para salvar
   <button onclick="document.getElementById('unsaved-badge').classList.remove('show')" style="background:none;border:none;cursor:pointer;font-size:14px;color:var(--yellow)">✕</button>
 </div>
-<!-- CONFIRM MODAL -->
 <div id="confirm-modal" style="display:none"></div>
-
-<!-- FAB (#9) -->
 <button class="fab" title="Abrir Editor" onclick="showPanel('editor')">✏️</button>
 
 <script>
@@ -427,8 +393,6 @@ function barColor(s){
 
 const PALETTE=['#1B6EF3','#16A34A','#0891B2','#7C3AED','#EA580C','#CA8A04','#BE185D','#059669','#2563EB','#6D28D9','#DC2626','#0284C7'];
 
-/* ══ FAROL helpers ══ */
-/* farol values: 'prazo' | 'atencao' | 'perigo' */
 const FAROL_COLOR = {perigo:'#EF4444', atencao:'#F59E0B', prazo:'#22C55E'};
 function farolColor(farol){ return FAROL_COLOR[farol]||'#22C55E'; }
 function farolHTML(farol){
@@ -438,7 +402,6 @@ function farolHTML(farol){
   return `<div class="farol"><div class="farol-dot ${r}"></div><div class="farol-dot ${y}"></div><div class="farol-dot ${g}"></div></div>`;
 }
 
-/* ══ PRAZO display (#2) ══ */
 function shortDate(v){
   if(!v||v==='—') return '—';
   const p=v.split('/');
@@ -454,22 +417,21 @@ function prazosHTML(p){
   }).join(' ');
 }
 
-/* ══ DATA ══ */
 let DATA = {
   date:'20/05/2026',
   jiraBase:'https://jiracloudae.atlassian.net',
   projects:[
-    {id:'otc',      name:'OTC',             pct:95, dl1:'23/04',dl2:'',dl3:'',dl1_done:true,dl2_done:false,dl3_done:false, st:'Em andamento', color:'#1B6EF3', farol:'perigo',   jira:'/projects/FD',     jl:'FD'},
-    {id:'itsm',     name:'Implantação ITSM',pct:90, dl1:'29/05',dl2:'',dl3:'',dl1_done:false,dl2_done:false,dl3_done:false, st:'Em andamento', color:'#16A34A', farol:'perigo',   jira:'/projects/II',     jl:'II'},
-    {id:'terminal', name:'Terminal LATAM',  pct:85, dl1:'31/05',dl2:'',dl3:'',dl1_done:false,dl2_done:false,dl3_done:false, st:'Em andamento', color:'#0891B2', farol:'atencao', jira:'/projects/PDTL',   jl:'PDTL'},
-    {id:'openmeter',name:'OpenMeter',       pct:20, dl1:'07/07',dl2:'',dl3:'',dl1_done:false,dl2_done:false,dl3_done:false, st:'Em andamento', color:'#7C3AED', farol:'perigo',   jira:'/browse/PDT-641',  jl:'PDT-641'},
-    {id:'fenics',   name:'Injetor Fenics',  pct:95, dl1:'—',    dl2:'',dl3:'',dl1_done:false,dl2_done:false,dl3_done:false, st:'Em validação', color:'#EA580C', farol:'atencao', jira:'/projects/FMD2',   jl:'FMD2'},
-    {id:'fundos',   name:'Novo Fundos',     pct:95, dl1:'17/04',dl2:'29/05',dl3:'', st:'Em andamento', color:'#CA8A04', farol:'perigo', jira:'/projects/FD', jl:'FD'},
-    {id:'chat',     name:'Chat Bradesco',   pct:90, dl1:'29/05',dl2:'',dl3:'',dl1_done:false,dl2_done:false,dl3_done:false, st:'Em andamento', color:'#BE185D', farol:'prazo',  jira:'/projects/CHBOTEV',jl:'CHBOTEV'},
-    {id:'faq',      name:'FAQ Bradesco',    pct:90, dl1:'29/05',dl2:'',dl3:'',dl1_done:false,dl2_done:false,dl3_done:false, st:'Em andamento', color:'#0891B2', farol:'perigo',   jira:'/projects/CHBOTEV',jl:'CHBOTEV'},
-    {id:'a5x',      name:'A5X',             pct:3,  dl1:'30/09',dl2:'',dl3:'',dl1_done:false,dl2_done:false,dl3_done:false, st:'Em andamento', color:'#059669', farol:'perigo',   jira:'',                 jl:''},
-    {id:'datalake', name:'Data Lake',       pct:20, dl1:'30/09',dl2:'',dl3:'',dl1_done:false,dl2_done:false,dl3_done:false, st:'Em andamento', color:'#2563EB', farol:'perigo',   jira:'',                 jl:''},
-    {id:'screener', name:'Screener',        pct:3,  dl1:'05/10',dl2:'',dl3:'',dl1_done:false,dl2_done:false,dl3_done:false, st:'Em andamento', color:'#6D28D9', farol:'perigo',   jira:'',                 jl:''},
+    {id:'otc',      name:'OTC',             pct:95, dl1:'23/04',dl2:'',dl3:'',st:'Em andamento', color:'#1B6EF3', farol:'perigo',   jira:'/projects/FD',     jl:'FD'},
+    {id:'itsm',     name:'Implantação ITSM',pct:90, dl1:'29/05',dl2:'',dl3:'',st:'Em andamento', color:'#16A34A', farol:'perigo',   jira:'/projects/II',     jl:'II'},
+    {id:'terminal', name:'Terminal LATAM',  pct:85, dl1:'31/05',dl2:'',dl3:'',st:'Em andamento', color:'#0891B2', farol:'atencao',  jira:'/projects/PDTL',   jl:'PDTL'},
+    {id:'openmeter',name:'OpenMeter',       pct:20, dl1:'07/07',dl2:'',dl3:'',st:'Em andamento', color:'#7C3AED', farol:'perigo',   jira:'/browse/PDT-641',  jl:'PDT-641'},
+    {id:'fenics',   name:'Injetor Fenics',  pct:95, dl1:'—',    dl2:'',dl3:'',st:'Em validação', color:'#EA580C', farol:'atencao',  jira:'/projects/FMD2',   jl:'FMD2'},
+    {id:'fundos',   name:'Novo Fundos',     pct:95, dl1:'17/04',dl2:'29/05',dl3:'',st:'Em andamento', color:'#CA8A04', farol:'perigo', jira:'/projects/FD', jl:'FD'},
+    {id:'chat',     name:'Chat Bradesco',   pct:90, dl1:'29/05',dl2:'',dl3:'',st:'Em andamento', color:'#BE185D', farol:'prazo',    jira:'/projects/CHBOTEV',jl:'CHBOTEV'},
+    {id:'faq',      name:'FAQ Bradesco',    pct:90, dl1:'29/05',dl2:'',dl3:'',st:'Em andamento', color:'#0891B2', farol:'perigo',   jira:'/projects/CHBOTEV',jl:'CHBOTEV'},
+    {id:'a5x',      name:'A5X',             pct:3,  dl1:'30/09',dl2:'',dl3:'',st:'Em andamento', color:'#059669', farol:'perigo',   jira:'',                 jl:''},
+    {id:'datalake', name:'Data Lake',       pct:20, dl1:'30/09',dl2:'',dl3:'',st:'Em andamento', color:'#2563EB', farol:'perigo',   jira:'',                 jl:''},
+    {id:'screener', name:'Screener',        pct:3,  dl1:'05/10',dl2:'',dl3:'',st:'Em andamento', color:'#6D28D9', farol:'perigo',   jira:'',                 jl:''},
   ],
   panels:{
     otc:{title:'OTC — Clientes',subtitle:'4 instâncias · projeto FD',groups:[
@@ -570,7 +532,7 @@ let DATA = {
   ]
 };
 
-/* ══ PANEL NAV (sem tabs) ══ */
+/* ── Panel nav ── */
 function showPanel(id){
   document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
   const el=document.getElementById('panel-'+id);
@@ -578,7 +540,7 @@ function showPanel(id){
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
-/* ══ RENDER ENGINE ══ */
+/* ── Render engine ── */
 function jiraLink(path,label){
   if(!path||!label) return '';
   const base=DATA.jiraBase||JIRA;
@@ -641,7 +603,6 @@ function renderPanel(id,p){
       if(isLast) row = row.replace('<tr ','<tr class="last-task-row" ');
       html+=row;
     });
-    const lastGi=gi, lastLen=g.tasks.length;
     html+=`<tr class="add-task-row"><td colspan="7"><button class="add-task-btn" onclick="quickAddTask('${id}',${gi})" title="Adicionar tarefa">+</button></td></tr>`;
     html+=`</tbody></table></div>`;
   });
@@ -651,17 +612,12 @@ function renderPanel(id,p){
 
 function renderAll(){
   document.getElementById('hdr-date').textContent=DATA.date||'—';
-
-  // dynamic panels
   const dp=document.getElementById('dynamic-panels');
   dp.innerHTML='';
   DATA.projects.forEach(p=>{
     if(DATA.panels[p.id]) dp.innerHTML+=renderPanel(p.id,DATA.panels[p.id]);
   });
-  // always add init panel
   renderInitiativas();
-
-  // summary cards
   const g=document.getElementById('sgrid');
   g.innerHTML='';
   document.getElementById('proj-count').textContent=DATA.projects.length+' projetos ativos';
@@ -707,14 +663,13 @@ function renderInitiativas(){
     ig.innerHTML='';
     DATA.iniciativas.forEach(ini=>{
       const jl=ini.jira?`<a class="jl" style="margin-left:auto" href="${(DATA.jiraBase||JIRA)+ini.jira}" target="_blank">${JIRA_SVG}${ini.jl}</a>`:'';
-      const fc=farolColor(ini.farol||'prazo');
       const fl=farolHTML(ini.farol||'prazo');
       ig.innerHTML+=`<div class="ic"><h3>${fl}<span style="flex:1">${ini.title}</span>${jl}</h3>${ini.items.map(i=>`<div class="ii">${i}</div>`).join('')}</div>`;
     });
   });
 }
 
-/* ══ EDITOR ══ */
+/* ── Editor ── */
 let editorData=null, activePanel=null;
 
 function edNav(section,el){
@@ -733,29 +688,22 @@ function startEditor(){
   renderEdGeral();
 }
 
-/* ── date picker helper (#6) ── */
 function isoToBR(iso){ if(!iso) return ''; const [y,m,d]=iso.split('-'); return d&&m&&y?`${d}/${m}/${y}`:''; }
 function brToISO(br){ if(!br||br==='—') return ''; const [d,m,y]=br.split('/'); return d&&m&&y?`${y}-${m}-${d}`:''; }
+function setReportDate(val){ editorData.date = val && val.trim() ? val.trim() : ''; }
 
-function setReportDate(val){
-  editorData.date = val && val.trim() ? val.trim() : '';
-}
+let _dpCb=null,_dpSel={d:null,m:null,y:null},_dpView={m:null,y:null};
+const _MONTHS=['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
 
-/* ── Calendar Popup ── */
-let _dpCb = null, _dpSel = {d:null,m:null,y:null}, _dpView = {m:null,y:null};
-const _MONTHS = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
-
-function openDatePopup(currentVal, cb){
-  _dpCb = cb;
-  const now = new Date();
-  const parts = (currentVal&&currentVal!=='—') ? currentVal.split('/') : [];
-  _dpSel  = { d: parts[0]?+parts[0]:null, m: parts[1]?+parts[1]:null, y: parts[2]?+parts[2]:null };
-  _dpView = { m: _dpSel.m ? _dpSel.m-1 : now.getMonth(), y: _dpSel.y || now.getFullYear() };
-
-  const ov = document.createElement('div');
-  ov.className = 'dp-overlay';
-  ov.id = 'dp-overlay';
-  ov.innerHTML = `<div class="dp-modal" onclick="event.stopPropagation()">
+function openDatePopup(currentVal,cb){
+  _dpCb=cb;
+  const now=new Date();
+  const parts=(currentVal&&currentVal!=='—')?currentVal.split('/'):[];
+  _dpSel={d:parts[0]?+parts[0]:null,m:parts[1]?+parts[1]:null,y:parts[2]?+parts[2]:null};
+  _dpView={m:_dpSel.m?_dpSel.m-1:now.getMonth(),y:_dpSel.y||now.getFullYear()};
+  const ov=document.createElement('div');
+  ov.className='dp-overlay';ov.id='dp-overlay';
+  ov.innerHTML=`<div class="dp-modal" onclick="event.stopPropagation()">
     <div class="dp-modal-top">
       <h4>Selecionar data</h4>
       <div class="dp-nav">
@@ -774,96 +722,59 @@ function openDatePopup(currentVal, cb){
       </div>
     </div>
   </div>`;
-  ov.addEventListener('click', _dpClose);
+  ov.addEventListener('click',_dpClose);
   document.body.appendChild(ov);
   _dpRender();
 }
 
 function _dpRender(){
-  const {m,y} = _dpView;
-  document.getElementById('dp-month-label').textContent = _MONTHS[m] + ' ' + y;
-  const grid = document.getElementById('dp-grid');
-  const today = new Date();
-  const firstDay = new Date(y, m, 1).getDay();
-  const days = new Date(y, m+1, 0).getDate();
-  let html = ['D','S','T','Q','Q','S','S'].map(d=>`<div class="dp-dow">${d}</div>`).join('');
+  const {m,y}=_dpView;
+  document.getElementById('dp-month-label').textContent=_MONTHS[m]+' '+y;
+  const grid=document.getElementById('dp-grid');
+  const today=new Date();
+  const firstDay=new Date(y,m,1).getDay();
+  const days=new Date(y,m+1,0).getDate();
+  let html=['D','S','T','Q','Q','S','S'].map(d=>`<div class="dp-dow">${d}</div>`).join('');
   for(let i=0;i<firstDay;i++) html+=`<div class="dp-day dp-empty"></div>`;
   for(let d=1;d<=days;d++){
-    const isToday = d===today.getDate()&&m===today.getMonth()&&y===today.getFullYear();
-    const isSel   = _dpSel.d===d&&_dpSel.m===m+1&&_dpSel.y===y;
+    const isToday=d===today.getDate()&&m===today.getMonth()&&y===today.getFullYear();
+    const isSel=_dpSel.d===d&&_dpSel.m===m+1&&_dpSel.y===y;
     html+=`<div class="dp-day${isToday?' dp-today':''}${isSel?' dp-sel':''}" onclick="_dpPick(${d})">${d}</div>`;
   }
-  grid.innerHTML = html;
-  const cur = document.getElementById('dp-cur-val');
-  if(_dpSel.d){
-    const br=`${String(_dpSel.d).padStart(2,'0')}/${String(_dpSel.m).padStart(2,'0')}/${_dpSel.y}`;
-    cur.textContent=br; cur.className='dp-cur filled';
-  } else { cur.textContent='Nenhuma data'; cur.className='dp-cur'; }
+  grid.innerHTML=html;
+  const cur=document.getElementById('dp-cur-val');
+  if(_dpSel.d){const br=`${String(_dpSel.d).padStart(2,'0')}/${String(_dpSel.m).padStart(2,'0')}/${_dpSel.y}`;cur.textContent=br;cur.className='dp-cur filled';}
+  else{cur.textContent='Nenhuma data';cur.className='dp-cur';}
 }
+function _dpMove(dir){_dpView.m+=dir;if(_dpView.m>11){_dpView.m=0;_dpView.y++;}if(_dpView.m<0){_dpView.m=11;_dpView.y--;}_dpRender();}
+function _dpPick(d){_dpSel={d,m:_dpView.m+1,y:_dpView.y};_dpRender();}
+function _dpConfirm(){if(_dpSel.d&&_dpCb){const br=`${String(_dpSel.d).padStart(2,'0')}/${String(_dpSel.m).padStart(2,'0')}/${_dpSel.y}`;_dpCb(br);}_dpClose();}
+function _dpClear(){if(_dpCb)_dpCb('');_dpClose();}
+function _dpClose(){const ov=document.getElementById('dp-overlay');if(ov)ov.remove();_dpCb=null;}
 
-function _dpMove(dir){
-  _dpView.m += dir;
-  if(_dpView.m>11){_dpView.m=0;_dpView.y++;}
-  if(_dpView.m<0){_dpView.m=11;_dpView.y--;}
-  _dpRender();
-}
-
-function _dpPick(d){
-  _dpSel = {d, m:_dpView.m+1, y:_dpView.y};
-  _dpRender();
-}
-
-function _dpConfirm(){
-  if(_dpSel.d && _dpCb){
-    const br=`${String(_dpSel.d).padStart(2,'0')}/${String(_dpSel.m).padStart(2,'0')}/${_dpSel.y}`;
-    _dpCb(br);
-  }
-  _dpClose();
-}
-
-function _dpClear(){
-  if(_dpCb) _dpCb('');
-  _dpClose();
-}
-
-function _dpClose(){
-  const ov=document.getElementById('dp-overlay');
-  if(ov) ov.remove();
-  _dpCb=null;
-}
-
-/* ── Máscara DD/MM/AA ── */
 function maskDate(inp){
-  const pos = inp.selectionStart;
-  let v = inp.value.replace(/[^0-9]/g,'');
-  if(v.length > 2) v = v.slice(0,2) + '/' + v.slice(2);
-  if(v.length > 5) v = v.slice(0,5) + '/' + v.slice(5,7);
-  inp.value = v;
+  let v=inp.value.replace(/[^0-9]/g,'');
+  if(v.length>2) v=v.slice(0,2)+'/'+v.slice(2);
+  if(v.length>5) v=v.slice(0,5)+'/'+v.slice(5,7);
+  inp.value=v;
 }
-
-function makeDatePicker(label, value, callbackFn, uid){ return ''; } // legacy
 
 function renderEdGeral(){
   const btn=document.getElementById('ed-date-btn');
-  if(btn){ const sp=btn.querySelectorAll('span'); if(sp[1]) sp[1].textContent=editorData.date||'—'; }
+  if(btn){const sp=btn.querySelectorAll('span');if(sp[1])sp[1].textContent=editorData.date||'—';}
   document.getElementById('ed-jira-base').value=editorData.jiraBase||'';
 }
 
-/* ── Projects editor with drag (#1) ── */
 function renderEdProjects(){
-  // save expanded state before re-render (#19)
-  const expanded = new Set();
-  document.querySelectorAll('#proj-list .proj-item').forEach((el,i)=>{
-    if(!el.classList.contains('collapsed')) expanded.add(i);
-  });
+  const expanded=new Set();
+  document.querySelectorAll('#proj-list .proj-item').forEach((el,i)=>{if(!el.classList.contains('collapsed'))expanded.add(i);});
   const list=document.getElementById('proj-list');
   list.innerHTML='';
   editorData.projects.forEach((p,idx)=>{
     const div=document.createElement('div');
-    div.className='proj-item';
+    div.className='proj-item collapsed';
     div.draggable=true;
     div.dataset.idx=idx;
-    div.className='proj-item collapsed';
     div.innerHTML=`
       <div class="proj-item-hdr" onclick="toggleProject(this.parentElement)" style="cursor:pointer;user-select:none">
         <span class="drag-handle" title="Arrastar" onclick="event.stopPropagation()">⠿</span>
@@ -898,40 +809,24 @@ function renderEdProjects(){
         <div><label>Prazo 1</label>
           <div style="display:flex;gap:4px;align-items:center">
             <input type="text" id="dl1_${idx}" value="${p.dl1||''}" placeholder="DD/MM/AA" maxlength="8" style="flex:1"
-              oninput="maskDate(this);updProj(${idx},'dl1',this.value);
-                const d2a=document.getElementById('dl2_${idx}');
-                if(d2a) d2a.disabled=!this.value;
-                if(!this.value){updProj(${idx},'dl2','');updProj(${idx},'dl3','');
-                  const d3a=document.getElementById('dl3_${idx}');
-                  if(d2a) d2a.value='';
-                  if(d3a){d3a.value='';d3a.disabled=true;}
-                }">
-            <button class="date-display-btn" style="padding:5px 7px;width:auto;flex-shrink:0" title="Selecionar data"
+              oninput="maskDate(this);updProj(${idx},'dl1',this.value);const d2a=document.getElementById('dl2_${idx}');if(d2a)d2a.disabled=!this.value;if(!this.value){updProj(${idx},'dl2','');updProj(${idx},'dl3','');const d3a=document.getElementById('dl3_${idx}');if(d2a)d2a.value='';if(d3a){d3a.value='';d3a.disabled=true;}}">
+            <button class="date-display-btn" style="padding:5px 7px;width:auto;flex-shrink:0"
               onclick="openDatePopup('${p.dl1||''}',v=>{updProj(${idx},'dl1',v);const el=document.getElementById('dl1_${idx}');if(el)el.value=v;const d2=document.getElementById('dl2_${idx}');if(d2)d2.disabled=!v;renderEdProjects()})">📅</button>
           </div>
         </div>
         <div><label>Prazo 2</label>
           <div style="display:flex;gap:4px;align-items:center">
-            <input type="text" id="dl2_${idx}" value="${p.dl2||''}" placeholder="DD/MM/AA" maxlength="8" style="flex:1"
-              ${!p.dl1?'disabled style="opacity:.4;cursor:not-allowed;flex:1"':''}
-              oninput="maskDate(this);updProj(${idx},'dl2',this.value);
-                const d3b=document.getElementById('dl3_${idx}');
-                if(d3b) d3b.disabled=!this.value;
-                if(!this.value){updProj(${idx},'dl3','');
-                  if(d3b){d3b.value='';d3b.disabled=true;}
-                }">
-            <button class="date-display-btn" style="padding:5px 7px;width:auto;flex-shrink:0" title="Selecionar data"
-              ${!p.dl1?'disabled style="opacity:.4"':''}
+            <input type="text" id="dl2_${idx}" value="${p.dl2||''}" placeholder="DD/MM/AA" maxlength="8" style="flex:1" ${!p.dl1?'disabled':''}
+              oninput="maskDate(this);updProj(${idx},'dl2',this.value);const d3b=document.getElementById('dl3_${idx}');if(d3b)d3b.disabled=!this.value;if(!this.value){updProj(${idx},'dl3','');if(d3b){d3b.value='';d3b.disabled=true;}}">
+            <button class="date-display-btn" style="padding:5px 7px;width:auto;flex-shrink:0" ${!p.dl1?'disabled':''}
               onclick="openDatePopup('${p.dl2||''}',v=>{updProj(${idx},'dl2',v);const el=document.getElementById('dl2_${idx}');if(el)el.value=v;const d3=document.getElementById('dl3_${idx}');if(d3)d3.disabled=!v;renderEdProjects()})">📅</button>
           </div>
         </div>
         <div><label>Prazo 3</label>
           <div style="display:flex;gap:4px;align-items:center">
-            <input type="text" id="dl3_${idx}" value="${p.dl3||''}" placeholder="DD/MM/AA" maxlength="8" style="flex:1"
-              ${!p.dl2?'disabled style="opacity:.4;cursor:not-allowed;flex:1"':''}
+            <input type="text" id="dl3_${idx}" value="${p.dl3||''}" placeholder="DD/MM/AA" maxlength="8" style="flex:1" ${!p.dl2?'disabled':''}
               oninput="maskDate(this);updProj(${idx},'dl3',this.value)">
-            <button class="date-display-btn" style="padding:5px 7px;width:auto;flex-shrink:0" title="Selecionar data"
-              ${!p.dl2?'disabled style="opacity:.4"':''}
+            <button class="date-display-btn" style="padding:5px 7px;width:auto;flex-shrink:0" ${!p.dl2?'disabled':''}
               onclick="openDatePopup('${p.dl3||''}',v=>{updProj(${idx},'dl3',v);const el=document.getElementById('dl3_${idx}');if(el)el.value=v;renderEdProjects()})">📅</button>
           </div>
         </div>
@@ -939,515 +834,233 @@ function renderEdProjects(){
         <div><label>Caminho Jira</label><input type="text" value="${p.jira||''}" placeholder="/projects/FD" onchange="updProj(${idx},'jira',this.value)"></div>
         <div><label>Label</label><input type="text" value="${p.jl||''}" placeholder="FD" onchange="updProj(${idx},'jl',this.value)"></div>
       </div>
-      <!-- farol movido para linha 1 -->
       <div style="margin-top:14px;padding-top:12px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center">
-        ${!editorData.panels[p.id] ? `
-        <button class="btn btn-success btn-sm" onclick="event.stopPropagation();createPanel('${p.id}','${p.name}')">
-          + Criar painel de tarefas
-        </button>` : `
-        <span style="font-size:12px;color:var(--green);display:flex;align-items:center;gap:4px">
-          ✅ Painel vinculado
-        </span>`}
+        ${!editorData.panels[p.id]?`<button class="btn btn-success btn-sm" onclick="event.stopPropagation();createPanel('${p.id}','${p.name}')">+ Criar painel de tarefas</button>`:`<span style="font-size:12px;color:var(--green);display:flex;align-items:center;gap:4px">✅ Painel vinculado</span>`}
         <button class="btn btn-danger btn-sm proj-delete-btn" onclick="event.stopPropagation();confirmRemoveProject(${idx})">🗑 Excluir projeto</button>
       </div>
-      </div>
       </div>`;
-    // drag events (#1)
     div.addEventListener('dragstart',e=>{e.dataTransfer.setData('text/plain',idx);div.classList.add('dragging')});
     div.addEventListener('dragend',()=>div.classList.remove('dragging'));
     div.addEventListener('dragover',e=>{e.preventDefault();div.classList.add('drag-over')});
     div.addEventListener('dragleave',()=>div.classList.remove('drag-over'));
-    div.addEventListener('drop',e=>{
-      e.preventDefault();div.classList.remove('drag-over');
-      const from=+e.dataTransfer.getData('text/plain');
-      const to=+div.dataset.idx;
-      if(from===to) return;
-      const arr=editorData.projects;
-      const item=arr.splice(from,1)[0];
-      arr.splice(to,0,item);
-      renderEdProjects();
-    });
-    // restore expanded state (#19)
+    div.addEventListener('drop',e=>{e.preventDefault();div.classList.remove('drag-over');const from=+e.dataTransfer.getData('text/plain');const to=+div.dataset.idx;if(from===to)return;const arr=editorData.projects;const item=arr.splice(from,1)[0];arr.splice(to,0,item);renderEdProjects();});
     if(expanded.has(idx)) div.classList.remove('collapsed');
     list.appendChild(div);
   });
 }
 
-function createPanel(pid, pname){
-  if(editorData.panels[pid]){
-    alert('Este projeto já tem um painel de tarefas.');
-    return;
-  }
-  editorData.panels[pid] = {
-    title: pname,
-    subtitle: '',
-    note: '',
-    groups: [{ label: '', tasks: [] }]
-  };
-  // salvar estado expandido atual
-  const expanded = new Set();
-  document.querySelectorAll('#proj-list .proj-item').forEach((el,i)=>{
-    if(!el.classList.contains('collapsed')) expanded.add(i);
-  });
+function createPanel(pid,pname){
+  if(editorData.panels[pid]){alert('Este projeto já tem um painel de tarefas.');return;}
+  editorData.panels[pid]={title:pname,subtitle:'',note:'',groups:[{label:'',tasks:[]}]};
+  const expanded=new Set();
+  document.querySelectorAll('#proj-list .proj-item').forEach((el,i)=>{if(!el.classList.contains('collapsed'))expanded.add(i);});
   renderEdProjects();
-  // restaurar expandido
-  document.querySelectorAll('#proj-list .proj-item').forEach((el,i)=>{
-    if(expanded.has(i)) el.classList.remove('collapsed');
-  });
-  // feedback
-  const msg = document.createElement('div');
+  document.querySelectorAll('#proj-list .proj-item').forEach((el,i)=>{if(expanded.has(i))el.classList.remove('collapsed');});
+  const msg=document.createElement('div');
   msg.style.cssText='position:fixed;bottom:90px;right:28px;background:var(--green);color:#fff;padding:10px 18px;border-radius:var(--rs);font-size:13px;font-weight:600;z-index:300;box-shadow:0 4px 12px rgba(0,0,0,.15)';
-  msg.textContent = '✅ Painel "'+pname+'" criado! Acesse a aba Tarefas para adicionar.';
+  msg.textContent='✅ Painel "'+pname+'" criado! Acesse a aba Tarefas para adicionar.';
   document.body.appendChild(msg);
-  setTimeout(()=>msg.remove(), 3500);
+  setTimeout(()=>msg.remove(),3500);
 }
 
-function toggleProject(el){
-  el.classList.toggle('collapsed');
-  const btn=el.querySelector('.expand-btn');
-  if(btn) btn.textContent=el.classList.contains('collapsed')?'▼':'▲';
-}
-function toggleAllProjects(collapse){
-  document.querySelectorAll('#proj-list .proj-item').forEach(el=>{
-    el.classList.toggle('collapsed',collapse);
-    const btn=el.querySelector('.expand-btn');
-    if(btn) btn.textContent=collapse?'▼':'▲';
-  });
-}
+function toggleProject(el){el.classList.toggle('collapsed');const btn=el.querySelector('.expand-btn');if(btn)btn.textContent=el.classList.contains('collapsed')?'▼':'▲';}
+function toggleAllProjects(collapse){document.querySelectorAll('#proj-list .proj-item').forEach(el=>{el.classList.toggle('collapsed',collapse);const btn=el.querySelector('.expand-btn');if(btn)btn.textContent=collapse?'▼':'▲';});}
+function updProj(idx,key,val){editorData.projects[idx][key]=val;}
 
-function updProj(idx,key,val){ editorData.projects[idx][key]=val; }
-function updProjDate(idx,field,br){ editorData.projects[idx][field]=br; }
 function confirmRemoveProject(idx){
-  const name = editorData.projects[idx].name;
-  const pid  = editorData.projects[idx].id;
-  const modal = document.getElementById('confirm-modal');
-  modal.style.display='flex';
+  const name=editorData.projects[idx].name;const pid=editorData.projects[idx].id;
+  const modal=document.getElementById('confirm-modal');
   modal.style.cssText='display:flex;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:500;align-items:center;justify-content:center;animation:fu .2s ease';
-  modal.innerHTML=`<div class="modal-box">
-    <h4>⚠️ Excluir projeto</h4>
-    <p>Você está prestes a excluir o projeto <strong>${name}</strong>.<br>
-    Todas as tarefas vinculadas a ele também serão removidas permanentemente.</p>
-    <div class="modal-actions">
-      <button class="btn btn-outline" onclick="closeModal()">Cancelar</button>
-      <button class="btn btn-danger" onclick="doRemoveProject(${idx},'${pid}')">Confirmar exclusão</button>
-    </div>
-  </div>`;
+  modal.innerHTML=`<div class="modal-box"><h4>⚠️ Excluir projeto</h4><p>Você está prestes a excluir o projeto <strong>${name}</strong>.<br>Todas as tarefas vinculadas a ele também serão removidas permanentemente.</p><div class="modal-actions"><button class="btn btn-outline" onclick="closeModal()">Cancelar</button><button class="btn btn-danger" onclick="doRemoveProject(${idx},'${pid}')">Confirmar exclusão</button></div></div>`;
 }
-function closeModal(){
-  const m=document.getElementById('confirm-modal');
-  m.style.display='none';
-  m.innerHTML='';
-}
+function closeModal(){const m=document.getElementById('confirm-modal');m.style.display='none';m.innerHTML='';}
 
-/* ── Edit Card Modal ── */
 function openEditCard(idx){
-  const p = DATA.projects[idx];
-  if(!p) return;
-  const ov = document.createElement('div');
-  ov.className='eq-overlay';
-  ov.id='eq-overlay';
+  const p=DATA.projects[idx];if(!p)return;
+  const ov=document.createElement('div');ov.className='eq-overlay';ov.id='eq-overlay';
   ov.innerHTML=`<div class="eq-modal" onclick="event.stopPropagation()">
     <h4>✏️ ${p.name}</h4>
     <div class="field-row cols4">
       <div style="grid-column:span 2"><label>Nome</label><input type="text" id="eq-name" value="${(p.name||'').replace(/"/g,'&quot;')}"></div>
       <div><label>% Evolução</label><input type="number" id="eq-pct" min="0" max="100" value="${p.pct||0}"></div>
-      <div><label>Status</label>
-        <select id="eq-st">${STATUS_LIST.map(s=>`<option value="${s}"${p.st===s?' selected':''}>${s}</option>`).join('')}</select>
-      </div>
+      <div><label>Status</label><select id="eq-st">${STATUS_LIST.map(s=>`<option value="${s}"${p.st===s?' selected':''}>${s}</option>`).join('')}</select></div>
     </div>
     <div class="field-row">
       <div><label>Responsável</label><input type="text" id="eq-owner" value="${p.owner||''}"></div>
-      <div><label>Farol</label>
-        <select id="eq-farol">
-          <option value="perigo"${p.farol==='perigo'?' selected':''}>🔴 Perigo</option>
-          <option value="atencao"${p.farol==='atencao'?' selected':''}>🟡 Atenção</option>
-          <option value="prazo"${(p.farol||'prazo')==='prazo'?' selected':''}>🟢 No prazo</option>
-        </select>
-      </div>
+      <div><label>Farol</label><select id="eq-farol"><option value="perigo"${p.farol==='perigo'?' selected':''}>🔴 Perigo</option><option value="atencao"${p.farol==='atencao'?' selected':''}>🟡 Atenção</option><option value="prazo"${(p.farol||'prazo')==='prazo'?' selected':''}>🟢 No prazo</option></select></div>
     </div>
     <div class="field-row cols3">
-      <div><label>Prazo 1</label>
-        <div style="display:flex;gap:4px">
-          <input type="text" id="eq-dl1" value="${p.dl1||''}" placeholder="DD/MM/AA" maxlength="8" style="flex:1"
-            oninput="maskDate(this)" onchange="if(!this.value){document.getElementById('eq-dl2').value='';document.getElementById('eq-dl3').value='';document.getElementById('eq-dl2').disabled=true;document.getElementById('eq-dl3').disabled=true}else{document.getElementById('eq-dl2').disabled=false}">
-          <button class="date-display-btn" style="padding:5px 7px;width:auto" onclick="openDatePopup(document.getElementById('eq-dl1').value||'',v=>{document.getElementById('eq-dl1').value=v;document.getElementById('eq-dl2').disabled=!v})">📅</button>
-        </div>
-      </div>
-      <div><label>Prazo 2</label>
-        <div style="display:flex;gap:4px">
-          <input type="text" id="eq-dl2" value="${p.dl2||''}" placeholder="DD/MM/AA" maxlength="8" style="flex:1"
-            ${!p.dl1?'disabled style="opacity:.4;flex:1"':''}
-            oninput="maskDate(this)" onchange="if(!this.value){document.getElementById('eq-dl3').value='';document.getElementById('eq-dl3').disabled=true}else{document.getElementById('eq-dl3').disabled=false}">
-          <button class="date-display-btn" style="padding:5px 7px;width:auto" ${!p.dl1?'disabled style="opacity:.4"':''} onclick="openDatePopup(document.getElementById('eq-dl2').value||'',v=>{document.getElementById('eq-dl2').value=v;document.getElementById('eq-dl3').disabled=!v})">📅</button>
-        </div>
-      </div>
-      <div><label>Prazo 3</label>
-        <div style="display:flex;gap:4px">
-          <input type="text" id="eq-dl3" value="${p.dl3||''}" placeholder="DD/MM/AA" maxlength="8" style="flex:1"
-            ${!p.dl2?'disabled style="opacity:.4;flex:1"':''}
-            oninput="maskDate(this)">
-          <button class="date-display-btn" style="padding:5px 7px;width:auto" ${!p.dl2?'disabled style="opacity:.4"':''} onclick="openDatePopup(document.getElementById('eq-dl3').value||'',v=>{document.getElementById('eq-dl3').value=v})">📅</button>
-        </div>
-      </div>
+      <div><label>Prazo 1</label><div style="display:flex;gap:4px"><input type="text" id="eq-dl1" value="${p.dl1||''}" placeholder="DD/MM/AA" maxlength="8" style="flex:1" oninput="maskDate(this)" onchange="if(!this.value){document.getElementById('eq-dl2').value='';document.getElementById('eq-dl3').value='';document.getElementById('eq-dl2').disabled=true;document.getElementById('eq-dl3').disabled=true}else{document.getElementById('eq-dl2').disabled=false}"><button class="date-display-btn" style="padding:5px 7px;width:auto" onclick="openDatePopup(document.getElementById('eq-dl1').value||'',v=>{document.getElementById('eq-dl1').value=v;document.getElementById('eq-dl2').disabled=!v})">📅</button></div></div>
+      <div><label>Prazo 2</label><div style="display:flex;gap:4px"><input type="text" id="eq-dl2" value="${p.dl2||''}" placeholder="DD/MM/AA" maxlength="8" style="flex:1" ${!p.dl1?'disabled':''} oninput="maskDate(this)" onchange="if(!this.value){document.getElementById('eq-dl3').value='';document.getElementById('eq-dl3').disabled=true}else{document.getElementById('eq-dl3').disabled=false}"><button class="date-display-btn" style="padding:5px 7px;width:auto" ${!p.dl1?'disabled':''} onclick="openDatePopup(document.getElementById('eq-dl2').value||'',v=>{document.getElementById('eq-dl2').value=v;document.getElementById('eq-dl3').disabled=!v})">📅</button></div></div>
+      <div><label>Prazo 3</label><div style="display:flex;gap:4px"><input type="text" id="eq-dl3" value="${p.dl3||''}" placeholder="DD/MM/AA" maxlength="8" style="flex:1" ${!p.dl2?'disabled':''} oninput="maskDate(this)"><button class="date-display-btn" style="padding:5px 7px;width:auto" ${!p.dl2?'disabled':''} onclick="openDatePopup(document.getElementById('eq-dl3').value||'',v=>{document.getElementById('eq-dl3').value=v})">📅</button></div></div>
     </div>
-    <div class="eq-footer">
-      <button class="btn btn-outline" onclick="closeEditCard()">Cancelar</button>
-      <button class="btn btn-primary" onclick="saveEditCard(${idx})">Salvar</button>
-    </div>
+    <div class="eq-footer"><button class="btn btn-outline" onclick="closeEditCard()">Cancelar</button><button class="btn btn-primary" onclick="saveEditCard(${idx})">Salvar</button></div>
   </div>`;
-  ov.addEventListener('click', closeEditCard);
+  ov.addEventListener('click',closeEditCard);
   document.body.appendChild(ov);
 }
 
 function saveEditCard(idx){
-  const p = DATA.projects[idx];
-  p.name    = document.getElementById('eq-name').value.trim() || p.name;
-  p.pct     = Math.min(100,Math.max(0,+document.getElementById('eq-pct').value||0));
-  p.st      = document.getElementById('eq-st').value;
-  p.owner   = document.getElementById('eq-owner').value.trim();
-  p.farol   = document.getElementById('eq-farol').value;
-  p.dl1     = document.getElementById('eq-dl1').value;
-  p.dl2     = document.getElementById('eq-dl2').value;
-  p.dl3     = document.getElementById('eq-dl3').value;
-  p.dl1_done= false;
-  p.dl2_done= false;
-  p.dl3_done= false;
+  const p=DATA.projects[idx];
+  p.name=document.getElementById('eq-name').value.trim()||p.name;
+  p.pct=Math.min(100,Math.max(0,+document.getElementById('eq-pct').value||0));
+  p.st=document.getElementById('eq-st').value;
+  p.owner=document.getElementById('eq-owner').value.trim();
+  p.farol=document.getElementById('eq-farol').value;
+  p.dl1=document.getElementById('eq-dl1').value;
+  p.dl2=document.getElementById('eq-dl2').value;
+  p.dl3=document.getElementById('eq-dl3').value;
   closeEditCard();
-  // re-renderiza só o card afetado no resumo
-  const sgrid = document.getElementById('sgrid');
-  const cards = sgrid.querySelectorAll('.scard');
+  const sgrid=document.getElementById('sgrid');
+  const cards=sgrid.querySelectorAll('.scard');
   if(cards[idx]){
-    const fc = farolColor(p.farol||'prazo');
-    const sc = statusClass(p.st);
-    const pct = Math.min(100,Math.max(0,p.pct||0));
-    const jl = p.jira?`<a class="jl" href="${(DATA.jiraBase||JIRA)+p.jira}" target="_blank" onclick="event.stopPropagation()">${JIRA_SVG}${p.jl}</a>`:'';
-    const ownerHtml = p.owner
-      ? `<span style="font-size:12px;color:var(--muted);display:flex;align-items:center;gap:5px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>${p.owner}</span>`
-      : `<span style="font-size:12px;color:var(--faint);font-style:italic">sem responsável</span>`;
-    cards[idx].style.setProperty('--cc', fc);
-    cards[idx].innerHTML=`
-      <button class="edit-fab" title="Editar projeto" onclick="event.stopPropagation();openEditCard(${idx})">✏️</button>
-      <div class="card-top">
-        ${farolHTML(p.farol||'prazo')}
-        <div class="card-info">
-          <div class="cname">${p.name}</div>
-          <div class="cstats">
-            <span class="cpct" style="color:${fc}">${pct}%</span>
-            <span class="bdg ${sc}">${p.st}</span>
-          </div>
-        </div>
-      </div>
-      <div class="cdl">${prazosHTML(p)}</div>
-      <div class="pbar"><div class="pfill" style="width:${pct}%;background:${fc}" data-w="${pct}"></div></div>
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-top:10px;padding-top:8px;border-top:1px solid var(--border)">
-        ${ownerHtml}
-        ${jl}
-      </div>`;
+    const fc=farolColor(p.farol||'prazo');const sc=statusClass(p.st);const pct=Math.min(100,Math.max(0,p.pct||0));
+    const jl=p.jira?`<a class="jl" href="${(DATA.jiraBase||JIRA)+p.jira}" target="_blank" onclick="event.stopPropagation()">${JIRA_SVG}${p.jl}</a>`:'';
+    const ownerHtml=p.owner?`<span style="font-size:12px;color:var(--muted);display:flex;align-items:center;gap:5px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>${p.owner}</span>`:`<span style="font-size:12px;color:var(--faint);font-style:italic">sem responsável</span>`;
+    cards[idx].style.setProperty('--cc',fc);
+    cards[idx].innerHTML=`<button class="edit-fab" title="Editar projeto" onclick="event.stopPropagation();openEditCard(${idx})">✏️</button><div class="card-top">${farolHTML(p.farol||'prazo')}<div class="card-info"><div class="cname">${p.name}</div><div class="cstats"><span class="cpct" style="color:${fc}">${pct}%</span><span class="bdg ${sc}">${p.st}</span></div></div></div><div class="cdl">${prazosHTML(p)}</div><div class="pbar"><div class="pfill" style="width:${pct}%;background:${fc}" data-w="${pct}"></div></div><div style="display:flex;align-items:center;justify-content:space-between;margin-top:10px;padding-top:8px;border-top:1px solid var(--border)">${ownerHtml}${jl}</div>`;
   }
-  markUnsaved();
-  startEditor();
+  markUnsaved();startEditor();
 }
+function closeEditCard(){const ov=document.getElementById('eq-overlay');if(ov)ov.remove();}
 
-function closeEditCard(){
-  const ov=document.getElementById('eq-overlay');
-  if(ov) ov.remove();
-}
-
-/* ── Task Drag & Drop ── */
 let _dragPid=null,_dragGi=null,_dragTi=null;
-function taskDragStart(e,pid,gi,ti){
-  _dragPid=pid; _dragGi=gi; _dragTi=ti;
-  e.dataTransfer.effectAllowed='move';
-  e.currentTarget.closest('tr').classList.add('dragging');
-}
-function taskDragOver(e){
-  e.preventDefault();
-  e.dataTransfer.dropEffect='move';
-  const tr=e.currentTarget.closest('tr');
-  if(tr&&!tr.classList.contains('dragging')&&!tr.classList.contains('add-task-row')&&!tr.classList.contains('obs-row'))
-    tr.classList.add('drag-over');
-}
-function taskDragLeave(e){
-  const tr=e.currentTarget.closest('tr');
-  if(tr) tr.classList.remove('drag-over');
-}
-function taskDrop(e,pid,gi,ti){
-  e.preventDefault();
-  const tr=e.currentTarget.closest('tr');
-  if(tr) tr.classList.remove('drag-over');
-  if(_dragPid!==pid||_dragGi!==gi||_dragTi===ti||_dragTi===null) return;
-  const tasks=DATA.panels[pid].groups[gi].tasks;
-  const item=tasks.splice(_dragTi,1)[0];
-  const newTi=_dragTi<ti?ti-1:ti;
-  tasks.splice(newTi,0,item);
-  _dragPid=_dragGi=_dragTi=null;
-  markUnsaved();
+function taskDragStart(e,pid,gi,ti){_dragPid=pid;_dragGi=gi;_dragTi=ti;e.dataTransfer.effectAllowed='move';e.currentTarget.closest('tr').classList.add('dragging');}
+function taskDragOver(e){e.preventDefault();e.dataTransfer.dropEffect='move';const tr=e.currentTarget.closest('tr');if(tr&&!tr.classList.contains('dragging')&&!tr.classList.contains('add-task-row')&&!tr.classList.contains('obs-row'))tr.classList.add('drag-over');}
+function taskDragLeave(e){const tr=e.currentTarget.closest('tr');if(tr)tr.classList.remove('drag-over');}
+function taskDrop(e,pid,gi,ti){e.preventDefault();const tr=e.currentTarget.closest('tr');if(tr)tr.classList.remove('drag-over');if(_dragPid!==pid||_dragGi!==gi||_dragTi===ti||_dragTi===null)return;const tasks=DATA.panels[pid].groups[gi].tasks;const item=tasks.splice(_dragTi,1)[0];const newTi=_dragTi<ti?ti-1:ti;tasks.splice(newTi,0,item);_dragPid=_dragGi=_dragTi=null;markUnsaved();refreshPanel(pid);}
+
+function quickAddTask(pid,gi){
+  if(!DATA.panels[pid])return;
+  const ti=DATA.panels[pid].groups[gi].tasks.length;
+  DATA.panels[pid].groups[gi].tasks.push({task:'',dl:'',st:'Não iniciado',pct:0,resp:'',jira:'',jl:'',obs:''});
   refreshPanel(pid);
+  setTimeout(()=>{openNewTaskEdit(pid,gi,ti);},60);
 }
 
-/* ── Inline Edit ── */
-function quickAddTask(pid, gi){
-  if(!DATA.panels[pid]) return;
-  const ti = DATA.panels[pid].groups[gi].tasks.length;
-  DATA.panels[pid].groups[gi].tasks.push({
-    task:'',dl:'',st:'Não iniciado',pct:0,resp:'',jira:'',jl:'',obs:''
-  });
-  refreshPanel(pid);
-  setTimeout(()=>{ openNewTaskEdit(pid, gi, ti); }, 60);
-}
-
-function openNewTaskEdit(pid, gi, ti){
-  const panel = document.getElementById('panel-'+pid);
-  if(!panel) return;
-  const rows = panel.querySelectorAll('tbody tr:not(.obs-row):not(.add-task-row):not(.new-task-row)');
-  const row = rows[ti];
-  if(!row) return;
+function openNewTaskEdit(pid,gi,ti){
+  const panel=document.getElementById('panel-'+pid);if(!panel)return;
+  const rows=panel.querySelectorAll('tbody tr:not(.obs-row):not(.add-task-row):not(.new-task-row)');
+  const row=rows[ti];if(!row)return;
   row.classList.add('new-task-row');
-
-  // fields: task, dl(text), st(select), pct
-  const fields = [
-    {td: row.cells[1], field:'task', type:'text',   cls:'cell-input', val:''},
-    {td: row.cells[2], field:'dl',   type:'date-popup', cls:'cell-input', val:''},
-    {td: row.cells[3], field:'st',   type:'select', cls:'cell-select',val:'Não iniciado'},
-    {td: row.cells[4], field:'pct',  type:'number', cls:'cell-num',   val:'0'},
-    {td: row.cells[5], field:'jira', type:'text',   cls:'cell-input', val:'', placeholder:'/browse/FD-123'},
+  const fields=[
+    {td:row.cells[1],field:'task',type:'text',   cls:'cell-input',val:''},
+    {td:row.cells[2],field:'dl',  type:'date-popup',cls:'cell-input',val:''},
+    {td:row.cells[3],field:'st',  type:'select', cls:'cell-select',val:'Não iniciado'},
+    {td:row.cells[4],field:'pct', type:'number', cls:'cell-num',   val:'0'},
+    {td:row.cells[5],field:'jira',type:'text',   cls:'cell-input', val:'',placeholder:'/browse/FD-123'},
   ];
-
-  const inputs = [];
+  const inputs=[];
   fields.forEach((f,idx)=>{
     f.td.classList.add('cell-edit');
     let inp;
     if(f.type==='select'){
-      inp = document.createElement('select');
-      inp.className = f.cls;
+      inp=document.createElement('select');inp.className=f.cls;
       inp.style.cssText='width:100%;border:1px solid var(--accent);border-radius:20px;padding:3px 8px;font-size:11px;font-weight:600;text-transform:uppercase;cursor:pointer;background:#fff;color:var(--text)';
-      STATUS_LIST.forEach(s=>{ const o=document.createElement('option'); o.value=s; o.textContent=s; if(s===f.val) o.selected=true; inp.appendChild(o); });
+      STATUS_LIST.forEach(s=>{const o=document.createElement('option');o.value=s;o.textContent=s;if(s===f.val)o.selected=true;inp.appendChild(o);});
     } else if(f.type==='date-popup'){
-      inp = document.createElement('button');
-      inp.className = 'date-display-btn';
+      inp=document.createElement('button');inp.className='date-display-btn';
       inp.style.cssText="border:1px solid var(--accent);background:var(--accent-lt);font-size:12px;font-family:'DM Mono',monospace;cursor:pointer;padding:4px 8px;border-radius:var(--rs);color:#000;width:100%";
-      inp.textContent = '📅 —';
-      inp.dataset.dateVal = '';
-      inp.tabIndex = 0;
-      // abrir popup ao focar (tab) ou clicar
-      const openPop = ()=>{
-        openDatePopup(inp.dataset.dateVal||'', br=>{
-          inp.dataset.dateVal = br;
-          inp.textContent = br ? '📅 '+br : '📅 —';
-          // avançar para próximo campo após escolher data
-          const nextIdx = +inp.dataset.idx+1;
-          if(inputs[nextIdx]) inputs[nextIdx].inp.focus();
-        });
-      };
-      inp.addEventListener('focus', openPop);
-      inp.addEventListener('click', e=>{ e.preventDefault(); openPop(); });
+      inp.textContent='📅 —';inp.dataset.dateVal='';inp.tabIndex=0;
+      const openPop=()=>{openDatePopup(inp.dataset.dateVal||'',br=>{inp.dataset.dateVal=br;inp.textContent=br?'📅 '+br:'📅 —';const nextIdx=+inp.dataset.idx+1;if(inputs[nextIdx])inputs[nextIdx].inp.focus();});};
+      inp.addEventListener('focus',openPop);inp.addEventListener('click',e=>{e.preventDefault();openPop();});
     } else {
-      inp = document.createElement('input');
-      inp.type = f.type;
-      inp.className = f.cls;
-      inp.value = f.val;
-      if(f.placeholder) inp.placeholder = f.placeholder;
-      if(f.type==='number'){ inp.min=0; inp.max=100; }
+      inp=document.createElement('input');inp.type=f.type;inp.className=f.cls;inp.value=f.val;
+      if(f.placeholder)inp.placeholder=f.placeholder;
+      if(f.type==='number'){inp.min=0;inp.max=100;}
     }
-    inp.dataset.field = f.field;
-    inp.dataset.idx = idx;
-    f.td.innerHTML='';
-    f.td.appendChild(inp);
-    inputs.push({inp, td:f.td, field:f.field});
+    inp.dataset.field=f.field;inp.dataset.idx=idx;
+    f.td.innerHTML='';f.td.appendChild(inp);inputs.push({inp,td:f.td,field:f.field});
   });
-
-  // Tab between fields
   inputs.forEach((item,idx)=>{
-    item.inp.addEventListener('keydown', e=>{
-      if(e.key==='Tab'){
-        e.preventDefault();
-        const next = inputs[(idx+1) % inputs.length];
-        next.inp.focus();
-        if(next.inp.select) next.inp.select();
-      }
-      if(e.key==='Enter'){ e.preventDefault(); commitNewTask(); }
-      if(e.key==='Escape'){ cancelNewTask(); }
+    item.inp.addEventListener('keydown',e=>{
+      if(e.key==='Tab'){e.preventDefault();const next=inputs[(idx+1)%inputs.length];next.inp.focus();if(next.inp.select)next.inp.select();}
+      if(e.key==='Enter'){e.preventDefault();commitNewTask();}
+      if(e.key==='Escape'){cancelNewTask();}
     });
   });
-
-  // blur da linha — checar se foco saiu da linha toda
-  function onBlur(){
-    setTimeout(()=>{
-      const focused = document.activeElement;
-      if(!row.contains(focused)) commitNewTask();
-    }, 100);
-  }
-  inputs.forEach(item=> item.inp.addEventListener('blur', onBlur));
-
+  function onBlur(){setTimeout(()=>{const focused=document.activeElement;if(!row.contains(focused))commitNewTask();},100);}
+  inputs.forEach(item=>item.inp.addEventListener('blur',onBlur));
   function commitNewTask(){
-    const taskVal = inputs.find(i=>i.field==='task')?.inp.value.trim();
-    if(!taskVal){
-      cancelNewTask();
-      return;
-    }
-    const task = DATA.panels[pid].groups[gi].tasks[ti];
+    const taskVal=inputs.find(i=>i.field==='task')?.inp.value.trim();
+    if(!taskVal){cancelNewTask();return;}
+    const task=DATA.panels[pid].groups[gi].tasks[ti];
     inputs.forEach(item=>{
-      let v = item.field==='dl' && item.inp.dataset.dateVal !== undefined
-        ? item.inp.dataset.dateVal
-        : item.inp.value;
-      if(item.field==='pct') v=Math.min(100,Math.max(0,+v||0));
-      if(item.field==='jira'){ task.jira=v; task.jl=v.split('/').pop(); }
+      let v=item.field==='dl'&&item.inp.dataset.dateVal!==undefined?item.inp.dataset.dateVal:item.inp.value;
+      if(item.field==='pct')v=Math.min(100,Math.max(0,+v||0));
+      if(item.field==='jira'){task.jira=v;task.jl=v.split('/').pop();}
       else task[item.field]=v;
     });
-    row.classList.remove('new-task-row');
-    inputs.forEach(item=> item.td.classList.remove('cell-edit'));
-    markUnsaved();
-    refreshPanel(pid);
+    row.classList.remove('new-task-row');inputs.forEach(item=>item.td.classList.remove('cell-edit'));markUnsaved();refreshPanel(pid);
   }
-
-  function cancelNewTask(){
-    DATA.panels[pid].groups[gi].tasks.splice(ti,1);
-    row.classList.remove('new-task-row');
-    refreshPanel(pid);
-  }
-
-  // focus first field
+  function cancelNewTask(){DATA.panels[pid].groups[gi].tasks.splice(ti,1);row.classList.remove('new-task-row');refreshPanel(pid);}
   inputs[0].inp.focus();
 }
 
 function refreshPanel(pid){
-  const existing = document.getElementById('panel-'+pid);
-  if(!existing || !DATA.panels[pid]) return;
-  const wasActive = existing.classList.contains('active');
-  const tmp = document.createElement('div');
-  tmp.innerHTML = renderPanel(pid, DATA.panels[pid]);
-  const newPanel = tmp.firstElementChild;
-  if(wasActive) newPanel.classList.add('active');
+  const existing=document.getElementById('panel-'+pid);if(!existing||!DATA.panels[pid])return;
+  const wasActive=existing.classList.contains('active');
+  const tmp=document.createElement('div');tmp.innerHTML=renderPanel(pid,DATA.panels[pid]);
+  const newPanel=tmp.firstElementChild;if(wasActive)newPanel.classList.add('active');
   existing.replaceWith(newPanel);
 }
-let _hasUnsaved = false;
 
-function markUnsaved(){
-  _hasUnsaved = true;
-  document.getElementById('unsaved-badge').classList.add('show');
-}
+let _hasUnsaved=false;
+function markUnsaved(){_hasUnsaved=true;document.getElementById('unsaved-badge').classList.add('show');}
+function clearUnsaved(){_hasUnsaved=false;document.getElementById('unsaved-badge').classList.remove('show');}
+window.addEventListener('beforeunload',e=>{if(_hasUnsaved){e.preventDefault();e.returnValue='';}});
 
-function clearUnsaved(){
-  _hasUnsaved = false;
-  document.getElementById('unsaved-badge').classList.remove('show');
-}
-
-window.addEventListener('beforeunload', e => {
-  if(_hasUnsaved){
-    e.preventDefault();
-    e.returnValue = '';
-  }
-});
-
-function inlineEditTask(pid, gi, ti, field, el){
-  if(el.querySelector('input,select')) return; // already editing
-  const task = DATA.panels[pid].groups[gi].tasks[ti];
-  const val = task[field];
+function inlineEditTask(pid,gi,ti,field,el){
+  if(el.querySelector('input,select'))return;
+  const task=DATA.panels[pid].groups[gi].tasks[ti];const val=task[field];
   el.classList.add('cell-edit');
-
   let input;
   if(field==='st'){
-    input = document.createElement('select');
-    input.className='cell-select';
+    input=document.createElement('select');input.className='cell-select';
     input.style.cssText='width:100%;border:1px solid var(--accent);border-radius:20px;padding:3px 8px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.4px;cursor:pointer;background:#fff;color:var(--text)';
-    STATUS_LIST.forEach(s=>{
-      const o=document.createElement('option');
-      o.value=s; o.textContent=s;
-      if(s===val) o.selected=true;
-      input.appendChild(o);
-    });
-    // abrir dropdown imediatamente
-    setTimeout(()=>{ try{ input.showPicker && input.showPicker(); } catch(e){} input.focus(); input.click(); },30);
+    STATUS_LIST.forEach(s=>{const o=document.createElement('option');o.value=s;o.textContent=s;if(s===val)o.selected=true;input.appendChild(o);});
+    setTimeout(()=>{try{input.showPicker&&input.showPicker();}catch(e){}input.focus();input.click();},30);
   } else if(field==='pct'){
-    input = document.createElement('input');
-    input.type='number'; input.min=0; input.max=100;
-    input.className='cell-num';
-    input.value=val||0;
+    input=document.createElement('input');input.type='number';input.min=0;input.max=100;input.className='cell-num';input.value=val||0;
   } else if(field==='dl'){
     el.classList.remove('cell-edit');
-    openDatePopup(val||'', br=>{
-      if(br !== (task.dl||'')){
-        task.dl = br;
-        markUnsaved();
-        refreshPanel(pid);
-      }
-    });
-    return;
+    openDatePopup(val||'',br=>{if(br!==(task.dl||'')){task.dl=br;markUnsaved();refreshPanel(pid);}});return;
   } else if(field==='jira'){
-    input = document.createElement('input');
-    input.type='text';
-    input.className='cell-input';
-    input.value=val||'';
-    input.placeholder='/browse/FD-123';
+    input=document.createElement('input');input.type='text';input.className='cell-input';input.value=val||'';input.placeholder='/browse/FD-123';
   } else {
-    input = document.createElement('input');
-    input.type='text';
-    input.className='cell-input';
-    input.value=val||'';
+    input=document.createElement('input');input.type='text';input.className='cell-input';input.value=val||'';
   }
-
-  const prev = el.innerHTML;
-  el.innerHTML='';
-  el.appendChild(input);
-  input.focus();
-  if(input.select) input.select();
-
+  const prev=el.innerHTML;el.innerHTML='';el.appendChild(input);input.focus();if(input.select)input.select();
   function save(){
-    let newVal = input.value;
-    if(field==='pct') newVal=Math.min(100,Math.max(0,+newVal||0));
-    const oldVal = field==='pct' ? Math.min(100,Math.max(0,+(task[field]||0))) : (task[field]||'');
-    const changed = String(newVal) !== String(oldVal);
-    if(field==='jira'){
-      task.jira=newVal;
-      task.jl=newVal.split('/').pop();
-    } else {
-      task[field]=newVal;
-    }
-    el.classList.remove('cell-edit');
-    if(changed){ markUnsaved(); refreshPanel(pid); }
-    else { el.innerHTML=prev; }
+    let newVal=input.value;if(field==='pct')newVal=Math.min(100,Math.max(0,+newVal||0));
+    const oldVal=field==='pct'?Math.min(100,Math.max(0,+(task[field]||0))):(task[field]||'');
+    const changed=String(newVal)!==String(oldVal);
+    if(field==='jira'){task.jira=newVal;task.jl=newVal.split('/').pop();}else{task[field]=newVal;}
+    el.classList.remove('cell-edit');if(changed){markUnsaved();refreshPanel(pid);}else{el.innerHTML=prev;}
   }
-
-  input.addEventListener('blur', save);
-  input.addEventListener('keydown', e=>{
-    if(e.key==='Enter'){ e.preventDefault(); input.blur(); }
-    if(e.key==='Escape'){ el.innerHTML=prev; el.classList.remove('cell-edit'); }
-  });
+  input.addEventListener('blur',save);
+  input.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();input.blur();}if(e.key==='Escape'){el.innerHTML=prev;el.classList.remove('cell-edit');}});
 }
-function doRemoveProject(idx,pid){
-  editorData.projects.splice(idx,1);
-  if(editorData.panels[pid]) delete editorData.panels[pid];
-  closeModal();
-  renderEdProjects();
-}
-function addProject(){ editorData.projects.push({id:'novo',name:'Novo Projeto',pct:0,dl1:'',dl2:'',dl3:'',st:'Em andamento',color:'#1B6EF3',farol:'perigo',jira:'',jl:''}); renderEdProjects(); }
 
-/* ── Tasks editor ── */
+function doRemoveProject(idx,pid){editorData.projects.splice(idx,1);if(editorData.panels[pid])delete editorData.panels[pid];closeModal();renderEdProjects();}
+function addProject(){editorData.projects.push({id:'novo',name:'Novo Projeto',pct:0,dl1:'',dl2:'',dl3:'',st:'Em andamento',color:'#1B6EF3',farol:'perigo',jira:'',jl:''});renderEdProjects();}
+
 function renderEdTasks(){
-  const tabBar=document.getElementById('panel-tabs-ed');
-  tabBar.innerHTML='';
+  const tabBar=document.getElementById('panel-tabs-ed');tabBar.innerHTML='';
   const ids=Object.keys(editorData.panels);
   if(!ids.length){document.getElementById('tasks-editor-body').innerHTML='<div class="ed-empty">Nenhum painel.</div>';return;}
-  if(!activePanel||!editorData.panels[activePanel]) activePanel=ids[0];
-  ids.forEach(id=>{
-    const b=document.createElement('button');
-    b.className='tbe'+(id===activePanel?' active':'');
-    b.textContent=editorData.panels[id].title||id;
-    b.onclick=()=>{activePanel=id;renderEdTasks();};
-    tabBar.appendChild(b);
-  });
+  if(!activePanel||!editorData.panels[activePanel])activePanel=ids[0];
+  ids.forEach(id=>{const b=document.createElement('button');b.className='tbe'+(id===activePanel?' active':'');b.textContent=editorData.panels[id].title||id;b.onclick=()=>{activePanel=id;renderEdTasks();};tabBar.appendChild(b);});
   renderTasksForPanel(activePanel);
 }
 
 function renderTasksForPanel(pid){
-  const p=editorData.panels[pid];
-  const body=document.getElementById('tasks-editor-body');
+  const p=editorData.panels[pid];const body=document.getElementById('tasks-editor-body');
   let html=`<div style="display:flex;gap:8px;margin-bottom:12px">
     <div style="flex:1"><label>Título</label><input type="text" value="${p.title||''}" onchange="editorData.panels['${pid}'].title=this.value"></div>
     <div style="flex:1"><label>Subtítulo</label><input type="text" value="${p.subtitle||''}" onchange="editorData.panels['${pid}'].subtitle=this.value"></div>
   </div>
   <div class="field-full"><label>Nota de aviso</label><input type="text" value="${(p.note||'').replace(/"/g,'&quot;')}" placeholder="⚠️ mensagem..." onchange="editorData.panels['${pid}'].note=this.value"></div>`;
-
   p.groups.forEach((grp,gi)=>{
     html+=`<div style="margin-bottom:20px;background:var(--surface-2);border:1px solid var(--border);border-radius:var(--rs);padding:14px">
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
@@ -1455,7 +1068,7 @@ function renderTasksForPanel(pid){
         <button class="btn btn-danger btn-sm" onclick="removeGroup('${pid}',${gi})">✕ Grupo</button>
       </div>
       <div class="task-list" id="tl-${pid}-${gi}">`;
-    grp.tasks.forEach((t,ti)=>{ html+=taskEdRow(pid,gi,ti,t); });
+    grp.tasks.forEach((t,ti)=>{html+=taskEdRow(pid,gi,ti,t);});
     html+=`</div><button class="btn btn-outline btn-sm" style="margin-top:10px;width:100%" onclick="addTask('${pid}',${gi})">+ Adicionar tarefa</button></div>`;
   });
   html+=`<button class="btn btn-outline" style="width:100%" onclick="addGroup('${pid}')">+ Adicionar sub-seção</button>`;
@@ -1464,11 +1077,7 @@ function renderTasksForPanel(pid){
 
 function taskEdRow(pid,gi,ti,t){
   return `<div class="task-item">
-    <div class="task-item-header">
-      <span class="drag-handle">⠿</span>
-      <span>Tarefa ${ti+1}</span>
-      <button class="btn btn-danger btn-sm" onclick="removeTask('${pid}',${gi},${ti})">✕</button>
-    </div>
+    <div class="task-item-header"><span class="drag-handle">⠿</span><span>Tarefa ${ti+1}</span><button class="btn btn-danger btn-sm" onclick="removeTask('${pid}',${gi},${ti})">✕</button></div>
     <div class="field-row">
       <div><label>Descrição</label><input type="text" value="${(t.task||'').replace(/"/g,'&quot;')}" onchange="updTask('${pid}',${gi},${ti},'task',this.value)"></div>
       <div><label>Responsável</label><input type="text" value="${t.resp||''}" onchange="updTask('${pid}',${gi},${ti},'resp',this.value)"></div>
@@ -1479,43 +1088,35 @@ function taskEdRow(pid,gi,ti,t){
           <span class="cal-icon">📅</span><span>${t.dl||'—'}</span>
         </button>
       </div>
-      <div><label>Status</label>
-        <select onchange="updTask('${pid}',${gi},${ti},'st',this.value)">
-          ${STATUS_LIST.map(s=>`<option value="${s}" ${t.st===s?'selected':''}>${s}</option>`).join('')}
-        </select>
-      </div>
+      <div><label>Status</label><select onchange="updTask('${pid}',${gi},${ti},'st',this.value)">${STATUS_LIST.map(s=>`<option value="${s}" ${t.st===s?'selected':''}>${s}</option>`).join('')}</select></div>
       <div><label>% Evolução</label><input type="number" min="0" max="100" value="${t.pct||0}" onchange="updTask('${pid}',${gi},${ti},'pct',+this.value)"></div>
       <div><label>Jira (caminho)</label><input type="text" value="${t.jira||''}" placeholder="/browse/FD-123" onchange="updTask('${pid}',${gi},${ti},'jira',this.value);updTask('${pid}',${gi},${ti},'jl',this.value.split('/').pop())"></div>
     </div>
-    <div class="field-full"><label>Observação</label>
-      <input type="text" value="${(t.obs||'').replace(/"/g,'&quot;')}" placeholder="ex: Aguardando API do Bradesco" onchange="updTask('${pid}',${gi},${ti},'obs',this.value)">
-    </div>
+    <div class="field-full"><label>Observação</label><input type="text" value="${(t.obs||'').replace(/"/g,'&quot;')}" placeholder="ex: Aguardando API do Bradesco" onchange="updTask('${pid}',${gi},${ti},'obs',this.value)"></div>
   </div>`;
 }
 
-function updTask(pid,gi,ti,key,val){ editorData.panels[pid].groups[gi].tasks[ti][key]=val; }
-function updTaskDate(pid,gi,ti,br){ editorData.panels[pid].groups[gi].tasks[ti].dl=br; }
-function removeTask(pid,gi,ti){ editorData.panels[pid].groups[gi].tasks.splice(ti,1); renderTasksForPanel(pid); }
-function addTask(pid,gi){ editorData.panels[pid].groups[gi].tasks.push({task:'',dl:'',st:'Em andamento',pct:0,resp:'',jira:'',jl:'',obs:''}); renderTasksForPanel(pid); }
-function addGroup(pid){ editorData.panels[pid].groups.push({label:'',tasks:[]}); renderTasksForPanel(pid); }
-function removeGroup(pid,gi){ if(!confirm('Remover grupo?')) return; editorData.panels[pid].groups.splice(gi,1); renderTasksForPanel(pid); }
+function updTask(pid,gi,ti,key,val){editorData.panels[pid].groups[gi].tasks[ti][key]=val;}
+function removeTask(pid,gi,ti){editorData.panels[pid].groups[gi].tasks.splice(ti,1);renderTasksForPanel(pid);}
+function addTask(pid,gi){editorData.panels[pid].groups[gi].tasks.push({task:'',dl:'',st:'Em andamento',pct:0,resp:'',jira:'',jl:'',obs:''});renderTasksForPanel(pid);}
+function addGroup(pid){editorData.panels[pid].groups.push({label:'',tasks:[]});renderTasksForPanel(pid);}
+function removeGroup(pid,gi){if(!confirm('Remover grupo?'))return;editorData.panels[pid].groups.splice(gi,1);renderTasksForPanel(pid);}
 
 /* ── Initiatives editor ── */
 function renderEdInitiativas(){
-  const list=document.getElementById('init-list');
-  list.innerHTML='';
+  const list=document.getElementById('init-list');list.innerHTML='';
   editorData.iniciativas.forEach((ini,idx)=>{
-    const div=document.createElement('div');
-    div.className='proj-item';
+    const div=document.createElement('div');div.className='proj-item';
+    div.dataset.iniIdx=idx;
     div.innerHTML=`
       <div class="proj-item-hdr" style="margin-bottom:8px">
         <span class="color-dot" style="background:${ini.color}"></span>
         <strong style="flex:1">${ini.title}</strong>
       </div>
       <div style="display:grid;grid-template-columns:2fr 1fr 0.6fr auto;gap:8px;align-items:end;margin-bottom:8px">
-        <div><label>Título</label><input type="text" value="${(ini.title||'').replace(/"/g,'&quot;')}" onchange="updIni(${idx},'title',this.value)"></div>
-        <div><label>Caminho Jira</label><input type="text" value="${ini.jira||''}" onchange="updIni(${idx},'jira',this.value)"></div>
-        <div><label>Label Jira</label><input type="text" value="${ini.jl||''}" onchange="updIni(${idx},'jl',this.value)"></div>
+        <div><label>Título</label><input type="text" data-ini="${idx}" data-field="title" value="${(ini.title||'').replace(/"/g,'&quot;')}"></div>
+        <div><label>Caminho Jira</label><input type="text" data-ini="${idx}" data-field="jira" value="${ini.jira||''}"></div>
+        <div><label>Label Jira</label><input type="text" data-ini="${idx}" data-field="jl" value="${ini.jl||''}"></div>
         <div style="display:flex;flex-direction:column">
           <label>Farol</label>
           <div style="display:flex;gap:3px;margin-top:auto">
@@ -1523,9 +1124,7 @@ function renderEdInitiativas(){
               const cur=ini.farol||'prazo';
               return [['perigo','#F85149','Perigo'],['atencao','#D29922','Atenção'],['prazo','#22C55E','No prazo']].map(([val,cor,lbl])=>{
                 const sel=cur===val;
-                return `<div title="${lbl}"
-                  style="width:28px;height:28px;border-radius:var(--rs);border:2px solid ${sel?'var(--accent)':'var(--border)'};background:${sel?'var(--accent-lt)':'#fff'};cursor:pointer;display:flex;align-items:center;justify-content:center"
-                  onclick="updIni(${idx},'farol','${val}');renderEdInitiativas()">
+                return `<div title="${lbl}" style="width:28px;height:28px;border-radius:var(--rs);border:2px solid ${sel?'var(--accent)':'var(--border)'};background:${sel?'var(--accent-lt)':'#fff'};cursor:pointer;display:flex;align-items:center;justify-content:center" onclick="updIni(${idx},'farol','${val}');renderEdInitiativas()">
                   <div style="display:flex;flex-direction:column;gap:2px;align-items:center">
                     <span style="width:7px;height:7px;border-radius:50%;background:${val==='perigo'?cor:'var(--border)'}"></span>
                     <span style="width:7px;height:7px;border-radius:50%;background:${val==='atencao'?cor:'var(--border)'}"></span>
@@ -1538,7 +1137,7 @@ function renderEdInitiativas(){
         </div>
       </div>
       <div style="margin-bottom:8px"><label>Itens (um por linha)</label>
-        <textarea rows="${Math.max(3,ini.items.length+1)}" onchange="updIni(${idx},'items',this.value.split('\n').filter(l=>l.trim()))">${ini.items.join('\n')}</textarea>
+        <textarea data-ini="${idx}" data-field="items" rows="${Math.max(3,ini.items.length+1)}">${ini.items.join('\n')}</textarea>
       </div>
       <div style="display:flex;justify-content:flex-end;padding-top:8px;border-top:1px solid var(--border)">
         <button class="btn btn-danger btn-sm" onclick="removeIni(${idx})">🗑 Excluir Iniciativa</button>
@@ -1546,13 +1145,38 @@ function renderEdInitiativas(){
     list.appendChild(div);
   });
 }
-function updIni(idx,key,val){ editorData.iniciativas[idx][key]=val; }
-function removeIni(idx){ if(!confirm('Remover?')) return; editorData.iniciativas.splice(idx,1); renderEdInitiativas(); }
-function addInitiativa(){ editorData.iniciativas.push({title:'Nova Iniciativa',color:'#1B6EF3',jira:'',jl:'',farol:'prazo',items:[]}); renderEdInitiativas(); }
+
+function updIni(idx,key,val){editorData.iniciativas[idx][key]=val;}
+function removeIni(idx){if(!confirm('Remover?'))return;editorData.iniciativas.splice(idx,1);renderEdInitiativas();}
+function addInitiativa(){editorData.iniciativas.push({title:'Nova Iniciativa',color:'#1B6EF3',jira:'',jl:'',farol:'prazo',items:[]});renderEdInitiativas();}
+
+/* ════════════════════════════════════════════════
+   FIX: coleta todos os valores do DOM do editor de
+   iniciativas ANTES de copiar editorData → DATA.
+   Resolve o problema de onchange não disparar quando
+   o usuário clica em "Aplicar" sem sair do campo.
+   ════════════════════════════════════════════════ */
+function collectEditorInitiativas(){
+  const list=document.getElementById('init-list');
+  if(!list) return;
+  // Coleta todos os inputs e textareas com data-ini e data-field
+  list.querySelectorAll('[data-ini][data-field]').forEach(el=>{
+    const idx=+el.dataset.ini;
+    const field=el.dataset.field;
+    if(!editorData.iniciativas[idx]) return;
+    if(field==='items'){
+      editorData.iniciativas[idx].items=el.value.split('\n').filter(l=>l.trim());
+    } else {
+      editorData.iniciativas[idx][field]=el.value;
+    }
+  });
+}
 
 /* ── Apply & Export ── */
 function applyData(){
-  /* date already set via setReportDate callback */
+  // ► FIX: força coleta de campos ainda em edição no editor de iniciativas
+  collectEditorInitiativas();
+
   if(editorData.date==='—') editorData.date='';
   editorData.jiraBase=document.getElementById('ed-jira-base').value.trim()||editorData.jiraBase;
   DATA=JSON.parse(JSON.stringify(editorData));
@@ -1563,8 +1187,10 @@ function applyData(){
 }
 
 function exportJSON(){
+  // ► FIX: força coleta também no export
+  collectEditorInitiativas();
+
   clearUnsaved();
-  /* date already set via setReportDate callback */
   editorData.jiraBase=document.getElementById('ed-jira-base').value.trim()||editorData.jiraBase;
   const json=JSON.stringify(editorData,null,2);
   const blob=new Blob([json],{type:'application/json'});
@@ -1574,42 +1200,36 @@ function exportJSON(){
   a.click();
 }
 
-function importJSON(e){ const f=e.target.files[0]; if(!f) return; const r=new FileReader(); r.onload=ev=>loadFromJSON(ev.target.result); r.readAsText(f); }
-function importFromPaste(){ const t=document.getElementById('import-paste').value.trim(); if(!t){alert('Cole um JSON válido primeiro.');return;} loadFromJSON(t); }
+function importJSON(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>loadFromJSON(ev.target.result);r.readAsText(f);}
+function importFromPaste(){const t=document.getElementById('import-paste').value.trim();if(!t){alert('Cole um JSON válido primeiro.');return;}loadFromJSON(t);}
 function loadFromJSON(txt){
   try{
-    const json = JSON.parse(txt);
-    if(!json || !Array.isArray(json.projects) || json.projects.length===0)
-      throw new Error('JSON sem projetos válidos');
-    if(!json.panels || Object.keys(json.panels).length===0)
-      throw new Error('JSON sem painéis válidos');
-    editorData = json;
+    const json=JSON.parse(txt);
+    if(!json||!Array.isArray(json.projects)||json.projects.length===0) throw new Error('JSON sem projetos válidos');
+    if(!json.panels||Object.keys(json.panels).length===0) throw new Error('JSON sem painéis válidos');
+    editorData=json;
     renderEdGeral();
-    alert('✅ JSON carregado com ' + json.projects.length + ' projetos! Clique "Aplicar ao Dashboard".');
-  } catch(e){
-    alert('❌ JSON inválido ou vazio: ' + e.message);
-  }
+    alert('✅ JSON carregado com '+json.projects.length+' projetos! Clique "Aplicar ao Dashboard".');
+  }catch(e){alert('❌ JSON inválido ou vazio: '+e.message);}
 }
 
-/* drag-drop import */
 const dropArea=document.getElementById('import-drop');
 dropArea.addEventListener('dragover',e=>{e.preventDefault();dropArea.style.borderColor='var(--accent)'});
 dropArea.addEventListener('dragleave',()=>dropArea.style.borderColor='');
-dropArea.addEventListener('drop',e=>{ e.preventDefault();dropArea.style.borderColor=''; const f=e.dataTransfer.files[0]; if(f){const r=new FileReader();r.onload=ev=>loadFromJSON(ev.target.result);r.readAsText(f);} });
+dropArea.addEventListener('drop',e=>{e.preventDefault();dropArea.style.borderColor='';const f=e.dataTransfer.files[0];if(f){const r=new FileReader();r.onload=ev=>loadFromJSON(ev.target.result);r.readAsText(f);}});
 
-/* ══ INIT ══ */
-/* Fetch automático do GitHub — só substitui DATA se JSON for completo e válido */
+/* ── Init ── */
 (async function(){
   try{
-    const res = await fetch('https://processosae.github.io/status-report-denis-ae/data.json?_='+Date.now());
+    const res=await fetch('https://processosae.github.io/status-report-denis-ae/data.json?_='+Date.now());
     if(!res.ok) throw new Error('HTTP '+res.status);
-    const txt = await res.text();
-    const json = JSON.parse(txt);
+    const txt=await res.text();
+    const json=JSON.parse(txt);
     if(!json||!Array.isArray(json.projects)||json.projects.length===0) throw new Error('sem projetos');
     if(!json.panels||Object.keys(json.panels).length===0) throw new Error('sem painéis');
-    DATA = json;
+    DATA=json;
     console.log('✅ GitHub: '+json.projects.length+' projetos carregados');
-  } catch(e){
+  }catch(e){
     console.warn('⚠️ Dados locais:', e.message);
   }
   renderAll();

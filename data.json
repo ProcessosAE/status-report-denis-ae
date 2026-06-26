@@ -1,12 +1,12 @@
 {
-  "date": "10/06/2026",
+  "date": "26/06/2026",
   "jiraBase": "https://jiracloudae.atlassian.net",
   "projects": [
     {
       "id": "NT",
-      "name": "Novo Terminal V7.6.2",
-      "pct": 100,
-      "dl1": "10/06/2026",
+      "name": "Novo Terminal V7.6.3",
+      "pct": 30,
+      "dl1": "24/07/2026",
       "dl2": "",
       "dl3": "",
       "st": "Em andamento",
