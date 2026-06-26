@@ -22,7 +22,7 @@
     {
       "id": "novo",
       "name": "Novo Addin",
-      "pct": 1,
+      "pct": 15,
       "dl1": "31/08/2026",
       "dl2": "",
       "dl3": "",
@@ -36,7 +36,7 @@
     {
       "id": "screener",
       "name": "Screener",
-      "pct": 7,
+      "pct": 15,
       "dl1": "05/10",
       "dl2": "",
       "dl3": "",
@@ -53,7 +53,7 @@
     {
       "id": "openmeter",
       "name": "OpenMeter",
-      "pct": 37,
+      "pct": 50,
       "dl1": "07/07",
       "dl2": "",
       "dl3": "",
@@ -66,23 +66,6 @@
       "jira": "/browse/PDT-639",
       "jl": "PDT-639",
       "owner": "Rey"
-    },
-    {
-      "id": "fenics",
-      "name": "Injetor Fenics",
-      "pct": 95,
-      "dl1": "—",
-      "dl2": "",
-      "dl3": "",
-      "dl1_done": false,
-      "dl2_done": false,
-      "dl3_done": false,
-      "st": "Em validação",
-      "color": "#EA580C",
-      "farol": "prazo",
-      "jira": "",
-      "jl": "",
-      "owner": "Jara"
     },
     {
       "id": "a5x",
@@ -139,7 +122,7 @@
       "id": "faq",
       "name": "FAQ Bradesco",
       "pct": 90,
-      "dl1": "29/05",
+      "dl1": "",
       "dl2": "",
       "dl3": "",
       "dl1_done": false,
@@ -156,7 +139,7 @@
       "id": "chat",
       "name": "Chat Bradesco",
       "pct": 90,
-      "dl1": "29/05",
+      "dl1": "",
       "dl2": "",
       "dl3": "",
       "dl1_done": false,
@@ -174,7 +157,7 @@
       "name": "Novo Fundos",
       "pct": 95,
       "dl1": "17/04/2026",
-      "dl2": "03/06/2026",
+      "dl2": "01/07/2026",
       "dl3": "",
       "st": "Em andamento",
       "color": "#CA8A04",
@@ -187,27 +170,10 @@
       "dl3_done": false
     },
     {
-      "id": "novo",
-      "name": "Processos - Portal de Processos v1.0",
-      "pct": 100,
-      "dl1": "01/06/2026",
-      "dl2": "10/06/2026",
-      "dl3": "",
-      "st": "Em andamento",
-      "color": "#1B6EF3",
-      "farol": "prazo",
-      "jira": "/projects/PRC/boards/982",
-      "jl": "PRC-982",
-      "dl1_done": true,
-      "owner": "Natan",
-      "dl2_done": false,
-      "dl3_done": false
-    },
-    {
       "id": "itsm",
       "name": "Processos - Implantação ITSM",
       "pct": 90,
-      "dl1": "03/07/2026",
+      "dl1": "24/07/2026",
       "dl2": "",
       "dl3": "",
       "dl1_done": false,
@@ -223,7 +189,7 @@
     {
       "id": "novo",
       "name": "Processos - Reestrut Issues Jira",
-      "pct": 7,
+      "pct": 15,
       "dl1": "31/08/2026",
       "dl2": "",
       "dl3": "",
@@ -580,89 +546,6 @@
         }
       ]
     },
-    "fenics": {
-      "title": "Injetor Fenics",
-      "subtitle": "Em validação · FMD1 / FMD2 / PDTL",
-      "groups": [
-        {
-          "label": "",
-          "tasks": [
-            {
-              "task": "Conectividade com Fenics",
-              "dl": "24/03",
-              "st": "Aguard. deploy",
-              "pct": 100,
-              "resp": "",
-              "jira": "/projects/FMD1",
-              "jl": "FMD1"
-            },
-            {
-              "task": "Regras de negócios Fenics",
-              "dl": "30/04",
-              "st": "Aguard. deploy",
-              "pct": 100,
-              "resp": "",
-              "jira": "",
-              "jl": ""
-            },
-            {
-              "task": "Regras de negócios NIG",
-              "dl": "30/04",
-              "st": "Aguard. deploy",
-              "pct": 100,
-              "resp": "",
-              "jira": "",
-              "jl": ""
-            },
-            {
-              "task": "Monitorações",
-              "dl": "30/04",
-              "st": "Aguard. deploy",
-              "pct": 100,
-              "resp": "",
-              "jira": "",
-              "jl": ""
-            },
-            {
-              "task": "Serviço Windows",
-              "dl": "10/04",
-              "st": "Aguard. deploy",
-              "pct": 100,
-              "resp": "",
-              "jira": "",
-              "jl": ""
-            },
-            {
-              "task": "Incluir serviço no instalador",
-              "dl": "n/d",
-              "st": "Aguard. deploy",
-              "pct": 100,
-              "resp": "",
-              "jira": "",
-              "jl": ""
-            },
-            {
-              "task": "Infra estrutura produção",
-              "dl": "n/d",
-              "st": "Não iniciado",
-              "pct": 0,
-              "resp": "",
-              "jira": "",
-              "jl": ""
-            },
-            {
-              "task": "POC - Kafka",
-              "dl": "24/03",
-              "st": "Aguard. deploy",
-              "pct": 100,
-              "resp": "",
-              "jira": "",
-              "jl": ""
-            }
-          ]
-        }
-      ]
-    },
     "itsm": {
       "title": "Implantação ITSM",
       "subtitle": "Prazo: 29/05 · projeto II",
@@ -717,7 +600,7 @@
             },
             {
               "task": "Sugestões",
-              "dl": "03/07/2026",
+              "dl": "24/07/2026",
               "st": "Em andamento",
               "pct": 5,
               "resp": "",
@@ -878,17 +761,17 @@
           "label": "",
           "tasks": [
             {
-              "task": "[Broadcast Screener] - Carga de Dados",
+              "task": "Onda 01 - MVP",
               "dl": "",
-              "st": "Refinamento",
-              "pct": 0,
-              "resp": "",
+              "st": "Em andamento",
+              "pct": 15,
+              "resp": "Jara",
               "jira": "",
               "jl": "",
               "obs": ""
             },
             {
-              "task": "[Broadcast Screener] - Colunas",
+              "task": "Onda 01 - Release 2",
               "dl": "",
               "st": "Em andamento",
               "pct": 0,
@@ -898,7 +781,7 @@
               "obs": ""
             },
             {
-              "task": "[Broadcast Screener] - Menu de Coluna",
+              "task": "Onda 01 - Release 3",
               "dl": "",
               "st": "Em definição",
               "pct": 0,
@@ -908,7 +791,7 @@
               "obs": ""
             },
             {
-              "task": "[Broadcast Screener] - Menu de Contexto da Célula",
+              "task": "Onda 02 - Release 1",
               "dl": "",
               "st": "Em definição",
               "pct": 0,
@@ -918,27 +801,7 @@
               "obs": ""
             },
             {
-              "task": "  [Broadcast Screener] - Status Bar",
-              "dl": "",
-              "st": "Em definição",
-              "pct": 0,
-              "resp": "",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "[Broadcast Screener] - Persistência",
-              "dl": "",
-              "st": "Em definição",
-              "pct": 0,
-              "resp": "",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "[Broadcast Screener] - Feedback In-App",
+              "task": "Onda 02 - Release 2",
               "dl": "",
               "st": "Em definição",
               "pct": 0,
@@ -952,103 +815,18 @@
       ]
     },
     "NT": {
-      "title": "Novo Terminal V7.6.2",
+      "title": "Novo Terminal V7.6.3",
       "subtitle": "",
       "note": "",
       "groups": [
         {
-          "label": "AddIn",
-          "tasks": [
-            {
-              "task": "Trata lista de arquivos vencidos",
-              "dl": "10/06/2026",
-              "st": "Em andamento",
-              "pct": 100,
-              "resp": "Wagner",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "Planilha trava e fecha no NT",
-              "dl": "10/06/2026",
-              "st": "Em andamento",
-              "pct": 100,
-              "resp": "Wagner",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "Brago não loga - Permissão não encontrada",
-              "dl": "10/06/2026",
-              "st": "Em andamento",
-              "pct": 100,
-              "resp": "Wagner",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "Altera porta do suplemento",
-              "dl": "10/06/2026",
-              "st": "Em andamento",
-              "pct": 100,
-              "resp": "Wagner",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "Problemas com separado de decimal",
-              "dl": "10/06/2026",
-              "st": "Em andamento",
-              "pct": 100,
-              "resp": "Wagner",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            }
-          ]
-        },
-        {
           "label": "Trademate",
           "tasks": [
             {
-              "task": "Sincronismo da boleta",
-              "dl": "10/06/2026",
+              "task": "Trademate - Arquivo de exceção",
+              "dl": "24/07/2026",
               "st": "Em andamento",
-              "pct": 100,
-              "resp": "Wagner",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "Persistir coluna",
-              "dl": "10/06/2026",
-              "st": "Em andamento",
-              "pct": 100,
-              "resp": "Wagner",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "Campo PU monitor de ordem",
-              "dl": "10/06/2026",
-              "st": "Em andamento",
-              "pct": 100,
-              "resp": "Wagner",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "Configuração de mesa padrão e exibição de confirmação de ordem",
-              "dl": "10/06/2026",
-              "st": "Em andamento",
-              "pct": 100,
+              "pct": 90,
               "resp": "Wagner",
               "jira": "",
               "jl": "",
@@ -1060,40 +838,75 @@
           "label": "Latam",
           "tasks": [
             {
-              "task": "[LATAM] Curva de juros (PRECIA)",
-              "dl": "10/06/2026",
+              "task": "[LATAM] - Suporte a Bridgewise",
+              "dl": "24/07/2026",
               "st": "Em andamento",
-              "pct": 100,
+              "pct": 10,
+              "resp": "Wagner",
+              "jira": "",
+              "jl": "",
+              "obs": ""
+            }
+          ]
+        },
+        {
+          "label": "Novo Terminal",
+          "tasks": [
+            {
+              "task": "Arquivo de configuração Internet/Dedicado",
+              "dl": "24/07/2026",
+              "st": "Em andamento",
+              "pct": 5,
               "resp": "Wagner",
               "jira": "",
               "jl": "",
               "obs": ""
             },
             {
-              "task": "[LATAM] Curva forward (PRECIA)",
-              "dl": "10/06/2026",
+              "task": "Alterações na identidade visual",
+              "dl": "24/07/2026",
               "st": "Em andamento",
-              "pct": 100,
+              "pct": 5,
               "resp": "Wagner",
               "jira": "",
               "jl": "",
               "obs": ""
             },
             {
-              "task": "[LATAM] Mapa de calor 2",
-              "dl": "10/06/2026",
+              "task": "Atualizador Agro x NT",
+              "dl": "24/07/2026",
               "st": "Em andamento",
-              "pct": 100,
+              "pct": 90,
               "resp": "Wagner",
               "jira": "",
               "jl": "",
               "obs": ""
             },
             {
-              "task": "[LATAM] Conversor de Moedas",
-              "dl": "10/06/2026",
+              "task": "Campo de variação com a opção de visualizar Fec/Aju em %",
+              "dl": "24/07/2026",
               "st": "Em andamento",
-              "pct": 100,
+              "pct": 70,
+              "resp": "Wagner",
+              "jira": "",
+              "jl": "",
+              "obs": ""
+            },
+            {
+              "task": "Login automático",
+              "dl": "24/07/2026",
+              "st": "Em andamento",
+              "pct": 90,
+              "resp": "Wagner",
+              "jira": "",
+              "jl": "",
+              "obs": ""
+            },
+            {
+              "task": "Iniciar com windows",
+              "dl": "24/07/2026",
+              "st": "Em andamento",
+              "pct": 90,
               "resp": "Wagner",
               "jira": "",
               "jl": "",
@@ -1112,63 +925,63 @@
           "label": "",
           "tasks": [
             {
-              "task": "[Addin] - BCH Inicial (mínimo funcional)",
+              "task": "BCH Inicial (mínimo funcional)",
               "dl": "26/06/2026",
-              "st": "Em andamento",
-              "pct": 0,
-              "resp": "",
-              "jira": "/browse/FD-6125",
-              "jl": "FD-6125",
+              "st": "Em validação",
+              "pct": 95,
+              "resp": "Wagner",
+              "jira": "",
+              "jl": "",
               "obs": ""
             },
             {
-              "task": "[Addin] - BCH+ (completo)",
-              "dl": "07/07/2026",
-              "st": "Não iniciado",
-              "pct": 0,
-              "resp": "",
-              "jira": "/browse/FD-6133",
-              "jl": "FD-6133",
-              "obs": ""
-            },
-            {
-              "task": "[Addin] - BC Inicial (mínimo funcional)",
+              "task": "BCH+ (completo)",
               "dl": "24/07/2026",
               "st": "Não iniciado",
               "pct": 0,
-              "resp": "",
-              "jira": "/browse/FD-6139",
-              "jl": "FD-6139",
+              "resp": "Wagner",
+              "jira": "",
+              "jl": "",
               "obs": ""
             },
             {
-              "task": "[Addin] - BC+ (permissões, cache e autocomplete — BCTAB on-demand completo)",
+              "task": "BC Inicial (mínimo funcional)",
+              "dl": "10/07/2026",
+              "st": "Em andamento",
+              "pct": 5,
+              "resp": "Wagner",
+              "jira": "",
+              "jl": "",
+              "obs": ""
+            },
+            {
+              "task": "BC+ (permissões, cache e autocomplete — BCTAB)",
               "dl": "14/08/2026",
               "st": "Não iniciado",
               "pct": 0,
-              "resp": "",
-              "jira": "/browse/FD-6140",
-              "jl": "FD-6140",
+              "resp": "Wagner",
+              "jira": "",
+              "jl": "",
               "obs": ""
             },
             {
-              "task": "[Addin] - BCS",
+              "task": "BCS",
               "dl": "24/08/2026",
               "st": "Não iniciado",
               "pct": 0,
-              "resp": "",
-              "jira": "/browse/FD-6147",
-              "jl": "FD-6147",
+              "resp": "Wagner",
+              "jira": "",
+              "jl": "",
               "obs": ""
             },
             {
-              "task": "[Addin] - Instalador",
+              "task": "Instalador",
               "dl": "31/08/2026",
               "st": "Não iniciado",
               "pct": 0,
-              "resp": "",
-              "jira": "/browse/FD-6151",
-              "jl": "FD-6151",
+              "resp": "Wagner",
+              "jira": "",
+              "jl": "",
               "obs": ""
             }
           ]
@@ -1183,10 +996,8 @@
       "jira": "",
       "jl": "",
       "items": [
-        "Phaseout do antigo datafeed",
-        "Reestruturação de processos (ambiente QA, processo deploy, relatório de incidentes)",
-        "Integração Bolsa Base Exchange",
-        "Revisão do processo de orquestração"
+        "Apresentação do Agente do Datafeed (negocio e técnico) para Produtos;",
+        "Já estamos monitorando 100% dos endpoints Datafeed;"
       ]
     },
     {
@@ -1195,21 +1006,36 @@
       "jira": "",
       "jl": "",
       "items": [
-        "Tradução para inglês e Espanhol via IA (Huawei)",
-        "WhatsApp — Notícias para XP"
+        "Tradução para inglês e Espanhol via IA (Huawei) - Entregue e em produção"
       ]
     },
     {
-      "title": "Arquitetura OTC",
+      "title": "IA na TI",
       "color": "#16A34A",
       "jira": "",
       "jl": "",
       "items": [
-        "Deploy — 100%",
-        "Segregação de BD — Em andamento 50%",
-        "Monitoramento Funcional, Técnico e Infra - Em andamento",
-        "Redundância ativo multicloud - Em andamento",
-        "SDK / Barramento OTC / API — Não iniciado"
+        "Automatização de e-mails de cobrança da empresa (@Tico envia);",
+        "Automatização de criação de scripts de monitoração com @Tico;",
+        "Datadog: Tratativa de erros de APM do Datadog (causa raiz, solução, abertura do problema no Jira) - 80%;",
+        "Indicadores de Infraestrutura usando Claude (capacity e finOps de cloud e onprem, controle de demanda das áreas, roamap e controle de ativos;",
+        "Indicadores de Serviços TI e Incidentes usando Copilot;",
+        "Implantação de níveis de permissionamento e tela de indicadores para Gestão usando Copit;",
+        "Envio de comunicado de e-mail e chat (alertas) automatizado;",
+        "Automatização plano de comunicação do DR - Backlog;",
+        "Criação de agente de Processos -Backlog;"
+      ]
+    },
+    {
+      "title": "QA",
+      "color": "#1B6EF3",
+      "jira": "",
+      "jl": "",
+      "farol": "prazo",
+      "items": [
+        "Inicio de Analista Senior (Neftali) há 2 semanas;",
+        "Implementação de ferramenta de controle de testes no Jira (Zephyr);",
+        "Criação de 300 testes automatizados (em quarentena) usando IA (Claude) e Playwright;"
       ]
     }
   ]
