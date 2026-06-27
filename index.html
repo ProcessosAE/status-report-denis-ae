@@ -839,11 +839,37 @@ function renderEdProjects(){
         <button class="btn btn-danger btn-sm proj-delete-btn" onclick="event.stopPropagation();confirmRemoveProject(${idx})">🗑 Excluir projeto</button>
       </div>
       </div>`;
-    div.addEventListener('dragstart',e=>{e.dataTransfer.setData('text/plain',idx);div.classList.add('dragging')});
-    div.addEventListener('dragend',()=>div.classList.remove('dragging'));
-    div.addEventListener('dragover',e=>{e.preventDefault();div.classList.add('drag-over')});
-    div.addEventListener('dragleave',()=>div.classList.remove('drag-over'));
-    div.addEventListener('drop',e=>{e.preventDefault();div.classList.remove('drag-over');const from=+e.dataTransfer.getData('text/plain');const to=+div.dataset.idx;if(from===to)return;const arr=editorData.projects;const item=arr.splice(from,1)[0];arr.splice(to,0,item);renderEdProjects();});
+    div.addEventListener('dragstart',e=>{
+      _projDragFrom=idx;
+      e.dataTransfer.setData('text/plain',String(idx));
+      e.dataTransfer.effectAllowed='move';
+      setTimeout(()=>div.classList.add('dragging'),0);
+    });
+    div.addEventListener('dragend',()=>{
+      div.classList.remove('dragging');
+      document.querySelectorAll('#proj-list .proj-item').forEach(el=>el.classList.remove('drag-over'));
+      _projDragFrom=null;
+    });
+    div.addEventListener('dragover',e=>{
+      e.preventDefault();
+      e.dataTransfer.dropEffect='move';
+      if(_projDragFrom!==null&&_projDragFrom!==idx) div.classList.add('drag-over');
+    });
+    div.addEventListener('dragleave',e=>{
+      if(!div.contains(e.relatedTarget)) div.classList.remove('drag-over');
+    });
+    div.addEventListener('drop',e=>{
+      e.preventDefault();
+      div.classList.remove('drag-over');
+      const from=_projDragFrom;
+      const to=idx;
+      _projDragFrom=null;
+      if(from===null||from===to) return;
+      const arr=editorData.projects;
+      const item=arr.splice(from,1)[0];
+      arr.splice(to,0,item);
+      renderEdProjects();
+    });
     if(expanded.has(idx)) div.classList.remove('collapsed');
     list.appendChild(div);
   });
@@ -925,6 +951,8 @@ function saveEditCard(idx){
 function closeEditCard(){const ov=document.getElementById('eq-overlay');if(ov)ov.remove();}
 
 let _dragPid=null,_dragGi=null,_dragTi=null;
+let _iniDragFrom=null;
+let _projDragFrom=null;
 function taskDragStart(e,pid,gi,ti){_dragPid=pid;_dragGi=gi;_dragTi=ti;e.dataTransfer.effectAllowed='move';e.currentTarget.closest('tr').classList.add('dragging');}
 function taskDragOver(e){e.preventDefault();e.dataTransfer.dropEffect='move';const tr=e.currentTarget.closest('tr');if(tr&&!tr.classList.contains('dragging')&&!tr.classList.contains('add-task-row')&&!tr.classList.contains('obs-row'))tr.classList.add('drag-over');}
 function taskDragLeave(e){const tr=e.currentTarget.closest('tr');if(tr)tr.classList.remove('drag-over');}
@@ -1153,29 +1181,37 @@ function renderEdInitiativas(){
 
     // ── Drag events ──
     div.addEventListener('dragstart', e=>{
-      // salva estado antes de arrastar
       collectEditorInitiativas();
-      e.dataTransfer.setData('text/plain', idx);
-      e.dataTransfer.effectAllowed='move';
+      _iniDragFrom = idx;
+      e.dataTransfer.effectAllowed = 'move';
+      e.dataTransfer.setData('text/plain', String(idx)); // Firefox requer setData
       setTimeout(()=>div.classList.add('dragging'), 0);
     });
-    div.addEventListener('dragend', ()=>div.classList.remove('dragging'));
+    div.addEventListener('dragend', ()=>{
+      div.classList.remove('dragging');
+      // limpa qualquer drag-over residual em todos os itens
+      document.querySelectorAll('#init-list .proj-item').forEach(el=>el.classList.remove('drag-over'));
+      _iniDragFrom = null;
+    });
     div.addEventListener('dragover', e=>{
       e.preventDefault();
-      e.dataTransfer.dropEffect='move';
-      // só marca drag-over se não for ele mesmo
-      if(!div.classList.contains('dragging')) div.classList.add('drag-over');
+      e.dataTransfer.dropEffect = 'move';
+      if(_iniDragFrom !== null && _iniDragFrom !== idx) div.classList.add('drag-over');
     });
-    div.addEventListener('dragleave', ()=>div.classList.remove('drag-over'));
+    div.addEventListener('dragleave', e=>{
+      // só remove drag-over se o cursor saiu do div inteiro (não de um filho)
+      if(!div.contains(e.relatedTarget)) div.classList.remove('drag-over');
+    });
     div.addEventListener('drop', e=>{
       e.preventDefault();
       div.classList.remove('drag-over');
-      const from=+e.dataTransfer.getData('text/plain');
-      const to=+div.dataset.iniIdx;
-      if(from===to) return;
-      const arr=editorData.iniciativas;
-      const item=arr.splice(from,1)[0];
-      arr.splice(to,0,item);
+      const from = _iniDragFrom;
+      const to   = idx;
+      _iniDragFrom = null;
+      if(from === null || from === to) return;
+      const arr  = editorData.iniciativas;
+      const item = arr.splice(from, 1)[0];
+      arr.splice(to, 0, item);
       renderEdInitiativas();
       markUnsaved();
     });
