@@ -331,7 +331,7 @@ textarea{resize:vertical;min-height:60px}
 
       <div class="ed-section" id="ed-iniciativas">
         <div class="ed-card">
-          <h3>Demais Iniciativas
+          <h3>Demais Iniciativas <small style="font-size:11px;color:var(--faint);font-weight:400">— arraste ⠿ ou use ↑↓</small>
             <button class="btn btn-outline btn-sm" onclick="addInitiativa()">+ Adicionar</button>
           </h3>
           <div class="proj-list" id="init-list"></div>
@@ -1104,14 +1104,36 @@ function removeGroup(pid,gi){if(!confirm('Remover grupo?'))return;editorData.pan
 
 /* ── Initiatives editor ── */
 function renderEdInitiativas(){
+  // Antes de re-renderizar, salva o estado atual do DOM para preservar edições em curso
+  collectEditorInitiativas();
+
   const list=document.getElementById('init-list');list.innerHTML='';
   editorData.iniciativas.forEach((ini,idx)=>{
-    const div=document.createElement('div');div.className='proj-item';
+    const div=document.createElement('div');
+    div.className='proj-item';
+    div.draggable=true;
     div.dataset.iniIdx=idx;
+
+    const farolBtns=[['perigo','#F85149','Perigo'],['atencao','#D29922','Atenção'],['prazo','#22C55E','No prazo']].map(([val,cor,lbl])=>{
+      const sel=(ini.farol||'prazo')===val;
+      return `<div title="${lbl}" style="width:28px;height:28px;border-radius:var(--rs);border:2px solid ${sel?'var(--accent)':'var(--border)'};background:${sel?'var(--accent-lt)':'#fff'};cursor:pointer;display:flex;align-items:center;justify-content:center" onclick="updIni(${idx},'farol','${val}');renderEdInitiativas()">
+        <div style="display:flex;flex-direction:column;gap:2px;align-items:center">
+          <span style="width:7px;height:7px;border-radius:50%;background:${val==='perigo'?cor:'var(--border)'}"></span>
+          <span style="width:7px;height:7px;border-radius:50%;background:${val==='atencao'?cor:'var(--border)'}"></span>
+          <span style="width:7px;height:7px;border-radius:50%;background:${val==='prazo'?cor:'var(--border)'}"></span>
+        </div>
+      </div>`;
+    }).join('');
+
     div.innerHTML=`
-      <div class="proj-item-hdr" style="margin-bottom:8px">
+      <div class="proj-item-hdr" style="margin-bottom:8px;cursor:default">
+        <span class="drag-handle" title="Arrastar para reordenar" style="font-size:20px;cursor:grab;color:var(--faint);user-select:none" onclick="event.stopPropagation()">⠿</span>
         <span class="color-dot" style="background:${ini.color}"></span>
-        <strong style="flex:1">${ini.title}</strong>
+        <strong style="flex:1;font-size:13px;font-weight:600">${ini.title}</strong>
+        <div style="display:flex;gap:4px">
+          <button class="btn btn-outline btn-sm" title="Mover para cima" onclick="moveIni(${idx},-1)" ${idx===0?'disabled style="opacity:.35"':''}>↑</button>
+          <button class="btn btn-outline btn-sm" title="Mover para baixo" onclick="moveIni(${idx},1)" ${idx===editorData.iniciativas.length-1?'disabled style="opacity:.35"':''}>↓</button>
+        </div>
       </div>
       <div style="display:grid;grid-template-columns:2fr 1fr 0.6fr auto;gap:8px;align-items:end;margin-bottom:8px">
         <div><label>Título</label><input type="text" data-ini="${idx}" data-field="title" value="${(ini.title||'').replace(/"/g,'&quot;')}"></div>
@@ -1119,21 +1141,7 @@ function renderEdInitiativas(){
         <div><label>Label Jira</label><input type="text" data-ini="${idx}" data-field="jl" value="${ini.jl||''}"></div>
         <div style="display:flex;flex-direction:column">
           <label>Farol</label>
-          <div style="display:flex;gap:3px;margin-top:auto">
-            ${(()=>{
-              const cur=ini.farol||'prazo';
-              return [['perigo','#F85149','Perigo'],['atencao','#D29922','Atenção'],['prazo','#22C55E','No prazo']].map(([val,cor,lbl])=>{
-                const sel=cur===val;
-                return `<div title="${lbl}" style="width:28px;height:28px;border-radius:var(--rs);border:2px solid ${sel?'var(--accent)':'var(--border)'};background:${sel?'var(--accent-lt)':'#fff'};cursor:pointer;display:flex;align-items:center;justify-content:center" onclick="updIni(${idx},'farol','${val}');renderEdInitiativas()">
-                  <div style="display:flex;flex-direction:column;gap:2px;align-items:center">
-                    <span style="width:7px;height:7px;border-radius:50%;background:${val==='perigo'?cor:'var(--border)'}"></span>
-                    <span style="width:7px;height:7px;border-radius:50%;background:${val==='atencao'?cor:'var(--border)'}"></span>
-                    <span style="width:7px;height:7px;border-radius:50%;background:${val==='prazo'?cor:'var(--border)'}"></span>
-                  </div>
-                </div>`;
-              }).join('');
-            })()}
-          </div>
+          <div style="display:flex;gap:3px;margin-top:auto">${farolBtns}</div>
         </div>
       </div>
       <div style="margin-bottom:8px"><label>Itens (um por linha)</label>
@@ -1142,13 +1150,72 @@ function renderEdInitiativas(){
       <div style="display:flex;justify-content:flex-end;padding-top:8px;border-top:1px solid var(--border)">
         <button class="btn btn-danger btn-sm" onclick="removeIni(${idx})">🗑 Excluir Iniciativa</button>
       </div>`;
+
+    // ── Drag events ──
+    div.addEventListener('dragstart', e=>{
+      // salva estado antes de arrastar
+      collectEditorInitiativas();
+      e.dataTransfer.setData('text/plain', idx);
+      e.dataTransfer.effectAllowed='move';
+      setTimeout(()=>div.classList.add('dragging'), 0);
+    });
+    div.addEventListener('dragend', ()=>div.classList.remove('dragging'));
+    div.addEventListener('dragover', e=>{
+      e.preventDefault();
+      e.dataTransfer.dropEffect='move';
+      // só marca drag-over se não for ele mesmo
+      if(!div.classList.contains('dragging')) div.classList.add('drag-over');
+    });
+    div.addEventListener('dragleave', ()=>div.classList.remove('drag-over'));
+    div.addEventListener('drop', e=>{
+      e.preventDefault();
+      div.classList.remove('drag-over');
+      const from=+e.dataTransfer.getData('text/plain');
+      const to=+div.dataset.iniIdx;
+      if(from===to) return;
+      const arr=editorData.iniciativas;
+      const item=arr.splice(from,1)[0];
+      arr.splice(to,0,item);
+      renderEdInitiativas();
+      markUnsaved();
+    });
+
     list.appendChild(div);
   });
 }
 
 function updIni(idx,key,val){editorData.iniciativas[idx][key]=val;}
-function removeIni(idx){if(!confirm('Remover?'))return;editorData.iniciativas.splice(idx,1);renderEdInitiativas();}
-function addInitiativa(){editorData.iniciativas.push({title:'Nova Iniciativa',color:'#1B6EF3',jira:'',jl:'',farol:'prazo',items:[]});renderEdInitiativas();}
+
+function moveIni(idx, dir){
+  // coleta antes de mover para não perder edições em curso
+  collectEditorInitiativas();
+  const arr=editorData.iniciativas;
+  const newIdx=idx+dir;
+  if(newIdx<0||newIdx>=arr.length) return;
+  const item=arr.splice(idx,1)[0];
+  arr.splice(newIdx,0,item);
+  renderEdInitiativas();
+  markUnsaved();
+}
+
+function removeIni(idx){
+  if(!confirm('Remover esta iniciativa?')) return;
+  collectEditorInitiativas();
+  editorData.iniciativas.splice(idx,1);
+  renderEdInitiativas();
+}
+
+function addInitiativa(){
+  collectEditorInitiativas();
+  editorData.iniciativas.push({title:'Nova Iniciativa',color:'#1B6EF3',jira:'',jl:'',farol:'prazo',items:[]});
+  renderEdInitiativas();
+  // foca o campo título do novo item
+  setTimeout(()=>{
+    const inputs=document.querySelectorAll('#init-list [data-field="title"]');
+    const last=inputs[inputs.length-1];
+    if(last){last.focus();last.select();}
+  },50);
+}
 
 /* ════════════════════════════════════════════════
    FIX: coleta todos os valores do DOM do editor de
