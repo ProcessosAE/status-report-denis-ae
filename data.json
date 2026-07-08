@@ -861,20 +861,20 @@
           "tasks": [
             {
               "task": "Reestruturação do Issues História",
-              "dl": "",
+              "dl": "20/07/2026",
               "st": "Em andamento",
-              "pct": 0,
-              "resp": "Natan",
+              "pct": 80,
+              "resp": "Natan e Paloma",
               "jira": "",
               "jl": "",
               "obs": ""
             },
             {
               "task": "Revisão Workflow História",
-              "dl": "",
+              "dl": "20/07/2026",
               "st": "Em andamento",
-              "pct": 0,
-              "resp": "",
+              "pct": 80,
+              "resp": "Natan e Paloma",
               "jira": "",
               "jl": "",
               "obs": ""
