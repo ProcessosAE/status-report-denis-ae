@@ -171,7 +171,7 @@
     },
     {
       "id": "itsm",
-      "name": "Processos - Implantação ITSM",
+      "name": "Processos - Hub Sugestões/Demandas",
       "pct": 90,
       "dl1": "24/07/2026",
       "dl2": "",
@@ -190,18 +190,15 @@
       "id": "novo",
       "name": "Processos - Reestrut Issues Jira",
       "pct": 15,
-      "dl1": "31/08/2026",
+      "dl1": "",
       "dl2": "",
       "dl3": "",
       "st": "Em andamento",
       "color": "#1B6EF3",
       "farol": "prazo",
-      "jira": "/projects/PRC/boards/982",
-      "jl": "PRC-982",
-      "owner": "Natan",
-      "dl1_done": false,
-      "dl2_done": false,
-      "dl3_done": false
+      "jira": "",
+      "jl": "",
+      "owner": "Natan"
     }
   ],
   "panels": {
@@ -855,69 +852,179 @@
       ]
     },
     "novo": {
-      "title": "Novo Addin",
+      "title": "Processos - Reestrut Issues Jira",
       "subtitle": "",
       "note": "",
       "groups": [
         {
-          "label": "",
+          "label": "Issues História",
           "tasks": [
             {
-              "task": "BCH Inicial (mínimo funcional)",
-              "dl": "26/06/2026",
-              "st": "Em validação",
-              "pct": 95,
-              "resp": "Wagner",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "BCH+ (completo)",
-              "dl": "24/07/2026",
-              "st": "Não iniciado",
-              "pct": 10,
-              "resp": "Wagner",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "BC Inicial (mínimo funcional)",
-              "dl": "10/07/2026",
+              "task": "Reestruturação do Issues História",
+              "dl": "",
               "st": "Em andamento",
-              "pct": 85,
-              "resp": "Wagner",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "BC+ (permissões, cache e autocomplete — BCTAB)",
-              "dl": "14/08/2026",
-              "st": "Não iniciado",
               "pct": 0,
-              "resp": "Wagner",
+              "resp": "Natan",
               "jira": "",
               "jl": "",
               "obs": ""
             },
             {
-              "task": "BCS",
-              "dl": "24/08/2026",
+              "task": "Revisão Workflow História",
+              "dl": "",
               "st": "Em andamento",
-              "pct": 5,
-              "resp": "Wagner",
+              "pct": 0,
+              "resp": "",
+              "jira": "",
+              "jl": "",
+              "obs": ""
+            }
+          ]
+        },
+        {
+          "label": "Issues Bug",
+          "tasks": [
+            {
+              "task": "Reestruturação do Issues Bug",
+              "dl": "",
+              "st": "Em andamento",
+              "pct": 0,
+              "resp": "",
               "jira": "",
               "jl": "",
               "obs": ""
             },
             {
-              "task": "Instalador",
-              "dl": "31/08/2026",
-              "st": "Não iniciado",
+              "task": "Revisão Workflow Bug",
+              "dl": "",
+              "st": "Em andamento",
               "pct": 0,
-              "resp": "Wagner",
+              "resp": "",
+              "jira": "",
+              "jl": "",
+              "obs": ""
+            }
+          ]
+        },
+        {
+          "label": "Issues Tasks",
+          "tasks": [
+            {
+              "task": "Reestruturação do Issues Tasks",
+              "dl": "",
+              "st": "Em andamento",
+              "pct": 0,
+              "resp": "",
+              "jira": "",
+              "jl": "",
+              "obs": ""
+            },
+            {
+              "task": "Revisão Workflow Tasks",
+              "dl": "",
+              "st": "Em andamento",
+              "pct": 0,
+              "resp": "",
+              "jira": "",
+              "jl": "",
+              "obs": ""
+            }
+          ]
+        },
+        {
+          "label": "Issues Sub-tasks",
+          "tasks": [
+            {
+              "task": "Reestruturação do Issues Sub-tasks",
+              "dl": "",
+              "st": "Em andamento",
+              "pct": 0,
+              "resp": "",
+              "jira": "",
+              "jl": "",
+              "obs": ""
+            },
+            {
+              "task": "Revisão Workflow Sub-tasks",
+              "dl": "",
+              "st": "Em andamento",
+              "pct": 0,
+              "resp": "",
+              "jira": "",
+              "jl": "",
+              "obs": ""
+            }
+          ]
+        },
+        {
+          "label": "Issues Epic",
+          "tasks": [
+            {
+              "task": "Reestruturação do Issues Epic",
+              "dl": "",
+              "st": "Em andamento",
+              "pct": 0,
+              "resp": "",
+              "jira": "",
+              "jl": "",
+              "obs": ""
+            },
+            {
+              "task": "Revisão Workflow Epic",
+              "dl": "",
+              "st": "Em andamento",
+              "pct": 0,
+              "resp": "",
+              "jira": "",
+              "jl": "",
+              "obs": ""
+            }
+          ]
+        },
+        {
+          "label": "Issues Bug Dev",
+          "tasks": [
+            {
+              "task": "Reestruturação do Issues Bug Dev",
+              "dl": "",
+              "st": "Em andamento",
+              "pct": 0,
+              "resp": "",
+              "jira": "",
+              "jl": "",
+              "obs": ""
+            },
+            {
+              "task": "Revisão Workflow Bug Dev",
+              "dl": "",
+              "st": "Em andamento",
+              "pct": 0,
+              "resp": "",
+              "jira": "",
+              "jl": "",
+              "obs": ""
+            }
+          ]
+        },
+        {
+          "label": "Issues Debito Tecnico",
+          "tasks": [
+            {
+              "task": "Reestruturação do Issues Debito Tecnico",
+              "dl": "",
+              "st": "Em andamento",
+              "pct": 0,
+              "resp": "",
+              "jira": "",
+              "jl": "",
+              "obs": ""
+            },
+            {
+              "task": "Revisão Workflow Debito Tecnico",
+              "dl": "",
+              "st": "Em andamento",
+              "pct": 0,
+              "resp": "",
               "jira": "",
               "jl": "",
               "obs": ""
