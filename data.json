@@ -1,5 +1,5 @@
 {
-  "date": "02/07/2026",
+  "date": "08/07/2026",
   "jiraBase": "https://jiracloudae.atlassian.net",
   "projects": [
     {
@@ -211,8 +211,8 @@
           "tasks": [
             {
               "task": "[Bradesco] Alteração na solicitação de Access Token para múltiplas contas",
-              "dl": "01/07/2026",
-              "st": "Em validação",
+              "dl": "15/07/2026",
+              "st": "Em andamento",
               "pct": 95,
               "resp": "Opus",
               "jira": "/browse/FD-5862",
@@ -220,9 +220,9 @@
             },
             {
               "task": "[Bradesco] Usuário Agro sem permissão 1742, erro em /parametros-clientes",
-              "dl": "01/07/2026",
+              "dl": "15/07/2026",
               "st": "Em andamento",
-              "pct": 75,
+              "pct": 95,
               "resp": "Opus",
               "jira": "/browse/FD-6281",
               "jl": "FD-6281",
@@ -230,9 +230,9 @@
             },
             {
               "task": "[Bradesco] Inclusão de campo \"Observação\" na pop-up de Upload de documentos.",
-              "dl": "01/07/2026",
+              "dl": "15/07/2026",
               "st": "Em andamento",
-              "pct": 75,
+              "pct": 95,
               "resp": "Opus",
               "jira": "/browse/FD-5994",
               "jl": "FD-5994",
@@ -240,12 +240,22 @@
             },
             {
               "task": "[Bradesco] CHAT -Implementar rotina de obtenção de Produtos e CNPJCPF a partir da operação",
-              "dl": "08/07/2026",
+              "dl": "15/07/2026",
               "st": "Em andamento",
-              "pct": 50,
+              "pct": 75,
               "resp": "Opus",
               "jira": "/browse/FD-6435",
               "jl": "FD-6435",
+              "obs": ""
+            },
+            {
+              "task": "[Bradesco] Integração Faturamento EasyTrade| Base Power BI",
+              "dl": "15/07/2026",
+              "st": "Em andamento",
+              "pct": 50,
+              "resp": "Opus",
+              "jira": "",
+              "jl": "",
               "obs": ""
             }
           ]
@@ -256,8 +266,8 @@
             {
               "task": "[Fibra] Disponibilizar API SPOT",
               "dl": "03/06/2026",
-              "st": "Em validação",
-              "pct": 95,
+              "st": "Concluído",
+              "pct": 100,
               "resp": "Opus",
               "jira": "/browse/FD-5512",
               "jl": "FD-5512"
@@ -275,8 +285,8 @@
             {
               "task": "[Fibra] Liberação de outras moedas para negociação em D+0.",
               "dl": "01/07/2026",
-              "st": "Em validação",
-              "pct": 95,
+              "st": "Concluído",
+              "pct": 100,
               "resp": "Opus",
               "jira": "/browse/FD-5976",
               "jl": "FD-5976",
@@ -284,9 +294,9 @@
             },
             {
               "task": "[Fibra] Feriado internacional em D+0 deve manter D+0 no dia atual, mas como dia inválido para envio de ordens",
-              "dl": "15/07/2026",
+              "dl": "",
               "st": "Em andamento",
-              "pct": 90,
+              "pct": 75,
               "resp": "Opus",
               "jira": "/browse/FD-6158",
               "jl": "FD-6158",
@@ -295,8 +305,8 @@
             {
               "task": "[Fibra] Personalização da Tela de Upload de Documentos",
               "dl": "01/07/2026",
-              "st": "Em andamento",
-              "pct": 90,
+              "st": "Em validação",
+              "pct": 95,
               "resp": "Opus",
               "jira": "/browse/FD-5078",
               "jl": "FD-5078",
@@ -304,9 +314,9 @@
             },
             {
               "task": "[Fibra] Personalização do Rodapé | Notificações de e-mails",
-              "dl": "",
-              "st": "Em andamento",
-              "pct": 75,
+              "dl": "01/07/2026",
+              "st": "Em validação",
+              "pct": 95,
               "resp": "Opus",
               "jira": "/browse/FD-6190",
               "jl": "FD-6190",
@@ -324,7 +334,7 @@
             },
             {
               "task": "[Fibra] Aplicar taxa default quando a moeda estiver ativa, porém sem taxas definidas.",
-              "dl": "",
+              "dl": "15/07/2026",
               "st": "Em andamento",
               "pct": 50,
               "resp": "opus",
@@ -334,12 +344,32 @@
             },
             {
               "task": "[Fibra] Incluir proteção percentual para rejeição de ordem recebida fora de preço.",
-              "dl": "",
+              "dl": "15/07/2026",
               "st": "Em andamento",
               "pct": 50,
               "resp": "Opus",
               "jira": "/browse/FD-5991",
               "jl": "FD-5991",
+              "obs": ""
+            },
+            {
+              "task": "[Banco Fibra] Ajuste de comportamento no Histórico de alteração de Taxas",
+              "dl": "15/07/2026",
+              "st": "Em andamento",
+              "pct": 50,
+              "resp": "Opus",
+              "jira": "/browse/FD-6102",
+              "jl": "FD-6102",
+              "obs": ""
+            },
+            {
+              "task": "[Banco Fibra] Ativar login utilizando autenticação SSO Microsoft",
+              "dl": "15/07/2026",
+              "st": "Em andamento",
+              "pct": 50,
+              "resp": "opus",
+              "jira": "/browse/FD-6154",
+              "jl": "FD-6154",
               "obs": ""
             }
           ]
@@ -350,11 +380,21 @@
             {
               "task": "[B.V] Padronização do Modelo de Pop-up e Mensagens da Cotação | Cotação via Mesa",
               "dl": "01/07/2026",
-              "st": "Em andamento",
-              "pct": 75,
+              "st": "Concluído",
+              "pct": 100,
               "resp": "Opus",
               "jira": "/browse/FD-4742",
               "jl": "FD-4742",
+              "obs": ""
+            },
+            {
+              "task": "[B.V] Ordem com status incorreto quando sessão é encerrada.",
+              "dl": "01/07/2026",
+              "st": "Concluído",
+              "pct": 100,
+              "resp": "Opus",
+              "jira": "/browse/FD-45857",
+              "jl": "FD-45857",
               "obs": ""
             }
           ]
@@ -365,8 +405,8 @@
             {
               "task": "Preparação da Aplicação para Segregação de Bases OTC (Back-end)",
               "dl": "01/07/2026",
-              "st": "Em andamento",
-              "pct": 95,
+              "st": "Concluído",
+              "pct": 100,
               "resp": "Opus",
               "jira": "/browse/FD-4543",
               "jl": "FD-4543",
@@ -375,8 +415,8 @@
             {
               "task": "Evolução | Sistema de Notificação | Personalização dos e-mails de \"Recebimento de Documentos“",
               "dl": "01/07/2026",
-              "st": "Em andamento",
-              "pct": 95,
+              "st": "Concluído",
+              "pct": 100,
               "resp": "Opus",
               "jira": "/browse/FD-4361",
               "jl": "FD-4361",
@@ -385,11 +425,76 @@
             {
               "task": "Ativação e Validação do Ambiente de Pré-Produção",
               "dl": "01/07/2026",
-              "st": "Em andamento",
+              "st": "Em validação",
               "pct": 95,
               "resp": "Opus",
               "jira": "/browse/FD-6271",
               "jl": "FD-6271",
+              "obs": ""
+            },
+            {
+              "task": "Erro ao habilitar múltiplas boletas quando só tem um instrumento",
+              "dl": "15/07/2026",
+              "st": "Em andamento",
+              "pct": 75,
+              "resp": "Opus",
+              "jira": "/browse/FD-6708",
+              "jl": "FD-6708",
+              "obs": ""
+            },
+            {
+              "task": "[OTC-HUB] Disponibilizar ferramenta FAQ nas demais instâncias do OTC",
+              "dl": "",
+              "st": "Em andamento",
+              "pct": 50,
+              "resp": "Opus",
+              "jira": "/browse/FD-5527",
+              "jl": "FD-5527",
+              "obs": ""
+            },
+            {
+              "task": "Configurar momento do Aviso Sonoro de Cotação (abertura vsenvio/fechamento)",
+              "dl": "",
+              "st": "Em andamento",
+              "pct": 50,
+              "resp": "Opus",
+              "jira": "/browse/FD-4822",
+              "jl": "FD-4822",
+              "obs": ""
+            },
+            {
+              "task": "Elaboração do Plano de Migração para Bases Segregadas OTC",
+              "dl": "15/07/2026",
+              "st": "Em andamento",
+              "pct": 50,
+              "resp": "Opus",
+              "jira": "/browse/FD-6431",
+              "jl": "FD-6431",
+              "obs": ""
+            },
+            {
+              "task": "Execução da Segregação e Migração dos Dados",
+              "dl": "29/07/2026",
+              "st": "Em andamento",
+              "pct": 25,
+              "resp": "Opus",
+              "jira": "/browse/FD-6432",
+              "jl": "FD-6432",
+              "obs": ""
+            }
+          ]
+        },
+        {
+          "label": "OTC - Travelex",
+          "tasks": [
+            {
+              "task": "[Travelex] Adaptar menu de negociação para perfil Corretora",
+              "dl": "",
+              "st": "Em andamento",
+              "pct": 50,
+              "resp": "Opus",
+              "jira": "/browse/FD-5056",
+              "jl": "FD-5056",
               "obs": ""
             }
           ]
@@ -566,8 +671,8 @@
             {
               "task": "[Bradesco] CHAT -Criação de permissionamento CHAT na BCAA",
               "dl": "",
-              "st": "Desenvolvido",
-              "pct": 95,
+              "st": "Concluído",
+              "pct": 100,
               "resp": "Opus",
               "jira": "/browse/FD-4015",
               "jl": "FD-4015"
@@ -664,19 +769,19 @@
           "tasks": [
             {
               "task": "[Visão FII] Filtro tipo de fundo no widgets de tabela de composição IFIX",
-              "dl": "01/07/2026",
+              "dl": "15/07/2026",
               "st": "Em andamento",
               "pct": 50,
               "resp": "Opus",
               "jira": "/browse/FD-4848",
               "jl": "FD-4848",
-              "obs": ""
+              "obs": "Aguardando end-point ajustado pelo back-end"
             },
             {
               "task": "[Fundos] Criarem Novo Fundos os Peers Groups",
               "dl": "",
               "st": "Em andamento",
-              "pct": 25,
+              "pct": 50,
               "resp": "Opus",
               "jira": "/browse/FD-6348",
               "jl": "FD-6348",
