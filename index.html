@@ -765,83 +765,170 @@ function renderEdGeral(){
   document.getElementById('ed-jira-base').value=editorData.jiraBase||'';
 }
 
+function collectEditorProjects(){
+  const list=document.getElementById('proj-list');
+  if(!list) return;
+  list.querySelectorAll('.proj-item[data-proj-idx]').forEach(card=>{
+    const idx=+card.dataset.projIdx;
+    const p=editorData.projects[idx];
+    if(!p) return;
+    const get=(sel)=>{ const el=card.querySelector(sel); return el?el.value:null; };
+    const name=get('[data-pf="name"]'); if(name!==null) p.name=name;
+    const pct=get('[data-pf="pct"]');   if(pct!==null)  p.pct=Math.min(100,Math.max(0,+pct||0));
+    const st=get('[data-pf="st"]');     if(st!==null)   p.st=st;
+    const id=get('[data-pf="id"]');
+    if(id!==null && id.trim() && id.trim()!==p.id){
+      const newId=id.trim();
+      if(editorData.panels[p.id]){ editorData.panels[newId]=editorData.panels[p.id]; delete editorData.panels[p.id]; }
+      p.id=newId;
+    }
+    const owner=get('[data-pf="owner"]'); if(owner!==null) p.owner=owner;
+    const jira=get('[data-pf="jira"]');   if(jira!==null)  p.jira=jira;
+    const jl=get('[data-pf="jl"]');       if(jl!==null)    p.jl=jl;
+    const dl1=get('[data-pf="dl1"]');     if(dl1!==null)   p.dl1=dl1;
+    const dl2=get('[data-pf="dl2"]');     if(dl2!==null)   p.dl2=dl2;
+    const dl3=get('[data-pf="dl3"]');     if(dl3!==null)   p.dl3=dl3;
+  });
+}
+
 function renderEdProjects(){
+  collectEditorProjects();
+
   const expanded=new Set();
-  document.querySelectorAll('#proj-list .proj-item').forEach((el,i)=>{if(!el.classList.contains('collapsed'))expanded.add(i);});
+  document.querySelectorAll('#proj-list .proj-item[data-proj-idx]').forEach(el=>{
+    if(!el.classList.contains('collapsed')) expanded.add(+el.dataset.projIdx);
+  });
+
   const list=document.getElementById('proj-list');
   list.innerHTML='';
+
   editorData.projects.forEach((p,idx)=>{
     const div=document.createElement('div');
     div.className='proj-item collapsed';
+    div.dataset.projIdx=String(idx);
     div.draggable=true;
-    div.dataset.idx=idx;
+
     div.innerHTML=`
-      <div class="proj-item-hdr" onclick="toggleProject(this.parentElement)" style="cursor:pointer;user-select:none">
-        <span class="drag-handle" title="Arrastar" onclick="event.stopPropagation()">⠿</span>
-        <span class="color-dot" style="background:${p.color}"></span>
+      <div class="proj-item-hdr" style="cursor:pointer;user-select:none">
+        <span class="drag-handle" title="Arrastar" style="cursor:grab">⠿</span>
+        <span class="color-dot" style="background:${p.color||'#1B6EF3'}"></span>
         <strong style="flex:1">${p.name}</strong>
-        <button class="expand-btn" onclick="event.stopPropagation();toggleProject(this.closest('.proj-item'))">▼</button>
+        <button class="expand-btn">▼</button>
       </div>
       <div class="proj-item-body">
-      <div style="display:grid;grid-template-columns:2fr 70px 1fr 90px auto;gap:8px;margin-bottom:8px;align-items:end">
-        <div><label>Nome</label><input type="text" value="${p.name}" onchange="updProj(${idx},'name',this.value)"></div>
-        <div><label>%</label><input type="number" min="0" max="100" value="${p.pct}" onchange="updProj(${idx},'pct',+this.value)"></div>
-        <div><label>Status</label>
-          <select onchange="updProj(${idx},'st',this.value)">
-            ${STATUS_LIST.map(s=>`<option value="${s}" ${p.st===s?'selected':''}>${s}</option>`).join('')}
-          </select>
-        </div>
-        <div><label>ID do painel</label><input type="text" value="${p.id}" onchange="updProj(${idx},'id',this.value)"></div>
-        <div><label>Farol</label>
-          <div style="display:flex;gap:4px">
-            ${[['perigo','Perigo','#F85149'],['atencao','Atenção','#D29922'],['prazo','No prazo','#3FB950']].map(([val,lbl,cor])=>`
-            <div style="display:flex;align-items:center;gap:4px;padding:4px 8px;border:1px solid ${(p.farol||'prazo')===val?'var(--accent)':'var(--border)'};border-radius:var(--rs);cursor:pointer;font-size:11px;background:${(p.farol||'prazo')===val?'var(--accent-lt)':'#fff'};color:${(p.farol||'prazo')===val?'var(--accent)':'var(--muted)'}" onclick="updProj(${idx},'farol','${val}');renderEdProjects()">
-              <div style="display:flex;flex-direction:column;gap:2px">
-                <span style="width:7px;height:7px;border-radius:50%;background:${val==='perigo'?cor:'var(--border)'}"></span>
-                <span style="width:7px;height:7px;border-radius:50%;background:${val==='atencao'?cor:'var(--border)'}"></span>
-                <span style="width:7px;height:7px;border-radius:50%;background:${val==='prazo'?cor:'var(--border)'}"></span>
-              </div>${lbl}
-            </div>`).join('')}
+        <div style="display:grid;grid-template-columns:2fr 70px 1fr 90px auto;gap:8px;margin-bottom:8px;align-items:end">
+          <div><label>Nome</label><input type="text" data-pf="name" value="${(p.name||'').replace(/"/g,'&quot;')}"></div>
+          <div><label>%</label><input type="number" data-pf="pct" min="0" max="100" value="${p.pct||0}"></div>
+          <div><label>Status</label>
+            <select data-pf="st">${STATUS_LIST.map(s=>`<option value="${s}"${p.st===s?' selected':''}>${s}</option>`).join('')}</select>
+          </div>
+          <div><label>ID do painel</label><input type="text" data-pf="id" value="${(p.id||'').replace(/"/g,'&quot;')}"></div>
+          <div><label>Farol</label>
+            <div style="display:flex;gap:4px">
+              ${[['perigo','Perigo','#F85149'],['atencao','Atenção','#D29922'],['prazo','No prazo','#3FB950']].map(([val,lbl,cor])=>`
+              <div class="farol-btn" data-val="${val}" style="display:flex;align-items:center;gap:4px;padding:4px 8px;border:1px solid ${(p.farol||'prazo')===val?'var(--accent)':'var(--border)'};border-radius:var(--rs);cursor:pointer;font-size:11px;background:${(p.farol||'prazo')===val?'var(--accent-lt)':'#fff'};color:${(p.farol||'prazo')===val?'var(--accent)':'var(--muted)'}">
+                <div style="display:flex;flex-direction:column;gap:2px">
+                  <span style="width:7px;height:7px;border-radius:50%;background:${val==='perigo'?cor:'var(--border)'}"></span>
+                  <span style="width:7px;height:7px;border-radius:50%;background:${val==='atencao'?cor:'var(--border)'}"></span>
+                  <span style="width:7px;height:7px;border-radius:50%;background:${val==='prazo'?cor:'var(--border)'}"></span>
+                </div>${lbl}
+              </div>`).join('')}
+            </div>
           </div>
         </div>
-      </div>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr) 1fr 1.5fr 0.7fr;gap:8px;margin-bottom:8px;align-items:end">
-        <div><label>Prazo 1</label>
-          <div style="display:flex;gap:4px;align-items:center">
-            <input type="text" id="dl1_${idx}" value="${p.dl1||''}" placeholder="DD/MM/AA" maxlength="8" style="flex:1"
-              oninput="maskDate(this);updProj(${idx},'dl1',this.value);const d2a=document.getElementById('dl2_${idx}');if(d2a)d2a.disabled=!this.value;if(!this.value){updProj(${idx},'dl2','');updProj(${idx},'dl3','');const d3a=document.getElementById('dl3_${idx}');if(d2a)d2a.value='';if(d3a){d3a.value='';d3a.disabled=true;}}">
-            <button class="date-display-btn" style="padding:5px 7px;width:auto;flex-shrink:0"
-              onclick="openDatePopup('${p.dl1||''}',v=>{updProj(${idx},'dl1',v);const el=document.getElementById('dl1_${idx}');if(el)el.value=v;const d2=document.getElementById('dl2_${idx}');if(d2)d2.disabled=!v;renderEdProjects()})">📅</button>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr) 1fr 1.5fr 0.7fr;gap:8px;margin-bottom:8px;align-items:end">
+          <div><label>Prazo 1</label>
+            <div style="display:flex;gap:4px;align-items:center">
+              <input type="text" data-pf="dl1" value="${p.dl1||''}" placeholder="DD/MM/AA" maxlength="8" style="flex:1" oninput="maskDate(this)">
+              <button class="date-display-btn" style="padding:5px 7px;width:auto;flex-shrink:0" data-dp="dl1">📅</button>
+            </div>
           </div>
-        </div>
-        <div><label>Prazo 2</label>
-          <div style="display:flex;gap:4px;align-items:center">
-            <input type="text" id="dl2_${idx}" value="${p.dl2||''}" placeholder="DD/MM/AA" maxlength="8" style="flex:1" ${!p.dl1?'disabled':''}
-              oninput="maskDate(this);updProj(${idx},'dl2',this.value);const d3b=document.getElementById('dl3_${idx}');if(d3b)d3b.disabled=!this.value;if(!this.value){updProj(${idx},'dl3','');if(d3b){d3b.value='';d3b.disabled=true;}}">
-            <button class="date-display-btn" style="padding:5px 7px;width:auto;flex-shrink:0" ${!p.dl1?'disabled':''}
-              onclick="openDatePopup('${p.dl2||''}',v=>{updProj(${idx},'dl2',v);const el=document.getElementById('dl2_${idx}');if(el)el.value=v;const d3=document.getElementById('dl3_${idx}');if(d3)d3.disabled=!v;renderEdProjects()})">📅</button>
+          <div><label>Prazo 2</label>
+            <div style="display:flex;gap:4px;align-items:center">
+              <input type="text" data-pf="dl2" value="${p.dl2||''}" placeholder="DD/MM/AA" maxlength="8" style="flex:1" ${p.dl1?'':'disabled'} oninput="maskDate(this)">
+              <button class="date-display-btn" style="padding:5px 7px;width:auto;flex-shrink:0" data-dp="dl2" ${p.dl1?'':'disabled'}>📅</button>
+            </div>
           </div>
-        </div>
-        <div><label>Prazo 3</label>
-          <div style="display:flex;gap:4px;align-items:center">
-            <input type="text" id="dl3_${idx}" value="${p.dl3||''}" placeholder="DD/MM/AA" maxlength="8" style="flex:1" ${!p.dl2?'disabled':''}
-              oninput="maskDate(this);updProj(${idx},'dl3',this.value)">
-            <button class="date-display-btn" style="padding:5px 7px;width:auto;flex-shrink:0" ${!p.dl2?'disabled':''}
-              onclick="openDatePopup('${p.dl3||''}',v=>{updProj(${idx},'dl3',v);const el=document.getElementById('dl3_${idx}');if(el)el.value=v;renderEdProjects()})">📅</button>
+          <div><label>Prazo 3</label>
+            <div style="display:flex;gap:4px;align-items:center">
+              <input type="text" data-pf="dl3" value="${p.dl3||''}" placeholder="DD/MM/AA" maxlength="8" style="flex:1" ${p.dl2?'':'disabled'} oninput="maskDate(this)">
+              <button class="date-display-btn" style="padding:5px 7px;width:auto;flex-shrink:0" data-dp="dl3" ${p.dl2?'':'disabled'}>📅</button>
+            </div>
           </div>
+          <div><label>Responsável</label><input type="text" data-pf="owner" value="${(p.owner||'').replace(/"/g,'&quot;')}" placeholder="Nome"></div>
+          <div><label>Caminho Jira</label><input type="text" data-pf="jira" value="${(p.jira||'').replace(/"/g,'&quot;')}" placeholder="/projects/FD"></div>
+          <div><label>Label</label><input type="text" data-pf="jl" value="${(p.jl||'').replace(/"/g,'&quot;')}" placeholder="FD"></div>
         </div>
-        <div><label>Responsável</label><input type="text" value="${p.owner||''}" placeholder="Nome" onchange="updProj(${idx},'owner',this.value)"></div>
-        <div><label>Caminho Jira</label><input type="text" value="${p.jira||''}" placeholder="/projects/FD" onchange="updProj(${idx},'jira',this.value)"></div>
-        <div><label>Label</label><input type="text" value="${p.jl||''}" placeholder="FD" onchange="updProj(${idx},'jl',this.value)"></div>
-      </div>
-      <div style="margin-top:14px;padding-top:12px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center">
-        ${!editorData.panels[p.id]?`<button class="btn btn-success btn-sm" onclick="event.stopPropagation();createPanel(${idx})">+ Criar painel de tarefas</button>`:`<span style="font-size:12px;color:var(--green);display:flex;align-items:center;gap:4px">✅ Painel vinculado</span>`}
-        <button class="btn btn-danger btn-sm proj-delete-btn" onclick="event.stopPropagation();confirmRemoveProject(${idx})">🗑 Excluir projeto</button>
-      </div>
+        <div style="margin-top:14px;padding-top:12px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center">
+          ${!editorData.panels[p.id]
+            ? `<button class="btn btn-success btn-sm" data-action="create-panel">+ Criar painel de tarefas</button>`
+            : `<span style="font-size:12px;color:var(--green);display:flex;align-items:center;gap:4px">✅ Painel vinculado</span>`}
+          <button class="btn btn-danger btn-sm proj-delete-btn" data-action="remove">🗑 Excluir projeto</button>
+        </div>
       </div>`;
-    div.addEventListener('dragstart',e=>{
-      _projDragFrom=idx;
-      e.dataTransfer.setData('text/plain',String(idx));
+
+    // Header click → toggle expand
+    div.querySelector('.proj-item-hdr').addEventListener('click', ()=>toggleProject(div));
+    div.querySelector('.expand-btn').addEventListener('click', e=>{ e.stopPropagation(); toggleProject(div); });
+
+    // Farol buttons
+    div.querySelectorAll('.farol-btn').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        collectEditorProjects();
+        editorData.projects[+div.dataset.projIdx].farol=btn.dataset.val;
+        renderEdProjects();
+      });
+    });
+
+    // Date picker buttons
+    div.querySelectorAll('[data-dp]').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const field=btn.dataset.dp;
+        const inp=div.querySelector(`[data-pf="${field}"]`);
+        openDatePopup(inp?inp.value:'', v=>{
+          if(inp) inp.value=v;
+          collectEditorProjects();
+          const dl1=div.querySelector('[data-pf="dl1"]');
+          const dl2=div.querySelector('[data-pf="dl2"]');
+          const dl3=div.querySelector('[data-pf="dl3"]');
+          const b2=div.querySelector('[data-dp="dl2"]');
+          const b3=div.querySelector('[data-dp="dl3"]');
+          if(dl1&&dl2){ dl2.disabled=!dl1.value; if(b2)b2.disabled=!dl1.value; }
+          if(dl2&&dl3){ dl3.disabled=!dl2.value; if(b3)b3.disabled=!dl2.value; }
+        });
+      });
+    });
+
+    // Prazo 1 enables/disables Prazo 2; Prazo 2 enables/disables Prazo 3
+    const dl1inp=div.querySelector('[data-pf="dl1"]');
+    const dl2inp=div.querySelector('[data-pf="dl2"]');
+    const dl3inp=div.querySelector('[data-pf="dl3"]');
+    const b2btn=div.querySelector('[data-dp="dl2"]');
+    const b3btn=div.querySelector('[data-dp="dl3"]');
+    if(dl1inp) dl1inp.addEventListener('input',()=>{
+      if(dl2inp){dl2inp.disabled=!dl1inp.value; if(b2btn)b2btn.disabled=!dl1inp.value;}
+      if(!dl1inp.value){
+        if(dl2inp)dl2inp.value='';
+        if(dl3inp){dl3inp.value='';dl3inp.disabled=true;}
+        if(b3btn)b3btn.disabled=true;
+      }
+    });
+    if(dl2inp) dl2inp.addEventListener('input',()=>{
+      if(dl3inp){dl3inp.disabled=!dl2inp.value; if(b3btn)b3btn.disabled=!dl2inp.value;}
+      if(!dl2inp.value&&dl3inp) dl3inp.value='';
+    });
+
+    // Action buttons (create panel / remove)
+    const cpBtn=div.querySelector('[data-action="create-panel"]');
+    if(cpBtn) cpBtn.addEventListener('click', e=>{ e.stopPropagation(); createPanel(+div.dataset.projIdx); });
+    const rmBtn=div.querySelector('[data-action="remove"]');
+    if(rmBtn) rmBtn.addEventListener('click', e=>{ e.stopPropagation(); confirmRemoveProject(+div.dataset.projIdx); });
+
+    // Drag & drop
+    div.addEventListener('dragstart', e=>{
+      collectEditorProjects();
+      _projDragFrom=+div.dataset.projIdx;
+      e.dataTransfer.setData('text/plain', String(_projDragFrom));
       e.dataTransfer.effectAllowed='move';
       setTimeout(()=>div.classList.add('dragging'),0);
     });
@@ -853,7 +940,7 @@ function renderEdProjects(){
     div.addEventListener('dragover',e=>{
       e.preventDefault();
       e.dataTransfer.dropEffect='move';
-      if(_projDragFrom!==null&&_projDragFrom!==idx) div.classList.add('drag-over');
+      if(_projDragFrom!==null&&_projDragFrom!==+div.dataset.projIdx) div.classList.add('drag-over');
     });
     div.addEventListener('dragleave',e=>{
       if(!div.contains(e.relatedTarget)) div.classList.remove('drag-over');
@@ -861,15 +948,16 @@ function renderEdProjects(){
     div.addEventListener('drop',e=>{
       e.preventDefault();
       div.classList.remove('drag-over');
-      const from=_projDragFrom;
-      const to=idx;
+      const from=_projDragFrom; const to=+div.dataset.projIdx;
       _projDragFrom=null;
       if(from===null||from===to) return;
+      collectEditorProjects();
       const arr=editorData.projects;
       const item=arr.splice(from,1)[0];
       arr.splice(to,0,item);
       renderEdProjects();
     });
+
     if(expanded.has(idx)) div.classList.remove('collapsed');
     list.appendChild(div);
   });
@@ -880,12 +968,18 @@ function toggleProject(el){el.classList.toggle('collapsed');const btn=el.querySe
 function toggleAllProjects(collapse){document.querySelectorAll('#proj-list .proj-item').forEach(el=>{el.classList.toggle('collapsed',collapse);const btn=el.querySelector('.expand-btn');if(btn)btn.textContent=collapse?'▼':'▲';});}
 function updProj(idx,key,val){
   const p=editorData.projects[idx];
-  if(key==='id' && val && val!==p.id){
-    // Migra o painel para o novo ID se existir
-    if(editorData.panels[p.id]){
-      editorData.panels[val]=editorData.panels[p.id];
-      delete editorData.panels[p.id];
+  if(!p) return;
+  if(key==='id'){
+    const newId=(val||'').trim();
+    if(newId && newId!==p.id){
+      // Migra painel para o novo ID
+      if(editorData.panels[p.id]){
+        editorData.panels[newId]=editorData.panels[p.id];
+        delete editorData.panels[p.id];
+      }
+      p.id=newId;
     }
+    return;
   }
   p[key]=val;
 }
@@ -1095,15 +1189,15 @@ function addProject(){
 }
 
 function createPanel(projIdx){
-  // Lê o ID e nome ACTUAIS do editorData (não do HTML que pode estar desatualizado)
+  // FIX: coleta campos do DOM antes de ler p.id (pode estar desatualizado)
+  collectEditorProjects();
+
   const p=editorData.projects[projIdx];
   if(!p){alert('Projeto não encontrado.');return;}
 
-  // Garante que o ID foi preenchido (não está vazio ou duplicado)
   const pid=p.id&&p.id.trim()?p.id.trim():'';
   if(!pid){alert('Defina um ID para o projeto antes de criar o painel.');return;}
 
-  // Verifica colisão de ID com outros projetos
   const collision=editorData.projects.some((op,i)=>i!==projIdx&&op.id===pid);
   if(collision){
     alert('Já existe outro projeto com o ID "'+pid+'". Altere o ID deste projeto antes de criar o painel.');
@@ -1114,10 +1208,15 @@ function createPanel(projIdx){
 
   editorData.panels[pid]={title:p.name,subtitle:'',note:'',groups:[{label:'',tasks:[]}]};
 
+  // FIX: usa data-proj-idx (não índice posicional) para preservar expanded state
   const expanded=new Set();
-  document.querySelectorAll('#proj-list .proj-item').forEach((el,i)=>{if(!el.classList.contains('collapsed'))expanded.add(i);});
+  document.querySelectorAll('#proj-list .proj-item[data-proj-idx]').forEach(el=>{
+    if(!el.classList.contains('collapsed')) expanded.add(+el.dataset.projIdx);
+  });
   renderEdProjects();
-  document.querySelectorAll('#proj-list .proj-item').forEach((el,i)=>{if(expanded.has(i))el.classList.remove('collapsed');});
+  document.querySelectorAll('#proj-list .proj-item[data-proj-idx]').forEach(el=>{
+    if(expanded.has(+el.dataset.projIdx)) el.classList.remove('collapsed');
+  });
 
   const msg=document.createElement('div');
   msg.style.cssText='position:fixed;bottom:90px;right:28px;background:var(--green);color:#fff;padding:10px 18px;border-radius:var(--rs);font-size:13px;font-weight:600;z-index:300;box-shadow:0 4px 12px rgba(0,0,0,.15)';
@@ -1345,7 +1444,8 @@ function collectEditorInitiativas(){
 
 /* ── Apply & Export ── */
 function applyData(){
-  // ► FIX: força coleta de campos ainda em edição no editor de iniciativas
+  // Coleta campos em edição de projetos e iniciativas antes de aplicar
+  collectEditorProjects();
   collectEditorInitiativas();
 
   if(editorData.date==='—') editorData.date='';
@@ -1358,7 +1458,7 @@ function applyData(){
 }
 
 function exportJSON(){
-  // ► FIX: força coleta também no export
+  collectEditorProjects();
   collectEditorInitiativas();
 
   clearUnsaved();
