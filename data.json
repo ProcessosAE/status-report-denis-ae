@@ -20,7 +20,7 @@
       "dl3_done": false
     },
     {
-      "id": "novo",
+      "id": "novo-addin",
       "name": "Novo Addin",
       "pct": 25,
       "dl1": "31/08/2026",
@@ -187,7 +187,7 @@
       "owner": "Natan"
     },
     {
-      "id": "novo",
+      "id": "reestrut",
       "name": "Processos - Reestrut Issues Jira",
       "pct": 15,
       "dl1": "",
@@ -956,7 +956,7 @@
         }
       ]
     },
-    "novo": {
+    "novo-addin": {
       "title": "Processos - Reestrut Issues Jira",
       "subtitle": "",
       "note": "",

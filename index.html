@@ -633,7 +633,7 @@ function renderAll(){
     c.className='scard';
     c.style.setProperty('--cc',fc);
     c.innerHTML=`
-      <button class="edit-fab" title="Editar projeto" onclick="event.stopPropagation();openEditCard(${DATA.projects.indexOf(p)})">✏️</button>
+      <button class="edit-fab" title="Editar projeto" onclick="event.stopPropagation();openEditCard('${p.id}')">✏️</button>
       <div class="card-top">
         ${farolHTML(p.farol||'prazo')}
         <div class="card-info">
@@ -985,8 +985,10 @@ function updProj(idx,key,val){
 }
 
 
-function openEditCard(idx){
-  const p=DATA.projects[idx];if(!p)return;
+function openEditCard(pid){
+  // FIX: busca por pid (estável) em vez de índice posicional
+  const p=DATA.projects.find(p=>p.id===pid);
+  if(!p)return;
   const ov=document.createElement('div');ov.className='eq-overlay';ov.id='eq-overlay';
   ov.innerHTML=`<div class="eq-modal" onclick="event.stopPropagation()">
     <h4>✏️ ${p.name}</h4>
@@ -1004,14 +1006,16 @@ function openEditCard(idx){
       <div><label>Prazo 2</label><div style="display:flex;gap:4px"><input type="text" id="eq-dl2" value="${p.dl2||''}" placeholder="DD/MM/AA" maxlength="8" style="flex:1" ${!p.dl1?'disabled':''} oninput="maskDate(this)" onchange="if(!this.value){document.getElementById('eq-dl3').value='';document.getElementById('eq-dl3').disabled=true}else{document.getElementById('eq-dl3').disabled=false}"><button class="date-display-btn" style="padding:5px 7px;width:auto" ${!p.dl1?'disabled':''} onclick="openDatePopup(document.getElementById('eq-dl2').value||'',v=>{document.getElementById('eq-dl2').value=v;document.getElementById('eq-dl3').disabled=!v})">📅</button></div></div>
       <div><label>Prazo 3</label><div style="display:flex;gap:4px"><input type="text" id="eq-dl3" value="${p.dl3||''}" placeholder="DD/MM/AA" maxlength="8" style="flex:1" ${!p.dl2?'disabled':''} oninput="maskDate(this)"><button class="date-display-btn" style="padding:5px 7px;width:auto" ${!p.dl2?'disabled':''} onclick="openDatePopup(document.getElementById('eq-dl3').value||'',v=>{document.getElementById('eq-dl3').value=v})">📅</button></div></div>
     </div>
-    <div class="eq-footer"><button class="btn btn-outline" onclick="closeEditCard()">Cancelar</button><button class="btn btn-primary" onclick="saveEditCard(${idx})">Salvar</button></div>
+    <div class="eq-footer"><button class="btn btn-outline" onclick="closeEditCard()">Cancelar</button><button class="btn btn-primary" onclick="saveEditCard('${pid}')">Salvar</button></div>
   </div>`;
   ov.addEventListener('click',closeEditCard);
   document.body.appendChild(ov);
 }
 
-function saveEditCard(idx){
-  const p=DATA.projects[idx];
+function saveEditCard(pid){
+  // FIX: localiza por pid em DATA E editorData — não por índice posicional
+  const p=DATA.projects.find(p=>p.id===pid);
+  if(!p){closeEditCard();return;}
   p.name=document.getElementById('eq-name').value.trim()||p.name;
   p.pct=Math.min(100,Math.max(0,+document.getElementById('eq-pct').value||0));
   p.st=document.getElementById('eq-st').value;
@@ -1021,6 +1025,11 @@ function saveEditCard(idx){
   p.dl2=document.getElementById('eq-dl2').value;
   p.dl3=document.getElementById('eq-dl3').value;
   closeEditCard();
+  // Atualiza também o editorData para manter sincronizado
+  const ep=editorData.projects.find(ep=>ep.id===pid);
+  if(ep){ ep.name=p.name;ep.pct=p.pct;ep.st=p.st;ep.owner=p.owner;ep.farol=p.farol;ep.dl1=p.dl1;ep.dl2=p.dl2;ep.dl3=p.dl3; }
+  // Re-renderiza apenas o card afetado no dashboard
+  const idx=DATA.projects.indexOf(p);
   const sgrid=document.getElementById('sgrid');
   const cards=sgrid.querySelectorAll('.scard');
   if(cards[idx]){
@@ -1028,9 +1037,9 @@ function saveEditCard(idx){
     const jl=p.jira?`<a class="jl" href="${(DATA.jiraBase||JIRA)+p.jira}" target="_blank" onclick="event.stopPropagation()">${JIRA_SVG}${p.jl}</a>`:'';
     const ownerHtml=p.owner?`<span style="font-size:12px;color:var(--muted);display:flex;align-items:center;gap:5px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>${p.owner}</span>`:`<span style="font-size:12px;color:var(--faint);font-style:italic">sem responsável</span>`;
     cards[idx].style.setProperty('--cc',fc);
-    cards[idx].innerHTML=`<button class="edit-fab" title="Editar projeto" onclick="event.stopPropagation();openEditCard(${idx})">✏️</button><div class="card-top">${farolHTML(p.farol||'prazo')}<div class="card-info"><div class="cname">${p.name}</div><div class="cstats"><span class="cpct" style="color:${fc}">${pct}%</span><span class="bdg ${sc}">${p.st}</span></div></div></div><div class="cdl">${prazosHTML(p)}</div><div class="pbar"><div class="pfill" style="width:${pct}%;background:${fc}" data-w="${pct}"></div></div><div style="display:flex;align-items:center;justify-content:space-between;margin-top:10px;padding-top:8px;border-top:1px solid var(--border)">${ownerHtml}${jl}</div>`;
+    cards[idx].innerHTML=`<button class="edit-fab" title="Editar projeto" onclick="event.stopPropagation();openEditCard('${pid}')">✏️</button><div class="card-top">${farolHTML(p.farol||'prazo')}<div class="card-info"><div class="cname">${p.name}</div><div class="cstats"><span class="cpct" style="color:${fc}">${pct}%</span><span class="bdg ${sc}">${p.st}</span></div></div></div><div class="cdl">${prazosHTML(p)}</div><div class="pbar"><div class="pfill" style="width:${pct}%;background:${fc}" data-w="${pct}"></div></div><div style="display:flex;align-items:center;justify-content:space-between;margin-top:10px;padding-top:8px;border-top:1px solid var(--border)">${ownerHtml}${jl}</div>`;
   }
-  markUnsaved();startEditor();
+  markUnsaved();
 }
 function closeEditCard(){const ov=document.getElementById('eq-overlay');if(ov)ov.remove();}
 
@@ -1492,7 +1501,6 @@ function collectEditorInitiativas(){
 
 /* ── Apply & Export ── */
 function applyData(){
-  // Coleta campos em edição de projetos e iniciativas antes de aplicar
   collectEditorProjects();
   collectEditorInitiativas();
 
@@ -1500,6 +1508,9 @@ function applyData(){
   editorData.jiraBase=document.getElementById('ed-jira-base').value.trim()||editorData.jiraBase;
   DATA=JSON.parse(JSON.stringify(editorData));
   renderAll();
+  // FIX: re-sincroniza editorData com DATA após aplicar
+  // Sem isso, editorData fica stale e dataset.projIdx fica errado
+  startEditor();
   showPanel('resumo');
   clearUnsaved();
   alert('✅ Dashboard atualizado!');
