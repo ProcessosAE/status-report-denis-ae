@@ -984,13 +984,6 @@ function updProj(idx,key,val){
   p[key]=val;
 }
 
-function confirmRemoveProject(idx){
-  const name=editorData.projects[idx].name;const pid=editorData.projects[idx].id;
-  const modal=document.getElementById('confirm-modal');
-  modal.style.cssText='display:flex;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:500;align-items:center;justify-content:center;animation:fu .2s ease';
-  modal.innerHTML=`<div class="modal-box"><h4>⚠️ Excluir projeto</h4><p>Você está prestes a excluir o projeto <strong>${name}</strong>.<br>Todas as tarefas vinculadas a ele também serão removidas permanentemente.</p><div class="modal-actions"><button class="btn btn-outline" onclick="closeModal()">Cancelar</button><button class="btn btn-danger" onclick="doRemoveProject(${idx},'${pid}')">Confirmar exclusão</button></div></div>`;
-}
-function closeModal(){const m=document.getElementById('confirm-modal');m.style.display='none';m.innerHTML='';}
 
 function openEditCard(idx){
   const p=DATA.projects[idx];if(!p)return;
@@ -1161,8 +1154,63 @@ function inlineEditTask(pid,gi,ti,field,el){
   input.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();input.blur();}if(e.key==='Escape'){el.innerHTML=prev;el.classList.remove('cell-edit');}});
 }
 
-function doRemoveProject(idx,pid){editorData.projects.splice(idx,1);if(editorData.panels[pid])delete editorData.panels[pid];closeModal();renderEdProjects();}
+function confirmRemoveProject(projIdx){
+  // FIX [E]: valida se o índice existe antes de acessar
+  const p = editorData.projects[projIdx];
+  if(!p){ alert('Projeto não encontrado.'); return; }
 
+  // FIX [H]: evita race condition — fecha modal anterior antes de abrir novo
+  closeModal();
+
+  const name = p.name;
+  const pid  = p.id;  // captura pid (string estável) — não idx (posicional instável)
+
+  const modal = document.getElementById('confirm-modal');
+  modal.style.cssText = 'display:flex;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:500;align-items:center;justify-content:center;animation:fu .2s ease';
+
+  const box = document.createElement('div');
+  box.className = 'modal-box';
+  box.innerHTML = `
+    <h4>⚠️ Excluir projeto</h4>
+    <p>Você está prestes a excluir o projeto <strong>${name}</strong>.<br>
+    Todas as tarefas vinculadas a ele também serão removidas permanentemente.</p>
+    <div class="modal-actions">
+      <button class="btn btn-outline" id="modal-cancel">Cancelar</button>
+      <button class="btn btn-danger"  id="modal-confirm">Confirmar exclusão</button>
+    </div>`;
+
+  // FIX [F]: listeners via JS — sem onclick inline com idx/pid interpolados
+  box.querySelector('#modal-cancel').addEventListener('click', closeModal);
+  box.querySelector('#modal-confirm').addEventListener('click', ()=>{
+    // FIX [B]: busca o projeto pelo pid (estável), não pelo idx (posicional stale)
+    doRemoveProject(pid);
+  });
+
+  modal.appendChild(box);
+}
+
+function doRemoveProject(pid){
+  // FIX [B]: localiza o projeto pelo pid em vez de confiar no índice posicional
+  const idx = editorData.projects.findIndex(p => p.id === pid);
+  if(idx === -1){ closeModal(); return; } // projeto já foi removido ou pid inválido
+
+  // FIX [C]: coleta campos em edição antes de deletar para não perder dados de outros projetos
+  collectEditorProjects();
+
+  editorData.projects.splice(idx, 1);
+  if(editorData.panels[pid]) delete editorData.panels[pid];
+
+  closeModal();
+  renderEdProjects();
+  markUnsaved();
+}
+
+function closeModal(){
+  const m = document.getElementById('confirm-modal');
+  if(!m) return;
+  m.style.display = 'none';
+  m.innerHTML = '';
+}
 function addProject(){
   // Gera um ID único que não colide com nenhum existente
   const existing=new Set(editorData.projects.map(p=>p.id));
