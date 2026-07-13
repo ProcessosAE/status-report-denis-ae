@@ -5,7 +5,7 @@
     {
       "id": "NT",
       "name": "Novo Terminal V7.6.3",
-      "pct": 85,
+      "pct": 95,
       "dl1": "24/07/2026",
       "dl2": "",
       "dl3": "",
@@ -22,7 +22,7 @@
     {
       "id": "novo-addin",
       "name": "Novo Addin",
-      "pct": 25,
+      "pct": 45,
       "dl1": "31/08/2026",
       "dl2": "",
       "dl3": "",
@@ -865,8 +865,8 @@
             {
               "task": "Trademate - Arquivo de exceção",
               "dl": "24/07/2026",
-              "st": "Em andamento",
-              "pct": 90,
+              "st": "Em validação",
+              "pct": 95,
               "resp": "Wagner",
               "jira": "",
               "jl": "",
@@ -880,8 +880,8 @@
             {
               "task": "[LATAM] - Suporte a Bridgewise",
               "dl": "24/07/2026",
-              "st": "Em andamento",
-              "pct": 90,
+              "st": "Em validação",
+              "pct": 95,
               "resp": "Wagner",
               "jira": "",
               "jl": "",
@@ -895,8 +895,8 @@
             {
               "task": "Arquivo de configuração Internet/Dedicado",
               "dl": "24/07/2026",
-              "st": "Em andamento",
-              "pct": 5,
+              "st": "Em validação",
+              "pct": 95,
               "resp": "Wagner",
               "jira": "",
               "jl": "",
@@ -905,8 +905,8 @@
             {
               "task": "Alterações na identidade visual",
               "dl": "24/07/2026",
-              "st": "Em andamento",
-              "pct": 80,
+              "st": "Em validação",
+              "pct": 95,
               "resp": "Wagner",
               "jira": "",
               "jl": "",
@@ -915,8 +915,8 @@
             {
               "task": "Atualizador Agro x NT",
               "dl": "24/07/2026",
-              "st": "Em andamento",
-              "pct": 90,
+              "st": "Em validação",
+              "pct": 95,
               "resp": "Wagner",
               "jira": "",
               "jl": "",
@@ -925,8 +925,8 @@
             {
               "task": "Campo de variação com a opção de visualizar Fec/Aju em %",
               "dl": "24/07/2026",
-              "st": "Em andamento",
-              "pct": 90,
+              "st": "Em validação",
+              "pct": 95,
               "resp": "Wagner",
               "jira": "",
               "jl": "",
@@ -935,8 +935,8 @@
             {
               "task": "Login automático",
               "dl": "24/07/2026",
-              "st": "Em andamento",
-              "pct": 90,
+              "st": "Em validação",
+              "pct": 95,
               "resp": "Wagner",
               "jira": "",
               "jl": "",
@@ -945,8 +945,8 @@
             {
               "task": "Iniciar com windows",
               "dl": "24/07/2026",
-              "st": "Em andamento",
-              "pct": 90,
+              "st": "Em validação",
+              "pct": 95,
               "resp": "Wagner",
               "jira": "",
               "jl": "",
@@ -963,7 +963,68 @@
       "groups": [
         {
           "label": "",
-          "tasks": []
+          "tasks": [
+            {
+              "task": "[Addin] - BCH Inicial (mínimo funcional)",
+              "dl": "03/07/2026",
+              "st": "Em validação",
+              "pct": 95,
+              "resp": "",
+              "jira": "",
+              "jl": "",
+              "obs": ""
+            },
+            {
+              "task": "[Addin] - BC Inicial (mínimo funcional)",
+              "dl": "10/07/2026",
+              "st": "Em validação",
+              "pct": 95,
+              "resp": "",
+              "jira": "",
+              "jl": "",
+              "obs": ""
+            },
+            {
+              "task": "[Addin] - BCH+ (completo)",
+              "dl": "17/07/2026",
+              "st": "Em andamento",
+              "pct": 80,
+              "resp": "",
+              "jira": "",
+              "jl": "",
+              "obs": ""
+            },
+            {
+              "task": "[Addin] - BC+ (permissões, cache e autocomplete — BCTAB on-demand completo)",
+              "dl": "14/08/2026",
+              "st": "Não iniciado",
+              "pct": 0,
+              "resp": "",
+              "jira": "",
+              "jl": "",
+              "obs": ""
+            },
+            {
+              "task": "[Addin] - BCS",
+              "dl": "24/08/2026",
+              "st": "Não iniciado",
+              "pct": 0,
+              "resp": "",
+              "jira": "",
+              "jl": "",
+              "obs": ""
+            },
+            {
+              "task": "[Addin] - Instalador",
+              "dl": "31/08/2026",
+              "st": "Não iniciado",
+              "pct": 0,
+              "resp": "",
+              "jira": "",
+              "jl": "",
+              "obs": ""
+            }
+          ]
         }
       ]
     },
