@@ -772,22 +772,32 @@ function collectEditorProjects(){
     const idx=+card.dataset.projIdx;
     const p=editorData.projects[idx];
     if(!p) return;
+
     const get=(sel)=>{ const el=card.querySelector(sel); return el?el.value:null; };
+
+    // Verificação de sanidade: o id no DOM deve corresponder ao projeto nessa posição.
+    // Se não bater, o DOM está defasado (ex: projeto foi adicionado/removido sem re-render)
+    // e NÃO devemos sobrescrever editorData com dados do card errado.
+    const domId = (get('[data-pf="id"]')||'').trim();
+    if(domId && domId !== p.id){
+      // DOM e editorData estão dessincronizados — ignora este card inteiro
+      return;
+    }
+
     const name=get('[data-pf="name"]'); if(name!==null) p.name=name;
     const pct=get('[data-pf="pct"]');   if(pct!==null)  p.pct=Math.min(100,Math.max(0,+pct||0));
     const st=get('[data-pf="st"]');     if(st!==null)   p.st=st;
-    const id=get('[data-pf="id"]');
-    if(id!==null && id.trim() && id.trim()!==p.id){
-      const newId=id.trim();
-      if(editorData.panels[p.id]){ editorData.panels[newId]=editorData.panels[p.id]; delete editorData.panels[p.id]; }
-      p.id=newId;
-    }
     const owner=get('[data-pf="owner"]'); if(owner!==null) p.owner=owner;
     const jira=get('[data-pf="jira"]');   if(jira!==null)  p.jira=jira;
     const jl=get('[data-pf="jl"]');       if(jl!==null)    p.jl=jl;
     const dl1=get('[data-pf="dl1"]');     if(dl1!==null)   p.dl1=dl1;
     const dl2=get('[data-pf="dl2"]');     if(dl2!==null)   p.dl2=dl2;
     const dl3=get('[data-pf="dl3"]');     if(dl3!==null)   p.dl3=dl3;
+
+    // Migração de ID: só executa se domId existir, for diferente do p.id atual
+    // e o card estiver sincronizado (verificação acima passou, ou seja domId === p.id ou domId vazio)
+    // Portanto aqui domId === p.id — não há migração a fazer neste ponto.
+    // Migração de ID é feita exclusivamente pelo updProj quando o campo perde o foco.
   });
 }
 
@@ -822,8 +832,7 @@ function renderEdProjects(){
           <div><label>Status</label>
             <select data-pf="st">${STATUS_LIST.map(s=>`<option value="${s}"${p.st===s?' selected':''}>${s}</option>`).join('')}</select>
           </div>
-          <div><label>ID do painel</label><input type="text" data-pf="id" value="${(p.id||'').replace(/"/g,'&quot;')}"></div>
-          <div><label>Farol</label>
+          <div><label>ID do painel</label><input type="text" data-pf="id" value="${(p.id||'').replace(/"/g,'&quot;')}"></div>          <div><label>Farol</label>
             <div style="display:flex;gap:4px">
               ${[['perigo','Perigo','#F85149'],['atencao','Atenção','#D29922'],['prazo','No prazo','#3FB950']].map(([val,lbl,cor])=>`
               <div class="farol-btn" data-val="${val}" style="display:flex;align-items:center;gap:4px;padding:4px 8px;border:1px solid ${(p.farol||'prazo')===val?'var(--accent)':'var(--border)'};border-radius:var(--rs);cursor:pointer;font-size:11px;background:${(p.farol||'prazo')===val?'var(--accent-lt)':'#fff'};color:${(p.farol||'prazo')===val?'var(--accent)':'var(--muted)'}">
@@ -916,6 +925,21 @@ function renderEdProjects(){
     if(dl2inp) dl2inp.addEventListener('input',()=>{
       if(dl3inp){dl3inp.disabled=!dl2inp.value; if(b3btn)b3btn.disabled=!dl2inp.value;}
       if(!dl2inp.value&&dl3inp) dl3inp.value='';
+    });
+
+    // ID field: migra painel ao perder foco (blur)
+    const idInp=div.querySelector('[data-pf="id"]');
+    if(idInp) idInp.addEventListener('blur', ()=>{
+      const newId=idInp.value.trim();
+      if(!newId || newId===p.id) return;
+      // Verifica colisão com outros projetos
+      const collision=editorData.projects.some((op,i)=>i!==idx&&op.id===newId);
+      if(collision){
+        alert('ID "'+newId+'" já está em uso por outro projeto. Escolha um ID diferente.');
+        idInp.value=p.id; // reverte
+        return;
+      }
+      updProj(idx,'id',newId);
     });
 
     // Action buttons (create panel / remove)
