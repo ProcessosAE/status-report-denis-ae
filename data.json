@@ -957,6 +957,17 @@
       ]
     },
     "novo-addin": {
+      "title": "Novo Addin",
+      "subtitle": "",
+      "note": "",
+      "groups": [
+        {
+          "label": "",
+          "tasks": []
+        }
+      ]
+    },
+    "reestrut": {
       "title": "Processos - Reestrut Issues Jira",
       "subtitle": "",
       "note": "",
