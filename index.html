@@ -835,7 +835,7 @@ function renderEdProjects(){
         <div><label>Label</label><input type="text" value="${p.jl||''}" placeholder="FD" onchange="updProj(${idx},'jl',this.value)"></div>
       </div>
       <div style="margin-top:14px;padding-top:12px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center">
-        ${!editorData.panels[p.id]?`<button class="btn btn-success btn-sm" onclick="event.stopPropagation();createPanel('${p.id}','${p.name}')">+ Criar painel de tarefas</button>`:`<span style="font-size:12px;color:var(--green);display:flex;align-items:center;gap:4px">✅ Painel vinculado</span>`}
+        ${!editorData.panels[p.id]?`<button class="btn btn-success btn-sm" onclick="event.stopPropagation();createPanel(${idx})">+ Criar painel de tarefas</button>`:`<span style="font-size:12px;color:var(--green);display:flex;align-items:center;gap:4px">✅ Painel vinculado</span>`}
         <button class="btn btn-danger btn-sm proj-delete-btn" onclick="event.stopPropagation();confirmRemoveProject(${idx})">🗑 Excluir projeto</button>
       </div>
       </div>`;
@@ -875,23 +875,20 @@ function renderEdProjects(){
   });
 }
 
-function createPanel(pid,pname){
-  if(editorData.panels[pid]){alert('Este projeto já tem um painel de tarefas.');return;}
-  editorData.panels[pid]={title:pname,subtitle:'',note:'',groups:[{label:'',tasks:[]}]};
-  const expanded=new Set();
-  document.querySelectorAll('#proj-list .proj-item').forEach((el,i)=>{if(!el.classList.contains('collapsed'))expanded.add(i);});
-  renderEdProjects();
-  document.querySelectorAll('#proj-list .proj-item').forEach((el,i)=>{if(expanded.has(i))el.classList.remove('collapsed');});
-  const msg=document.createElement('div');
-  msg.style.cssText='position:fixed;bottom:90px;right:28px;background:var(--green);color:#fff;padding:10px 18px;border-radius:var(--rs);font-size:13px;font-weight:600;z-index:300;box-shadow:0 4px 12px rgba(0,0,0,.15)';
-  msg.textContent='✅ Painel "'+pname+'" criado! Acesse a aba Tarefas para adicionar.';
-  document.body.appendChild(msg);
-  setTimeout(()=>msg.remove(),3500);
-}
 
 function toggleProject(el){el.classList.toggle('collapsed');const btn=el.querySelector('.expand-btn');if(btn)btn.textContent=el.classList.contains('collapsed')?'▼':'▲';}
 function toggleAllProjects(collapse){document.querySelectorAll('#proj-list .proj-item').forEach(el=>{el.classList.toggle('collapsed',collapse);const btn=el.querySelector('.expand-btn');if(btn)btn.textContent=collapse?'▼':'▲';});}
-function updProj(idx,key,val){editorData.projects[idx][key]=val;}
+function updProj(idx,key,val){
+  const p=editorData.projects[idx];
+  if(key==='id' && val && val!==p.id){
+    // Migra o painel para o novo ID se existir
+    if(editorData.panels[p.id]){
+      editorData.panels[val]=editorData.panels[p.id];
+      delete editorData.panels[p.id];
+    }
+  }
+  p[key]=val;
+}
 
 function confirmRemoveProject(idx){
   const name=editorData.projects[idx].name;const pid=editorData.projects[idx].id;
@@ -1071,7 +1068,63 @@ function inlineEditTask(pid,gi,ti,field,el){
 }
 
 function doRemoveProject(idx,pid){editorData.projects.splice(idx,1);if(editorData.panels[pid])delete editorData.panels[pid];closeModal();renderEdProjects();}
-function addProject(){editorData.projects.push({id:'novo',name:'Novo Projeto',pct:0,dl1:'',dl2:'',dl3:'',st:'Em andamento',color:'#1B6EF3',farol:'perigo',jira:'',jl:''});renderEdProjects();}
+
+function addProject(){
+  // Gera um ID único que não colide com nenhum existente
+  const existing=new Set(editorData.projects.map(p=>p.id));
+  let base='novo', candidate=base, n=1;
+  while(existing.has(candidate)) candidate=base+(++n);
+  editorData.projects.push({
+    id:candidate,name:'Novo Projeto',pct:0,
+    dl1:'',dl2:'',dl3:'',st:'Em andamento',
+    color:'#1B6EF3',farol:'perigo',jira:'',jl:''
+  });
+  renderEdProjects();
+  // Abre o último card automaticamente para o usuário editar
+  setTimeout(()=>{
+    const items=document.querySelectorAll('#proj-list .proj-item');
+    const last=items[items.length-1];
+    if(last){
+      last.classList.remove('collapsed');
+      const btn=last.querySelector('.expand-btn');
+      if(btn) btn.textContent='▲';
+      const nameInput=last.querySelector('input[type=text]');
+      if(nameInput){nameInput.focus();nameInput.select();}
+    }
+  },50);
+}
+
+function createPanel(projIdx){
+  // Lê o ID e nome ACTUAIS do editorData (não do HTML que pode estar desatualizado)
+  const p=editorData.projects[projIdx];
+  if(!p){alert('Projeto não encontrado.');return;}
+
+  // Garante que o ID foi preenchido (não está vazio ou duplicado)
+  const pid=p.id&&p.id.trim()?p.id.trim():'';
+  if(!pid){alert('Defina um ID para o projeto antes de criar o painel.');return;}
+
+  // Verifica colisão de ID com outros projetos
+  const collision=editorData.projects.some((op,i)=>i!==projIdx&&op.id===pid);
+  if(collision){
+    alert('Já existe outro projeto com o ID "'+pid+'". Altere o ID deste projeto antes de criar o painel.');
+    return;
+  }
+
+  if(editorData.panels[pid]){alert('Este projeto já tem um painel de tarefas.');return;}
+
+  editorData.panels[pid]={title:p.name,subtitle:'',note:'',groups:[{label:'',tasks:[]}]};
+
+  const expanded=new Set();
+  document.querySelectorAll('#proj-list .proj-item').forEach((el,i)=>{if(!el.classList.contains('collapsed'))expanded.add(i);});
+  renderEdProjects();
+  document.querySelectorAll('#proj-list .proj-item').forEach((el,i)=>{if(expanded.has(i))el.classList.remove('collapsed');});
+
+  const msg=document.createElement('div');
+  msg.style.cssText='position:fixed;bottom:90px;right:28px;background:var(--green);color:#fff;padding:10px 18px;border-radius:var(--rs);font-size:13px;font-weight:600;z-index:300;box-shadow:0 4px 12px rgba(0,0,0,.15)';
+  msg.textContent='✅ Painel "'+p.name+'" criado! Acesse a aba Tarefas para adicionar.';
+  document.body.appendChild(msg);
+  setTimeout(()=>msg.remove(),3500);
+}
 
 function renderEdTasks(){
   const tabBar=document.getElementById('panel-tabs-ed');tabBar.innerHTML='';
@@ -1132,15 +1185,16 @@ function removeGroup(pid,gi){if(!confirm('Remover grupo?'))return;editorData.pan
 
 /* ── Initiatives editor ── */
 function renderEdInitiativas(){
-  // Antes de re-renderizar, salva o estado atual do DOM para preservar edições em curso
   collectEditorInitiativas();
+  const list=document.getElementById('init-list');
+  list.innerHTML='';
 
-  const list=document.getElementById('init-list');list.innerHTML='';
   editorData.iniciativas.forEach((ini,idx)=>{
     const div=document.createElement('div');
     div.className='proj-item';
-    div.draggable=true;
-    div.dataset.iniIdx=idx;
+    // draggable começa false — só ativa via mousedown no handle
+    div.draggable=false;
+    div.dataset.iniIdx=String(idx);
 
     const farolBtns=[['perigo','#F85149','Perigo'],['atencao','#D29922','Atenção'],['prazo','#22C55E','No prazo']].map(([val,cor,lbl])=>{
       const sel=(ini.farol||'prazo')===val;
@@ -1155,12 +1209,15 @@ function renderEdInitiativas(){
 
     div.innerHTML=`
       <div class="proj-item-hdr" style="margin-bottom:8px;cursor:default">
-        <span class="drag-handle" title="Arrastar para reordenar" style="font-size:20px;cursor:grab;color:var(--faint);user-select:none" onclick="event.stopPropagation()">⠿</span>
+        <span class="ini-handle" title="Arrastar para reordenar"
+          style="font-size:20px;cursor:grab;color:var(--faint);user-select:none;padding:0 6px 0 0;flex-shrink:0">⠿</span>
         <span class="color-dot" style="background:${ini.color}"></span>
         <strong style="flex:1;font-size:13px;font-weight:600">${ini.title}</strong>
         <div style="display:flex;gap:4px">
-          <button class="btn btn-outline btn-sm" title="Mover para cima" onclick="moveIni(${idx},-1)" ${idx===0?'disabled style="opacity:.35"':''}>↑</button>
-          <button class="btn btn-outline btn-sm" title="Mover para baixo" onclick="moveIni(${idx},1)" ${idx===editorData.iniciativas.length-1?'disabled style="opacity:.35"':''}>↓</button>
+          <button class="btn btn-outline btn-sm" title="Mover para cima"
+            onclick="moveIni(${idx},-1)" ${idx===0?'disabled style="opacity:.35"':''}>↑</button>
+          <button class="btn btn-outline btn-sm" title="Mover para baixo"
+            onclick="moveIni(${idx},1)" ${idx===editorData.iniciativas.length-1?'disabled style="opacity:.35"':''}>↓</button>
         </div>
       </div>
       <div style="display:grid;grid-template-columns:2fr 1fr 0.6fr auto;gap:8px;align-items:end;margin-bottom:8px">
@@ -1179,39 +1236,52 @@ function renderEdInitiativas(){
         <button class="btn btn-danger btn-sm" onclick="removeIni(${idx})">🗑 Excluir Iniciativa</button>
       </div>`;
 
-    // ── Drag events ──
+    // Handle: ativa draggable só quando o arrasto começa pelo ⠿
+    const handle=div.querySelector('.ini-handle');
+    handle.addEventListener('mousedown', ()=>{ div.draggable=true; });
+    // Desativa ao soltar o mouse em qualquer lugar
+    document.addEventListener('mouseup', function offDrag(){
+      div.draggable=false;
+      document.removeEventListener('mouseup', offDrag);
+    });
+
+    // Drag events no próprio card
     div.addEventListener('dragstart', e=>{
+      if(!div.draggable) { e.preventDefault(); return; }
       collectEditorInitiativas();
-      _iniDragFrom = idx;
-      e.dataTransfer.effectAllowed = 'move';
-      e.dataTransfer.setData('text/plain', String(idx)); // Firefox requer setData
+      _iniDragFrom=+div.dataset.iniIdx;
+      e.dataTransfer.effectAllowed='move';
+      e.dataTransfer.setData('text/plain', String(_iniDragFrom));
       setTimeout(()=>div.classList.add('dragging'), 0);
     });
+
     div.addEventListener('dragend', ()=>{
+      div.draggable=false;
       div.classList.remove('dragging');
-      // limpa qualquer drag-over residual em todos os itens
       document.querySelectorAll('#init-list .proj-item').forEach(el=>el.classList.remove('drag-over'));
-      _iniDragFrom = null;
+      _iniDragFrom=null;
     });
+
     div.addEventListener('dragover', e=>{
+      if(_iniDragFrom===null) return;
       e.preventDefault();
-      e.dataTransfer.dropEffect = 'move';
-      if(_iniDragFrom !== null && _iniDragFrom !== idx) div.classList.add('drag-over');
+      e.dataTransfer.dropEffect='move';
+      const to=+div.dataset.iniIdx;
+      if(to===_iniDragFrom) return;
+      document.querySelectorAll('#init-list .proj-item').forEach(el=>el.classList.remove('drag-over'));
+      div.classList.add('drag-over');
     });
-    div.addEventListener('dragleave', e=>{
-      // só remove drag-over se o cursor saiu do div inteiro (não de um filho)
-      if(!div.contains(e.relatedTarget)) div.classList.remove('drag-over');
-    });
+
     div.addEventListener('drop', e=>{
       e.preventDefault();
       div.classList.remove('drag-over');
-      const from = _iniDragFrom;
-      const to   = idx;
-      _iniDragFrom = null;
-      if(from === null || from === to) return;
-      const arr  = editorData.iniciativas;
-      const item = arr.splice(from, 1)[0];
-      arr.splice(to, 0, item);
+      const from=_iniDragFrom;
+      const to=+div.dataset.iniIdx;
+      _iniDragFrom=null;
+      if(from===null || from===to) return;
+      const arr=editorData.iniciativas;
+      const item=arr.splice(from,1)[0];
+      arr.splice(to,0,item);
       renderEdInitiativas();
       markUnsaved();
     });
@@ -1222,8 +1292,7 @@ function renderEdInitiativas(){
 
 function updIni(idx,key,val){editorData.iniciativas[idx][key]=val;}
 
-function moveIni(idx, dir){
-  // coleta antes de mover para não perder edições em curso
+function moveIni(idx,dir){
   collectEditorInitiativas();
   const arr=editorData.iniciativas;
   const newIdx=idx+dir;
@@ -1245,7 +1314,6 @@ function addInitiativa(){
   collectEditorInitiativas();
   editorData.iniciativas.push({title:'Nova Iniciativa',color:'#1B6EF3',jira:'',jl:'',farol:'prazo',items:[]});
   renderEdInitiativas();
-  // foca o campo título do novo item
   setTimeout(()=>{
     const inputs=document.querySelectorAll('#init-list [data-field="title"]');
     const last=inputs[inputs.length-1];
