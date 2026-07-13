@@ -919,10 +919,11 @@ function renderEdProjects(){
     });
 
     // Action buttons (create panel / remove)
+    // Action buttons — passa pid diretamente, nunca índice posicional
     const cpBtn=div.querySelector('[data-action="create-panel"]');
     if(cpBtn) cpBtn.addEventListener('click', e=>{ e.stopPropagation(); createPanel(+div.dataset.projIdx); });
     const rmBtn=div.querySelector('[data-action="remove"]');
-    if(rmBtn) rmBtn.addEventListener('click', e=>{ e.stopPropagation(); confirmRemoveProject(+div.dataset.projIdx); });
+    if(rmBtn) rmBtn.addEventListener('click', e=>{ e.stopPropagation(); confirmRemoveProject(p.id); });
 
     // Drag & drop
     div.addEventListener('dragstart', e=>{
@@ -1163,16 +1164,18 @@ function inlineEditTask(pid,gi,ti,field,el){
   input.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();input.blur();}if(e.key==='Escape'){el.innerHTML=prev;el.classList.remove('cell-edit');}});
 }
 
-function confirmRemoveProject(projIdx){
-  // FIX [E]: valida se o índice existe antes de acessar
-  const p = editorData.projects[projIdx];
+function confirmRemoveProject(pid){
+  // Coleta campos em edição antes de qualquer leitura
+  collectEditorProjects();
+
+  // Localiza por pid — nunca por índice posicional
+  const p = editorData.projects.find(p => p.id === pid);
   if(!p){ alert('Projeto não encontrado.'); return; }
 
-  // FIX [H]: evita race condition — fecha modal anterior antes de abrir novo
+  // Evita race condition — fecha modal anterior antes de abrir novo
   closeModal();
 
   const name = p.name;
-  const pid  = p.id;  // captura pid (string estável) — não idx (posicional instável)
 
   const modal = document.getElementById('confirm-modal');
   modal.style.cssText = 'display:flex;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:500;align-items:center;justify-content:center;animation:fu .2s ease';
@@ -1188,12 +1191,8 @@ function confirmRemoveProject(projIdx){
       <button class="btn btn-danger"  id="modal-confirm">Confirmar exclusão</button>
     </div>`;
 
-  // FIX [F]: listeners via JS — sem onclick inline com idx/pid interpolados
   box.querySelector('#modal-cancel').addEventListener('click', closeModal);
-  box.querySelector('#modal-confirm').addEventListener('click', ()=>{
-    // FIX [B]: busca o projeto pelo pid (estável), não pelo idx (posicional stale)
-    doRemoveProject(pid);
-  });
+  box.querySelector('#modal-confirm').addEventListener('click', ()=>{ doRemoveProject(pid); });
 
   modal.appendChild(box);
 }
