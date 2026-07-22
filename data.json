@@ -135,8 +135,8 @@
     {
       "id": "novo",
       "name": "Proc - Mapeamento proc produção",
-      "pct": 0,
-      "dl1": "",
+      "pct": 6,
+      "dl1": "28/08/2026",
       "dl2": "",
       "dl3": "",
       "st": "Em andamento",
@@ -144,7 +144,7 @@
       "farol": "prazo",
       "jira": "",
       "jl": "",
-      "owner": ""
+      "owner": "Natan"
     }
   ],
   "panels": {
@@ -296,7 +296,7 @@
             },
             {
               "task": "Sugestões",
-              "dl": "24/07/2026",
+              "dl": "31/07/2026",
               "st": "Em andamento",
               "pct": 5,
               "resp": "",
@@ -717,6 +717,68 @@
               "st": "Em andamento",
               "pct": 0,
               "resp": "",
+              "jira": "",
+              "jl": "",
+              "obs": ""
+            }
+          ]
+        }
+      ]
+    },
+    "novo": {
+      "title": "Proc - Mapeamento proc produção",
+      "subtitle": "",
+      "note": "",
+      "groups": [
+        {
+          "label": "",
+          "tasks": [
+            {
+              "task": "Mapeamento Fluxo Incidentes",
+              "dl": "31/07/2026",
+              "st": "Em andamento",
+              "pct": 30,
+              "resp": "Natan",
+              "jira": "",
+              "jl": "",
+              "obs": ""
+            },
+            {
+              "task": "Mapeamento Fluxo Problemas",
+              "dl": "07/08/2026",
+              "st": "Não iniciado",
+              "pct": 0,
+              "resp": "Natan",
+              "jira": "",
+              "jl": "",
+              "obs": ""
+            },
+            {
+              "task": "Mapeamento Fluxo Solicitação ST",
+              "dl": "17/07/2026",
+              "st": "Não iniciado",
+              "pct": 0,
+              "resp": "Natan",
+              "jira": "",
+              "jl": "",
+              "obs": ""
+            },
+            {
+              "task": "Mapeamento Fluxo Eventos",
+              "dl": "24/08/2026",
+              "st": "Não iniciado",
+              "pct": 0,
+              "resp": "Natan",
+              "jira": "",
+              "jl": "",
+              "obs": ""
+            },
+            {
+              "task": "Mapeamento Fluxo Sugestões",
+              "dl": "28/08/2026",
+              "st": "Não iniciado",
+              "pct": 0,
+              "resp": "Natan",
               "jira": "",
               "jl": "",
               "obs": ""
