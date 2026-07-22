@@ -1,5 +1,5 @@
 {
-  "date": "15/07/2026",
+  "date": "22/07/2026",
   "jiraBase": "https://jiracloudae.atlassian.net",
   "projects": [
     {
@@ -45,7 +45,7 @@
       "dl3_done": false,
       "st": "Em andamento",
       "color": "#6D28D9",
-      "farol": "prazo",
+      "farol": "perigo",
       "jira": "/projects/FD/boards/2223",
       "jl": "FD-2223",
       "owner": "Jara"
@@ -806,15 +806,10 @@
       "jira": "",
       "jl": "",
       "items": [
-        "Automatização de e-mails de cobrança da empresa (@Tico envia);",
-        "Automatização de criação de scripts de monitoração com @Tico;",
-        "Datadog: Tratativa de erros de APM do Datadog (causa raiz, solução, abertura do problema no Jira) - 80%;",
+        "Datadog: Tratativa de erros de APM do Datadog (causa raiz, solução, abertura do problema no Jira) - 90%;",
         "Indicadores de Infraestrutura usando Claude (capacity e finOps de cloud e onprem, controle de demanda das áreas, roamap e controle de ativos;",
-        "Indicadores de Serviços TI e Incidentes usando Copilot;",
-        "Implantação de níveis de permissionamento e tela de indicadores para Gestão usando Copit;",
         "Envio de comunicado de e-mail e chat (alertas) automatizado;",
-        "Automatização plano de comunicação do DR - Backlog;",
-        "Criação de agente de Processos -Backlog;"
+        "Automatização plano de comunicação do DR - Backlog;"
       ]
     },
     {
