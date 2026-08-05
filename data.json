@@ -1,29 +1,12 @@
 {
-  "date": "29/07/2026",
+  "date": "05/08/2026",
   "jiraBase": "https://jiracloudae.atlassian.net",
   "projects": [
     {
-      "id": "NT",
-      "name": "Novo Terminal V7.6.3",
-      "pct": 100,
-      "dl1": "24/07/2026",
-      "dl2": "",
-      "dl3": "",
-      "st": "Concluído",
-      "color": "#1B6EF3",
-      "farol": "prazo",
-      "jira": "/projects/FD/boards/1712",
-      "jl": "FD-1712",
-      "owner": "Wagner",
-      "dl1_done": false,
-      "dl2_done": false,
-      "dl3_done": false
-    },
-    {
       "id": "novo3",
-      "name": "Novo Terminal V7.6.5",
-      "pct": 20,
-      "dl1": "",
+      "name": "Novo Terminal V7.6.6",
+      "pct": 80,
+      "dl1": "31/08/2026",
       "dl2": "",
       "dl3": "",
       "st": "Em andamento",
@@ -36,7 +19,7 @@
     {
       "id": "novo-addin",
       "name": "Novo Addin",
-      "pct": 62,
+      "pct": 95,
       "dl1": "31/08/2026",
       "dl2": "",
       "dl3": "",
@@ -57,7 +40,7 @@
       "dl1_done": false,
       "dl2_done": false,
       "dl3_done": false,
-      "st": "Pausado",
+      "st": "Em andamento",
       "color": "#6D28D9",
       "farol": "perigo",
       "jira": "/projects/FD/boards/2223",
@@ -67,7 +50,7 @@
     {
       "id": "a5x",
       "name": "A5X",
-      "pct": 40,
+      "pct": 50,
       "dl1": "30/09",
       "dl2": "",
       "dl3": "",
@@ -84,16 +67,16 @@
     {
       "id": "openmeter",
       "name": "OpenMeter",
-      "pct": 95,
+      "pct": 100,
       "dl1": "03/08/2026",
       "dl2": "",
       "dl3": "",
       "dl1_done": false,
       "dl2_done": false,
       "dl3_done": false,
-      "st": "Em validação",
+      "st": "Concluído",
       "color": "#7C3AED",
-      "farol": "atencao",
+      "farol": "prazo",
       "jira": "/browse/PDT-639",
       "jl": "PDT-639",
       "owner": "Rey"
@@ -135,7 +118,7 @@
     {
       "id": "reestrut",
       "name": "Proc - Reestrut Issues Jira",
-      "pct": 50,
+      "pct": 60,
       "dl1": "18/08/2026",
       "dl2": "",
       "dl3": "",
@@ -204,8 +187,8 @@
             {
               "task": "Parametrização e testes (POC e outras regras)",
               "dl": "12/06",
-              "st": "Em andamento",
-              "pct": 50,
+              "st": "Concluído",
+              "pct": 100,
               "resp": "",
               "jira": "/browse/PDT-644",
               "jl": "PDT-644"
@@ -213,8 +196,8 @@
             {
               "task": "Testes HML, Pré-prod e GO-LIVE",
               "dl": "07/07",
-              "st": "Não iniciado",
-              "pct": 0,
+              "st": "Concluído",
+              "pct": 100,
               "resp": "",
               "jira": "/browse/PDT-647",
               "jl": "PDT-647"
@@ -397,108 +380,6 @@
         }
       ]
     },
-    "NT": {
-      "title": "Novo Terminal V7.6.3",
-      "subtitle": "",
-      "note": "",
-      "groups": [
-        {
-          "label": "Trademate",
-          "tasks": [
-            {
-              "task": "Trademate - Arquivo de exceção",
-              "dl": "24/07/2026",
-              "st": "Em validação",
-              "pct": 95,
-              "resp": "Wagner",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            }
-          ]
-        },
-        {
-          "label": "Latam",
-          "tasks": [
-            {
-              "task": "[LATAM] - Suporte a Bridgewise",
-              "dl": "24/07/2026",
-              "st": "Em validação",
-              "pct": 95,
-              "resp": "Wagner",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            }
-          ]
-        },
-        {
-          "label": "Novo Terminal",
-          "tasks": [
-            {
-              "task": "Arquivo de configuração Internet/Dedicado",
-              "dl": "24/07/2026",
-              "st": "Em validação",
-              "pct": 95,
-              "resp": "Wagner",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "Alterações na identidade visual",
-              "dl": "24/07/2026",
-              "st": "Em validação",
-              "pct": 95,
-              "resp": "Wagner",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "Atualizador Agro x NT",
-              "dl": "24/07/2026",
-              "st": "Em validação",
-              "pct": 95,
-              "resp": "Wagner",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "Campo de variação com a opção de visualizar Fec/Aju em %",
-              "dl": "24/07/2026",
-              "st": "Em validação",
-              "pct": 95,
-              "resp": "Wagner",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "Login automático",
-              "dl": "24/07/2026",
-              "st": "Em validação",
-              "pct": 95,
-              "resp": "Wagner",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "Iniciar com windows",
-              "dl": "24/07/2026",
-              "st": "Em validação",
-              "pct": 95,
-              "resp": "Wagner",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            }
-          ]
-        }
-      ]
-    },
     "novo-addin": {
       "title": "Novo Addin",
       "subtitle": "",
@@ -541,7 +422,7 @@
               "task": "[Addin] - BC+ (permissões, cache e autocomplete — BCTAB on-demand completo)",
               "dl": "14/08/2026",
               "st": "Em validação",
-              "pct": 85,
+              "pct": 95,
               "resp": "Wagner",
               "jira": "",
               "jl": "",
@@ -550,8 +431,8 @@
             {
               "task": "[Addin] - BCS",
               "dl": "24/08/2026",
-              "st": "Em andamento",
-              "pct": 1,
+              "st": "Em validação",
+              "pct": 95,
               "resp": "Wagner",
               "jira": "",
               "jl": "",
@@ -560,8 +441,8 @@
             {
               "task": "[Addin] - Instalador",
               "dl": "31/08/2026",
-              "st": "Em andamento",
-              "pct": 20,
+              "st": "Em validação",
+              "pct": 95,
               "resp": "Wagner",
               "jira": "",
               "jl": "",
@@ -832,10 +713,20 @@
           "label": "",
           "tasks": [
             {
-              "task": "Mapeamento Fluxo Incidentes",
+              "task": "Mapeamento Fluxo Incidentes - As Is",
               "dl": "31/07/2026",
               "st": "Em andamento",
               "pct": 30,
+              "resp": "Natan",
+              "jira": "",
+              "jl": "",
+              "obs": ""
+            },
+            {
+              "task": "Mapeamento Fluxo Problemas As Is",
+              "dl": "07/08/2026",
+              "st": "Não iniciado",
+              "pct": 0,
               "resp": "Natan",
               "jira": "",
               "jl": "",
@@ -853,7 +744,7 @@
             },
             {
               "task": "Mapeamento Fluxo Solicitação ST",
-              "dl": "17/07/2026",
+              "dl": "17/08/2026",
               "st": "Não iniciado",
               "pct": 0,
               "resp": "Natan",
@@ -877,6 +768,16 @@
               "st": "Não iniciado",
               "pct": 0,
               "resp": "Natan",
+              "jira": "",
+              "jl": "",
+              "obs": ""
+            },
+            {
+              "task": "Mapeamento Fluxo Incidentes - Tratamento Gaps",
+              "dl": "",
+              "st": "Em andamento",
+              "pct": 0,
+              "resp": "",
               "jira": "",
               "jl": "",
               "obs": ""
@@ -916,8 +817,8 @@
             {
               "task": "BETD - BC Easy Trade (BETD)",
               "dl": "",
-              "st": "Em andamento",
-              "pct": 90,
+              "st": "Concluído",
+              "pct": 100,
               "resp": "Natan e Paloma",
               "jira": "",
               "jl": "",
