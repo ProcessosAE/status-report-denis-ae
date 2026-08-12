@@ -33,7 +33,7 @@
     {
       "id": "screener",
       "name": "Screener",
-      "pct": 15,
+      "pct": 25,
       "dl1": "05/10",
       "dl2": "",
       "dl3": "",
@@ -42,7 +42,7 @@
       "dl3_done": false,
       "st": "Em andamento",
       "color": "#6D28D9",
-      "farol": "perigo",
+      "farol": "atencao",
       "jira": "/projects/FD/boards/2223",
       "jl": "FD-2223",
       "owner": "Jara"
@@ -50,7 +50,7 @@
     {
       "id": "a5x",
       "name": "A5X",
-      "pct": 50,
+      "pct": 75,
       "dl1": "30/09",
       "dl2": "",
       "dl3": "",
