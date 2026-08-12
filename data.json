@@ -101,10 +101,10 @@
     {
       "id": "itsm",
       "name": "Proc - Hub Sugestões/Demandas",
-      "pct": 15,
+      "pct": 25,
       "dl1": "24/07/2026",
       "dl2": "31/07/2026",
-      "dl3": "21/08/2026",
+      "dl3": "28/08/2026",
       "dl1_done": false,
       "dl2_done": false,
       "dl3_done": false,
