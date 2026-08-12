@@ -1,19 +1,19 @@
 {
-  "date": "05/08/2026",
+  "date": "12/08/2026",
   "jiraBase": "https://jiracloudae.atlassian.net",
   "projects": [
     {
       "id": "novo3",
       "name": "Novo Terminal V7.6.6",
-      "pct": 80,
+      "pct": 85,
       "dl1": "31/08/2026",
       "dl2": "",
       "dl3": "",
       "st": "Em andamento",
       "color": "#1B6EF3",
       "farol": "prazo",
-      "jira": "",
-      "jl": "",
+      "jira": "/projects/FD/boards/2357",
+      "jl": "FD-2357",
       "owner": "Wagner"
     },
     {
@@ -26,8 +26,8 @@
       "st": "Em andamento",
       "color": "#1B6EF3",
       "farol": "prazo",
-      "jira": "",
-      "jl": "",
+      "jira": "/projects/FD/boards/2357",
+      "jl": "FD-2357",
       "owner": "Wagner"
     },
     {
@@ -118,7 +118,7 @@
     {
       "id": "reestrut",
       "name": "Proc - Reestrut Issues Jira",
-      "pct": 60,
+      "pct": 75,
       "dl1": "18/08/2026",
       "dl2": "",
       "dl3": "",
@@ -132,7 +132,7 @@
     {
       "id": "novo",
       "name": "Proc - Mapeamento proc produção",
-      "pct": 35,
+      "pct": 50,
       "dl1": "28/08/2026",
       "dl2": "",
       "dl3": "",
@@ -146,15 +146,15 @@
     {
       "id": "novo2",
       "name": "Proc - Separação do FD por projetos",
-      "pct": 15,
+      "pct": 35,
       "dl1": "31/08/2026",
       "dl2": "",
       "dl3": "",
       "st": "Em andamento",
       "color": "#1B6EF3",
       "farol": "prazo",
-      "jira": "",
-      "jl": "",
+      "jira": "/projects/PRC/boards/982/timeline?selectedIssue=PRC-122",
+      "jl": "PRC-122",
       "owner": "Natan"
     }
   ],
@@ -735,8 +735,8 @@
             {
               "task": "Mapeamento Fluxo Problemas",
               "dl": "07/08/2026",
-              "st": "Não iniciado",
-              "pct": 0,
+              "st": "Em andamento",
+              "pct": 80,
               "resp": "Natan",
               "jira": "",
               "jl": "",
@@ -776,7 +776,7 @@
               "task": "Mapeamento Fluxo Incidentes - Tratamento Gaps",
               "dl": "",
               "st": "Em andamento",
-              "pct": 30,
+              "pct": 60,
               "resp": "",
               "jira": "",
               "jl": "",
@@ -786,7 +786,7 @@
               "task": "Mapeamento Fluxo Problemas - Tratamento Gaps",
               "dl": "",
               "st": "Em andamento",
-              "pct": 30,
+              "pct": 60,
               "resp": "",
               "jira": "",
               "jl": "",
