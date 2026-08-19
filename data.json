@@ -1,5 +1,5 @@
 {
-  "date": "12/08/2026",
+  "date": "19/08/2026",
   "jiraBase": "https://jiracloudae.atlassian.net",
   "projects": [
     {
@@ -33,7 +33,7 @@
     {
       "id": "screener",
       "name": "Screener",
-      "pct": 25,
+      "pct": 30,
       "dl1": "05/10",
       "dl2": "",
       "dl3": "",
@@ -84,7 +84,7 @@
     {
       "id": "datalake",
       "name": "Data Lake",
-      "pct": 20,
+      "pct": 30,
       "dl1": "30/09",
       "dl2": "",
       "dl3": "",
@@ -101,7 +101,7 @@
     {
       "id": "itsm",
       "name": "Proc - Hub Sugestões/Demandas",
-      "pct": 25,
+      "pct": 35,
       "dl1": "24/07/2026",
       "dl2": "31/07/2026",
       "dl3": "28/08/2026",
@@ -118,7 +118,7 @@
     {
       "id": "reestrut",
       "name": "Proc - Reestrut Issues Jira",
-      "pct": 75,
+      "pct": 85,
       "dl1": "18/08/2026",
       "dl2": "",
       "dl3": "",
@@ -132,7 +132,7 @@
     {
       "id": "novo",
       "name": "Proc - Mapeamento proc produção",
-      "pct": 50,
+      "pct": 60,
       "dl1": "28/08/2026",
       "dl2": "",
       "dl3": "",
@@ -146,7 +146,7 @@
     {
       "id": "novo2",
       "name": "Proc - Separação do FD por projetos",
-      "pct": 35,
+      "pct": 50,
       "dl1": "31/08/2026",
       "dl2": "",
       "dl3": "",
@@ -1046,9 +1046,7 @@
         "IA Claude Processos - Criação de agentes - Não iniciado",
         "Portal de Processos v2 - Não iniciado",
         "Portal de Processos v3 - Não iniciado",
-        "Viva - Criação de novo painel Jira fora da estrutura da AE - Concluído",
-        "Viva - Migração do projeto antigo para o novo espaço. - Não iniciado",
-        "Workshop Produtos - Criar espeço p/ Wokshop - Concluído "
+        "Viva - Migração do projeto antigo para o novo espaço. - Não iniciado"
       ]
     }
   ]
