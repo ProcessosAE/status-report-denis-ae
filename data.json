@@ -99,9 +99,9 @@
       "id": "itsm",
       "name": "Proc - Hub Sugestões/Demandas",
       "pct": 35,
-      "dl1": "24/07/2026",
-      "dl2": "31/07/2026",
-      "dl3": "28/08/2026",
+      "dl1": "28/08/2026",
+      "dl2": "25/09/2026",
+      "dl3": "",
       "dl1_done": false,
       "dl2_done": false,
       "dl3_done": false,
@@ -115,11 +115,11 @@
     {
       "id": "reestrut",
       "name": "Proc - Reestrut Issues Jira",
-      "pct": 85,
+      "pct": 100,
       "dl1": "18/08/2026",
       "dl2": "",
       "dl3": "",
-      "st": "Em andamento",
+      "st": "Concluído",
       "color": "#1B6EF3",
       "farol": "prazo",
       "jira": "",
@@ -129,9 +129,9 @@
     {
       "id": "novo",
       "name": "Proc - Mapeamento proc produção",
-      "pct": 60,
+      "pct": 80,
       "dl1": "28/08/2026",
-      "dl2": "",
+      "dl2": "25/09/2026",
       "dl3": "",
       "st": "Em andamento",
       "color": "#1B6EF3",
@@ -153,20 +153,6 @@
       "jira": "/projects/PRC/boards/982/timeline?selectedIssue=PRC-122",
       "jl": "PRC-122",
       "owner": "Natan"
-    },
-    {
-      "id": "novo5",
-      "name": "Assessment de dados",
-      "pct": 20,
-      "dl1": "",
-      "dl2": "",
-      "dl3": "",
-      "st": "Em andamento",
-      "color": "#1B6EF3",
-      "farol": "perigo",
-      "jira": "",
-      "jl": "",
-      "owner": ""
     }
   ],
   "panels": {
@@ -180,8 +166,8 @@
             {
               "task": "Definição de arquitetura e precificação (Snowflake)",
               "dl": "30/05",
-              "st": "Em andamento",
-              "pct": 60,
+              "st": "Concluído",
+              "pct": 100,
               "resp": "",
               "jira": "",
               "jl": ""
@@ -212,6 +198,16 @@
               "resp": "",
               "jira": "",
               "jl": ""
+            },
+            {
+              "task": "Assessment de dados",
+              "dl": "",
+              "st": "Em andamento",
+              "pct": 20,
+              "resp": "",
+              "jira": "",
+              "jl": "",
+              "obs": ""
             }
           ]
         }
@@ -679,8 +675,8 @@
             {
               "task": "Mapeamento Fluxo Incidentes - As Is",
               "dl": "31/07/2026",
-              "st": "Em andamento",
-              "pct": 95,
+              "st": "Concluído",
+              "pct": 100,
               "resp": "Natan",
               "jira": "",
               "jl": "",
@@ -689,8 +685,8 @@
             {
               "task": "Mapeamento Fluxo Problemas - As Is",
               "dl": "07/08/2026",
-              "st": "Em andamento",
-              "pct": 95,
+              "st": "Concluído",
+              "pct": 100,
               "resp": "Natan",
               "jira": "",
               "jl": "",
@@ -699,8 +695,8 @@
             {
               "task": "Mapeamento Fluxo Problemas",
               "dl": "07/08/2026",
-              "st": "Em andamento",
-              "pct": 80,
+              "st": "Concluído",
+              "pct": 100,
               "resp": "Natan",
               "jira": "",
               "jl": "",
@@ -729,8 +725,8 @@
             {
               "task": "Mapeamento Fluxo Sugestões",
               "dl": "28/08/2026",
-              "st": "Não iniciado",
-              "pct": 0,
+              "st": "Em andamento",
+              "pct": 30,
               "resp": "Natan",
               "jira": "",
               "jl": "",
@@ -740,7 +736,7 @@
               "task": "Mapeamento Fluxo Incidentes - Tratamento Gaps",
               "dl": "",
               "st": "Em andamento",
-              "pct": 60,
+              "pct": 95,
               "resp": "",
               "jira": "",
               "jl": "",
@@ -750,7 +746,7 @@
               "task": "Mapeamento Fluxo Problemas - Tratamento Gaps",
               "dl": "",
               "st": "Em andamento",
-              "pct": 60,
+              "pct": 95,
               "resp": "",
               "jira": "",
               "jl": "",
@@ -1008,9 +1004,9 @@
         "Desenho do Processo de Post-Mortem - Em andamento",
         "Dashboard Gerencial Tratativas NOC - Em andamento",
         "IA Claude Processos - Criação de agentes - Não iniciado",
-        "Portal de Processos v2 - Não iniciado",
+        "Portal de Processos v2 - Em andamento",
         "Portal de Processos v3 - Não iniciado",
-        "Viva - Migração do projeto antigo para o novo espaço. - Não iniciado"
+        "Viva - Migração do projeto antigo para o novo espaço. - Concluído"
       ]
     }
   ]
