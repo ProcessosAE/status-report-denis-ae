@@ -1,15 +1,15 @@
 {
-  "date": "19/08/2026",
+  "date": "02/09/2026",
   "jiraBase": "https://jiracloudae.atlassian.net",
   "projects": [
     {
       "id": "novo3",
       "name": "Novo Terminal V7.6.6",
-      "pct": 85,
+      "pct": 100,
       "dl1": "31/08/2026",
       "dl2": "",
       "dl3": "",
-      "st": "Em andamento",
+      "st": "Concluído",
       "color": "#1B6EF3",
       "farol": "prazo",
       "jira": "/projects/FD/boards/2357",
@@ -19,11 +19,11 @@
     {
       "id": "novo-addin",
       "name": "Novo Addin",
-      "pct": 95,
+      "pct": 100,
       "dl1": "31/08/2026",
       "dl2": "",
       "dl3": "",
-      "st": "Em andamento",
+      "st": "Concluído",
       "color": "#1B6EF3",
       "farol": "prazo",
       "jira": "/projects/FD/boards/2357",
@@ -31,9 +31,23 @@
       "owner": "Wagner"
     },
     {
+      "id": "novo4",
+      "name": "Novo Terminal 7.6.7",
+      "pct": 0,
+      "dl1": "02/10/2026",
+      "dl2": "",
+      "dl3": "",
+      "st": "Em andamento",
+      "color": "#1B6EF3",
+      "farol": "prazo",
+      "jira": "",
+      "jl": "",
+      "owner": "Wagner"
+    },
+    {
       "id": "screener",
       "name": "Screener",
-      "pct": 30,
+      "pct": 40,
       "dl1": "05/10",
       "dl2": "",
       "dl3": "",
@@ -50,14 +64,14 @@
     {
       "id": "a5x",
       "name": "A5X",
-      "pct": 75,
+      "pct": 90,
       "dl1": "30/09",
       "dl2": "",
       "dl3": "",
       "dl1_done": false,
       "dl2_done": false,
       "dl3_done": false,
-      "st": "Em andamento",
+      "st": "Pausado",
       "color": "#059669",
       "farol": "prazo",
       "jira": "",
@@ -65,28 +79,11 @@
       "owner": "Jara"
     },
     {
-      "id": "openmeter",
-      "name": "OpenMeter",
-      "pct": 100,
-      "dl1": "03/08/2026",
-      "dl2": "",
-      "dl3": "",
-      "dl1_done": false,
-      "dl2_done": false,
-      "dl3_done": false,
-      "st": "Concluído",
-      "color": "#7C3AED",
-      "farol": "prazo",
-      "jira": "/browse/PDT-639",
-      "jl": "PDT-639",
-      "owner": "Rey"
-    },
-    {
       "id": "datalake",
       "name": "Data Lake",
       "pct": 30,
       "dl1": "30/09",
-      "dl2": "",
+      "dl2": "30/10/2026",
       "dl3": "",
       "dl1_done": false,
       "dl2_done": false,
@@ -156,56 +153,23 @@
       "jira": "/projects/PRC/boards/982/timeline?selectedIssue=PRC-122",
       "jl": "PRC-122",
       "owner": "Natan"
+    },
+    {
+      "id": "novo5",
+      "name": "Assessment de dados",
+      "pct": 20,
+      "dl1": "",
+      "dl2": "",
+      "dl3": "",
+      "st": "Em andamento",
+      "color": "#1B6EF3",
+      "farol": "perigo",
+      "jira": "",
+      "jl": "",
+      "owner": ""
     }
   ],
   "panels": {
-    "openmeter": {
-      "title": "OpenMeter",
-      "subtitle": "Prazo: 07/07 · epic PDT-639",
-      "groups": [
-        {
-          "label": "",
-          "tasks": [
-            {
-              "task": "Kick-off e requisitos de infra",
-              "dl": "06/05",
-              "st": "Concluído",
-              "pct": 100,
-              "resp": "",
-              "jira": "",
-              "jl": ""
-            },
-            {
-              "task": "Instalação e configuração do ambiente (GKE)",
-              "dl": "22/05",
-              "st": "Concluído",
-              "pct": 100,
-              "resp": "",
-              "jira": "/browse/PDT-655",
-              "jl": "PDT-655"
-            },
-            {
-              "task": "Parametrização e testes (POC e outras regras)",
-              "dl": "12/06",
-              "st": "Concluído",
-              "pct": 100,
-              "resp": "",
-              "jira": "/browse/PDT-644",
-              "jl": "PDT-644"
-            },
-            {
-              "task": "Testes HML, Pré-prod e GO-LIVE",
-              "dl": "07/07",
-              "st": "Concluído",
-              "pct": 100,
-              "resp": "",
-              "jira": "/browse/PDT-647",
-              "jl": "PDT-647"
-            }
-          ]
-        }
-      ]
-    },
     "datalake": {
       "title": "Data Lake",
       "subtitle": "Prazo: 30/09",
