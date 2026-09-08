@@ -1,39 +1,11 @@
 {
-  "date": "02/09/2026",
+  "date": "09/09/2026",
   "jiraBase": "https://jiracloudae.atlassian.net",
   "projects": [
     {
-      "id": "novo3",
-      "name": "Novo Terminal V7.6.6",
-      "pct": 100,
-      "dl1": "31/08/2026",
-      "dl2": "",
-      "dl3": "",
-      "st": "Concluído",
-      "color": "#1B6EF3",
-      "farol": "prazo",
-      "jira": "/projects/FD/boards/2357",
-      "jl": "FD-2357",
-      "owner": "Wagner"
-    },
-    {
-      "id": "novo-addin",
-      "name": "Novo Addin",
-      "pct": 100,
-      "dl1": "31/08/2026",
-      "dl2": "",
-      "dl3": "",
-      "st": "Concluído",
-      "color": "#1B6EF3",
-      "farol": "prazo",
-      "jira": "/projects/FD/boards/2357",
-      "jl": "FD-2357",
-      "owner": "Wagner"
-    },
-    {
       "id": "novo4",
       "name": "Novo Terminal 7.6.7",
-      "pct": 0,
+      "pct": 25,
       "dl1": "02/10/2026",
       "dl2": "",
       "dl3": "",
@@ -113,20 +85,6 @@
       "owner": "Natan"
     },
     {
-      "id": "reestrut",
-      "name": "Proc - Reestrut Issues Jira",
-      "pct": 100,
-      "dl1": "18/08/2026",
-      "dl2": "",
-      "dl3": "",
-      "st": "Concluído",
-      "color": "#1B6EF3",
-      "farol": "prazo",
-      "jira": "",
-      "jl": "",
-      "owner": "Natan"
-    },
-    {
       "id": "novo",
       "name": "Proc - Mapeamento proc produção",
       "pct": 80,
@@ -145,7 +103,7 @@
       "name": "Proc - Separação do FD por projetos",
       "pct": 50,
       "dl1": "31/08/2026",
-      "dl2": "",
+      "dl2": "25/09/2026",
       "dl3": "",
       "st": "Em andamento",
       "color": "#1B6EF3",
@@ -340,330 +298,6 @@
         }
       ]
     },
-    "novo-addin": {
-      "title": "Novo Addin",
-      "subtitle": "",
-      "note": "",
-      "groups": [
-        {
-          "label": "",
-          "tasks": [
-            {
-              "task": "[Addin] - BCH Inicial (mínimo funcional)",
-              "dl": "03/07/2026",
-              "st": "Em validação",
-              "pct": 95,
-              "resp": "Wagner",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "[Addin] - BC Inicial (mínimo funcional)",
-              "dl": "10/07/2026",
-              "st": "Em validação",
-              "pct": 95,
-              "resp": "Wagner",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "[Addin] - BCH+ (completo)",
-              "dl": "17/07/2026",
-              "st": "Em validação",
-              "pct": 95,
-              "resp": "Wagner",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "[Addin] - BC+ (permissões, cache e autocomplete — BCTAB on-demand completo)",
-              "dl": "14/08/2026",
-              "st": "Em validação",
-              "pct": 95,
-              "resp": "Wagner",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "[Addin] - BCS",
-              "dl": "24/08/2026",
-              "st": "Em validação",
-              "pct": 95,
-              "resp": "Wagner",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "[Addin] - Instalador",
-              "dl": "31/08/2026",
-              "st": "Em validação",
-              "pct": 95,
-              "resp": "Wagner",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            }
-          ]
-        }
-      ]
-    },
-    "reestrut": {
-      "title": "Processos - Reestrut Issues Jira",
-      "subtitle": "",
-      "note": "",
-      "groups": [
-        {
-          "label": "Issues História",
-          "tasks": [
-            {
-              "task": "Reestruturação do Issues História",
-              "dl": "20/07/2026",
-              "st": "Em andamento",
-              "pct": 95,
-              "resp": "Natan e Paloma",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "Revisão Workflow História Desenv Externo",
-              "dl": "20/07/2026",
-              "st": "Concluído",
-              "pct": 100,
-              "resp": "Natan e Paloma",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "Revisão Workflow História Desenv Interno",
-              "dl": "",
-              "st": "Não iniciado",
-              "pct": 0,
-              "resp": "",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            }
-          ]
-        },
-        {
-          "label": "Issues Bug",
-          "tasks": [
-            {
-              "task": "Reestruturação do Issues Bug",
-              "dl": "30/07/2026",
-              "st": "Em andamento",
-              "pct": 80,
-              "resp": "",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "Revisão Workflow Bug Desenv Externo",
-              "dl": "30/07/2026",
-              "st": "Concluído",
-              "pct": 100,
-              "resp": "",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "Revisão Workflow Bug Desenv Interno",
-              "dl": "",
-              "st": "Não iniciado",
-              "pct": 0,
-              "resp": "",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            }
-          ]
-        },
-        {
-          "label": "Issues Tasks",
-          "tasks": [
-            {
-              "task": "Reestruturação do Issues Tasks",
-              "dl": "03/08/2026",
-              "st": "Em andamento",
-              "pct": 95,
-              "resp": "",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "Revisão Workflow Tasks Desenv Externo",
-              "dl": "03/08/2026",
-              "st": "Concluído",
-              "pct": 100,
-              "resp": "",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "Revisão Workflow Tasks Desenv Interno",
-              "dl": "",
-              "st": "Não iniciado",
-              "pct": 0,
-              "resp": "",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            }
-          ]
-        },
-        {
-          "label": "Issues Sub-tasks",
-          "tasks": [
-            {
-              "task": "Reestruturação do Issues Sub-tasks",
-              "dl": "07/08/2026",
-              "st": "Em andamento",
-              "pct": 80,
-              "resp": "",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "Revisão Workflow Sub-tasks Desenv Externo",
-              "dl": "07/08/2026",
-              "st": "Concluído",
-              "pct": 100,
-              "resp": "",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "Revisão Workflow Sub-tasks Desenv Interno",
-              "dl": "",
-              "st": "Não iniciado",
-              "pct": 0,
-              "resp": "",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            }
-          ]
-        },
-        {
-          "label": "Issues Epic",
-          "tasks": [
-            {
-              "task": "Reestruturação do Issues Epic",
-              "dl": "11/08/2026",
-              "st": "Em andamento",
-              "pct": 0,
-              "resp": "",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "Revisão Workflow Epic Desenv Externo",
-              "dl": "11/08/2026",
-              "st": "Concluído",
-              "pct": 100,
-              "resp": "",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "Revisão Workflow Epic Desenv Interno",
-              "dl": "",
-              "st": "Não iniciado",
-              "pct": 0,
-              "resp": "",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            }
-          ]
-        },
-        {
-          "label": "Issues Bug Dev",
-          "tasks": [
-            {
-              "task": "Reestruturação do Issues Bug Dev",
-              "dl": "17/08/2026",
-              "st": "Em andamento",
-              "pct": 0,
-              "resp": "",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "Revisão Workflow Bug Dev Desenv Externo",
-              "dl": "17/08/2026",
-              "st": "Concluído",
-              "pct": 100,
-              "resp": "",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "Revisão Workflow Bug Dev Desenv Interno",
-              "dl": "",
-              "st": "Não iniciado",
-              "pct": 0,
-              "resp": "",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            }
-          ]
-        },
-        {
-          "label": "Issues Debito Tecnico",
-          "tasks": [
-            {
-              "task": "Reestruturação do Issues Debito Tecnico",
-              "dl": "18/08/2026",
-              "st": "Em andamento",
-              "pct": 0,
-              "resp": "",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "Revisão Workflow Debito Tecnico Desenv Externo",
-              "dl": "18/08/2026",
-              "st": "Concluído",
-              "pct": 100,
-              "resp": "",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "Revisão Workflow Debito Tecnico Desenv Interno",
-              "dl": "",
-              "st": "Não iniciado",
-              "pct": 0,
-              "resp": "",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            }
-          ]
-        }
-      ]
-    },
     "novo": {
       "title": "Proc - Mapeamento proc produção",
       "subtitle": "",
@@ -735,8 +369,8 @@
             {
               "task": "Mapeamento Fluxo Incidentes - Tratamento Gaps",
               "dl": "",
-              "st": "Em andamento",
-              "pct": 95,
+              "st": "Concluído",
+              "pct": 100,
               "resp": "",
               "jira": "",
               "jl": "",
@@ -745,8 +379,8 @@
             {
               "task": "Mapeamento Fluxo Problemas - Tratamento Gaps",
               "dl": "",
-              "st": "Em andamento",
-              "pct": 95,
+              "st": "Concluído",
+              "pct": 100,
               "resp": "",
               "jira": "",
               "jl": "",
@@ -967,6 +601,17 @@
           ]
         }
       ]
+    },
+    "novo4": {
+      "title": "Novo Terminal 7.6.7",
+      "subtitle": "",
+      "note": "",
+      "groups": [
+        {
+          "label": "",
+          "tasks": []
+        }
+      ]
     }
   },
   "iniciativas": [
@@ -1005,8 +650,7 @@
         "Dashboard Gerencial Tratativas NOC - Em andamento",
         "IA Claude Processos - Criação de agentes - Não iniciado",
         "Portal de Processos v2 - Em andamento",
-        "Portal de Processos v3 - Não iniciado",
-        "Viva - Migração do projeto antigo para o novo espaço. - Concluído"
+        "Portal de Processos v3 - Não iniciado"
       ]
     }
   ]
