@@ -1,11 +1,11 @@
 {
-  "date": "09/09/2026",
+  "date": "16/09/2026",
   "jiraBase": "https://jiracloudae.atlassian.net",
   "projects": [
     {
       "id": "novo4",
       "name": "Novo Terminal 7.6.7",
-      "pct": 25,
+      "pct": 85,
       "dl1": "02/10/2026",
       "dl2": "",
       "dl3": "",
@@ -53,7 +53,7 @@
     {
       "id": "datalake",
       "name": "Data Lake",
-      "pct": 30,
+      "pct": 50,
       "dl1": "30/09",
       "dl2": "30/10/2026",
       "dl3": "",
@@ -360,7 +360,7 @@
               "task": "Mapeamento Fluxo Sugestões",
               "dl": "28/08/2026",
               "st": "Em andamento",
-              "pct": 30,
+              "pct": 75,
               "resp": "Natan",
               "jira": "",
               "jl": "",
@@ -491,8 +491,8 @@
             {
               "task": "BC Politico (BPLT)",
               "dl": "",
-              "st": "Não iniciado",
-              "pct": 0,
+              "st": "Concluído",
+              "pct": 100,
               "resp": "Natan e Paloma",
               "jira": "",
               "jl": "",
@@ -531,8 +531,8 @@
             {
               "task": "BC Projeções (BPRJ)",
               "dl": "",
-              "st": "Em andamento",
-              "pct": 0,
+              "st": "Concluído",
+              "pct": 100,
               "resp": "Natan e Paloma",
               "jira": "",
               "jl": "",
@@ -541,8 +541,8 @@
             {
               "task": "BC Radar (BRDR)",
               "dl": "",
-              "st": "Não iniciado",
-              "pct": 0,
+              "st": "Concluído",
+              "pct": 100,
               "resp": "Natan e Paloma",
               "jira": "",
               "jl": "",
