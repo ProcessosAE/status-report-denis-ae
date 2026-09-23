@@ -1,5 +1,5 @@
 {
-  "date": "16/09/2026",
+  "date": "23/09/2026",
   "jiraBase": "https://jiracloudae.atlassian.net",
   "projects": [
     {
@@ -53,7 +53,7 @@
     {
       "id": "datalake",
       "name": "Data Lake",
-      "pct": 50,
+      "pct": 55,
       "dl1": "30/09",
       "dl2": "30/10/2026",
       "dl3": "",
@@ -101,7 +101,7 @@
     {
       "id": "novo2",
       "name": "Proc - Separação do FD por projetos",
-      "pct": 50,
+      "pct": 90,
       "dl1": "31/08/2026",
       "dl2": "25/09/2026",
       "dl3": "",
@@ -441,8 +441,8 @@
             {
               "task": "BC Agro (BAGR)",
               "dl": "",
-              "st": "Não iniciado",
-              "pct": 0,
+              "st": "Concluído",
+              "pct": 100,
               "resp": "Natan e Paloma",
               "jira": "",
               "jl": "",
@@ -451,8 +451,8 @@
             {
               "task": "BC BridgeWise (BBWI)",
               "dl": "",
-              "st": "Não iniciado",
-              "pct": 0,
+              "st": "Concluído",
+              "pct": 100,
               "resp": "Natan e Paloma",
               "jira": "",
               "jl": "",
@@ -461,8 +461,8 @@
             {
               "task": "BC BroadFast (BFST)",
               "dl": "",
-              "st": "Não iniciado",
-              "pct": 0,
+              "st": "Concluído",
+              "pct": 100,
               "resp": "Natan e Paloma",
               "jira": "",
               "jl": "",
@@ -471,8 +471,8 @@
             {
               "task": "BC Datafeed (BDFD)",
               "dl": "",
-              "st": "Não iniciado",
-              "pct": 0,
+              "st": "Concluído",
+              "pct": 100,
               "resp": "Natan e Paloma",
               "jira": "",
               "jl": "",
@@ -481,8 +481,8 @@
             {
               "task": "BC OMS (BOMS)",
               "dl": "",
-              "st": "Não iniciado",
-              "pct": 0,
+              "st": "Concluído",
+              "pct": 100,
               "resp": "Natan e Paloma",
               "jira": "",
               "jl": "",
@@ -501,8 +501,8 @@
             {
               "task": "BC Ticker (BTCK)",
               "dl": "",
-              "st": "Não iniciado",
-              "pct": 0,
+              "st": "Concluído",
+              "pct": 100,
               "resp": "Natan e Paloma",
               "jira": "",
               "jl": "",
@@ -511,8 +511,8 @@
             {
               "task": "BC Energia (BENR)",
               "dl": "",
-              "st": "Não iniciado",
-              "pct": 0,
+              "st": "Concluído",
+              "pct": 100,
               "resp": "Natan e Paloma",
               "jira": "",
               "jl": "",
@@ -521,8 +521,8 @@
             {
               "task": "BC Visão Empresa (BVSE)",
               "dl": "",
-              "st": "Não iniciado",
-              "pct": 0,
+              "st": "Concluído",
+              "pct": 100,
               "resp": "Natan e Paloma",
               "jira": "",
               "jl": "",
@@ -551,8 +551,8 @@
             {
               "task": "BC Wallboard (BWLB)",
               "dl": "",
-              "st": "Não iniciado",
-              "pct": 0,
+              "st": "Concluído",
+              "pct": 100,
               "resp": "Natan e Paloma",
               "jira": "",
               "jl": "",
@@ -561,8 +561,8 @@
             {
               "task": "BC Widgets BWDG (BWDG)",
               "dl": "",
-              "st": "Não iniciado",
-              "pct": 0,
+              "st": "Concluído",
+              "pct": 100,
               "resp": "Natan e Paloma",
               "jira": "",
               "jl": "",
@@ -571,8 +571,8 @@
             {
               "task": "BC Móvel (BMVL)",
               "dl": "",
-              "st": "Não iniciado",
-              "pct": 0,
+              "st": "Concluído",
+              "pct": 100,
               "resp": "Natan e Paloma",
               "jira": "",
               "jl": "",
@@ -580,16 +580,6 @@
             },
             {
               "task": "BC Novo Terminal (BNVT)",
-              "dl": "",
-              "st": "Não iniciado",
-              "pct": 0,
-              "resp": "Natan e Paloma",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "BC AddIn (BADD)",
               "dl": "",
               "st": "Não iniciado",
               "pct": 0,
@@ -646,8 +636,7 @@
       "farol": "prazo",
       "items": [
         "ITSM - Solicitação de Uso de IA - Em andamento",
-        "Desenho do Processo de Post-Mortem - Em andamento",
-        "Dashboard Gerencial Tratativas NOC - Em andamento",
+        "Desenho do Processo de Post-Mortem - Em andamento - 95%",
         "IA Claude Processos - Criação de agentes - Não iniciado",
         "Portal de Processos v2 - Em andamento",
         "Portal de Processos v3 - Não iniciado"
