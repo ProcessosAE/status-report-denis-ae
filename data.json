@@ -3,11 +3,25 @@
   "jiraBase": "https://jiracloudae.atlassian.net",
   "projects": [
     {
-      "id": "novo4",
+      "id": "novo3",
       "name": "Novo Terminal 7.6.7",
+      "pct": 100,
+      "dl1": "25/09/2026",
+      "dl2": "",
+      "dl3": "",
+      "st": "Concluído",
+      "color": "#1B6EF3",
+      "farol": "prazo",
+      "jira": "",
+      "jl": "",
+      "owner": "Wagner"
+    },
+    {
+      "id": "novo4",
+      "name": "Novo Terminal 7.6.8",
       "pct": 85,
       "dl1": "02/10/2026",
-      "dl2": "",
+      "dl2": "09/10/2026",
       "dl3": "",
       "st": "Em andamento",
       "color": "#1B6EF3",
