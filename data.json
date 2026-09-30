@@ -1,5 +1,5 @@
 {
-  "date": "25/09/2026",
+  "date": "30/09/2026",
   "jiraBase": "https://jiracloudae.atlassian.net",
   "projects": [
     {
@@ -19,7 +19,7 @@
     {
       "id": "novo4",
       "name": "Novo Terminal 7.6.8",
-      "pct": 85,
+      "pct": 95,
       "dl1": "02/10/2026",
       "dl2": "09/10/2026",
       "dl3": "",
@@ -67,7 +67,7 @@
     {
       "id": "datalake",
       "name": "Data Lake",
-      "pct": 55,
+      "pct": 60,
       "dl1": "30/09",
       "dl2": "30/10/2026",
       "dl3": "",
@@ -84,9 +84,9 @@
     {
       "id": "itsm",
       "name": "Proc - Hub Sugestões/Demandas",
-      "pct": 35,
+      "pct": 45,
       "dl1": "28/08/2026",
-      "dl2": "25/09/2026",
+      "dl2": "23/10/2026",
       "dl3": "",
       "dl1_done": false,
       "dl2_done": false,
@@ -104,7 +104,7 @@
       "pct": 80,
       "dl1": "28/08/2026",
       "dl2": "25/09/2026",
-      "dl3": "",
+      "dl3": "09/10/2026",
       "st": "Em andamento",
       "color": "#1B6EF3",
       "farol": "prazo",
@@ -118,7 +118,7 @@
       "pct": 90,
       "dl1": "31/08/2026",
       "dl2": "25/09/2026",
-      "dl3": "",
+      "dl3": "09/10/2026",
       "st": "Em andamento",
       "color": "#1B6EF3",
       "farol": "prazo",
@@ -343,8 +343,8 @@
             {
               "task": "Mapeamento Fluxo Problemas",
               "dl": "07/08/2026",
-              "st": "Concluído",
-              "pct": 100,
+              "st": "Em andamento",
+              "pct": 90,
               "resp": "Natan",
               "jira": "",
               "jl": "",
