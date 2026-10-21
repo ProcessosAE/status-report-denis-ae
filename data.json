@@ -1,5 +1,5 @@
 {
-  "date": "14/10/2026",
+  "date": "21/10/2026",
   "jiraBase": "https://jiracloudae.atlassian.net",
   "projects": [
     {
@@ -50,7 +50,7 @@
     {
       "id": "datalake",
       "name": "Data Lake",
-      "pct": 65,
+      "pct": 68,
       "dl1": "30/09",
       "dl2": "30/10/2026",
       "dl3": "",
