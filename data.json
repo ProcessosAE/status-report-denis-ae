@@ -1,5 +1,5 @@
 {
-  "date": "21/10/2026",
+  "date": "28/10/2026",
   "jiraBase": "https://jiracloudae.atlassian.net",
   "projects": [
     {
@@ -18,12 +18,12 @@
     },
     {
       "id": "novo3",
-      "name": "Novo Terminal 7.0.0",
-      "pct": 90,
+      "name": "Novo Terminal 7.7.0",
+      "pct": 100,
       "dl1": "03/11/2026",
       "dl2": "",
       "dl3": "",
-      "st": "Em andamento",
+      "st": "Concluído",
       "color": "#1B6EF3",
       "farol": "prazo",
       "jira": "",
@@ -69,7 +69,7 @@
       "name": "Proc - Hub Sugestões/Demandas",
       "pct": 45,
       "dl1": "28/08/2026",
-      "dl2": "30/10/2026",
+      "dl2": "20/11/2026",
       "dl3": "",
       "dl1_done": false,
       "dl2_done": false,
@@ -87,7 +87,7 @@
       "pct": 95,
       "dl1": "28/08/2026",
       "dl2": "25/09/2026",
-      "dl3": "30/10/2026",
+      "dl3": "13/11/2026",
       "st": "Em andamento",
       "color": "#1B6EF3",
       "farol": "prazo",
