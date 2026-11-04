@@ -3,20 +3,6 @@
   "jiraBase": "https://jiracloudae.atlassian.net",
   "projects": [
     {
-      "id": "novo4",
-      "name": "Novo Terminal 7.6.9 (DataDog)",
-      "pct": 100,
-      "dl1": "16/10/2026",
-      "dl2": "",
-      "dl3": "",
-      "st": "Concluído",
-      "color": "#1B6EF3",
-      "farol": "prazo",
-      "jira": "",
-      "jl": "",
-      "owner": "Wagner"
-    },
-    {
       "id": "novo3",
       "name": "Novo Terminal 7.7.0",
       "pct": 100,
@@ -46,23 +32,6 @@
       "jira": "/projects/FD/boards/2223",
       "jl": "FD-2223",
       "owner": "Jara"
-    },
-    {
-      "id": "datalake",
-      "name": "Data Lake",
-      "pct": 68,
-      "dl1": "30/09",
-      "dl2": "30/10/2026",
-      "dl3": "",
-      "dl1_done": false,
-      "dl2_done": false,
-      "dl3_done": false,
-      "st": "Em andamento",
-      "color": "#2563EB",
-      "farol": "prazo",
-      "jira": "",
-      "jl": "",
-      "owner": "Rey"
     },
     {
       "id": "itsm",
@@ -111,63 +80,6 @@
     }
   ],
   "panels": {
-    "datalake": {
-      "title": "Data Lake",
-      "subtitle": "Prazo: 30/09",
-      "groups": [
-        {
-          "label": "",
-          "tasks": [
-            {
-              "task": "Definição de arquitetura e precificação (Snowflake)",
-              "dl": "30/05",
-              "st": "Concluído",
-              "pct": 100,
-              "resp": "",
-              "jira": "",
-              "jl": ""
-            },
-            {
-              "task": "POC — Ingestão e estruturação dados de Fundos",
-              "dl": "30/06",
-              "st": "Não iniciado",
-              "pct": 0,
-              "resp": "",
-              "jira": "",
-              "jl": ""
-            },
-            {
-              "task": "Implementação — Pipeline, LLM e validação",
-              "dl": "31/08",
-              "st": "Não iniciado",
-              "pct": 0,
-              "resp": "",
-              "jira": "",
-              "jl": ""
-            },
-            {
-              "task": "Homologação e GO-LIVE Fase 1 (Fundos)",
-              "dl": "30/09",
-              "st": "Não iniciado",
-              "pct": 0,
-              "resp": "",
-              "jira": "",
-              "jl": ""
-            },
-            {
-              "task": "Assessment de dados",
-              "dl": "",
-              "st": "Em andamento",
-              "pct": 20,
-              "resp": "",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            }
-          ]
-        }
-      ]
-    },
     "itsm": {
       "title": "Implantação ITSM",
       "subtitle": "Prazo: 29/05 · projeto II",
@@ -586,17 +498,6 @@
               "obs": ""
             }
           ]
-        }
-      ]
-    },
-    "novo4": {
-      "title": "Novo Terminal 7.6.7",
-      "subtitle": "",
-      "note": "",
-      "groups": [
-        {
-          "label": "",
-          "tasks": []
         }
       ]
     },
