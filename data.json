@@ -1,5 +1,5 @@
 {
-  "date": "28/10/2026",
+  "date": "04/11/2026",
   "jiraBase": "https://jiracloudae.atlassian.net",
   "projects": [
     {
@@ -40,7 +40,7 @@
       "dl1_done": false,
       "dl2_done": false,
       "dl3_done": false,
-      "st": "Pausado",
+      "st": "Cancelado",
       "color": "#6D28D9",
       "farol": "atencao",
       "jira": "/projects/FD/boards/2223",
@@ -67,7 +67,7 @@
     {
       "id": "itsm",
       "name": "Proc - Hub Sugestões/Demandas",
-      "pct": 45,
+      "pct": 50,
       "dl1": "28/08/2026",
       "dl2": "20/11/2026",
       "dl3": "",
@@ -647,7 +647,8 @@
         "Desenho do Processo de Post-Mortem - Em andamento - 95%",
         "IA Claude Processos - Criação de agentes - Não iniciado",
         "Portal de Processos v2 - Em andamento",
-        "Portal de Processos v3 - Não iniciado"
+        "Portal de Processos v3 - Não iniciado",
+        "Fluxo de criação de acessos aos novos recursos terceiros."
       ]
     }
   ]
