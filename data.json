@@ -1,15 +1,15 @@
 {
-  "date": "04/11/2026",
+  "date": "18/11/2026",
   "jiraBase": "https://jiracloudae.atlassian.net",
   "projects": [
     {
       "id": "novo3",
-      "name": "Novo Terminal 7.7.0",
-      "pct": 100,
-      "dl1": "03/11/2026",
+      "name": "Novo Terminal 7.7.1",
+      "pct": 80,
+      "dl1": "27/11/2026",
       "dl2": "",
       "dl3": "",
-      "st": "Concluído",
+      "st": "Em andamento",
       "color": "#1B6EF3",
       "farol": "prazo",
       "jira": "",
@@ -17,28 +17,25 @@
       "owner": "Wagner"
     },
     {
-      "id": "screener",
-      "name": "Screener",
-      "pct": 40,
-      "dl1": "05/10",
-      "dl2": "05/11/2026",
+      "id": "novo4",
+      "name": "Novo Terminal 7.8.0 (Melhorias)",
+      "pct": 25,
+      "dl1": "18/12/2026",
+      "dl2": "",
       "dl3": "",
-      "dl1_done": false,
-      "dl2_done": false,
-      "dl3_done": false,
-      "st": "Cancelado",
-      "color": "#6D28D9",
-      "farol": "atencao",
-      "jira": "/projects/FD/boards/2223",
-      "jl": "FD-2223",
-      "owner": "Jara"
+      "st": "Em andamento",
+      "color": "#1B6EF3",
+      "farol": "prazo",
+      "jira": "",
+      "jl": "",
+      "owner": "Wagner"
     },
     {
       "id": "itsm",
       "name": "Proc - Hub Sugestões/Demandas",
       "pct": 50,
       "dl1": "28/08/2026",
-      "dl2": "20/11/2026",
+      "dl2": "04/12/26",
       "dl3": "",
       "dl1_done": false,
       "dl2_done": false,
@@ -56,7 +53,7 @@
       "pct": 95,
       "dl1": "28/08/2026",
       "dl2": "25/09/2026",
-      "dl3": "13/11/2026",
+      "dl3": "18/12/2026",
       "st": "Em andamento",
       "color": "#1B6EF3",
       "farol": "prazo",
@@ -70,12 +67,26 @@
       "pct": 90,
       "dl1": "31/08/2026",
       "dl2": "25/09/2026",
-      "dl3": "09/10/2026",
-      "st": "Pausado",
+      "dl3": "04/01/2027",
+      "st": "Em andamento",
       "color": "#1B6EF3",
-      "farol": "atencao",
+      "farol": "prazo",
       "jira": "/projects/PRC/boards/982/timeline?selectedIssue=PRC-122",
       "jl": "PRC-122",
+      "owner": "Natan"
+    },
+    {
+      "id": "novo5",
+      "name": "Proc - Aud. Ader. Preench. Campos ",
+      "pct": 50,
+      "dl1": "27/11/2026",
+      "dl2": "",
+      "dl3": "",
+      "st": "Em andamento",
+      "color": "#1B6EF3",
+      "farol": "prazo",
+      "jira": "",
+      "jl": "",
       "owner": "Natan"
     }
   ],
@@ -145,68 +156,6 @@
         }
       ]
     },
-    "screener": {
-      "title": "Screener",
-      "subtitle": "",
-      "note": "",
-      "groups": [
-        {
-          "label": "",
-          "tasks": [
-            {
-              "task": "Onda 01 - MVP",
-              "dl": "",
-              "st": "Em andamento",
-              "pct": 15,
-              "resp": "Jara",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "Onda 01 - Release 2",
-              "dl": "",
-              "st": "Em andamento",
-              "pct": 0,
-              "resp": "",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "Onda 01 - Release 3",
-              "dl": "",
-              "st": "Em definição",
-              "pct": 0,
-              "resp": "",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "Onda 02 - Release 1",
-              "dl": "",
-              "st": "Em definição",
-              "pct": 0,
-              "resp": "",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "Onda 02 - Release 2",
-              "dl": "",
-              "st": "Em definição",
-              "pct": 0,
-              "resp": "",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            }
-          ]
-        }
-      ]
-    },
     "novo": {
       "title": "Proc - Mapeamento proc produção",
       "subtitle": "",
@@ -238,8 +187,8 @@
             {
               "task": "Mapeamento Fluxo Problemas",
               "dl": "07/08/2026",
-              "st": "Em andamento",
-              "pct": 90,
+              "st": "Concluído",
+              "pct": 100,
               "resp": "Natan",
               "jira": "",
               "jl": "",
@@ -260,16 +209,6 @@
               "dl": "24/08/2026",
               "st": "Não iniciado",
               "pct": 0,
-              "resp": "Natan",
-              "jira": "",
-              "jl": "",
-              "obs": ""
-            },
-            {
-              "task": "Mapeamento Fluxo Sugestões",
-              "dl": "28/08/2026",
-              "st": "Em andamento",
-              "pct": 75,
               "resp": "Natan",
               "jira": "",
               "jl": "",
