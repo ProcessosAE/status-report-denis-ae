@@ -1,11 +1,11 @@
 {
-  "date": "18/11/2026",
+  "date": "25/11/2026",
   "jiraBase": "https://jiracloudae.atlassian.net",
   "projects": [
     {
       "id": "novo3",
       "name": "Novo Terminal 7.7.1",
-      "pct": 80,
+      "pct": 99,
       "dl1": "27/11/2026",
       "dl2": "",
       "dl3": "",
@@ -78,7 +78,7 @@
     {
       "id": "novo5",
       "name": "Proc - Aud. Ader. Preench. Campos ",
-      "pct": 50,
+      "pct": 95,
       "dl1": "27/11/2026",
       "dl2": "",
       "dl3": "",
